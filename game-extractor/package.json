@@ -1,0 +1,12 @@
+{
+  "name": "game-extractor",
+  "version": "1.0.0",
+  "description": "Extract Unity WebGL games from websites",
+  "main": "extract.js",
+  "scripts": {
+    "extract": "node extract.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}

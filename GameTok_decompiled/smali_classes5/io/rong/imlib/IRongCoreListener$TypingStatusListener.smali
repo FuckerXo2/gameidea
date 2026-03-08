@@ -1,0 +1,29 @@
+.class public interface abstract Lio/rong/imlib/IRongCoreListener$TypingStatusListener;
+.super Ljava/lang/Object;
+.source "IRongCoreListener.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lio/rong/imlib/IRongCoreListener;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "TypingStatusListener"
+.end annotation
+
+
+# virtual methods
+.method public abstract onTypingStatusChanged(Lio/rong/imlib/model/Conversation$ConversationType;Ljava/lang/String;Ljava/util/Collection;)V
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lio/rong/imlib/model/Conversation$ConversationType;",
+            "Ljava/lang/String;",
+            "Ljava/util/Collection<",
+            "Lio/rong/imlib/typingmessage/TypingStatus;",
+            ">;)V"
+        }
+    .end annotation
+.end method

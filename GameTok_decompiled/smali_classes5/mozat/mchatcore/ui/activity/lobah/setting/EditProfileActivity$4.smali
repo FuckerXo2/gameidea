@@ -1,0 +1,138 @@
+.class Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity$4;
+.super Lmozat/mchatcore/net/retrofit/BaseHttpObserver;
+.source "EditProfileActivity.java"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;->save()V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x0
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lmozat/mchatcore/net/retrofit/BaseHttpObserver<",
+        "Lokhttp3/ResponseBody;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field final synthetic this$0:Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;
+
+
+# direct methods
+.method constructor <init>(Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity$4;->this$0:Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;
+
+    .line 2
+    .line 3
+    invoke-direct {p0}, Lmozat/mchatcore/net/retrofit/BaseHttpObserver;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public onBadRequest(Lmozat/mchatcore/net/retrofit/entities/ErrorBean;)Z
+    .locals 1
+
+    .line 1
+    if-eqz p1, :cond_0
+
+    .line 2
+    .line 3
+    invoke-virtual {p1}, Lmozat/mchatcore/net/retrofit/entities/ErrorBean;->getMsg()Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    invoke-static {v0}, Lmozat/mchatcore/CoreApp;->showNote(Ljava/lang/String;)V
+
+    .line 8
+    .line 9
+    .line 10
+    :cond_0
+    invoke-super {p0, p1}, Lmozat/mchatcore/net/retrofit/BaseHttpObserver;->onBadRequest(Lmozat/mchatcore/net/retrofit/entities/ErrorBean;)Z
+
+    .line 11
+    .line 12
+    .line 13
+    move-result p1
+
+    .line 14
+    return p1
+.end method
+
+.method public onFailure(I)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity$4;->this$0:Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;->C(Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;)V
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-super {p0, p1}, Lmozat/mchatcore/net/retrofit/BaseHttpObserver;->onFailure(I)V
+
+    .line 7
+    .line 8
+    .line 9
+    return-void
+.end method
+
+.method public bridge synthetic onNext(Ljava/lang/Object;)V
+    .locals 0
+    .param p1    # Ljava/lang/Object;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+
+    .line 1
+    check-cast p1, Lokhttp3/ResponseBody;
+
+    invoke-virtual {p0, p1}, Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity$4;->onNext(Lokhttp3/ResponseBody;)V
+
+    return-void
+.end method
+
+.method public onNext(Lokhttp3/ResponseBody;)V
+    .locals 0
+    .param p1    # Lokhttp3/ResponseBody;
+        .annotation build Landroidx/annotation/NonNull;
+        .end annotation
+    .end param
+
+    .line 2
+    invoke-super {p0, p1}, Lmozat/mchatcore/net/retrofit/BaseHttpObserver;->onNext(Ljava/lang/Object;)V
+
+    .line 3
+    iget-object p1, p0, Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity$4;->this$0:Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;
+
+    invoke-static {p1}, Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;->C(Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;)V
+
+    .line 4
+    iget-object p1, p0, Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity$4;->this$0:Lmozat/mchatcore/ui/activity/lobah/setting/EditProfileActivity;
+
+    invoke-virtual {p1}, Lmozat/mchatcore/ui/BaseActivity;->finish()V
+
+    return-void
+.end method

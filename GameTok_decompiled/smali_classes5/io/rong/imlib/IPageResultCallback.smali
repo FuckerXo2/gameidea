@@ -1,0 +1,41 @@
+.class public interface abstract Lio/rong/imlib/IPageResultCallback;
+.super Ljava/lang/Object;
+.source "IPageResultCallback.java"
+
+# interfaces
+.implements Landroid/os/IInterface;
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lio/rong/imlib/IPageResultCallback$Stub;,
+        Lio/rong/imlib/IPageResultCallback$Default;
+    }
+.end annotation
+
+
+# virtual methods
+.method public abstract onComplete(Ljava/lang/String;I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onFailure(I)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract onNext(Ljava/util/List;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
