@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="emoji_picker_items_per_line">8</integer>
+    <integer name="promotion_bundle_items_per_line">3</integer>
+    <integer name="shop_items_per_line">4</integer>
+    <integer name="stickers_as_reactions_items_per_line">6</integer>
+    <integer name="stickers_items_per_line_landscape">7</integer>
+    <integer name="stickers_items_per_line_portrait">5</integer>
+</resources>

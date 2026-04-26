@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="daily_quest_win_X_games_plurals">
+        <item quantity="one">%d खेल जीतें</item>
+        <item quantity="other">%d खेल जीतें</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">वीडियो को %d सेकंड आगे बढ़ाएं</item>
+        <item quantity="other">वीडियो को %d सेकंड आगे बढ़ाएं</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">वीडियो को %d सेकंड पीछे ले जाएं</item>
+        <item quantity="other">वीडियो को %d सेकंड पीछे ले जाएं</item>
+    </plurals>
+    <plurals name="lobby_tables_available">
+        <item quantity="one">%d टेबल उपलब्ध है</item>
+        <item quantity="other">%d टेबल उपलब्ध हैं</item>
+    </plurals>
+    <plurals name="lobby_tournaments_available">
+        <item quantity="one">%d टूर्नामेंट उपलब्ध है</item>
+        <item quantity="other">%d टूर्नामेंट उपलब्ध हैं</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d नई सूचनाएं</item>
+        <item quantity="other">%d नई सूचनाएं</item>
+    </plurals>
+    <plurals name="plato_days">
+        <item quantity="zero">%d दिन</item>
+        <item quantity="one">%d दिन</item>
+        <item quantity="other">%d दिन</item>
+    </plurals>
+    <plurals name="plato_days_ago">
+        <item quantity="zero">%d दिन पहले</item>
+        <item quantity="one">%dदिन पहले</item>
+        <item quantity="other">%d दिन पहले</item>
+    </plurals>
+    <plurals name="plato_error_throttle_minutes_text">
+        <item quantity="one">कृपया %d मिनट में पुनः प्रयास करें।</item>
+        <item quantity="other">कृपया %d मिनटों में पुनः प्रयास करें।</item>
+    </plurals>
+    <plurals name="plato_error_throttle_text">
+        <item quantity="zero">कृप्या %d सेकंड में पुन: प्रयास करें।</item>
+        <item quantity="one">कृप्या %d सेकंड में पुन: प्रयास करें।</item>
+        <item quantity="other">कृप्या %d सेकंड में पुन: प्रयास करें।</item>
+    </plurals>
+    <plurals name="plato_game_plurals">
+        <item quantity="one">खेल</item>
+        <item quantity="other">खेल</item>
+    </plurals>
+    <plurals name="plato_group_members">
+        <item quantity="zero">%d सदस्य</item>
+        <item quantity="one">%d सदस्य</item>
+        <item quantity="other">%d सदस्य</item>
+    </plurals>
+    <plurals name="plato_home_more_games_text">
+        <item quantity="zero">%d अधिक सक्रिय गेम</item>
+        <item quantity="one">%d अधिक सक्रिय गेम</item>
+        <item quantity="other">%d अधिक सक्रिय गेम</item>
+    </plurals>
+    <plurals name="plato_hours_capitalized">
+        <item quantity="zero">%d घंटे</item>
+        <item quantity="one">1 घंटा</item>
+        <item quantity="other">%d घंटे</item>
+    </plurals>
+    <plurals name="plato_months_ago">
+        <item quantity="zero">%d महीने पहले</item>
+        <item quantity="one">%d महीना पहले</item>
+        <item quantity="other">%d महीने पहले</item>
+    </plurals>
+    <plurals name="plato_weeks_ago">
+        <item quantity="zero">%d सप्ताह पहले</item>
+        <item quantity="one">%d सप्ताह पहले</item>
+        <item quantity="other">%d सप्ताह पहले</item>
+    </plurals>
+    <plurals name="plato_wins">
+        <item quantity="zero">%d जीत गया</item>
+        <item quantity="one">%d जीत</item>
+        <item quantity="other">%d जीत गया</item>
+    </plurals>
+    <plurals name="plato_wins_newline">
+        <item quantity="zero">"%d
+WINS"</item>
+        <item quantity="one">"%d
+WIN"</item>
+        <item quantity="other">"%d
+WINS"</item>
+    </plurals>
+    <plurals name="plato_years_ago">
+        <item quantity="zero">%d वर्ष पहले</item>
+        <item quantity="one">%d वर्ष पहले</item>
+        <item quantity="other">%d वर्ष पहले</item>
+    </plurals>
+    <plurals name="profile_card_statInfo_wins">
+        <item quantity="zero">%1$s जीते</item>
+        <item quantity="one">%1$s जीत</item>
+        <item quantity="other">%1$s जीते</item>
+    </plurals>
+    <plurals name="quest_X_coins_plurals">
+        <item quantity="one">%d सिक्का</item>
+        <item quantity="other">%d सिक्के</item>
+    </plurals>
+</resources>

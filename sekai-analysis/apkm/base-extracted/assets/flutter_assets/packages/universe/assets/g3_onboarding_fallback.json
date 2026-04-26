@@ -1,0 +1,64 @@
+{
+  "g3_onboarding_enabled": true,
+  "g3_onboarding_experiment_group": "exp_onboarding_tags_age",
+  "g3_onboarding_mapping_version": "v1",
+  "g3_onboarding_interest_card_order_mode": "shuffle",
+  "g3_onboarding_interest_cards_json": [
+    {
+      "card_id": "arcade_casual",
+      "chip": "Arcade",
+      "title": "Arcade",
+      "subtitle": "Quick fun",
+      "cover_url": "https://prod-data.sekai.chat/v3-games/public/onboarding/arcade.jpg"
+    },
+    {
+      "card_id": "action_adventure",
+      "chip": "Action RPG",
+      "title": "Action RPG",
+      "subtitle": "Fight and explore",
+      "cover_url": "https://prod-data.sekai.chat/v3-games/public/onboarding/action.jpg"
+    },
+    {
+      "card_id": "puzzle_brain",
+      "chip": "Puzzle",
+      "title": "Puzzle & Strategy",
+      "subtitle": "Think and solve",
+      "cover_url": "https://prod-data.sekai.chat/v3-games/public/onboarding/puzzle.jpg"
+    },
+    {
+      "card_id": "rhythm_music",
+      "chip": "Rhythm",
+      "title": "Rhythm Music",
+      "subtitle": "Follow the beat",
+      "cover_url": "https://prod-data.sekai.chat/v3-games/public/onboarding/rythem.jpg"
+    },
+    {
+      "card_id": "build_manage",
+      "chip": "Sim",
+      "title": "Tycoon & Sim",
+      "subtitle": "Build and grow",
+      "cover_url": "https://prod-data.sekai.chat/v3-games/public/onboarding/builder.jpg"
+    },
+    {
+      "card_id": "relaxing",
+      "chip": "Relax",
+      "title": "Chill & Relax",
+      "subtitle": "Calm and unwind",
+      "cover_url": "https://prod-data.sekai.chat/v3-games/public/onboarding/relax.jpg"
+    },
+    {
+      "card_id": "story_social",
+      "chip": "Story",
+      "title": "Story & Social",
+      "subtitle": "Chat and connect",
+      "cover_url": "https://prod-data.sekai.chat/v3-games/public/onboarding/sports.jpg"
+    }
+  ],
+  "g3_onboarding_creator_card_json": {
+    "card_id": "creator_card",
+    "chip": "Creator",
+    "title": "Create My Own",
+    "subtitle": "Make something yourself",
+    "cover_url": "https://prod-data.sekai.chat/v3-games/public/onboarding/creator.jpg"
+  }
+}

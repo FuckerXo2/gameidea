@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="lobby_chip_balance_text_size">23.0dp</dimen>
+    <dimen name="lobby_currency_purchase_buy_button_width">114.0dp</dimen>
+    <dimen name="lobby_currency_purchase_item_width">340.0dp</dimen>
+    <dimen name="lobby_dialog_fixed_height">330.0dp</dimen>
+    <dimen name="lobby_dialog_fixed_width">690.0dp</dimen>
+    <dimen name="lobby_dialog_fixed_width_small">380.0dp</dimen>
+    <dimen name="lobby_leaderboard_podium_primary_avatar_frame_size">196.0dp</dimen>
+    <dimen name="lobby_leaderboard_podium_primary_avatar_size">86.0dp</dimen>
+    <dimen name="lobby_leaderboard_podium_secondary_avatar_frame_size">153.0dp</dimen>
+    <dimen name="lobby_leaderboard_podium_secondary_avatar_size">67.0dp</dimen>
+    <dimen name="lobby_leaderboard_podium_size">190.0dp</dimen>
+    <dimen name="lobby_side_navigation_panel_width">248.0dp</dimen>
+    <dimen name="lobby_text_size_default">18.0dp</dimen>
+    <dimen name="lobby_text_size_extra_large">28.0dp</dimen>
+    <dimen name="lobby_text_size_large">21.0dp</dimen>
+    <dimen name="lobby_text_size_small">16.0dp</dimen>
+    <dimen name="lobby_text_size_tiny">14.0dp</dimen>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?appThemeColorScreenBackgroundSecondary" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/settings_group_1" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/plato_settings_account_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_account" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_account_title" android:text="@string/plato_account" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+        <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" />
+        <LinearLayout android:id="@id/plato_settings_device_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_devices" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_devices_title" android:text="@string/plato_devices" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/settings_group_2" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/plato_settings_language_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_language" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_language_title" android:text="@string/plato_settings_language" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+        <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" />
+        <LinearLayout android:id="@id/plato_settings_games_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_games" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_games_title" android:text="@string/plato_settings_games" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+        <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" />
+        <LinearLayout android:id="@id/plato_settings_notifications_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_notification" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_notification_title" android:text="@string/plato_settings_notifications" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+        <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" />
+        <LinearLayout android:id="@id/plato_settings_privacy_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_privacy" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_privacy_title" android:text="@string/plato_settings_privacy" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+        <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" />
+        <LinearLayout android:id="@id/plato_settings_display_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_display" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_themes_title" android:text="@string/plato_settings_themes" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/settings_group_3" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:id="@id/plato_settings_about_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_about" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_about_title" android:text="@string/plato_settings_about_plato" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+        <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" />
+        <LinearLayout android:id="@id/plato_settings_help_container" style="@style/PlatoSettingsItemContainer">
+            <androidx.appcompat.widget.AppCompatImageView android:src="@drawable/ic_settings_help" style="@style/PlatoSettingsItemIcon" />
+            <TextView android:id="@id/setting_help" android:text="@string/get_support" style="@style/PlatoSettingsItemTitle" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

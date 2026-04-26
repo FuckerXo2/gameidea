@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="daily_quest_win_X_games_plurals">
+        <item quantity="other">Thắng %d trò chơi</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Tua nhanh %d giây</item>
+        <item quantity="other">Tua nhanh %d giây</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Tua lại %d giây</item>
+        <item quantity="other">Tua lại %d giây</item>
+    </plurals>
+    <plurals name="lobby_tables_available">
+        <item quantity="other">%d Bàn Có Sẵn</item>
+    </plurals>
+    <plurals name="lobby_tournaments_available">
+        <item quantity="other">%d Giải Đấu Có Sẵn</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d thông báo mới</item>
+        <item quantity="other">%d thông báo mới</item>
+    </plurals>
+    <plurals name="plato_days">
+        <item quantity="zero">%d ngày</item>
+        <item quantity="other">%d ngày</item>
+    </plurals>
+    <plurals name="plato_days_ago">
+        <item quantity="zero">%d ngày trước</item>
+        <item quantity="other">%d ngày trước</item>
+    </plurals>
+    <plurals name="plato_error_throttle_minutes_text">
+        <item quantity="other">Vui lòng thử lại sau %d phút.</item>
+    </plurals>
+    <plurals name="plato_error_throttle_text">
+        <item quantity="zero">Vui lòng thử lại sau %d giây.</item>
+        <item quantity="other">Vui lòng thử lại sau %d giây.</item>
+    </plurals>
+    <plurals name="plato_game_plurals">
+        <item quantity="other">trò chơi</item>
+    </plurals>
+    <plurals name="plato_group_members">
+        <item quantity="zero">%d Thành Viên</item>
+        <item quantity="other">%d Thành Viên</item>
+    </plurals>
+    <plurals name="plato_home_more_games_text">
+        <item quantity="zero">%d TRÒ CHƠI KHÁC ĐANG DIỄN RA</item>
+        <item quantity="other">%d TRÒ CHƠI KHÁC ĐANG DIỄN RA</item>
+    </plurals>
+    <plurals name="plato_hours_capitalized">
+        <item quantity="zero">%d giờ</item>
+        <item quantity="other">%d giờ</item>
+    </plurals>
+    <plurals name="plato_months_ago">
+        <item quantity="zero">%d tháng trước</item>
+        <item quantity="other">%d tháng trước</item>
+    </plurals>
+    <plurals name="plato_weeks_ago">
+        <item quantity="zero">%d tuần trước</item>
+        <item quantity="other">%d tuần trước</item>
+    </plurals>
+    <plurals name="plato_wins">
+        <item quantity="zero">%d TRẬN THẮNG</item>
+        <item quantity="other">%d TRẬN THẮNG</item>
+    </plurals>
+    <plurals name="plato_wins_newline">
+        <item quantity="zero">"%d
+WINS"</item>
+        <item quantity="other">"%d
+WINS"</item>
+    </plurals>
+    <plurals name="plato_years_ago">
+        <item quantity="zero">%d năm trước</item>
+        <item quantity="other">%d năm trước</item>
+    </plurals>
+    <plurals name="profile_card_statInfo_wins">
+        <item quantity="zero">LƯỢT THẮNG %1$s</item>
+        <item quantity="other">LƯỢT THẮNG %1$s</item>
+    </plurals>
+    <plurals name="quest_X_coins_plurals">
+        <item quantity="other">%d Đồng</item>
+    </plurals>
+</resources>

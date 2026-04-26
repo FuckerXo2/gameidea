@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?appThemeColorScreenBackgroundSecondary" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/action_bar_container" android:background="?appThemeColorScreenBackgroundPrimary" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/plato_button_back" android:contentDescription="@string/plato_back" style="@style/BackButtonStyle" />
+        <TextView android:textSize="@dimen/text_size_default" android:textColor="?appThemeColorTextTitle" android:gravity="center" android:id="@id/plato_settings_blocked_list_title" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/settings_fragment_blocked_user_header" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/menu_button" android:tint="?appThemeColorTextTitle" android:contentDescription="@string/plato_button_hamburger" style="@style/HamburgerButtonStyle" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/select_mode_header_container" android:background="?appThemeColorBlueAccentSoft" android:visibility="gone" android:layout_width="0.0dp" android:layout_height="0.0dp" android:layout_alignTop="@id/action_bar_container" android:layout_alignBottom="@id/action_bar_container" android:layout_alignStart="@id/action_bar_container" android:layout_alignEnd="@id/action_bar_container">
+        <ImageButton android:id="@id/select_mode_cancel" android:tint="?appThemeColorTextTitle" style="@style/BackButtonStyle" />
+        <TextView android:textSize="@dimen/text_size_default" android:textColor="?appThemeColorTextTitle" android:id="@id/count_of_selected_items_title" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/element_padding_default" />
+        <ImageButton android:id="@id/unblock_all_button" android:src="@drawable/ic_unblock" android:tint="?appThemeColorTextTitle" style="@style/ActionBarButtonStyle" />
+    </LinearLayout>
+    <com.playchat.ui.customview.NetworkBar android:id="@id/network_bar" android:layout_width="match_parent" android:layout_height="@dimen/network_bar_height" android:layout_below="@id/action_bar_container" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/plato_settings_blocked_list" android:paddingTop="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@id/network_bar" android:paddingStart="@dimen/element_padding_default" android:paddingEnd="@dimen/element_padding_default" />
+    <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/action_bar_container" />
+</RelativeLayout>

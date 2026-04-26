@@ -1,0 +1,117 @@
+Manifest-Version: 1.0
+Created-By: 11.0.30 (Oracle Corporation)
+
+Name: split_config.x86_64.apk
+SHA1-Digest: bZDXZsf4HK512SLBLtmS8KPSdGQ=
+
+Name: split_config.tvdpi.apk
+SHA1-Digest: TMTGaPcQc+3xZp6QZr8kRviVYT4=
+
+Name: split_config.fr.apk
+SHA1-Digest: SyV+cmDsn8Nmehi9sz6//V3JETM=
+
+Name: icon.png
+SHA1-Digest: Guh2fa3rpf0xBVF2Odq+h50peDY=
+
+Name: split_config.xxxhdpi.apk
+SHA1-Digest: KJ27J5FG4NkO9q6uLBtApi5x9xc=
+
+Name: split_config.ja.apk
+SHA1-Digest: LTb+rwQucWwFDy2foBxSOgS4Z3M=
+
+Name: split_config.en.apk
+SHA1-Digest: mgstLBp7AWgb/2K6he7SNw+NvUs=
+
+Name: split_config.et.apk
+SHA1-Digest: e75ywJ6SkFf6ZH97YDymko2tzaw=
+
+Name: split_config.pl.apk
+SHA1-Digest: gGigXjrbly7X7YrmRV6OdVePOI4=
+
+Name: split_config.xhdpi.apk
+SHA1-Digest: oWEa+NHTdEsUznmFUcWSH99QFoc=
+
+Name: split_config.hdpi.apk
+SHA1-Digest: k+stm65EhI0Sor9A9S8U4cEbQ48=
+
+Name: split_config.de.apk
+SHA1-Digest: LKpQ0oG0yeLukIaAeTH0VkPpyCw=
+
+Name: split_config.hu.apk
+SHA1-Digest: l2+zaqCRDEHa6v3HGNcCtbjt5YM=
+
+Name: split_config.tr.apk
+SHA1-Digest: K83giplX11bFVdH9MWaTN1rGt6k=
+
+Name: split_config.pt.apk
+SHA1-Digest: dGuKp4yuqE+Kz1NaVNL7+Pz+8kg=
+
+Name: split_config.ldpi.apk
+SHA1-Digest: KmrZPmo9h2DeT49dU4ODUflt7EQ=
+
+Name: APKM_installer.url
+SHA1-Digest: WXG2Fx7AAOCZOW45becgkaGPhgg=
+
+Name: split_config.arm64_v8a.apk
+SHA1-Digest: kWXo8Bu8sFUiKpkcNEpBwfngjmE=
+
+Name: split_config.ms.apk
+SHA1-Digest: Jdqvwnxbz9Pxf3289Dy1lfUmArA=
+
+Name: info.json
+SHA1-Digest: 9YNfrpbqRFDaruNiCubRa+QC2oA=
+
+Name: split_config.hi.apk
+SHA1-Digest: wc4KKllKxLFz63eJm26vp5809CM=
+
+Name: split_config.ar.apk
+SHA1-Digest: 3rjyKkD2SOoDLovUfShBA5F10wU=
+
+Name: split_config.it.apk
+SHA1-Digest: iOoO1D7pkgyW3It2zJ3ohBrUFtk=
+
+Name: split_config.ru.apk
+SHA1-Digest: hW9ngKPFHXrtzY6N+xO83f34MwA=
+
+Name: split_config.armeabi_v7a.apk
+SHA1-Digest: tIEpz2V3mUetMgpCuJVYLMRRnFo=
+
+Name: split_config.mdpi.apk
+SHA1-Digest: U5UuARhFdxxCVVOnghmGHOietiQ=
+
+Name: split_config.nl.apk
+SHA1-Digest: R3wu56L89JNkDP+/f/+hVA8XuCM=
+
+Name: base.apk
+SHA1-Digest: mlg/rN7xFZ7gVaWAD8IboccTlEA=
+
+Name: split_config.th.apk
+SHA1-Digest: NTsLs6lcpQLTnFEwXNd5rkHMSQU=
+
+Name: split_config.sv.apk
+SHA1-Digest: 3RprOYAqAPIMzRlCevDDamR9rBs=
+
+Name: split_config.uk.apk
+SHA1-Digest: GRyWxwbLP4xxAp7MrmurAXlnGGw=
+
+Name: split_config.in.apk
+SHA1-Digest: bPdUik+tWZsdtzDrxWudMgOAbfY=
+
+Name: split_config.zh.apk
+SHA1-Digest: y5i5bpF6PAG/bbqvm7ZbSi1yoy0=
+
+Name: split_config.ko.apk
+SHA1-Digest: khU5sUEbmn9IpUF2RNuvTMTdbd4=
+
+Name: split_config.vi.apk
+SHA1-Digest: yio6vbDVh0bpItMcYUiM3hSPkPk=
+
+Name: split_config.fi.apk
+SHA1-Digest: 6I8ahQEe30+DwBTLIQFHa59uQZ8=
+
+Name: split_config.es.apk
+SHA1-Digest: FxeEr/BJlVsynCb2Mf/AIAxHBGY=
+
+Name: split_config.xxhdpi.apk
+SHA1-Digest: Jcsqfdi9roE/suj540adNynnVBk=
+

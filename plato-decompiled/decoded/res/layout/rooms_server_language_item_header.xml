@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:padding="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_large" android:textColor="?appThemeColorTextTitle" android:id="@id/language_text_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:textDirection="locale" />
+    <ImageView android:layout_gravity="end|center" android:layout_width="22.0dp" android:layout_height="22.0dp" android:src="@drawable/plato_check_circle" />
+</FrameLayout>

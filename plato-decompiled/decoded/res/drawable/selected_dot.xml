@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="ring" android:useLevel="false" android:innerRadius="0.0dp" android:thickness="@dimen/game_shortcuts_tab_dots_size">
+            <solid android:color="?appThemeColorBlue" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,98 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android)
+SHA1-Digest-Manifest: Kb96oJORujxdmpayitHZ+1swGwk=
+X-Android-APK-Signed: 2, 3
+
+Name: AndroidManifest.xml
+SHA1-Digest: IbnfAw8eTlpZ7TsDdy9kXJJasi4=
+
+Name: lib/armeabi-v7a/libAgoraRtmWrapper.so
+SHA1-Digest: cgfykf6fznG0FUQY/VTnBftSQr4=
+
+Name: lib/armeabi-v7a/libagora-rtm-sdk.so
+SHA1-Digest: V4Goi1OmVCk21aPW8G+IZExEF+4=
+
+Name: lib/armeabi-v7a/libaosl.so
+SHA1-Digest: 8QnDF9dgxgY/hcaiL1NfED36zJY=
+
+Name: lib/armeabi-v7a/libapp.so
+SHA1-Digest: wg5tcJ5beR/yVFYJ8JaVex6WEdI=
+
+Name: lib/armeabi-v7a/libavcodec.so
+SHA1-Digest: yQKvyvUF9BwjB4V2RG4Mzfe6nAs=
+
+Name: lib/armeabi-v7a/libavcodec_neon.so
+SHA1-Digest: rjZdv5SeTGtDh2FC/Wwcae0QCJY=
+
+Name: lib/armeabi-v7a/libavdevice.so
+SHA1-Digest: saDGlfjNoTzadT32sA/SWI9Ema4=
+
+Name: lib/armeabi-v7a/libavdevice_neon.so
+SHA1-Digest: +KUqBa2gb79d8Lv/3CdZXshCq0U=
+
+Name: lib/armeabi-v7a/libavfilter.so
+SHA1-Digest: U/o0QoS5ZJWZfsk8TwplRBLuoSg=
+
+Name: lib/armeabi-v7a/libavfilter_neon.so
+SHA1-Digest: MQDQgFwgJo7XqhyyoFYoHgWCplc=
+
+Name: lib/armeabi-v7a/libavformat.so
+SHA1-Digest: CrtfwUDD27WH1hdGPifMAJPeUFg=
+
+Name: lib/armeabi-v7a/libavformat_neon.so
+SHA1-Digest: y8+tQJPZCHc505tM3nybvX1PPAE=
+
+Name: lib/armeabi-v7a/libavutil.so
+SHA1-Digest: BJkijkVBGQ1Ct3xxCA2cLlpuBWo=
+
+Name: lib/armeabi-v7a/libavutil_neon.so
+SHA1-Digest: neo5FUWrLyEIAN/wErjW5wXBTSU=
+
+Name: lib/armeabi-v7a/libc++_shared.so
+SHA1-Digest: FdTnn1fS+7Drs1SCe241WnJacJY=
+
+Name: lib/armeabi-v7a/libdartjni.so
+SHA1-Digest: wJekmNIeo2DUmC1eOyfxmNzZ+64=
+
+Name: lib/armeabi-v7a/libdatastore_shared_counter.so
+SHA1-Digest: Tev4gFTj640tNghI6BuW+48Ro18=
+
+Name: lib/armeabi-v7a/libffmpegkit.so
+SHA1-Digest: pJjTyoPx9zZKrNXxLI8pqzGiWJg=
+
+Name: lib/armeabi-v7a/libffmpegkit_abidetect.so
+SHA1-Digest: BY2r1mwWngjdm0cp+JjN7HV2UxA=
+
+Name: lib/armeabi-v7a/libffmpegkit_armv7a_neon.so
+SHA1-Digest: OZCS/+yNz2ZC6ZDcyBiEXz6F7MA=
+
+Name: lib/armeabi-v7a/libflutter.so
+SHA1-Digest: 1Z3qotPETUQEEgGz9WFEEZv0pjE=
+
+Name: lib/armeabi-v7a/libiris_method_channel.so
+SHA1-Digest: XRA5dJ2A82JHxMPFf1ihBTutXdQ=
+
+Name: lib/armeabi-v7a/libsentry-android.so
+SHA1-Digest: 0tAN25eiAVESikFJS0etEJcdp18=
+
+Name: lib/armeabi-v7a/libsentry.so
+SHA1-Digest: QfU5FazGXxj9TMGQcykvK+eYjRE=
+
+Name: lib/armeabi-v7a/libsqlite3.so
+SHA1-Digest: 4D3py4Mxhtf+UHNHVKLEiOXj6C4=
+
+Name: lib/armeabi-v7a/libswresample.so
+SHA1-Digest: VJMpc95HV5ocvJ6d9vkqUm6cXDQ=
+
+Name: lib/armeabi-v7a/libswresample_neon.so
+SHA1-Digest: Va/nBS4GoqGBj/03Hzuhza0Rf1U=
+
+Name: lib/armeabi-v7a/libswscale.so
+SHA1-Digest: FMffOkx8pidl837IYvkL26GBNeU=
+
+Name: lib/armeabi-v7a/libswscale_neon.so
+SHA1-Digest: dG49SVE5DVOIyUDp2+Qi7vDXEIk=
+
+Name: stamp-cert-sha256
+SHA1-Digest: Bs40BvDZ1xrbgQrPTD2x5w/NfHQ=
+

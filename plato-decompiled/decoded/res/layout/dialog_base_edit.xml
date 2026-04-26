@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:padding="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.appcompat.widget.AppCompatEditText android:textSize="@dimen/text_size_large" android:textColor="?appThemeColorTextTitle" android:textColorHint="@color/plato_gray_hint_color" android:id="@id/input_edit_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="1" android:inputType="text" android:fontFamily="@font/open_sans_regular" />
+    <TextView android:textSize="@dimen/text_size_small" android:textColor="?appThemeColorTextTitle" android:layout_gravity="end" android:id="@id/input_edit_progress_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="@dimen/element_padding_small" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/waiting_container" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/text_size_large" android:textColor="?appThemeColorTextTitle" android:id="@id/waiting_title_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/text_size_small" android:textColor="?appThemeColorTextDefault" android:gravity="center_horizontal" android:id="@id/waiting_description_text_view" android:paddingTop="@dimen/element_padding_default" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

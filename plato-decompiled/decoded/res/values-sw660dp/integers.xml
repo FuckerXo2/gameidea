@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="emoji_picker_items_per_line">10</integer>
+    <integer name="game_shortcuts_games_items_count">7</integer>
+    <integer name="game_shortcuts_items_per_page">4</integer>
+    <integer name="lobby_leaderboard_history_items_per_line">4</integer>
+    <integer name="shop_items_per_line">5</integer>
+    <integer name="stickers_as_reactions_items_per_line">7</integer>
+    <integer name="stickers_items_per_line_landscape">8</integer>
+    <integer name="stickers_items_per_line_portrait">6</integer>
+</resources>

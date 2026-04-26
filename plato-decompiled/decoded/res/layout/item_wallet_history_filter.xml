@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:paddingTop="@dimen/element_padding_default" android:paddingBottom="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/element_padding_large" android:paddingEnd="@dimen/element_padding_large"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/filter_selected_image_view" android:layout_width="24.0dp" android:layout_height="24.0dp" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <TextView android:textSize="@dimen/text_size_small" android:id="@id/filter_title_text_view" android:layout_width="0.0dp" android:layout_height="wrap_content" android:maxLines="2" android:textAllCaps="true" android:textAlignment="viewStart" android:layout_marginStart="@dimen/element_padding_default" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/filter_selected_image_view" app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

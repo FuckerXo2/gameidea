@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.AppCompatTextView android:textSize="26.0dp" android:textColor="@android:color/black" android:gravity="center" android:id="@id/emoji_item" android:padding="@dimen/element_padding_default" android:layout_width="@dimen/skin_tone_item_picker_size" android:layout_height="@dimen/skin_tone_item_picker_size" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?appThemeColorScreenBackgroundSecondary" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="?appThemeColorScreenBackgroundPrimary" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/text_size_default" android:textColor="?appThemeColorTextTitle" android:gravity="center" android:layout_gravity="center" android:id="@id/action_bar_title_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/preferred_language_title" />
+        <ImageButton android:id="@id/plato_button_back" android:contentDescription="@string/plato_back_cd" style="@style/BackButtonStyle" />
+    </FrameLayout>
+    <include layout="@layout/partial_network_bar_with_top_shadow" />
+    <TextView android:textColor="?appThemeColorTextTitle" android:id="@id/description_text_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/element_padding_default" android:text="@string/rooms_server_language_description" android:layout_marginStart="@dimen/element_padding_extra_large" android:layout_marginEnd="@dimen/element_padding_large" />
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/servers_recycler_view" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="@dimen/element_padding_default" android:overScrollMode="never" />
+</LinearLayout>

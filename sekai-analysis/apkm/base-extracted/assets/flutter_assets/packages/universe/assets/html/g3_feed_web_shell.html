@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Game</title>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{width:100%;height:100%;overflow:hidden;background:#111}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+    .game-area{position:relative;width:100%;height:100%;overflow:hidden;border-radius:24px;border:1px solid rgba(255,255,255,.05);background:#1a1a1a}
+    .game-area iframe{position:absolute;inset:0;width:100%;height:100%;border:none;background:#000}
+    .loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#111111;z-index:2;transition:opacity .2s ease}
+    .loading.hidden{opacity:0;pointer-events:none}
+    .spinner{width:32px;height:32px;color:rgba(255,255,255,.5);animation:spin 1s linear infinite;transform-origin:center}
+    .spinner svg{display:block;width:100%;height:100%}
+    @keyframes spin{to{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="game-area">
+    <div id="loading" class="loading hidden">
+      <div class="spinner" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M21 12A9 9 0 1 1 6.219 5.292"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+      </div>
+    </div>
+    <iframe
+      id="game-frame"
+      sandbox="allow-scripts allow-same-origin allow-popups allow-pointer-lock allow-modals allow-forms"
+      allow="autoplay; camera; microphone; clipboard-read; clipboard-write; gyroscope; accelerometer; fullscreen"
+      scrolling="no"
+    ></iframe>
+  </div>
+  <script>
+    if (typeof window.receiveMessageFromFlutter !== 'function') {
+      window.receiveMessageFromFlutter = function receiveMessageFromFlutter(message) {
+        window.dispatchEvent(new CustomEvent('flutterMessage', { detail: message }));
+      };
+    }
+
+    var GAME = {};
+    var _authToken = null;
+    var _apiHost = '';
+    var _appUrl = '';
+    var _userId = null;
+    var _isTourist = false;
+    var _uploadCache = {};
+    var _requestedMuted = false;
+    var _isFileProtocol = window.location.protocol === 'file:';
+    var _audioMuted = _isFileProtocol ? true : (document.visibilityState === 'hidden');
+    var _isCardVisible = false;
+    var _iframeLoaded = false;
+    var _iframeActive = false;
+    var _pageReadyRetries = 0;
+    var _isBootstrapped = false;
+    var _firstIframeLoadReported = false;
+    var _isLiked = false;
+    var _isSaved = false;
+    var _likeCount = 0;
+    var _commentCount = 0;
+    var _saveCount = 0;
+
+    function sendFlutterMessage(payload) {
+      var message = JSON.stringify(payload);
+      if (window.sendMessageToFlutter) {
+        return window.sendMessageToFlutter(message);
+      }
+      if (window.flutter_inappwebview && window.flutter_inappwebview.callHandler) {
+        return window.flutter_inappwebview.callHandler('messageHandler', message);
+      }
+      return null;
+    }
+
+    function reportIframeLoadState(phase) {
+      if (!GAME.game_id) return;
+      sendFlutterMessage({
+        action: 'feedCardIframeLoadState',
+        data: {
+          gameId: GAME.game_id,
+          phase: phase,
+          timestamp: Date.now(),
+        },
+      });
+    }
+
+    function reportFirstIframeLoadSuccess() {
+      if (_firstIframeLoadReported) return;
+      _firstIframeLoadReported = true;
+
+      var duration = (Date.now() - (performance.timeOrigin || performance.timing.navigationStart)) / 1000;
+      sendFlutterMessage({
+        action: 'logEvent',
+        parameters: {
+          eventName: 'g3_first_iframe_load_success',
+          duration: duration,
+          gameId: GAME.game_id || '',
+          versionId: GAME.version_id || '',
+          isOfflineCards: _isFileProtocol,
+        },
+      });
+    }
+
+    function showLoading() {
+      var node = document.getElementById('loading');
+      if (node) node.classList.remove('hidden');
+    }
+
+    function hideLoading() {
+      var node = document.getElementById('loading');
+      if (node) node.classList.add('hidden');
+    }
+
+    function iframeNode() {
+      return document.getElementById('game-frame');
+    }
+
+    function postBootstrapToFrame() {
+      var iframe = iframeNode();
+      if (!iframe || !iframe.contentWindow || !_isBootstrapped) return;
+
+      iframe.contentWindow.postMessage({
+        type: 'sekai_feed_frame_bootstrap',
+        payload: {
+          gameUrl: GAME.game_url || '',
+          isMuted: _audioMuted,
+        },
+      }, '*');
+    }
+
+    function buildShareLink() {
+      if (_appUrl) return _appUrl + '/g3-game/community/' + GAME.game_id + '?fromPage=feed&orientation=auto';
+      return GAME.remix_url || GAME.game_url || '';
+    }
+
+    function shouldShowIframeLoading() {
+      return /^https?:\/\//i.test(GAME.game_url || '');
+    }
+
+    function buildShareContent() {
+      return 'Look! I created an ' + (GAME.title || '').replace(/["""]/g, "'") + ' using AI, and it only took 1 minute!';
+    }
+
+    function callApi(endpoint, body) {
+      var headers = { 'Content-Type': 'application/json' };
+      if (_authToken) {
+        var token = _authToken;
+        try { token = decodeURIComponent(_authToken); } catch (_e) {}
+        headers.Authorization = 'Bearer ' + token;
+      }
+      return fetch(_apiHost + endpoint, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(body),
+      }).then(function(r) {
+        if (r.status === 401) {
+          sendFlutterMessage({ action: 'signout', arguments: { source: 'api_401', fromPage: 'feed' } });
+          return Promise.reject(new Error('unauthorized'));
+        }
+        return r;
+      });
+    }
+
+    function callApiGet(endpoint, params) {
+      var qs = '';
+      if (params) {
+        var parts = [];
+        for (var k in params) {
+          if (Object.prototype.hasOwnProperty.call(params, k) && params[k] !== undefined && params[k] !== null) {
+            parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(String(params[k])));
+          }
+        }
+        if (parts.length) qs = '?' + parts.join('&');
+      }
+
+      var headers = { 'Content-Type': 'application/json' };
+      if (_authToken) {
+        var token = _authToken;
+        try { token = decodeURIComponent(_authToken); } catch (_e) {}
+        headers.Authorization = 'Bearer ' + token;
+      }
+
+      return fetch(_apiHost + endpoint + qs, {
+        method: 'GET',
+        headers: headers,
+      }).then(function(r) {
+        if (r.status === 401) {
+          sendFlutterMessage({ action: 'signout', arguments: { source: 'api_401', fromPage: 'feed' } });
+          return Promise.reject(new Error('unauthorized'));
+        }
+        return r;
+      });
+    }
+
+    function callApiBlob(endpoint, body) {
+      var headers = { 'Content-Type': 'application/json' };
+      if (_authToken) {
+        var token = _authToken;
+        try { token = decodeURIComponent(_authToken); } catch (_e) {}
+        headers.Authorization = 'Bearer ' + token;
+      }
+
+      return fetch(_apiHost + endpoint, {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(body),
+      }).then(function(r) {
+        if (r.status === 401) {
+          sendFlutterMessage({ action: 'signout', arguments: { source: 'api_401', fromPage: 'feed' } });
+          return Promise.reject(new Error('unauthorized'));
+        }
+        if (!r.ok) return Promise.reject({ status: r.status, message: 'HTTP ' + r.status });
+        return r.blob();
+      });
+    }
+
+    function uploadBase64ToS3(dataUrl, fileType) {
+      var mimeMatch = dataUrl.match(/data:([^;]+);base64,/);
+      var mimeType = mimeMatch ? mimeMatch[1] : (fileType === 'audio' ? 'audio/webm' : 'image/png');
+      var base64Data = dataUrl.indexOf(',') !== -1 ? dataUrl.split(',')[1] : dataUrl;
+      var ext = mimeType.split('/')[1] || (fileType === 'audio' ? 'webm' : 'png');
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random() * 16 | 0;
+        var v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+      var folder = fileType === 'audio' ? 'audio' : 'images';
+      var fileName = 'v3-games/dist/' + GAME.game_id + '/' + folder + '/' + uuid + '.' + ext;
+
+      return callApi('/s3/generatePresignedUrl', { fileName: fileName, method: 'put_object' })
+        .then(function(r) { return r.json(); })
+        .then(function(result) {
+          var presignedUrl = (result && result.presignedUrl) ||
+            (result && result.data && result.data.presignedUrl);
+          if (!presignedUrl) return Promise.reject(new Error('No presigned URL returned'));
+
+          var binary = atob(base64Data);
+          var bytes = new Uint8Array(binary.length);
+          for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
+          return fetch(presignedUrl, {
+            method: 'PUT',
+            headers: { 'Content-Type': mimeType },
+            body: bytes.buffer,
+          }).then(function(r) {
+            if (!r.ok) return Promise.reject(new Error('S3 upload failed: ' + r.status));
+            var url = new URL(presignedUrl);
+            return url.origin + url.pathname;
+          });
+        });
+    }
+
+    function extractData(result) {
+      return (result && result.data !== undefined) ? result.data : result;
+    }
+
+    function computeWantMute() {
+      if (document.visibilityState === 'hidden') return true;
+      if (!_isCardVisible) return true;
+      return !!_requestedMuted;
+    }
+
+    function sendAudioStateToIframe(taskId) {
+      var iframe = iframeNode();
+      if (!iframe || !iframe.contentWindow || !_iframeActive) return;
+      iframe.contentWindow.postMessage({
+        origin: 'sekai_gaming_iframe_api',
+        type: _audioMuted ? 'receive_audio_mute' : 'receive_audio_unmute',
+        taskId: taskId || 'shell_audio_state',
+        data: null,
+      }, '*');
+    }
+
+    function sendSocialActionToIframe(actionType, content) {
+      var iframe = iframeNode();
+      if (!iframe || !iframe.contentWindow || !_iframeActive || !actionType) return;
+      iframe.contentWindow.postMessage({
+        origin: 'sekai_gaming_iframe_api',
+        type: 'receive_social_action',
+        taskId: 'social_action_' + Date.now(),
+        data: {
+          type: actionType,
+          content: content || undefined,
+        },
+      }, '*');
+    }
+
+    function sendViewportHeight() {
+      var iframe = iframeNode();
+      if (!iframe || !iframe.contentWindow) return;
+      var area = iframe.closest('.game-area') || iframe.parentElement;
+      var height = area ? area.clientHeight : 0;
+      if (height > 0) {
+        iframe.contentWindow.postMessage({ type: 'viewport_height_change', height: height }, '*');
+      }
+    }
+
+    function syncAudioState(taskId) {
+      var wantMute = computeWantMute();
+      if (wantMute === _audioMuted) return;
+      _audioMuted = wantMute;
+      sendAudioStateToIframe(taskId);
+    }
+
+    // 新 iframe 挂载后必须补发一次当前音频状态，否则很多离线卡会丢掉首次 unmute。
+    function syncAudioStateForce(taskId) {
+      _audioMuted = computeWantMute();
+      sendAudioStateToIframe(taskId);
+    }
+
+    function loadIframe() {
+      var iframe = iframeNode();
+      if (!iframe || _iframeActive || !_isBootstrapped) return;
+      _iframeActive = true;
+      _iframeLoaded = false;
+      reportIframeLoadState('start');
+      if (shouldShowIframeLoading()) showLoading();
+      else hideLoading();
+      // 与 shell 同源（file://），直接用相对路径加载，避免 blob: 跨域问题
+      iframe.src = 'g3_feed_game_frame.html';
+    }
+
+    function unloadIframe() {
+      var iframe = iframeNode();
+      if (!iframe || !_iframeActive) return;
+      _iframeActive = false;
+      _iframeLoaded = false;
+      hideLoading();
+      iframe.src = 'about:blank';
+    }
+
+    function setVisible(visible) {
+      _isCardVisible = !!visible;
+      if (_isCardVisible) {
+        loadIframe();
+        if (!_authToken) {
+          _pageReadyRetries = 0;
+          tryPageReady();
+        }
+      }
+      syncAudioState('visibility_change');
+    }
+
+    function setMuted(muted) {
+      _requestedMuted = !!muted;
+      syncAudioState('shell_set_muted');
+    }
+
+    function bootstrap(payload) {
+      payload = payload || {};
+
+      GAME = payload.cardData || {};
+      _isBootstrapped = true;
+      _isLiked = !!GAME.is_liked;
+      _isSaved = !!GAME.is_saved;
+      _likeCount = GAME.like_count || 0;
+      _commentCount = GAME.comment_count || 0;
+      _saveCount = GAME.save_count || 0;
+      _requestedMuted = !!payload.isMuted;
+      // 预挂载卡片也要提前把 iframe load 起来，避免滑到下一张时现加载。
+      // 离开 active 态只做静音，不卸载 iframe；真正卸载交给 Flutter 回收 WebView。
+      loadIframe();
+      setVisible(!!payload.isActive);
+
+      if (_isCardVisible) {
+        postBootstrapToFrame();
+      }
+    }
+
+    window.__sekaiFeedShell = {
+      bootstrap: bootstrap,
+      setVisible: setVisible,
+      setMuted: setMuted,
+      reload: function() {
+        unloadIframe();
+        setTimeout(function() { loadIframe(); }, 0);
+      },
+    };
+
+    function handleFlutterMessage(detail) {
+      if (!detail) return;
+      if (detail.data && detail.data.accessToken) _authToken = detail.data.accessToken;
+      if (detail.data && detail.data.isTourist != null) _isTourist = !!detail.data.isTourist;
+      if (detail.data && detail.data.userId) _userId = detail.data.userId;
+      if (detail.data && detail.data.host) {
+        var host = detail.data.host || '';
+        var appUrl = detail.data.appUrl || '';
+        if (host && host.charAt(host.length - 1) === '/') host = host.slice(0, -1);
+        if (appUrl && appUrl.charAt(appUrl.length - 1) === '/') appUrl = appUrl.slice(0, -1);
+        _apiHost = host;
+        _appUrl = appUrl || _apiHost.replace('-api.', '.').replace('://api.', '://');
+      }
+      if (detail.action === 'visibilityChange' || detail.action === 'visibility_change') {
+        setVisible(detail.data && detail.data.isVisible);
+      }
+      if (detail.action === 'receive_social_action') {
+        sendSocialActionToIframe(
+          detail.data && detail.data.type,
+          detail.data && detail.data.content
+        );
+      }
+      if (detail.action === 'pageReady' && _isCardVisible) {
+        loadIframe();
+        postBootstrapToFrame();
+        syncAudioStateForce('page_ready');
+      }
+      if (detail.action === 'g3FullScreen') {
+        sendFlutterMessage({
+          action: 'logEvent',
+          parameters: {
+            eventName: 'share_panel_click_fullscreen',
+            contentId: GAME.game_id || '',
+            contentType: 'g3_game',
+            fromPage: 'feed',
+          },
+        });
+        if (_appUrl && GAME.game_id) {
+          sendFlutterMessage({
+            action: 'openUrl',
+            url: _appUrl + '/g3-game/feed/full/' + GAME.game_id + '?orientation=auto&fromPage=feed',
+            arguments: {
+              fromPage: 'feed',
+            },
+          });
+        }
+      }
+      if (detail.action === 'g3Feedback') {
+        sendFlutterMessage({
+          action: 'logEvent',
+          parameters: {
+            eventName: 'share_panel_click_feedback',
+            contentId: GAME.game_id || '',
+            contentType: 'g3_game',
+            fromPage: 'feed',
+          },
+        });
+        sendFlutterMessage({
+          action: 'showFeedback',
+          arguments: {
+            fromPage: 'g3-game',
+            content: '',
+            provider: 'g3_feed',
+            content_id: GAME.game_id || '',
+          },
+        });
+      }
+    }
+
+    window.addEventListener('flutterMessage', function(event) {
+      try {
+        var detail = typeof event.detail === 'string' ? JSON.parse(event.detail) : event.detail;
+        handleFlutterMessage(detail);
+      } catch (_e) {}
+    });
+
+    window.addEventListener('message', function(event) {
+      var data = event.data;
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch (_e) { return; }
+      }
+      if (!data) return;
+
+      if (data.type === 'viewport_ready') {
+        sendViewportHeight();
+        return;
+      }
+
+      if (data.type === 'sekai_iframe_js_error') {
+        hideLoading();
+        sendFlutterMessage({
+          action: 'logEvent',
+          parameters: {
+            eventName: 'g3_feed_iframe_js_error',
+            offline: true,
+            web: true,
+            gameId: GAME.game_id || '',
+            message: data.message || '',
+            source: data.source || '',
+            errorName: data.errorName || '',
+          },
+        });
+        return;
+      }
+
+      if (data.origin !== 'sekai_gaming_iframe_api') return;
+      var iframe = iframeNode();
+
+      function reply(taskId, type, payload, errCode, errMsg) {
+        if (!iframe || !iframe.contentWindow) return;
+        var msg = {
+          origin: 'sekai_gaming_iframe_api',
+          type: type,
+          taskId: taskId,
+        };
+        if (errCode) {
+          msg.data = null;
+          msg.error = { code: errCode, message: errMsg || 'Error' };
+        } else {
+          msg.data = payload !== undefined ? payload : null;
+        }
+        iframe.contentWindow.postMessage(msg, '*');
+      }
+
+      switch (data.type) {
+        case 'sekai_iframe_dom_ready':
+          _iframeLoaded = true;
+          hideLoading();
+          reportIframeLoadState('complete');
+          reportFirstIframeLoadSuccess();
+          syncAudioStateForce('iframe_dom_ready');
+          sendViewportHeight();
+          break;
+
+        case 'get_app_states':
+        case 'get_game_states': {
+          var statesRsp = data.type === 'get_game_states' ? 'receive_game_states' : 'receive_app_states';
+          var statesSessionCode = data.sessionCode;
+          var statesParams = { gameId: GAME.game_id, versionId: GAME.version_id };
+          if (statesSessionCode) statesParams.sessionCode = statesSessionCode;
+          callApiGet('/game/game-states', statesParams)
+            .then(function(r) {
+              if (r.status === 404) { reply(data.taskId, statesRsp, null, 400, 'No saved state found'); return null; }
+              return r.json();
+            })
+            .then(function(result) {
+              if (!result) return;
+              var states = extractData(result);
+              if (!states) { reply(data.taskId, statesRsp, null, 400, 'No saved state found'); return; }
+              var msg = { origin: 'sekai_gaming_iframe_api', type: statesRsp, taskId: data.taskId, data: states };
+              if (statesSessionCode) msg.sessionCode = statesSessionCode;
+              if (iframe && iframe.contentWindow) iframe.contentWindow.postMessage(msg, '*');
+            })
+            .catch(function() { reply(data.taskId, statesRsp, null, 500, 'Failed to load app states'); });
+          break;
+        }
+
+        case 'save_app_states':
+        case 'save_game_states': {
+          var saveStatesData = data.data;
+          if (!saveStatesData || typeof saveStatesData !== 'object') break;
+          var saveStatesBody = {
+            pageSettings: saveStatesData.pageSettings,
+            gameId: GAME.game_id,
+            versionId: GAME.version_id,
+          };
+          callApi('/game/game-states', saveStatesBody).catch(function() {});
+          break;
+        }
+
+        case 'get_app_result':
+        case 'get_game_result': {
+          var resultRsp = data.type === 'get_game_result' ? 'receive_game_result' : 'receive_app_result';
+          callApiGet('/game/result', { gameId: GAME.game_id, versionId: GAME.version_id })
+            .then(function(r) { return r.json(); })
+            .then(function(result) { reply(data.taskId, resultRsp, extractData(result)); })
+            .catch(function() { reply(data.taskId, resultRsp, null, 500, 'Failed to get app result'); });
+          break;
+        }
+
+        case 'save_app_result':
+        case 'save_game_result': {
+          var saveResultBody = Object.assign({ gameId: GAME.game_id, versionId: GAME.version_id }, data.data || {});
+          callApi('/game/result', saveResultBody).catch(function() {});
+          break;
+        }
+
+        case 'get_app_top_results':
+        case 'get_game_top_results': {
+          var topRsp = data.type === 'get_game_top_results' ? 'receive_game_top_results' : 'receive_app_top_results';
+          var topPage = (data.data && data.data.page) ? Math.max(1, data.data.page) : 1;
+          var topPageSize = Math.min(100, Math.max(1, (data.data && data.data.pageSize) ? data.data.pageSize : 50));
+          callApiGet('/game/top-results', {
+            gameId: GAME.game_id,
+            versionId: GAME.version_id,
+            page: topPage,
+            page_size: topPageSize,
+          })
+            .then(function(r) { return r.json(); })
+            .then(function(result) {
+              var payload = extractData(result);
+              var items = (payload && payload.items) ? payload.items : (Array.isArray(payload) ? payload : []);
+              items.items = items;
+              reply(data.taskId, topRsp, items);
+            })
+            .catch(function() { reply(data.taskId, topRsp, []); });
+          break;
+        }
+
+        case 'call_llm':
+        case 'gen_text': {
+          var genTextRsp = data.type === 'call_llm' ? 'receive_call_llm' : 'receive_gen_text';
+          var gtd = data.data || {};
+          if (!gtd.systemPrompt || !gtd.userPrompt) {
+            reply(data.taskId, genTextRsp, null, 400, 'Missing systemPrompt or userPrompt');
+            break;
+          }
+          var schema = gtd.responseSchema;
+          if (!schema || typeof schema !== 'object' || !Object.keys(schema).length) {
+            reply(data.taskId, genTextRsp, null, 400, 'Invalid response schema');
+            break;
+          }
+          var genTextBody = {
+            messages: [
+              { role: 'system', content: gtd.systemPrompt },
+              { role: 'user', content: gtd.userPrompt },
+            ],
+            responseSchema: schema,
+            gameId: GAME.game_id,
+            versionId: GAME.version_id,
+          };
+          if (gtd.imageUrl) genTextBody.imageUrl = gtd.imageUrl;
+          callApi('/game/gen-text', genTextBody)
+            .then(function(r) { return r.json(); })
+            .then(function(result) { reply(data.taskId, genTextRsp, extractData(result)); })
+            .catch(function(err) { reply(data.taskId, genTextRsp, null, 500, (err && err.message) || 'LLM API call failed'); });
+          break;
+        }
+
+        case 'gen_image': {
+          var gid = data.data || {};
+          if (!gid.prompt || typeof gid.prompt !== 'string') {
+            reply(data.taskId, 'receive_gen_image', null, 400, 'Missing or invalid prompt');
+            break;
+          }
+          var genImageBody = { userPrompt: gid.prompt, gameId: GAME.game_id, versionId: GAME.version_id };
+          if (gid.imageUrl) genImageBody.imageUrl = gid.imageUrl;
+          if (gid.aspectRatio) genImageBody.aspectRatio = gid.aspectRatio;
+          if (gid.cutout !== undefined) genImageBody.cutout = gid.cutout;
+          callApi('/game/gen-image', genImageBody)
+            .then(function(r) { return r.json(); })
+            .then(function(result) { reply(data.taskId, 'receive_gen_image', extractData(result)); })
+            .catch(function(err) {
+              var code = (err && err.status) || 500;
+              reply(
+                data.taskId,
+                'receive_gen_image',
+                null,
+                code,
+                code === 429 ? 'Daily image generation limit reached' : 'Image generation failed'
+              );
+            });
+          break;
+        }
+
+        case 'gen_voice': {
+          var gvd = data.data || {};
+          if (!gvd.text || !gvd.voiceId) {
+            reply(data.taskId, 'receive_gen_voice', null, 400, 'Missing text or voiceId');
+            break;
+          }
+          callApiBlob('/audio/gen-audio', { text: gvd.text, voiceId: String(gvd.voiceId) })
+            .then(function(blob) {
+              return new Promise(function(resolve, reject) {
+                var reader = new FileReader();
+                reader.onloadend = function() { resolve(reader.result); };
+                reader.onerror = reject;
+                reader.readAsDataURL(blob);
+              });
+            })
+            .then(function(audioBase64) { reply(data.taskId, 'receive_gen_voice', { audioBase64: audioBase64 }); })
+            .catch(function() { reply(data.taskId, 'receive_gen_voice', null, 500, 'Voice generation failed'); });
+          break;
+        }
+
+        case 'gen_transcript': {
+          var gtrData = data.data || {};
+          var audio = gtrData.audio;
+          if (!audio || typeof audio !== 'string' || audio.indexOf('data:audio/') !== 0) {
+            reply(data.taskId, 'receive_gen_transcript', null, 400, 'Missing or invalid audio data');
+            break;
+          }
+          uploadBase64ToS3(audio, 'audio')
+            .then(function(hostUrl) {
+              return callApi('/game/gen-transcript', {
+                audioUrl: hostUrl,
+                initialPrompt: gtrData.initialPrompt || '',
+              });
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(result) { reply(data.taskId, 'receive_gen_transcript', extractData(result)); })
+            .catch(function() { reply(data.taskId, 'receive_gen_transcript', null, 500, 'Transcription failed'); });
+          break;
+        }
+
+        case 'get_social_summary': {
+          Promise.all([
+            callApiGet('/game/likers', { game_id: GAME.game_id, page: 1, page_size: 20 }).then(function(r) { return r.json(); }).catch(function() { return null; }),
+            callApiGet('/game/commenters', { game_id: GAME.game_id, page: 1, page_size: 20 }).then(function(r) { return r.json(); }).catch(function() { return null; }),
+          ]).then(function(results) {
+            var likers = (results[0] && results[0].data && results[0].data.items) || (results[0] && results[0].items) || [];
+            var commenters = (results[1] && results[1].data && results[1].data.items) || (results[1] && results[1].items) || [];
+            reply(data.taskId, 'receive_social_summary', {
+              likes: _likeCount,
+              comments: _commentCount,
+              isLiked: _isLiked,
+              likers: likers,
+              commenters: commenters,
+            });
+          });
+          break;
+        }
+
+        case 'get_player_info': {
+          if (!_authToken || _isTourist || !_userId) { reply(data.taskId, 'receive_player_info', null); break; }
+          callApiGet('/user/v2/getUserInfo', { userId: _userId })
+            .then(function(r) { return r.json(); })
+            .then(function(result) {
+              var user = result && result.data && result.data.user;
+              if (!user) { reply(data.taskId, 'receive_player_info', null); return; }
+              reply(data.taskId, 'receive_player_info', {
+                userId: String(user.userId),
+                username: user.userName,
+                avatar: user.avatarUrl,
+                countryCode: user.countryCode || 'US',
+                isCreator: !!(user.userId && String(user.userId) === String(GAME.creator_user_id)),
+              });
+            })
+            .catch(function() { reply(data.taskId, 'receive_player_info', null); });
+          break;
+        }
+
+        case 'invoke_select_characters':
+          reply(data.taskId, 'receive_select_characters', null, 400, 'Character selection not supported');
+          break;
+
+        case 'invoke_share': {
+          var shareData = data.data || {};
+          var shareLink = buildShareLink();
+          if (shareData.appStates) {
+            try { shareLink += '&appStates=' + encodeURIComponent(btoa(JSON.stringify(shareData.appStates))); } catch (_e) {}
+          }
+          var payload = {
+            title: 'Share to',
+            contentType: 'g3_game',
+            contentId: GAME.game_id,
+            fromPage: 'feed',
+            link: shareLink,
+            needWatermark: false,
+            type: 'share_only',
+            extra: {
+              creatorId: GAME.creator_user_id,
+              shareContent: buildShareContent(),
+            },
+          };
+          if (shareData.coverImageBase64) {
+            payload.imageB64 = shareData.coverImageBase64;
+          } else if (
+            shareData.coverImgUrl &&
+            typeof shareData.coverImgUrl === 'string' &&
+            shareData.coverImgUrl.indexOf('sekai-local://') === 0
+          ) {
+            var cacheKey = shareData.coverImgUrl.replace('sekai-local://', '');
+            payload.imageB64 = _uploadCache[cacheKey] || null;
+            if (!payload.imageB64) payload.imageUrl = GAME.cover;
+          } else {
+            payload.imageUrl = shareData.coverImgUrl || GAME.cover;
+          }
+          sendFlutterMessage({ action: 'showSharePanel', arguments: payload });
+          break;
+        }
+        case 'invoke_social': {
+          var socialData = data.data || {};
+          var action = socialData.action;
+          if (!action) {
+            reply(data.taskId, 'receive_social_action_result', { action: action, success: false });
+            break;
+          }
+          if (action === 'like' || action === 'unlike') {
+            _isLiked = action === 'like';
+            _likeCount += _isLiked ? 1 : -1;
+            callApi(_isLiked ? '/user/v2/like' : '/user/v2/unlike', {
+              elementType: 'game_3',
+              elementId: GAME.game_id,
+            })
+              .then(function() {
+                reply(data.taskId, 'receive_social_action_result', {
+                  action: action,
+                  success: true,
+                  isLiked: _isLiked,
+                  likeCount: _likeCount,
+                });
+              })
+              .catch(function() {
+                _isLiked = !_isLiked;
+                _likeCount += _isLiked ? 1 : -1;
+                reply(data.taskId, 'receive_social_action_result', { action: action, success: false });
+              });
+            break;
+          }
+          if (action === 'comment') {
+            sendFlutterMessage({
+              action: 'showCommentPanel',
+              arguments: { type: 'game_3', id: GAME.game_id, commentCount: _commentCount, fromPage: 'feed', showShot: true },
+            });
+            reply(data.taskId, 'receive_social_action_result', { action: 'comment', success: true, commentCount: _commentCount });
+            break;
+          }
+          if (action === 'remix') {
+            sendFlutterMessage({
+              action: 'showCommentPanel',
+              arguments: {
+                type: 'game_3',
+                id: GAME.game_id,
+                commentCount: _commentCount,
+                fromPage: 'feed',
+                showShot: true,
+                extra: { remixed_count: (GAME.extra && GAME.extra.remixed_count) || 0 },
+              },
+            });
+            reply(data.taskId, 'receive_social_action_result', { action: 'remix', success: true, commentCount: _commentCount });
+            break;
+          }
+          reply(data.taskId, 'receive_social_action_result', null, 400, 'Unknown action: ' + action);
+          break;
+        }
+
+        case 'create_app_private_session':
+          reply(data.taskId, 'receive_create_app_private_session', null, 400, 'Private sessions not supported');
+          break;
+        case 'get_app_private_sessions':
+          reply(data.taskId, 'receive_app_private_sessions', null, 400, 'Private sessions not supported');
+          break;
+        case 'join_app_private_session':
+          reply(data.taskId, 'receive_join_app_private_session', null, 400, 'Private sessions not supported');
+          break;
+        case 'multiplayer_get_session':
+          reply(data.taskId, 'multiplayer_receive_session', null, 400, 'Multiplayer not supported');
+          break;
+        case 'multiplayer_get_players':
+          reply(data.taskId, 'multiplayer_receive_players', null, 400, 'Multiplayer not supported');
+          break;
+        case 'multiplayer_send_data':
+          break;
+
+        case 'gen_vibration':
+          sendFlutterMessage({ action: 'vibrate', data: { type: 'light', duration: data.data && data.data.duration } });
+          break;
+        case 'upload_image': {
+          var image = data.data && data.data.image;
+          if (!image || typeof image !== 'string' || image.indexOf('data:image/') !== 0) {
+            reply(data.taskId, 'receive_upload_image', { error: 'Invalid' });
+            break;
+          }
+          var imageId = 'img_' + Date.now();
+          _uploadCache[imageId] = image;
+          reply(data.taskId, 'receive_upload_image', { hostUrl: 'sekai-local://' + imageId });
+          break;
+        }
+      }
+    });
+
+    function tryPageReady() {
+      var hasFlutterHandler = typeof window.sendMessageToFlutter === 'function' ||
+        (window.flutter_inappwebview && window.flutter_inappwebview.callHandler);
+      if (!hasFlutterHandler) {
+        _pageReadyRetries += 1;
+        if (_pageReadyRetries < 20) setTimeout(tryPageReady, 300);
+        return;
+      }
+      sendFlutterMessage({ action: 'pageReady', data: { creatorUserId: GAME.creator_user_id } });
+    }
+
+    document.addEventListener('visibilitychange', function() {
+      syncAudioState('document_visibility_change');
+    });
+    window.addEventListener('resize', sendViewportHeight);
+
+    (function init() {
+      var iframe = iframeNode();
+      if (!iframe) return;
+      iframe.addEventListener('load', function() {
+        if (!_iframeActive || !iframe.contentWindow) return;
+        postBootstrapToFrame();
+        syncAudioStateForce('iframe_load');
+        sendViewportHeight();
+      });
+      tryPageReady();
+    })();
+  </script>
+</body>
+</html>

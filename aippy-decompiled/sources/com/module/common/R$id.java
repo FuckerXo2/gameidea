@@ -1,0 +1,82 @@
+package com.module.common;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class R$id {
+    public static int CropOverlayView = 2131296269;
+    public static int CropProgressBar = 2131296270;
+    public static int ImageView_image = 2131296275;
+    public static int album_cover = 2131296360;
+    public static int album_media_count = 2131296361;
+    public static int album_name = 2131296362;
+    public static int auto = 2131296380;
+    public static int auto_center = 2131296384;
+    public static int bottom = 2131296398;
+    public static int bottom_toolbar = 2131296406;
+    public static int button_apply = 2131296479;
+    public static int button_preview = 2131296480;
+    public static int center = 2131296495;
+    public static int centerCrop = 2131296496;
+    public static int centerInside = 2131296497;
+    public static int check_view = 2131296504;
+    public static int cl_top = 2131296514;
+    public static int container = 2131296540;
+    public static int controls_wrapper = 2131296549;
+    public static int cropImageView = 2131296553;
+    public static int crop_image_menu_crop = 2131296554;
+    public static int crop_image_menu_flip = 2131296555;
+    public static int crop_image_menu_flip_horizontally = 2131296556;
+    public static int crop_image_menu_flip_vertically = 2131296557;
+    public static int crop_image_menu_rotate_left = 2131296558;
+    public static int crop_image_menu_rotate_right = 2131296559;
+    public static int empty_view = 2131296610;
+    public static int empty_view_content = 2131296611;
+    public static int fitCenter = 2131296637;
+    public static int gif = 2131296648;
+    public static int hint = 2131296668;
+    public static int image_view = 2131296691;
+    public static int image_view_crop = 2131296692;
+    public static int image_view_logo = 2131296693;
+    public static int img_back = 2131296703;
+    public static int img_selected = 2131296738;
+    public static int iv_back = 2131296768;
+    public static int iv_image = 2131296771;
+    public static int linear = 2131296878;
+    public static int loading = 2131296890;
+    public static int media_thumbnail = 2131296930;
+    public static int media_thumbnail_hood = 2131296931;
+    public static int off = 2131297000;
+    public static int on = 2131297001;
+    public static int onTouch = 2131297005;
+    public static int original = 2131297007;
+    public static int originalLayout = 2131297008;
+    public static int oval = 2131297012;
+    public static int pager = 2131297017;
+    public static int player_container = 2131297033;
+    public static int rectangle = 2131297048;
+    public static int recyclerview = 2131297058;
+    public static int root = 2131297074;
+    public static int save = 2131297083;
+    public static int selected_album = 2131297112;
+    public static int selected_arrow_iv = 2131297113;
+    public static int smart = 2131297153;
+    public static int spinner_background = 2131297189;
+    public static int status_bar_view = 2131297211;
+    public static int tab_layout = 2131297230;
+    public static int title_bar = 2131297286;
+    public static int toolbar = 2131297290;
+    public static int toolbar_title = 2131297291;
+    public static int top = 2131297292;
+    public static int tv_count = 2131297325;
+    public static int tv_index = 2131297357;
+    public static int ucrop = 2131297415;
+    public static int ucrop_frame = 2131297416;
+    public static int ucrop_photobox = 2131297417;
+    public static int v_line = 2131297425;
+    public static int video_duration = 2131297435;
+    public static int video_play_button = 2131297436;
+    public static int view_overlay = 2131297443;
+    public static int web_parent = 2131297460;
+
+    private R$id() {
+    }
+}

@@ -1,0 +1,2033 @@
+{
+    "skin_types" : [
+        {
+            "skin_type_name" : "beard",
+            "skins" : [
+                {
+                    "name" : "boxed_beard",
+                    "id" : "f2f8f8f5-0095-4a91-1c8f-351c8645901f"
+                },
+                {
+                    "name" : "classic_goatee",
+                    "id" : "ada7a0a6-1d1d-4aed-1c8f-351cd1b14fee"
+                },
+                {
+                    "name" : "classic_moustache",
+                    "id" : "91f12a26-4813-4f3a-1c8f-351c45ad513a"
+                },
+                {
+                    "name" : "classic_sideburns",
+                    "id" : "bd1de9c1-ccbd-42fc-1c8f-351cf55caa2a"
+                },
+                {
+                    "name" : "full_beard",
+                    "id" : "2d408f63-b630-48eb-1c8f-351c4003180e"
+                },
+                {
+                    "name" : "long_full_beard",
+                    "id" : "004e90ed-e8b9-4cf3-1c8f-351c7d2db271"
+                },
+                {
+                    "name" : "none",
+                    "id" : "773a90c6-28b8-45d6-1c8f-351c00000001"
+                },
+                {
+                    "name" : "simple_soulpatch",
+                    "id" : "49ab1859-713d-439e-1c8f-351c115815e8"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "bubble",
+            "skins" : [
+                {
+                    "name" : "circular_with_bottom_source_pointer",
+                    "id" : "01e09b6e-228a-4da7-b91c-0d5a689c46d1"
+                },
+                {
+                    "name" : "speech_zombie",
+                    "id" : "d34830a2-63bb-4b0f-e303-589ccda6bd25"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "couch"
+        },
+        {
+            "skin_type_name" : "earrings",
+            "skins" : [
+                {
+                    "name" : "asymmetric_hoops",
+                    "id" : "e50009c4-dacb-4f8e-4710-0f532c8a73d4"
+                },
+                {
+                    "name" : "black_gemstone_drop",
+                    "id" : "86ba257c-6872-450c-4710-0f530cb489aa"
+                },
+                {
+                    "name" : "chain",
+                    "id" : "849ef8e0-afdd-406a-4710-0f535b77443d"
+                },
+                {
+                    "name" : "foo",
+                    "id" : "7d79c91b-4f5a-4f9e-4710-0f53598fd4fe"
+                },
+                {
+                    "name" : "gemstone_drop",
+                    "id" : "2e7e208b-6ba6-4b18-4710-0f53d4d6c222"
+                },
+                {
+                    "name" : "gold_studs",
+                    "id" : "4a97d1de-9db1-44d7-4710-0f539759b0e8"
+                },
+                {
+                    "name" : "grunge",
+                    "id" : "e185f275-bba8-44b1-4710-0f53da6f05bc"
+                },
+                {
+                    "name" : "helix",
+                    "id" : "cdf5ab2b-0b61-4e98-4710-0f53d4725606"
+                },
+                {
+                    "name" : "hoop_drop",
+                    "id" : "21aef163-aaa6-4ba5-4710-0f5384e6a8f4"
+                },
+                {
+                    "name" : "large_cuffs",
+                    "id" : "c4137150-5695-4233-4710-0f5301d00af3"
+                },
+                {
+                    "name" : "large_hoops",
+                    "id" : "e6f2fe2d-8c4e-4e6b-4710-0f53fc9d4d59"
+                },
+                {
+                    "name" : "none",
+                    "id" : "e76fda3d-3513-4c27-4710-0f5300000001"
+                },
+                {
+                    "name" : "pink_hearts",
+                    "id" : "d07841b2-6d6a-464b-4710-0f53c670ff42"
+                },
+                {
+                    "name" : "small_hoops",
+                    "id" : "bbe6158e-e801-46ed-4710-0f53e5a2c123"
+                },
+                {
+                    "name" : "stars",
+                    "id" : "b3d0db90-a86d-4cd2-4710-0f53aa64af53"
+                },
+                {
+                    "name" : "swirl",
+                    "id" : "dad0e9b2-1129-43b5-4710-0f533fd50693"
+                },
+                {
+                    "name" : "triple_stud",
+                    "id" : "c3807132-8161-4493-4710-0f535f303caf"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "ears",
+            "skins" : [
+                {
+                    "name" : "default",
+                    "id" : "29d64da8-7503-41a4-9061-c665d47c1867"
+                },
+                {
+                    "name" : "large",
+                    "id" : "aedc2864-e340-417e-9061-c66550a4b66d"
+                },
+                {
+                    "name" : "medium",
+                    "id" : "4b4fdf75-c920-43ba-9061-c6657406fb0d"
+                },
+                {
+                    "name" : "none",
+                    "id" : "57714774-ecf3-4c95-9061-c66500000001"
+                },
+                {
+                    "name" : "small",
+                    "id" : "19898322-827d-4697-9061-c6655a43426f"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "emote",
+            "skins" : [
+                {
+                    "name" : "angry",
+                    "id" : "6e6ed92d-3fbb-4e78-1a8f-e81659dd7417"
+                },
+                {
+                    "name" : "angry_exagerated",
+                    "id" : "14580fb2-8342-41bb-1a8f-e81640b5f966"
+                },
+                {
+                    "name" : "challenging",
+                    "id" : "675b153f-b815-412e-1a8f-e8160847718c"
+                },
+                {
+                    "name" : "crying",
+                    "id" : "ba574e7d-2838-483f-1a8f-e8161c251fee"
+                },
+                {
+                    "name" : "crying_a_lot",
+                    "id" : "67c2f7d0-ba8c-4245-1a8f-e8166e1ee1be"
+                },
+                {
+                    "name" : "crying_no_tears",
+                    "id" : "efdeec6b-721c-4d2a-1a8f-e8166d4f1062"
+                },
+                {
+                    "name" : "crying_waterfall",
+                    "id" : "1e2cce7a-bc15-4af6-1a8f-e8165dc406d9"
+                },
+                {
+                    "name" : "furious_smoke",
+                    "id" : "2e0e745a-bb1c-4bb9-1a8f-e8166056c41d"
+                },
+                {
+                    "name" : "happy_closed_eyes",
+                    "id" : "6d67cfc7-67f7-4fbc-1a8f-e816d9bec388"
+                },
+                {
+                    "name" : "happy_open_eyes",
+                    "id" : "3c85db2a-f418-4536-1a8f-e816bc8869e4"
+                },
+                {
+                    "name" : "laughing",
+                    "id" : "97e2c27f-fd31-4506-1a8f-e816a47b4dfb"
+                },
+                {
+                    "name" : "pleased",
+                    "id" : "b2eff73f-8a76-4f88-1a8f-e8168affa628"
+                },
+                {
+                    "name" : "sad_confused",
+                    "id" : "58754635-d93b-4b8e-1a8f-e8167fb928a8"
+                },
+                {
+                    "name" : "sad_tear",
+                    "id" : "f00a4d59-82db-4a9a-1a8f-e81687b54443"
+                },
+                {
+                    "name" : "screaming_angry_bite",
+                    "id" : "c3f6fe34-03c0-4457-1a8f-e81691e8e612"
+                },
+                {
+                    "name" : "screaming_huge_mouth",
+                    "id" : "77321201-ea68-4e9e-1a8f-e816abcc397b"
+                },
+                {
+                    "name" : "screaming_nerves",
+                    "id" : "058d8230-002b-4146-1a8f-e8168719b56d"
+                },
+                {
+                    "name" : "smile_big",
+                    "id" : "2d22ab57-2001-43d9-1a8f-e816e0f6c139"
+                },
+                {
+                    "name" : "smile_shy",
+                    "id" : "7b810ddd-0394-43c6-1a8f-e8163e4f4a6f"
+                },
+                {
+                    "name" : "surprised",
+                    "id" : "f24468c6-68b2-47c1-1a8f-e816ba352b5d"
+                },
+                {
+                    "name" : "suspicious_looking_sideways",
+                    "id" : "a377f700-9263-4585-1a8f-e81604c5a29b"
+                },
+                {
+                    "name" : "suspicious_no_sclera",
+                    "id" : "0eb3482c-f18f-4214-1a8f-e816fbdd697a"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "eyebrows",
+            "skins" : [
+                {
+                    "name" : "bushy_angled",
+                    "id" : "027621bb-baa0-4bfe-6038-1dea274fa6d3"
+                },
+                {
+                    "name" : "bushy_wide",
+                    "id" : "6ee9664b-96d0-4782-6038-1dea33743ff5"
+                },
+                {
+                    "name" : "full_bushy",
+                    "id" : "4a53dae7-122b-4546-6038-1dea57a35591"
+                },
+                {
+                    "name" : "lowered",
+                    "id" : "31636dd1-9872-4301-6038-1dead0dd175a"
+                },
+                {
+                    "name" : "lowered_bushy",
+                    "id" : "fbb7559f-0d3c-407f-6038-1dea68747ba8"
+                },
+                {
+                    "name" : "lowered_thin",
+                    "id" : "60c96f2a-ea22-4a83-6038-1deaa8063d74"
+                },
+                {
+                    "name" : "lowered_wide",
+                    "id" : "25025cad-b278-4d83-6038-1dea832aef18"
+                },
+                {
+                    "name" : "neutral_thin",
+                    "id" : "44060725-c466-4586-6038-1dea07ca7df9"
+                },
+                {
+                    "name" : "raised_thick",
+                    "id" : "42f91190-0dba-4e3b-6038-1dea05011cc8"
+                },
+                {
+                    "name" : "raised_thin",
+                    "id" : "c8079bdd-48df-43a4-6038-1dea884299e8"
+                },
+                {
+                    "name" : "round_arches",
+                    "id" : "c1f0bf43-9b22-414e-6038-1dea62ba2b9b"
+                },
+                {
+                    "name" : "thin_lowered",
+                    "id" : "fad7c15b-efe1-4011-6038-1dea727e67ee"
+                },
+                {
+                    "name" : "unibrow",
+                    "id" : "b9a46e82-fd63-47fb-6038-1deaf5b538da"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "eyes",
+            "skins" : [
+                {
+                    "name" : "angry",
+                    "id" : "8ae2285c-41cb-49f2-af3f-9a3059dd7417"
+                },
+                {
+                    "name" : "closed",
+                    "id" : "b3dda4f7-832f-451c-af3f-9a30a7e66662"
+                },
+                {
+                    "name" : "closed_happy",
+                    "id" : "ff39d6d7-a9b3-42a7-af3f-9a305a374ffd"
+                },
+                {
+                    "name" : "cute",
+                    "id" : "f4ed5cb5-7ed1-460a-af3f-9a30da81c85b"
+                },
+                {
+                    "name" : "fancy",
+                    "id" : "6f74b65f-92f9-40a4-af3f-9a30c606d9f7"
+                },
+                {
+                    "name" : "hangover_lashes",
+                    "id" : "10d27954-aade-4e33-8123-a4c139556d24"
+                },
+                {
+                    "name" : "large",
+                    "id" : "00046929-c624-48dd-af3f-9a3050a4b66d"
+                },
+                {
+                    "name" : "large_happy",
+                    "id" : "8f07f99f-71c3-48f3-af3f-9a30a47b4880"
+                },
+                {
+                    "name" : "pupils_small",
+                    "id" : "0fe797ca-fbca-4010-b7e3-79579157e609"
+                },
+                {
+                    "name" : "rounded_scary",
+                    "id" : "0497e1cc-2678-45b3-8338-d1d7fdd7db01"
+                },
+                {
+                    "name" : "serene_looking",
+                    "id" : "ef53718d-2b0f-4f68-82e3-29b048c617e9"
+                },
+                {
+                    "name" : "square_watchful",
+                    "id" : "84377f81-1f9f-46d9-aa31-ad7a0dec9065"
+                },
+                {
+                    "name" : "surprised",
+                    "id" : "63e2fad0-4bf6-4559-af3f-9a30ba352b5d"
+                },
+                {
+                    "name" : "suspicious",
+                    "id" : "8e6b5983-9731-42fc-af3f-9a30b4fc852b"
+                },
+                {
+                    "name" : "very_surprised",
+                    "id" : "14f3f2cc-dc83-4951-af3f-9a30d69cc928"
+                },
+                {
+                    "name" : "wide",
+                    "id" : "72487803-04a1-400f-af3f-9a30ce158ea3"
+                },
+                {
+                    "name" : "wide_eyed",
+                    "id" : "35db9e98-7bd9-4367-af3f-9a30d7a819e1"
+                },
+                {
+                    "name" : "wide_fancy",
+                    "id" : "6c0ebad5-8452-4e6b-af3f-9a30c31e1163"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "font",
+            "skins" : [
+                {
+                    "name" : "zombie_melted",
+                    "id" : "b4282f77-5501-46e8-cc7b-d503559caebe"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "glasses",
+            "skins" : [
+                {
+                    "name" : "aviator",
+                    "id" : "3019f6a8-5c55-42f8-7626-361ec8a08f7c"
+                },
+                {
+                    "name" : "cat_glasses",
+                    "id" : "20f139e7-e1ee-466c-7626-361efde65c79"
+                },
+                {
+                    "name" : "classic_dark_glasses",
+                    "id" : "53165aba-a0ba-49bd-7626-361e80a49504"
+                },
+                {
+                    "name" : "classic_glasses",
+                    "id" : "c7b1500b-1ced-4bfe-7626-361ecee944ff"
+                },
+                {
+                    "name" : "curved_edges_classic",
+                    "id" : "bfd22623-9ea1-4ecf-7626-361ea612d02b"
+                },
+                {
+                    "name" : "dark_cat_glasses",
+                    "id" : "f32b17cb-808c-468b-7626-361ede85503e"
+                },
+                {
+                    "name" : "double_frame_wayfarer",
+                    "id" : "26fc47b5-47d3-45d2-7626-361e4b1f3459"
+                },
+                {
+                    "name" : "half_cut_frame",
+                    "id" : "001d25bc-49c8-468d-7626-361e3f106cde"
+                },
+                {
+                    "name" : "large_classic",
+                    "id" : "aeaf16ac-4791-4e44-7626-361e868e07fe"
+                },
+                {
+                    "name" : "monocle",
+                    "id" : "9a3df018-3553-49b2-7626-361e711c1c2d"
+                },
+                {
+                    "name" : "none",
+                    "id" : "92a904d1-a224-485f-7626-361e00000001"
+                },
+                {
+                    "name" : "oval_double_centered",
+                    "id" : "a74d31c3-9348-426f-7626-361e22936ff3"
+                },
+                {
+                    "name" : "oval_glasses",
+                    "id" : "a2b30e55-3e37-4615-7626-361e4292daeb"
+                },
+                {
+                    "name" : "rounded_frame_classic",
+                    "id" : "82cbfd85-bdbf-4d61-7626-361ed6292f7a"
+                },
+                {
+                    "name" : "rounded_glasses",
+                    "id" : "e596ae78-0358-4323-7626-361e67a79a78"
+                },
+                {
+                    "name" : "rounded_large_glasses",
+                    "id" : "5b535ca0-6b1d-4dc0-7626-361e5d4b7f50"
+                },
+                {
+                    "name" : "sharp_classic",
+                    "id" : "8a67e427-421c-4290-7626-361e6b226583"
+                },
+                {
+                    "name" : "small_classic",
+                    "id" : "fe41d35e-a103-452d-7626-361e2320150a"
+                },
+                {
+                    "name" : "sporty_glasses",
+                    "id" : "ef57dd31-195f-4ca0-7626-361eb43d0640"
+                },
+                {
+                    "name" : "sporty_gradient",
+                    "id" : "5cb51768-4685-4953-9a20-b53c205adc8c"
+                },
+                {
+                    "name" : "square_glasses",
+                    "id" : "d40a8a25-e5c3-4952-7626-361e19d808e2"
+                },
+                {
+                    "name" : "wayfarer",
+                    "id" : "d7557467-d2e4-48bd-7626-361e9d875339"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "gloves",
+            "skins" : [
+                {
+                    "name" : "large_gloves",
+                    "id" : "e46854a7-accf-4ab4-18e0-cf241c7c88bc"
+                },
+                {
+                    "name" : "none",
+                    "id" : "5e2fbaef-eb6c-425e-18e0-cf2400000001"
+                },
+                {
+                    "name" : "small_gloves",
+                    "id" : "4ddbe1b3-fbe9-474b-18e0-cf24d7e7f990"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "hair",
+            "skins" : [
+                {
+                    "name" : "asymmetrical_bob",
+                    "id" : "9d7a22a4-7406-4eab-3309-3c528c306dcb"
+                },
+                {
+                    "name" : "asymmetric_braids",
+                    "id" : "942bc5cb-e17b-4ef3-3309-3c5259137702"
+                },
+                {
+                    "name" : "ballerina_bun",
+                    "id" : "69f4ca5c-040c-4a7d-3309-3c52d4f1aca0"
+                },
+                {
+                    "name" : "bangs_over_eye",
+                    "id" : "2f574c05-deb6-4672-3309-3c526558da8e"
+                },
+                {
+                    "name" : "braided_pigtails",
+                    "id" : "702ca74b-84f7-4c4b-3309-3c52947042ab"
+                },
+                {
+                    "name" : "braids_half_ponytail",
+                    "id" : "76437d45-d128-4c13-3309-3c529900c0fa"
+                },
+                {
+                    "name" : "buzz_cut",
+                    "id" : "9ec060e9-fe9f-4f51-3309-3c5259a78d48"
+                },
+                {
+                    "name" : "classic",
+                    "id" : "ec8ae59b-a3b4-42f8-3309-3c521601def6"
+                },
+                {
+                    "name" : "cornrows",
+                    "id" : "163dd1a6-7010-48a3-3309-3c5277122da9"
+                },
+                {
+                    "name" : "curly_high_pony",
+                    "id" : "d97350c7-d346-450f-3309-3c525a54bcf7"
+                },
+                {
+                    "name" : "elvis_sideburns",
+                    "id" : "6e1b5f95-f99d-4fba-3309-3c527faeb1b9"
+                },
+                {
+                    "name" : "fringe",
+                    "id" : "adc178b4-73aa-4683-3309-3c52da6f0079"
+                },
+                {
+                    "name" : "half_buzzcut",
+                    "id" : "32deaea9-d7c6-4b42-3309-3c525cb97525"
+                },
+                {
+                    "name" : "half_buzzcut_ponytail",
+                    "id" : "ee29de90-43e3-4bb7-3309-3c5278c7dfc6"
+                },
+                {
+                    "name" : "half_ponytail_short",
+                    "id" : "856dcf49-7db5-47aa-3309-3c526ef778a1"
+                },
+                {
+                    "name" : "high_bun",
+                    "id" : "2c2cdfc8-e5e4-454a-3309-3c5217592248"
+                },
+                {
+                    "name" : "high_messy_bun",
+                    "id" : "7ce0c4a4-ffd7-4994-3309-3c525a40eff4"
+                },
+                {
+                    "name" : "high_pigtails",
+                    "id" : "ec426103-e43e-44f3-3309-3c52405e2928"
+                },
+                {
+                    "name" : "long_bangs",
+                    "id" : "c302b555-63e3-40b7-3309-3c520bb3f5d8"
+                },
+                {
+                    "name" : "long_ponytail",
+                    "id" : "127dd12d-8a73-48c0-3309-3c52f9261109"
+                },
+                {
+                    "name" : "long_slicked_back",
+                    "id" : "d271c664-aeaf-4d27-3309-3c520eac7244"
+                },
+                {
+                    "name" : "long_spiked",
+                    "id" : "6480ac9c-5202-4f39-3309-3c5241031241"
+                },
+                {
+                    "name" : "long_with_bangs",
+                    "id" : "92e14df8-beb9-410b-3309-3c52ca675179"
+                },
+                {
+                    "name" : "mad_max",
+                    "id" : "9609f170-5420-490e-3309-3c52c35f495b"
+                },
+                {
+                    "name" : "medium_length",
+                    "id" : "2b2df1cc-ee56-47b1-3309-3c5208958806"
+                },
+                {
+                    "name" : "medium_length_with_bangs",
+                    "id" : "e56d690a-0570-464f-3309-3c524cbbba95"
+                },
+                {
+                    "name" : "messy_bangs",
+                    "id" : "0b2052e8-b1b3-4e28-3309-3c52f7f3adaf"
+                },
+                {
+                    "name" : "none",
+                    "id" : "731908d2-3507-41bf-3309-3c5200000001"
+                },
+                {
+                    "name" : "one_braid",
+                    "id" : "f67b79d9-b4a0-4297-3309-3c52901375d3"
+                },
+                {
+                    "name" : "pigtails",
+                    "id" : "c7dcad32-01d2-4383-3309-3c52478d6fc9"
+                },
+                {
+                    "name" : "pigtails_with_bangs",
+                    "id" : "b14bfec1-65b3-478f-3309-3c521daa1a16"
+                },
+                {
+                    "name" : "pompadour",
+                    "id" : "b7ac12d6-7e57-4d68-3309-3c52556e197b"
+                },
+                {
+                    "name" : "punk_mohawk",
+                    "id" : "3dcea068-954b-4fe0-3309-3c5248ba914e"
+                },
+                {
+                    "name" : "retro_updo",
+                    "id" : "15a755fd-9c74-4c45-3309-3c52ca41b5f7"
+                },
+                {
+                    "name" : "short_and_curly",
+                    "id" : "ecb190e8-8134-4452-3309-3c52fd411928"
+                },
+                {
+                    "name" : "short_buzzcut",
+                    "id" : "33b88f30-257b-409f-3309-3c5297c10dc4"
+                },
+                {
+                    "name" : "short_buzzcut_ponytail",
+                    "id" : "b2e47fb0-7d8a-49f6-3309-3c5201e2a957"
+                },
+                {
+                    "name" : "short_flipped_back",
+                    "id" : "6d430783-362a-41c1-3309-3c527d7d7933"
+                },
+                {
+                    "name" : "short_spikes",
+                    "id" : "af362df5-d517-4e01-3309-3c52bba5d25a"
+                },
+                {
+                    "name" : "side_pony_with_bangs",
+                    "id" : "453e1697-3a61-4694-3309-3c526563180f"
+                },
+                {
+                    "name" : "slicked_back",
+                    "id" : "338a870c-58cd-436d-3309-3c526a065773"
+                },
+                {
+                    "name" : "small_bun",
+                    "id" : "8738b335-e3d7-4b32-3309-3c526b906f9d"
+                },
+                {
+                    "name" : "space_buns",
+                    "id" : "9650d8fc-aa0c-4698-3309-3c525c5faa89"
+                },
+                {
+                    "name" : "space_buns_curly",
+                    "id" : "248138c6-5bcc-4fa0-3309-3c529195fcfb"
+                },
+                {
+                    "name" : "spiked_bangs",
+                    "id" : "5feae055-4940-4362-3309-3c52ef9ed17c"
+                },
+                {
+                    "name" : "undercut",
+                    "id" : "25e64d14-78da-4f9a-3309-3c524bca5530"
+                },
+                {
+                    "name" : "wavy_shoulder_length",
+                    "id" : "17f3eeb4-247a-49d4-3309-3c521ec000d7"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "hat",
+            "skins" : [
+                {
+                    "name" : "airplane_pilot",
+                    "id" : "c0cf0003-40cc-4c6c-297c-916d75a6583d"
+                },
+                {
+                    "name" : "astronaut",
+                    "id" : "c3d16a23-a74c-4b5c-297c-916dbab94045"
+                },
+                {
+                    "name" : "backwards_cap",
+                    "id" : "7c530cff-cf48-4b81-297c-916db19f1465"
+                },
+                {
+                    "name" : "bandages",
+                    "id" : "1f8562bc-2c1e-4eca-297c-916dee787d11"
+                },
+                {
+                    "name" : "baseball_cap",
+                    "id" : "207672de-e7a4-4143-297c-916d580d75df"
+                },
+                {
+                    "name" : "beanie",
+                    "id" : "8f37bcbf-5086-46ba-297c-916d02a71446"
+                },
+                {
+                    "name" : "bear",
+                    "id" : "4040a234-f52e-490b-297c-916d11615c00"
+                },
+                {
+                    "name" : "bells",
+                    "id" : "fc09e7eb-8e52-475c-297c-916dec7bf134"
+                },
+                {
+                    "name" : "black_beret",
+                    "id" : "d0a9ecca-fc6b-47e5-297c-916dcafc4312"
+                },
+                {
+                    "name" : "black_top_hat",
+                    "id" : "9fbac50d-0ee6-4aaf-297c-916df1928b09"
+                },
+                {
+                    "name" : "bucket_hat",
+                    "id" : "ac34f877-a9b1-4531-297c-916db192cf1e"
+                },
+                {
+                    "name" : "cat_mask",
+                    "id" : "d4eff1f7-87b0-4152-297c-916dae21cba1"
+                },
+                {
+                    "name" : "cat_on_my_head",
+                    "id" : "6c6efe08-bfd3-456c-297c-916d944a5d90"
+                },
+                {
+                    "name" : "chicken_mask",
+                    "id" : "1a385624-9f1b-4d8d-297c-916d0fbd2d2a"
+                },
+                {
+                    "name" : "cowboyhat",
+                    "id" : "1845ceaf-ec55-4afa-297c-916dfe17cdf2"
+                },
+                {
+                    "name" : "dinosaur_mask",
+                    "id" : "4169bb68-4d78-4b12-297c-916da2ae9de2"
+                },
+                {
+                    "name" : "dog",
+                    "id" : "9d41d808-c785-45e8-297c-916d598fd438"
+                },
+                {
+                    "name" : "elf_cap",
+                    "id" : "d18f7458-c2d6-4c59-297c-916d963521e8"
+                },
+                {
+                    "name" : "elf_cap_with_ears",
+                    "id" : "0be68d20-4362-492c-297c-916d2a6fab51"
+                },
+                {
+                    "name" : "fedora",
+                    "id" : "b0741edc-ad71-4099-297c-916dc82a9e3b"
+                },
+                {
+                    "name" : "fedora_pointy",
+                    "id" : "eb7b8733-9776-4f33-a072-d706c2aa60ec"
+                },
+                {
+                    "name" : "fedora_tall",
+                    "id" : "ccd5320a-199b-47bd-be1d-f2d4567f570e"
+                },
+                {
+                    "name" : "flower_crown",
+                    "id" : "b013fce4-48b4-490d-297c-916da9c65f79"
+                },
+                {
+                    "name" : "frog",
+                    "id" : "73c00d21-c698-40a0-297c-916d0b63e05c"
+                },
+                {
+                    "name" : "gas_mask",
+                    "id" : "ef0f7ed9-51ee-4979-297c-916dae1fae64"
+                },
+                {
+                    "name" : "general",
+                    "id" : "4fb7e807-7ece-43ca-297c-916d38a8b366"
+                },
+                {
+                    "name" : "ghost_mask",
+                    "id" : "968cea43-2ea7-4071-297c-916da6a7087e"
+                },
+                {
+                    "name" : "gift_mini",
+                    "id" : "eda92260-1906-425b-297c-916d9f43e702"
+                },
+                {
+                    "name" : "great_horned_owl",
+                    "id" : "a2eda151-38da-4516-297c-916d8ed692ef"
+                },
+                {
+                    "name" : "green_and_red_cap",
+                    "id" : "79878ddb-559a-4b71-297c-916dfcc4696c"
+                },
+                {
+                    "name" : "hard_hat",
+                    "id" : "0a2ab9f9-02e0-476c-297c-916d2e2cd96d"
+                },
+                {
+                    "name" : "harsh_test",
+                    "id" : "ab0beb1d-7d36-4afc-297c-916d2591500d"
+                },
+                {
+                    "name" : "headphones",
+                    "id" : "c1f73dee-9161-47ba-297c-916d356b614b"
+                },
+                {
+                    "name" : "hockey_mask",
+                    "id" : "124fd058-33f8-477b-297c-916d926125dc"
+                },
+                {
+                    "name" : "igloo",
+                    "id" : "a6382354-e031-4f90-297c-916d4c3d1350"
+                },
+                {
+                    "name" : "jack",
+                    "id" : "7414a66f-51f3-4498-297c-916da59d6d57"
+                },
+                {
+                    "name" : "jason",
+                    "id" : "720e0c10-8d0d-438f-297c-916d3b693b29"
+                },
+                {
+                    "name" : "kitsune",
+                    "id" : "c45843ea-f96e-41bb-297c-916da12d33df"
+                },
+                {
+                    "name" : "long_red_headband_",
+                    "id" : "a578fff3-c5ee-4208-297c-916d624fbe6b"
+                },
+                {
+                    "name" : "military_cap",
+                    "id" : "6914ab1f-de25-47ed-297c-916d449a87e2"
+                },
+                {
+                    "name" : "mini_teddys",
+                    "id" : "e07b6a00-e997-4855-297c-916d70b22207"
+                },
+                {
+                    "name" : "none",
+                    "id" : "2842b8cd-11b3-470d-297c-916d00000001"
+                },
+                {
+                    "name" : "owl",
+                    "id" : "f0726c79-f15a-44fe-297c-916d44543140"
+                },
+                {
+                    "name" : "penguin_mask",
+                    "id" : "de7b5f2e-f47b-414a-297c-916d4b85d6c5"
+                },
+                {
+                    "name" : "pink_earmuffs",
+                    "id" : "b009b9b7-ddf6-4d2e-297c-916deac5392c"
+                },
+                {
+                    "name" : "pink_top_hat",
+                    "id" : "8fac78a6-dab8-4d7f-297c-916d1f1e33f0"
+                },
+                {
+                    "name" : "polar_bear_mask",
+                    "id" : "ef141c64-c335-4d3e-297c-916d9bdab4ee"
+                },
+                {
+                    "name" : "police_cap",
+                    "id" : "4d96d2d6-9bf7-448d-297c-916dad9bc20d"
+                },
+                {
+                    "name" : "present",
+                    "id" : "6da52f69-0e0c-4bf7-297c-916d08d8acf3"
+                },
+                {
+                    "name" : "pumpkin",
+                    "id" : "fc45f3cb-85cf-4f31-297c-916dde26630a"
+                },
+                {
+                    "name" : "pumpkin_mask",
+                    "id" : "89bf331f-50df-4a4b-297c-916d5d9639cf"
+                },
+                {
+                    "name" : "ram_horns",
+                    "id" : "e1f965f7-0a89-4bdd-297c-916d2f475255"
+                },
+                {
+                    "name" : "rastafari_tam",
+                    "id" : "28c349af-b9be-469c-8a8f-8252903e798d"
+                },
+                {
+                    "name" : "red_bandana",
+                    "id" : "16d395dc-0743-4c72-297c-916da639a9a3"
+                },
+                {
+                    "name" : "red_heardband",
+                    "id" : "df9720dc-e787-451b-297c-916d5d740e4f"
+                },
+                {
+                    "name" : "red_horns",
+                    "id" : "6b8481b8-8bcd-459b-297c-916d58deda50"
+                },
+                {
+                    "name" : "reindeer_antlers",
+                    "id" : "9b7772a9-943b-4669-297c-916da207c452"
+                },
+                {
+                    "name" : "reindeer_mask",
+                    "id" : "6ed93f2c-76b8-40e5-297c-916dff77482d"
+                },
+                {
+                    "name" : "round_cat_mask",
+                    "id" : "ffa5f84b-b89b-4e32-297c-916dccb8231a"
+                },
+                {
+                    "name" : "santa_claus",
+                    "id" : "bfec1da1-b563-4f4a-297c-916dea3dfeb6"
+                },
+                {
+                    "name" : "santa_claus_hood",
+                    "id" : "e9d2e16d-e9e5-4c89-297c-916d1ca9fab9"
+                },
+                {
+                    "name" : "santa_hat",
+                    "id" : "abc9c698-31c0-45ab-297c-916d313672ab"
+                },
+                {
+                    "name" : "shark_mask",
+                    "id" : "74f584da-2ac2-4ec0-297c-916d477f4b74"
+                },
+                {
+                    "name" : "skull",
+                    "id" : "18279693-fefc-4096-297c-916d4e406759"
+                },
+                {
+                    "name" : "snowman",
+                    "id" : "8398aba8-43a7-4d2a-297c-916d611d0a2b"
+                },
+                {
+                    "name" : "snowman_head",
+                    "id" : "9844cac5-a682-41b5-297c-916d77af42a2"
+                },
+                {
+                    "name" : "soldier_cap",
+                    "id" : "52ae7004-bc9c-41f9-297c-916d347f0afb"
+                },
+                {
+                    "name" : "sorcerer",
+                    "id" : "4f76e1ff-2b1a-40e3-297c-916d97d8ec71"
+                },
+                {
+                    "name" : "tiara",
+                    "id" : "7550f123-4994-498f-297c-916d8186ef67"
+                },
+                {
+                    "name" : "toque",
+                    "id" : "b993565a-8650-4a91-297c-916d35025200"
+                },
+                {
+                    "name" : "toque_with_pom_pom",
+                    "id" : "a25a1824-f1c0-48ae-297c-916dcea5be8b"
+                },
+                {
+                    "name" : "twotonebackwardscap",
+                    "id" : "bd7e5a41-24d8-4c09-297c-916dc3f0ff1e"
+                },
+                {
+                    "name" : "visor",
+                    "id" : "48e769e1-663a-467c-297c-916da9305201"
+                },
+                {
+                    "name" : "white_flat_cap",
+                    "id" : "b9418d95-2239-478a-297c-916da2964b08"
+                },
+                {
+                    "name" : "wide_brim",
+                    "id" : "27be06c2-3b26-4eb9-297c-916df54db860"
+                },
+                {
+                    "name" : "witch",
+                    "id" : "2b3a29be-c2af-4ebe-297c-916d0956dfd9"
+                },
+                {
+                    "name" : "wolf_mask",
+                    "id" : "153510a9-4c97-49f9-297c-916d3d869d65"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "head",
+            "skins" : [
+                {
+                    "name" : "none",
+                    "id" : "2183b9ca-e828-4078-f689-bcc000000001"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "icon",
+            "skins" : [
+                {
+                    "name" : "gamepad_blue",
+                    "id" : "4d10fc91-6b16-4d97-9480-e507773e0e38"
+                },
+                {
+                    "name" : "headset_green",
+                    "id" : "0ef6e38d-3f7f-4ce7-b7d2-d13f01a8ba12"
+                },
+                {
+                    "name" : "headset_yellow",
+                    "id" : "c450eaf8-b87d-4d3e-a4fb-e4e1125ca140"
+                },
+                {
+                    "name" : "microphone_off",
+                    "id" : "9ac3afca-4886-48a3-1a9a-28ab40c5ae5c"
+                },
+                {
+                    "name" : "none",
+                    "id" : "1e46bc85-22bb-4c08-1a9a-28ab00000001"
+                },
+                {
+                    "name" : "speakers_off",
+                    "id" : "b079657a-892e-4dba-1a9a-28abfbae6a6a"
+                },
+                {
+                    "name" : "youtube_logo",
+                    "id" : "94dcc513-97b6-4f09-8f5f-0abc55ded41d"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "locomotion_animation",
+            "skins" : [
+                {
+                    "name" : "zombie",
+                    "id" : "0809861f-1c99-42e7-306f-eeaa74620c9c"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "mouth",
+            "skins" : [
+                {
+                    "name" : "amazed",
+                    "id" : "65f954b8-d464-4d3d-d7a9-aceb1bb2b3ce"
+                },
+                {
+                    "name" : "bored",
+                    "id" : "9afe0c5f-b143-48c8-d7a9-aceb5f7984dc"
+                },
+                {
+                    "name" : "confused",
+                    "id" : "0acdb192-74e4-4ea0-d7a9-aceb567022ff"
+                },
+                {
+                    "name" : "curved_smile",
+                    "id" : "41c2767a-81aa-439a-d7a9-aceb48c6fe80"
+                },
+                {
+                    "name" : "half_smile",
+                    "id" : "4cec9b87-e513-4da8-d7a9-aceb2132fbf0"
+                },
+                {
+                    "name" : "large_angled_smile",
+                    "id" : "575c40da-9b82-49ad-d7a9-aceb4df3415c"
+                },
+                {
+                    "name" : "large_lips",
+                    "id" : "5865814e-086e-4196-d7a9-aceb72c0a280"
+                },
+                {
+                    "name" : "large_smile",
+                    "id" : "5778578a-f31c-4a1b-d7a9-aceb7532ca52"
+                },
+                {
+                    "name" : "medium_open",
+                    "id" : "bc102f9d-7839-4307-d7a9-acebea28317e"
+                },
+                {
+                    "name" : "medium_square",
+                    "id" : "4e706a0d-a0aa-4b77-d7a9-aceb8536a963"
+                },
+                {
+                    "name" : "small_open",
+                    "id" : "57e557c4-7eeb-453b-d7a9-aceb20329c6a"
+                },
+                {
+                    "name" : "square_smile",
+                    "id" : "4b12391a-af40-4234-d7a9-acebcd3a52ba"
+                },
+                {
+                    "name" : "straight_line",
+                    "id" : "7436f672-ee1b-42ea-d7a9-aceb3a65b71b"
+                },
+                {
+                    "name" : "tightly_shut",
+                    "id" : "1d1d0c6e-a6e8-4d1c-d7a9-aceb510c4454"
+                },
+                {
+                    "name" : "very_excited",
+                    "id" : "fedd2275-9cf9-498f-d7a9-acebf2c42215"
+                },
+                {
+                    "name" : "wide_thin",
+                    "id" : "ba2bcbd9-9ed2-4c30-d7a9-acebe07b7373"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "nose",
+            "skins" : [
+                {
+                    "name" : "basic",
+                    "id" : "1cac8703-8369-4abc-544b-ab23f61a2ff8"
+                },
+                {
+                    "name" : "horizontal_ellipse_small",
+                    "id" : "62ccc415-2674-43f5-bb2e-7d37e2a7327f"
+                },
+                {
+                    "name" : "large",
+                    "id" : "c9401fac-d663-4a61-544b-ab2350a4b66d"
+                },
+                {
+                    "name" : "narrow_flat",
+                    "id" : "5240617c-40e8-45d9-a9ec-edf8c8cf5815"
+                },
+                {
+                    "name" : "narrow_rounded",
+                    "id" : "37c3f2db-3e8e-4f27-926e-5be38d901006"
+                },
+                {
+                    "name" : "narrow_small",
+                    "id" : "5c286211-6711-49ee-a9dc-c433521ccf50"
+                },
+                {
+                    "name" : "rounded",
+                    "id" : "c823bf2f-d599-4f5c-544b-ab23d8e6db27"
+                },
+                {
+                    "name" : "small_point",
+                    "id" : "288a5a7f-fdcc-40e3-544b-ab23eb3e9718"
+                },
+                {
+                    "name" : "triangle",
+                    "id" : "6fa66577-eaf5-4318-544b-ab230cc1dd9e"
+                },
+                {
+                    "name" : "triangle_small_point_down",
+                    "id" : "ab96bead-03a7-4b58-9693-28948a51aef8"
+                },
+                {
+                    "name" : "wide_broad",
+                    "id" : "0d202012-cfcb-4a9b-544b-ab23cca0ba3a"
+                },
+                {
+                    "name" : "wide_rounded",
+                    "id" : "f111147e-e340-4dcf-544b-ab2336d52713"
+                },
+                {
+                    "name" : "wide_thin",
+                    "id" : "98830cba-cf97-4a0c-544b-ab23e07b7373"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "pants",
+            "skins" : [
+                {
+                    "name" : "baggy_jeans",
+                    "id" : "d1c51a1f-af6e-4e12-0e23-fbf8a077de74"
+                },
+                {
+                    "name" : "baggy_layered_pants",
+                    "id" : "d0db156a-e093-4729-0e23-fbf8ebaebd2a"
+                },
+                {
+                    "name" : "baggy_loose_pants",
+                    "id" : "5ffb4d33-86d6-42d7-0e23-fbf821965604"
+                },
+                {
+                    "name" : "baggy_sweatpants",
+                    "id" : "8296b494-69b1-4dbd-0e23-fbf817c880f1"
+                },
+                {
+                    "name" : "camouflage_pants",
+                    "id" : "7d5eebc1-5b3c-4440-0e23-fbf879151413"
+                },
+                {
+                    "name" : "chains",
+                    "id" : "531ade0d-090d-4471-0e23-fbf8483cf51c"
+                },
+                {
+                    "name" : "classic_leggings",
+                    "id" : "7a8daf32-4931-46cc-0e23-fbf837beb511"
+                },
+                {
+                    "name" : "comfy_patched_pants",
+                    "id" : "e83c0dd4-1b95-45e6-0e23-fbf83311e98d"
+                },
+                {
+                    "name" : "elegant_pants",
+                    "id" : "be6e2e4a-09d7-40ab-0e23-fbf8db8cfa6f"
+                },
+                {
+                    "name" : "frilly_shorts_white_circle_prints",
+                    "id" : "acd7a185-d7cf-4e96-b1d8-0d4d293f7fa7"
+                },
+                {
+                    "name" : "gym_shorts_small_skirt",
+                    "id" : "8368c415-3b53-41c5-a07e-a64bb8e878a1"
+                },
+                {
+                    "name" : "heavy_baggy_pants",
+                    "id" : "45bf9b63-d011-45f8-0e23-fbf8586c45fd"
+                },
+                {
+                    "name" : "jeans_rolled_up",
+                    "id" : "fb637b4c-37a4-47fe-b991-daba8cf7708e"
+                },
+                {
+                    "name" : "jeans_with_chains",
+                    "id" : "0055cf1d-b1c7-488f-0e23-fbf87a01777f"
+                },
+                {
+                    "name" : "jeans_with_chain_belt",
+                    "id" : "b17be562-3911-4261-0e23-fbf8a27711c8"
+                },
+                {
+                    "name" : "joggers_fisherman_knee_black_patch",
+                    "id" : "5e5acf6f-642b-4d7e-99ff-fea5ce0e92ac"
+                },
+                {
+                    "name" : "karate_pants",
+                    "id" : "ba99ffa6-4589-4a2f-0e23-fbf879333283"
+                },
+                {
+                    "name" : "knee_patched_pants",
+                    "id" : "437451db-0eda-4d5f-0e23-fbf8d8ee4b50"
+                },
+                {
+                    "name" : "layered_skirt",
+                    "id" : "3874a968-86b6-44a9-0e23-fbf81d2c8092"
+                },
+                {
+                    "name" : "legging_tights",
+                    "id" : "2d547819-843d-4c76-ae35-bd1d521f517d"
+                },
+                {
+                    "name" : "light_baggy_pants",
+                    "id" : "63b9dece-bcd2-4b48-0e23-fbf88c4f141e"
+                },
+                {
+                    "name" : "long_skirt",
+                    "id" : "a543b16a-b830-4904-0e23-fbf87e550430"
+                },
+                {
+                    "name" : "long_tapered_pants",
+                    "id" : "21eb0aed-dde0-4a06-0e23-fbf85b1ce56d"
+                },
+                {
+                    "name" : "pants_with_patches",
+                    "id" : "5ea307c0-6bd4-45a9-0e23-fbf86773e948"
+                },
+                {
+                    "name" : "patched_leggings",
+                    "id" : "c07ac400-4f75-473c-0e23-fbf865089d72"
+                },
+                {
+                    "name" : "pirata_rolled_up",
+                    "id" : "cf1902e8-f0b2-4d8f-9787-5602a6998383"
+                },
+                {
+                    "name" : "punk_rock_pants",
+                    "id" : "a1a3ee0e-8644-4a54-0e23-fbf88a1d88ed"
+                },
+                {
+                    "name" : "regular_fit",
+                    "id" : "79a65a8a-3ce3-430a-0e23-fbf8b91d6486"
+                },
+                {
+                    "name" : "ripped_pants",
+                    "id" : "edf0e28b-df27-4a0b-0e23-fbf827770411"
+                },
+                {
+                    "name" : "shorts_folded_jeans",
+                    "id" : "00a4db89-635d-4a99-a909-3569374b3b1d"
+                },
+                {
+                    "name" : "shorts_hiking_big_pockets_black_button",
+                    "id" : "b273b36f-9433-4b8f-affa-3728c1494478"
+                },
+                {
+                    "name" : "shorts_jeans_distressed",
+                    "id" : "788468f3-292d-46ca-acac-5a8505cfb335"
+                },
+                {
+                    "name" : "shorts_short",
+                    "id" : "97e126e6-1d4e-4a8e-84ee-851a69c39966"
+                },
+                {
+                    "name" : "shorts_with_belt",
+                    "id" : "07664ccb-0e73-42e5-0e23-fbf8aefee782"
+                },
+                {
+                    "name" : "short_shorts",
+                    "id" : "e8d2fe08-da39-49e7-0e23-fbf8018c5f12"
+                },
+                {
+                    "name" : "simple_shorts",
+                    "id" : "dca1d6bf-c9d2-4f49-0e23-fbf8d0b8f036"
+                },
+                {
+                    "name" : "simple_skirt",
+                    "id" : "4026d4b2-4094-4659-0e23-fbf82f5e83e4"
+                },
+                {
+                    "name" : "skinny_leggings",
+                    "id" : "c9f92f12-148e-4cbe-0e23-fbf8b6bcdc9d"
+                },
+                {
+                    "name" : "skin_pants",
+                    "id" : "a517c9bf-d0e8-42db-0e23-fbf826624e56"
+                },
+                {
+                    "name" : "skin_skirt",
+                    "id" : "ec826a8b-a82c-402e-0e23-fbf859954cdf"
+                },
+                {
+                    "name" : "skirt_above_knees_tight",
+                    "id" : "65f00480-b1d0-4377-9909-7882c61455bf"
+                },
+                {
+                    "name" : "skirt_above_knee_white_socks",
+                    "id" : "70e9c540-6b73-4d11-bd9a-5cf66d9492e8"
+                },
+                {
+                    "name" : "skirt_dark_bottom",
+                    "id" : "faee2098-b52e-4fe9-0e23-fbf86d2f8204"
+                },
+                {
+                    "name" : "sport",
+                    "id" : "3537f863-cc7c-44ae-0e23-fbf8cc0c9030"
+                },
+                {
+                    "name" : "sporty_pants",
+                    "id" : "bfbe757a-02c0-4cce-0e23-fbf866935506"
+                },
+                {
+                    "name" : "suit_pants",
+                    "id" : "bb4ebcd0-0511-44cc-0e23-fbf84f6a0f82"
+                },
+                {
+                    "name" : "sweatpants_two_white_stripes_side",
+                    "id" : "208d21b7-ec00-41e6-986f-07e1257100fd"
+                },
+                {
+                    "name" : "tapered_pants",
+                    "id" : "f00c70b3-9e63-41d8-0e23-fbf8afa227a0"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "prop",
+            "skins" : [
+                {
+                    "name" : "beach_ball",
+                    "id" : "9eff3305-b328-4d9e-c346-fb9d6a2e4675"
+                },
+                {
+                    "name" : "fishing_rod",
+                    "id" : "242a94c6-b03c-4f7e-c346-fb9daf81c62a"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "shirt",
+            "skins" : [
+                {
+                    "name" : "apron_and_shirt_with_yellow_detail",
+                    "id" : "35662b0c-7719-4b86-bff9-da37a0644148"
+                },
+                {
+                    "name" : "armor_jacket",
+                    "id" : "297a4d7c-b8b9-42c4-33ce-3ce6810c4b54"
+                },
+                {
+                    "name" : "baggy_sweatshirt_large_white_stripes",
+                    "id" : "c1e8288e-77c5-41ee-96f0-c0311e951cbf"
+                },
+                {
+                    "name" : "big_button_top",
+                    "id" : "3bef783c-10f1-4b24-33ce-3ce61673ce21"
+                },
+                {
+                    "name" : "bionic_arm_top",
+                    "id" : "1724e66c-b60b-4d0b-33ce-3ce69d73cbe9"
+                },
+                {
+                    "name" : "blouse",
+                    "id" : "7c63b096-c3fd-4b42-33ce-3ce6d7943478"
+                },
+                {
+                    "name" : "blouse_with_printed_circle_and_square_backpack",
+                    "id" : "8b2299fe-a14b-4bea-9df0-e09b99a5dc0a"
+                },
+                {
+                    "name" : "casual_blazer",
+                    "id" : "16e613ef-cb87-4c98-33ce-3ce60ccc8496"
+                },
+                {
+                    "name" : "classic_full_sleeve",
+                    "id" : "37bb502c-26de-4104-33ce-3ce61fb5ff77"
+                },
+                {
+                    "name" : "classic_hoodie",
+                    "id" : "44441e26-8206-4a36-33ce-3ce64b1215a3"
+                },
+                {
+                    "name" : "classic_vneck",
+                    "id" : "0a039bc0-f480-491c-33ce-3ce66f53fcd4"
+                },
+                {
+                    "name" : "collared_jacket",
+                    "id" : "01ae164e-0c7a-4763-33ce-3ce691ff159b"
+                },
+                {
+                    "name" : "collared_tshirt",
+                    "id" : "2b8c53ab-abcc-4d05-33ce-3ce6ee447315"
+                },
+                {
+                    "name" : "collar_and_folded_sleeves",
+                    "id" : "b822f593-c39c-48c7-a848-158a927e1961"
+                },
+                {
+                    "name" : "crop_top",
+                    "id" : "e7798f00-d1a7-42d0-33ce-3ce6f8aea6e8"
+                },
+                {
+                    "name" : "dress_shirt_with_tie",
+                    "id" : "026b86e5-087e-4a95-817a-d2a88367957a"
+                },
+                {
+                    "name" : "fancy_sleeve_tshirt",
+                    "id" : "3b438723-2018-4b3b-33ce-3ce6199e6c47"
+                },
+                {
+                    "name" : "formal_top",
+                    "id" : "23259a1c-c2df-417b-33ce-3ce6ec5fd34b"
+                },
+                {
+                    "name" : "full_sleeve_top",
+                    "id" : "8d39c187-abfe-4193-33ce-3ce65353e114"
+                },
+                {
+                    "name" : "half_sleeve_wrist_jacket",
+                    "id" : "82ada963-0b76-4e28-33ce-3ce60291f2e5"
+                },
+                {
+                    "name" : "hoodie_hand_pocket",
+                    "id" : "e36675a9-a57e-40fe-aef0-d910aa2c1154"
+                },
+                {
+                    "name" : "hoodie_hand_pocket_and_fanny_pack",
+                    "id" : "f65d2fcb-9d1c-47bc-8876-c865eab13dc0"
+                },
+                {
+                    "name" : "jacket_denim_folded_sleeves_dark_blue",
+                    "id" : "5598fb15-b78c-4221-9a47-b1f786317f33"
+                },
+                {
+                    "name" : "jacket_gym_with_neck_towel_no_sleeves",
+                    "id" : "ca9691e4-264f-493b-af98-bb8d05bfee2f"
+                },
+                {
+                    "name" : "jacket_huge_zipper_closed_with_hoodie",
+                    "id" : "9e973ac9-f190-41af-9964-a10efd1d2fc2"
+                },
+                {
+                    "name" : "jacket_varsity",
+                    "id" : "d4d0862e-02b0-4e2f-9304-c1caeecc6643"
+                },
+                {
+                    "name" : "jacket_white_sleeves_huge_zipper_open",
+                    "id" : "84686832-3e7c-4c85-9092-e5b3c7e5ddc7"
+                },
+                {
+                    "name" : "karate_top",
+                    "id" : "71868ce7-b328-4ba4-33ce-3ce6003a3a8c"
+                },
+                {
+                    "name" : "layered_blouse",
+                    "id" : "967e59a1-ed72-43ef-33ce-3ce610eecc1b"
+                },
+                {
+                    "name" : "leather_jacket",
+                    "id" : "d7235494-f2e6-42b7-33ce-3ce62ee3280e"
+                },
+                {
+                    "name" : "long_sleeve_crop_top",
+                    "id" : "d7b778ac-22d2-416a-33ce-3ce632638dcc"
+                },
+                {
+                    "name" : "long_tshirt",
+                    "id" : "717c4710-98cc-4dca-33ce-3ce6f4d04785"
+                },
+                {
+                    "name" : "mini_vest",
+                    "id" : "5562fcac-a441-418e-33ce-3ce65d2be9a8"
+                },
+                {
+                    "name" : "patched_jacket",
+                    "id" : "f532b6e5-7002-4301-33ce-3ce68cd0a5d0"
+                },
+                {
+                    "name" : "pirate_open_jacket_white_tshirt",
+                    "id" : "92030bb4-ee33-44e2-9d90-8e17b0de686c"
+                },
+                {
+                    "name" : "puffer_jacket",
+                    "id" : "a0f2c657-99ad-473a-33ce-3ce686fe849f"
+                },
+                {
+                    "name" : "puffer_vest_closed_folded_sleeves",
+                    "id" : "c830f488-aef7-41eb-9bf7-1cb7ac557dd2"
+                },
+                {
+                    "name" : "punk_top",
+                    "id" : "862262c0-d238-44f8-33ce-3ce6f14caea6"
+                },
+                {
+                    "name" : "rolled_sleeve_top",
+                    "id" : "88d093c9-a301-462c-33ce-3ce63794e683"
+                },
+                {
+                    "name" : "sleeve_bands_top",
+                    "id" : "15d12fb3-83aa-4da3-33ce-3ce688d38629"
+                },
+                {
+                    "name" : "suit_top",
+                    "id" : "ddafd751-25cd-40fe-33ce-3ce60381f38f"
+                },
+                {
+                    "name" : "sweater_and_dress_shirt",
+                    "id" : "ac98463b-58be-46b4-9105-8ceb24b3b213"
+                },
+                {
+                    "name" : "sweater_turtleneck",
+                    "id" : "0040ceb8-6ace-4ffd-a855-4d2aac22cb94"
+                },
+                {
+                    "name" : "sweater_turtleneck_v_detail",
+                    "id" : "caef3b95-592b-4159-9a8d-99700c8b935c"
+                },
+                {
+                    "name" : "tank_top_layered_with_black_tshirt",
+                    "id" : "7a022b1e-16b6-463f-a78d-1b38035ef103"
+                },
+                {
+                    "name" : "top_patched_tshirt",
+                    "id" : "15c8997a-e075-4e06-33ce-3ce6eda37776"
+                },
+                {
+                    "name" : "tracksuit_with_shoulder_fanny_pack",
+                    "id" : "29fd7722-3fde-4538-81fa-119c81a46bdd"
+                },
+                {
+                    "name" : "trench_coat",
+                    "id" : "01ab6d50-29b4-4c77-33ce-3ce616135592"
+                },
+                {
+                    "name" : "varsity_jacket",
+                    "id" : "8e002187-1443-46ae-33ce-3ce6ed464267"
+                },
+                {
+                    "name" : "vest",
+                    "id" : "8f335f48-e052-408c-33ce-3ce6cc127444"
+                },
+                {
+                    "name" : "vest_with_tshirt",
+                    "id" : "0458a939-2789-4283-33ce-3ce6d8e4eb0e"
+                },
+                {
+                    "name" : "zipper_jacket",
+                    "id" : "4b6c1643-0e32-4f0a-33ce-3ce657fc5c75"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "shoes",
+            "skins" : [
+                {
+                    "name" : "ballerina_slippers",
+                    "id" : "548ddd0b-8c8a-42cc-d0d9-b692d79de503"
+                },
+                {
+                    "name" : "boat_shoes",
+                    "id" : "3dd54c16-3cbc-4ef9-d0d9-b692c167ada9"
+                },
+                {
+                    "name" : "boots_hiking_white_laces_black_sole",
+                    "id" : "537a0873-39ef-4b97-9950-92cba0d4c770"
+                },
+                {
+                    "name" : "boots_with_white_socks",
+                    "id" : "5ab0f8f8-1f38-46d1-d0d9-b6920b54fc18"
+                },
+                {
+                    "name" : "casual_sneakers",
+                    "id" : "65c7c17b-b7de-4434-d0d9-b692de2ab84c"
+                },
+                {
+                    "name" : "classic_sneakers",
+                    "id" : "e08c808d-2621-4048-d0d9-b69258b82881"
+                },
+                {
+                    "name" : "classic_sneakers_with_socks",
+                    "id" : "386a1a9b-abe6-4982-d0d9-b69213fab9a6"
+                },
+                {
+                    "name" : "combat_boots",
+                    "id" : "77805277-2122-44ef-d0d9-b692d61b54d8"
+                },
+                {
+                    "name" : "folded_boots",
+                    "id" : "36f577f5-bb36-43e2-d0d9-b692123e0712"
+                },
+                {
+                    "name" : "loafers",
+                    "id" : "28261585-2660-48e4-d0d9-b692c4709254"
+                },
+                {
+                    "name" : "mary_janes_yellow_buttons",
+                    "id" : "996845eb-3f5f-4b4c-aca0-6b11e5e35857"
+                },
+                {
+                    "name" : "none",
+                    "id" : "34e49c65-a447-45ba-d0d9-b69200000001"
+                },
+                {
+                    "name" : "open_boots",
+                    "id" : "60679117-e044-4ff2-d0d9-b692085c7304"
+                },
+                {
+                    "name" : "running_sneakers",
+                    "id" : "60942655-c576-4ba3-d0d9-b69266da22c6"
+                },
+                {
+                    "name" : "sandals",
+                    "id" : "045073a5-6f0f-438b-d0d9-b692573f9ec6"
+                },
+                {
+                    "name" : "sandals_hiking_white_detail",
+                    "id" : "e94c2538-6469-483d-96ea-ea8590bc55d6"
+                },
+                {
+                    "name" : "sandals_single_strap_white_sole",
+                    "id" : "84383a1a-a572-4560-ad88-da0be6645a0a"
+                },
+                {
+                    "name" : "sandals_with_socks",
+                    "id" : "674ee3d3-3f72-42fe-d0d9-b692ba36d707"
+                },
+                {
+                    "name" : "slippers_bunny_red_nose",
+                    "id" : "5b7a9a14-578d-472d-be60-5b48a476eb39"
+                },
+                {
+                    "name" : "slip_ons",
+                    "id" : "3b449a04-8e0e-49a3-d0d9-b6923cfe3e47"
+                },
+                {
+                    "name" : "sneakers_gym_white_stripe",
+                    "id" : "e7e03efa-ac1a-4330-a716-fd2980b9ffa7"
+                },
+                {
+                    "name" : "sneakers_hiking_reinforced_toe",
+                    "id" : "51ba9dc0-95a9-4ed5-9df7-7cb1a3dfc1a1"
+                },
+                {
+                    "name" : "sneakers_no_lace_red_detail",
+                    "id" : "90822384-0d82-4813-8ab1-f774024e7d33"
+                },
+                {
+                    "name" : "sneakers_no_lace_white_and_blue",
+                    "id" : "8f6bcd0a-f994-4dc6-98ca-1999383902cf"
+                },
+                {
+                    "name" : "sneakers_trainers_white_sole_beige_laces",
+                    "id" : "dfe4815a-6c66-4399-b37f-822f1a0035c3"
+                },
+                {
+                    "name" : "sneakers_white_blue_and_red_details",
+                    "id" : "423c828b-2ce5-41ad-917e-f88a0d2f914c"
+                },
+                {
+                    "name" : "sneakers_white_laces_and_sole_front_blue_detail",
+                    "id" : "d6737c35-d88a-4886-b5f5-00c12f692bf9"
+                },
+                {
+                    "name" : "sneakers_white_laces_and_sole_reinforced_toe",
+                    "id" : "f3a8dd40-22df-46b9-a8a7-60f236e9d668"
+                },
+                {
+                    "name" : "socks_white_colored_color_and_tip",
+                    "id" : "e4e31302-b027-4f11-a5e1-33ef5fad27bf"
+                },
+                {
+                    "name" : "tall_boots",
+                    "id" : "c633686d-0e43-4ef4-d0d9-b6925f123927"
+                }
+            ]
+        },
+        {
+            "skin_type_name" : "standalone_animation",
+            "skins" : [
+                {
+                    "name" : "angry_ears_smoking",
+                    "id" : "cdad8be8-42e5-4f31-8643-af8c2bbd11b4"
+                },
+                {
+                    "name" : "continuous_jumping_jacks",
+                    "id" : "28504f91-cd53-4d77-bb19-d4189bf2d57b"
+                },
+                {
+                    "name" : "cute_yawn_and_stretch",
+                    "id" : "04b5b036-2c91-4113-bb19-d418e79d1b7d"
+                },
+                {
+                    "name" : "dance_locking_hip_hop",
+                    "id" : "cec115e0-20a6-47d0-bb19-d418f5833c0f"
+                },
+                {
+                    "name" : "dance_shuffling",
+                    "id" : "5d52daf0-fe46-47be-bb19-d41849665848"
+                },
+                {
+                    "name" : "dance_turning_hip_hop",
+                    "id" : "805c67d6-7dcd-4cf9-bb19-d418e3e65c19"
+                },
+                {
+                    "name" : "dance_wave_hip_hop",
+                    "id" : "6dda74c9-c5a7-420b-bb19-d4184cdc23d9"
+                },
+                {
+                    "name" : "despawn",
+                    "id" : "1f0f3d43-25bf-4e78-bb19-d41800914100"
+                },
+                {
+                    "name" : "emote_angry_cross_arms",
+                    "id" : "06c4a62e-3368-4a3a-bb19-d41803383e81"
+                },
+                {
+                    "name" : "emote_bored_swing_arms",
+                    "id" : "da30b272-3121-48d0-bb19-d418fdb93bc4"
+                },
+                {
+                    "name" : "emote_happy_shake_arms",
+                    "id" : "132cd96e-341b-4259-bb19-d41834022ea0"
+                },
+                {
+                    "name" : "emote_happy_swing_arms",
+                    "id" : "97871142-4e52-4e98-bb19-d4187a77f06c"
+                },
+                {
+                    "name" : "emote_sad_head_down",
+                    "id" : "b6e39d3f-9167-4f72-bb19-d418dc082855"
+                },
+                {
+                    "name" : "enjoying_music_and_swinging",
+                    "id" : "f245491a-66db-4240-bb19-d4183d7aaf8c"
+                },
+                {
+                    "name" : "excited_little_hops",
+                    "id" : "ac5b105a-1ac3-407a-bb19-d418f76c160a"
+                },
+                {
+                    "name" : "fight_kick_front",
+                    "id" : "fd46cee2-15ae-4b41-bb19-d4189bdd9a8f"
+                },
+                {
+                    "name" : "finger_guns",
+                    "id" : "942f7302-8ab3-4640-bb19-d418eb976001"
+                },
+                {
+                    "name" : "fishing_cast",
+                    "id" : "e45efab2-8b28-4767-bb19-d4180429122e"
+                },
+                {
+                    "name" : "fishing_casted_fighting",
+                    "id" : "831e1992-926f-4994-bb19-d41870a1c096"
+                },
+                {
+                    "name" : "fishing_casted_idle",
+                    "id" : "3f87894a-bc17-468c-bb19-d41854ee39da"
+                },
+                {
+                    "name" : "fishing_retrieve",
+                    "id" : "7009a97d-9ecf-4a73-bb19-d418192ba451"
+                },
+                {
+                    "name" : "handheld_idle",
+                    "id" : "b7a9d71c-e02f-418e-bb19-d4186fbc5eed"
+                },
+                {
+                    "name" : "handheld_pick_up",
+                    "id" : "2bcc70c3-c92c-410e-bb19-d418719bc060"
+                },
+                {
+                    "name" : "handheld_put_down",
+                    "id" : "e326d9f6-63f4-4f5d-bb19-d418ec6ff681"
+                },
+                {
+                    "name" : "happy_finger_snapping_double_fingers_left",
+                    "id" : "e4f79643-9427-40cf-bb19-d4181a8fd96e"
+                },
+                {
+                    "name" : "happy_finger_snapping_double_fingers_right",
+                    "id" : "77b3f5fd-dc42-4c67-bb19-d418f9f046a5"
+                },
+                {
+                    "name" : "happy_finger_snapping_idle",
+                    "id" : "e6e42997-8852-413d-adcc-4ddc62c499e2"
+                },
+                {
+                    "name" : "happy_finger_snapping_single_finger_once_left",
+                    "id" : "aa3be1bc-8664-4a7e-a3d2-6cd376a101da"
+                },
+                {
+                    "name" : "happy_finger_snapping_single_finger_once_right",
+                    "id" : "01adba30-cf4c-445b-ad04-1aa9ef285100"
+                },
+                {
+                    "name" : "happy_finger_snapping_single_finger_twice_left",
+                    "id" : "2137d801-76a1-4261-accb-a3d2ec6e310a"
+                },
+                {
+                    "name" : "happy_finger_snapping_single_finger_twice_right",
+                    "id" : "af5e0e35-c985-4244-a81e-d1642facf051"
+                },
+                {
+                    "name" : "happy_pointing_up",
+                    "id" : "6f152239-33ed-4067-894e-0b62ed889ceb"
+                },
+                {
+                    "name" : "jump",
+                    "id" : "1d77561f-ab15-41d6-bb19-d418323e59e2"
+                },
+                {
+                    "name" : "jump_idle",
+                    "id" : "4706790e-5fed-47bd-bb19-d4182c2d1e55"
+                },
+                {
+                    "name" : "looking_glasses",
+                    "id" : "77020b52-432b-4afa-bb19-d418735d6d20"
+                },
+                {
+                    "name" : "looking_gloves",
+                    "id" : "75208323-06f6-481b-bb19-d4181848a962"
+                },
+                {
+                    "name" : "looking_pants",
+                    "id" : "2259c862-adc8-47fb-bb19-d418cf0f351e"
+                },
+                {
+                    "name" : "looking_shirts",
+                    "id" : "df056128-0b1a-4807-bb19-d418e34cda23"
+                },
+                {
+                    "name" : "looking_shoes",
+                    "id" : "d6fda5f2-a597-40e7-bb19-d4183a6da6d8"
+                },
+                {
+                    "name" : "love_big_heart_squeeze",
+                    "id" : "c3ee2f9f-84d3-4fd3-bf5b-81029926031a"
+                },
+                {
+                    "name" : "love_mouth_open",
+                    "id" : "32d9d48b-c4a5-4665-8cb1-2807bf6f5b6b"
+                },
+                {
+                    "name" : "macarena_dance_with_arms_movement",
+                    "id" : "68df4bbb-a4ed-4557-bb19-d4184106e713"
+                },
+                {
+                    "name" : "photobooth_flex",
+                    "id" : "c0e08135-7e35-4910-bb19-d418c069fda0"
+                },
+                {
+                    "name" : "photobooth_hand_on_hip",
+                    "id" : "c92eaf57-de88-4eb2-bb19-d418eea2f72c"
+                },
+                {
+                    "name" : "photobooth_head_scratch",
+                    "id" : "08568628-37a1-4cff-bb19-d418037637e4"
+                },
+                {
+                    "name" : "photobooth_wave",
+                    "id" : "925f7b3b-aef8-4da8-bb19-d418a990aee6"
+                },
+                {
+                    "name" : "playing_groovy_guitar_and_swinging",
+                    "id" : "90701ee4-9a92-40cc-bb19-d4187f61009d"
+                },
+                {
+                    "name" : "playing_joypad_games_sitting",
+                    "id" : "e9fd2b6a-cfe2-4d20-bb19-d418fafec2f1"
+                },
+                {
+                    "name" : "play_games_vr_headset",
+                    "id" : "cb8b6799-90a9-40b8-8b74-56b86e7b23a4"
+                },
+                {
+                    "name" : "rapping",
+                    "id" : "ef1e2d1a-2e62-4e77-bb19-d418cf72fbeb"
+                },
+                {
+                    "name" : "sad_sitting_on_ground",
+                    "id" : "1fc8f58c-4724-48f8-a092-835457a6fb27"
+                },
+                {
+                    "name" : "sad_wiping_tears_covering_eyes",
+                    "id" : "0373a981-da8f-4b78-940f-7610d9e71226"
+                },
+                {
+                    "name" : "sad_wiping_tears_idle",
+                    "id" : "f9f583e5-36f3-45a8-a22a-55ac01464417"
+                },
+                {
+                    "name" : "sad_wiping_tears_i_got_this",
+                    "id" : "71121511-569f-4bf8-bfe1-5714b3269df4"
+                },
+                {
+                    "name" : "sad_wiping_tears_rubbing_eyes_both",
+                    "id" : "4c973c5b-052a-4d04-9ab5-6c2cd512ddbf"
+                },
+                {
+                    "name" : "sad_wiping_tears_rubbing_eye_left",
+                    "id" : "c1835e02-f215-4595-bb19-d4187120f083"
+                },
+                {
+                    "name" : "sad_wiping_tears_rubbing_eye_right",
+                    "id" : "96407bcb-3860-450b-bb19-d4187d91e5a6"
+                },
+                {
+                    "name" : "shuffling_dance_with_arms_up_dragging_feet",
+                    "id" : "fe6929b3-2d99-439d-bb19-d4187a9711e2"
+                },
+                {
+                    "name" : "sighing_sadly_looking_downwards",
+                    "id" : "1f53fb06-79de-4d75-bb19-d41853424447"
+                },
+                {
+                    "name" : "silly_dancing_with_arms_moving_in_circles",
+                    "id" : "f60ad5ff-a2e1-46f2-bb19-d4182ce7878e"
+                },
+                {
+                    "name" : "sitting_idle_hands_on_thighs",
+                    "id" : "18ebc94e-a490-4050-bb19-d4186cc8102c"
+                },
+                {
+                    "name" : "sleeping_restlessly_and_turning",
+                    "id" : "e1824b2c-e380-44ae-bb19-d418986cfad8"
+                },
+                {
+                    "name" : "soccer_kick",
+                    "id" : "82479241-6b00-4db6-bb19-d418066c3c8c"
+                },
+                {
+                    "name" : "spawn",
+                    "id" : "630e4700-1e61-4028-bb19-d418f951d683"
+                },
+                {
+                    "name" : "spin_and_fall",
+                    "id" : "39fd7fff-addf-498c-bb19-d418ede1b760"
+                },
+                {
+                    "name" : "strong_boredom_back_and_forward_swings",
+                    "id" : "0ed3a99a-a99a-4127-bb19-d418f8c1acfc"
+                },
+                {
+                    "name" : "talking_dunno_gesture",
+                    "id" : "05ff44c9-2105-4c7a-bb19-d418d79266af"
+                },
+                {
+                    "name" : "talking_huge_trolha",
+                    "id" : "d6054e79-9ec8-4a81-bb19-d4184fa9694d"
+                },
+                {
+                    "name" : "twist_dancing_with_one_foot_in_front",
+                    "id" : "7b1b8a01-4836-4552-bb19-d418d3386e43"
+                },
+                {
+                    "name" : "varied_loop_of_angry_poses",
+                    "id" : "535a39d1-b787-4649-bb19-d418d9d27ce9"
+                },
+                {
+                    "name" : "watching_videos_sitting_with_laptop",
+                    "id" : "e0311c88-87e0-48eb-b4e9-fbac46eccae3"
+                },
+                {
+                    "name" : "zombie_bite",
+                    "id" : "c52772c5-f2a6-4a35-bb19-d418c2f80ccf"
+                },
+                {
+                    "name" : "zombie_scream",
+                    "id" : "f1e6489a-1d8f-4092-bb19-d418e1174430"
+                },
+                {
+                    "name" : "zombie_turning",
+                    "id" : "b8067e7e-725f-4e1d-bb19-d4183eaa0fca"
+                }
+            ]
+        }
+    ]
+}

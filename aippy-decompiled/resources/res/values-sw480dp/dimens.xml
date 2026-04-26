@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="heart_circle_avatar_max">26dp</dimen>
+    <dimen name="heart_circle_avatar_min">20dp</dimen>
+    <dimen name="heart_circle_radius_one">128dp</dimen>
+</resources>

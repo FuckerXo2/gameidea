@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_width="wrap_content" android:layout_height="@dimen/skin_tone_picker_height" android:maxWidth="@dimen/skin_tone_picker_max_width" app:cardBackgroundColor="?appThemeColorScreenBackgroundPrimary" app:cardCornerRadius="@dimen/skin_tone_picker_corner_radius"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/emoji_skin_tones" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="@dimen/element_padding_small" />
+</androidx.cardview.widget.CardView>

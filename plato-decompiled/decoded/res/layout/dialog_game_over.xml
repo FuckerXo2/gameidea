@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/plato_transparent_black_AA" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/left_guideline" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.06" />
+    <androidx.constraintlayout.widget.Guideline android:orientation="vertical" android:id="@id/right_guideline" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.94" />
+    <androidx.cardview.widget.CardView android:id="@id/plato_container_game_over_box" android:layout_width="0.0dp" android:layout_height="wrap_content" app:cardCornerRadius="@dimen/element_radius_default" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/right_guideline" app:layout_constraintStart_toEndOf="@id/left_guideline" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_chainStyle="packed">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="?appThemeColorScreenBackgroundPrimary" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/right_guideline" app:layout_constraintStart_toEndOf="@id/left_guideline" app:layout_constraintTop_toTopOf="parent" app:layout_constraintVertical_chainStyle="packed">
+            <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="end" android:id="@id/close_view" android:contentDescription="@string/plato_back_cd" style="@style/ButtonClose" />
+                <TextView android:textSize="@dimen/text_size_extra_large" android:textColor="?appThemeColorTextTitle" android:gravity="center" android:id="@id/plato_game_over_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/element_padding_default" android:layout_marginStart="40.0dp" android:layout_marginEnd="40.0dp" />
+            </FrameLayout>
+            <HorizontalScrollView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/element_padding_large">
+                <LinearLayout android:orientation="horizontal" android:id="@id/plato_container_players" android:padding="@dimen/element_padding_small" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            </HorizontalScrollView>
+            <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/button_container" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/element_padding_extra_large" style="@style/ButtonBlue">
+                <FrameLayout android:id="@id/plato_container_game_over_button_icon_container" android:layout_width="24.0dp" android:layout_height="24.0dp" android:layout_marginEnd="@dimen/element_padding_default" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/plato_container_game_over_button_rematch" app:layout_constraintHorizontal_chainStyle="packed" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                    <androidx.appcompat.widget.AppCompatImageView android:layout_gravity="center" android:id="@id/plato_container_game_over_button_icon" android:visibility="visible" android:layout_width="24.0dp" android:layout_height="24.0dp" android:src="@drawable/ic_refresh" app:tint="@color/plato_white" />
+                    <ProgressBar android:layout_gravity="center" android:id="@id/plato_container_game_over_button_progress" android:visibility="gone" android:layout_width="24.0dp" android:layout_height="24.0dp" android:indeterminateTint="@color/plato_white" />
+                </FrameLayout>
+                <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/plato_white" android:id="@id/plato_container_game_over_button_rematch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/plato_rematch" android:textAllCaps="true" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/plato_container_game_over_button_icon_container" app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,119 @@
+package defpackage;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.nadaai.aippy.module.create.model.SSECard;
+import kotlin.Metadata;
+import kotlin.jvm.internal.DefaultConstructorMarker;
+import org.jetbrains.annotations.NotNull;
+
+/* JADX INFO: loaded from: classes3.dex */
+@Metadata(d1 = {"\u00008\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0010\u000b\n\u0002\b\u0005\n\u0002\u0010\u0000\n\u0002\b\u0003\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\f\b\u0007\u0018\u0000 !2\u00020\u00012\b\u0012\u0004\u0012\u00020\u00030\u00022\b\u0012\u0004\u0012\u00020\u00030\u0004:\u0001\"B\u0017\u0012\u0006\u0010\u0005\u001a\u00020\u0003\u0012\u0006\u0010\u0006\u001a\u00020\u0003¢\u0006\u0004\b\u0007\u0010\bJ\u0018\u0010\r\u001a\u00020\n2\u0006\u0010\t\u001a\u00020\u0003H\u0096\u0002¢\u0006\u0004\b\u000b\u0010\fJ\u000f\u0010\u000e\u001a\u00020\nH\u0016¢\u0006\u0004\b\u000e\u0010\u000fJ\u001a\u0010\u0012\u001a\u00020\n2\b\u0010\u0011\u001a\u0004\u0018\u00010\u0010H\u0096\u0002¢\u0006\u0004\b\u0012\u0010\u0013J\u000f\u0010\u0015\u001a\u00020\u0014H\u0016¢\u0006\u0004\b\u0015\u0010\u0016J\u000f\u0010\u0018\u001a\u00020\u0017H\u0016¢\u0006\u0004\b\u0018\u0010\u0019R\u001a\u0010\u001e\u001a\u00020\u00038VX\u0097\u0004¢\u0006\f\u0012\u0004\b\u001c\u0010\u001d\u001a\u0004\b\u001a\u0010\u001bR\u0014\u0010\u0005\u001a\u00020\u00038VX\u0096\u0004¢\u0006\u0006\u001a\u0004\b\u001f\u0010\u001bR\u0014\u0010\u0006\u001a\u00020\u00038VX\u0096\u0004¢\u0006\u0006\u001a\u0004\b \u0010\u001b¨\u0006#"}, d2 = {"Lbz4;", "Lzy4;", "Lk20;", "Lvy4;", "Li73;", SSECard.TYPE_START, "endInclusive", "<init>", "(JJLkotlin/jvm/internal/DefaultConstructorMarker;)V", "value", "", "contains-VKZWuLQ", "(J)Z", "contains", "isEmpty", "()Z", "", "other", "equals", "(Ljava/lang/Object;)Z", "", "hashCode", "()I", "", "toString", "()Ljava/lang/String;", "getEndExclusive-s-VKNKU", "()J", "getEndExclusive-s-VKNKU$annotations", "()V", "endExclusive", "getStart-s-VKNKU", "getEndInclusive-s-VKNKU", "e", "a", "kotlin-stdlib"}, k = 1, mv = {2, 1, 0}, xi = ConstraintLayout.LayoutParams.Table.LAYOUT_CONSTRAINT_VERTICAL_CHAINSTYLE)
+public final class bz4 extends zy4 implements k20, i73 {
+
+    /* JADX INFO: renamed from: e, reason: from kotlin metadata */
+    @NotNull
+    public static final Companion INSTANCE = new Companion(null);
+    public static final bz4 f = new bz4(-1, 0, null);
+
+    /* JADX INFO: renamed from: bz4$a, reason: from kotlin metadata */
+    @Metadata(d1 = {"\u0000\u0014\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\b\u0086\u0003\u0018\u00002\u00020\u0001B\t\b\u0002¢\u0006\u0004\b\u0002\u0010\u0003R\u0017\u0010\u0005\u001a\u00020\u00048\u0006¢\u0006\f\n\u0004\b\u0005\u0010\u0006\u001a\u0004\b\u0007\u0010\b¨\u0006\t"}, d2 = {"Lbz4$a;", "", "<init>", "()V", "Lbz4;", "EMPTY", "Lbz4;", "getEMPTY", "()Lbz4;", "kotlin-stdlib"}, k = 1, mv = {2, 1, 0}, xi = ConstraintLayout.LayoutParams.Table.LAYOUT_CONSTRAINT_VERTICAL_CHAINSTYLE)
+    public static final class Companion {
+        public /* synthetic */ Companion(DefaultConstructorMarker defaultConstructorMarker) {
+            this();
+        }
+
+        @NotNull
+        public final bz4 getEMPTY() {
+            return bz4.f;
+        }
+
+        private Companion() {
+        }
+    }
+
+    public /* synthetic */ bz4(long j, long j2, DefaultConstructorMarker defaultConstructorMarker) {
+        this(j, j2);
+    }
+
+    @Override // defpackage.k20
+    public /* bridge */ /* synthetic */ boolean contains(Comparable comparable) {
+        return m809containsVKZWuLQ(((vy4) comparable).getCom.google.firebase.messaging.Constants.ScionAnalytics.MessageType.DATA_MESSAGE java.lang.String());
+    }
+
+    /* JADX INFO: renamed from: contains-VKZWuLQ, reason: not valid java name */
+    public boolean m809containsVKZWuLQ(long value) {
+        return Long.compare(getFirst() ^ Long.MIN_VALUE, value ^ Long.MIN_VALUE) <= 0 && Long.compare(value ^ Long.MIN_VALUE, getLast() ^ Long.MIN_VALUE) <= 0;
+    }
+
+    @Override // defpackage.zy4
+    public boolean equals(Object other) {
+        if (!(other instanceof bz4)) {
+            return false;
+        }
+        if (isEmpty() && ((bz4) other).isEmpty()) {
+            return true;
+        }
+        bz4 bz4Var = (bz4) other;
+        return getFirst() == bz4Var.getFirst() && getLast() == bz4Var.getLast();
+    }
+
+    @Override // defpackage.i73
+    public /* bridge */ /* synthetic */ Comparable getEndExclusive() {
+        return vy4.m2023boximpl(m810getEndExclusivesVKNKU());
+    }
+
+    /* JADX INFO: renamed from: getEndExclusive-s-VKNKU, reason: not valid java name */
+    public long m810getEndExclusivesVKNKU() {
+        if (getLast() != -1) {
+            return vy4.m2029constructorimpl(getLast() + vy4.m2029constructorimpl(((long) 1) & 4294967295L));
+        }
+        throw new IllegalStateException("Cannot return the exclusive upper bound of a range that includes MAX_VALUE.");
+    }
+
+    @Override // defpackage.k20
+    public /* bridge */ /* synthetic */ Comparable getEndInclusive() {
+        return vy4.m2023boximpl(m811getEndInclusivesVKNKU());
+    }
+
+    /* JADX INFO: renamed from: getEndInclusive-s-VKNKU, reason: not valid java name */
+    public long m811getEndInclusivesVKNKU() {
+        return getLast();
+    }
+
+    @Override // defpackage.k20
+    public /* bridge */ /* synthetic */ Comparable getStart() {
+        return vy4.m2023boximpl(m812getStartsVKNKU());
+    }
+
+    /* JADX INFO: renamed from: getStart-s-VKNKU, reason: not valid java name */
+    public long m812getStartsVKNKU() {
+        return getFirst();
+    }
+
+    @Override // defpackage.zy4
+    public int hashCode() {
+        if (isEmpty()) {
+            return -1;
+        }
+        return (((int) vy4.m2029constructorimpl(getFirst() ^ vy4.m2029constructorimpl(getFirst() >>> 32))) * 31) + ((int) vy4.m2029constructorimpl(getLast() ^ vy4.m2029constructorimpl(getLast() >>> 32)));
+    }
+
+    @Override // defpackage.zy4, defpackage.k20
+    public boolean isEmpty() {
+        return Long.compare(getFirst() ^ Long.MIN_VALUE, getLast() ^ Long.MIN_VALUE) > 0;
+    }
+
+    @Override // defpackage.zy4
+    @NotNull
+    public String toString() {
+        return ((Object) vy4.m2075toStringimpl(getFirst())) + ".." + ((Object) vy4.m2075toStringimpl(getLast()));
+    }
+
+    private bz4(long j, long j2) {
+        super(j, j2, 1L, null);
+    }
+
+    /* JADX INFO: renamed from: getEndExclusive-s-VKNKU$annotations, reason: not valid java name */
+    public static /* synthetic */ void m808getEndExclusivesVKNKU$annotations() {
+    }
+}

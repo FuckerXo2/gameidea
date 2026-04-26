@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="daily_quest_win_X_games_plurals">
+        <item quantity="one">Manalo ng %d laro</item>
+        <item quantity="other">Manalo ng %d mga laro</item>
+    </plurals>
+    <plurals name="lobby_tables_available">
+        <item quantity="one">%d Lamesa Magagamit</item>
+        <item quantity="other">%d Mga Lamesa Magagamit</item>
+    </plurals>
+    <plurals name="lobby_tournaments_available">
+        <item quantity="one">%d Paligsahan Magagamit</item>
+        <item quantity="other">%d Mga Paligsahan Magagamit</item>
+    </plurals>
+    <plurals name="plato_days">
+        <item quantity="zero">%d araw</item>
+        <item quantity="one">%d araw</item>
+        <item quantity="other">%d araw</item>
+    </plurals>
+    <plurals name="plato_days_ago">
+        <item quantity="zero">%d araw na lang</item>
+        <item quantity="one">%d araw na lang</item>
+        <item quantity="other">%d araw na lang</item>
+    </plurals>
+    <plurals name="plato_error_throttle_minutes_text">
+        <item quantity="one">Mangyaring subukan muli sa %d minuto.</item>
+        <item quantity="other">Mangyaring subukan muli sa %d minuto.</item>
+    </plurals>
+    <plurals name="plato_error_throttle_text">
+        <item quantity="zero">Subukan ulit sa susunod na %d segundo.</item>
+        <item quantity="one">Subukan ulit sa susunod na %d mga segundo.</item>
+        <item quantity="other">Subukan ulit sa susunod na %d segundo.</item>
+    </plurals>
+    <plurals name="plato_game_plurals">
+        <item quantity="one">laro</item>
+        <item quantity="other">mga laro</item>
+    </plurals>
+    <plurals name="plato_group_members">
+        <item quantity="zero">%d miyembro</item>
+        <item quantity="one">%d miyembro</item>
+        <item quantity="other">%d miyembro</item>
+    </plurals>
+    <plurals name="plato_home_more_games_text">
+        <item quantity="zero">%d DAGDAG NA AKTIBONG MGA LARO</item>
+        <item quantity="one">%d DAGDAG NA AKTIBONG LARO</item>
+        <item quantity="other">%d DAGDAG NA AKTIBONG MGA LARO</item>
+    </plurals>
+    <plurals name="plato_hours_capitalized">
+        <item quantity="zero">%d Oras</item>
+        <item quantity="one">1 Oras</item>
+        <item quantity="other">%d Oras</item>
+    </plurals>
+    <plurals name="plato_months_ago">
+        <item quantity="zero">%d buwan na lang</item>
+        <item quantity="one">%d buwan na lang</item>
+        <item quantity="other">%d buwan na lang</item>
+    </plurals>
+    <plurals name="plato_weeks_ago">
+        <item quantity="zero">%d linggo na lang</item>
+        <item quantity="one">%d linggo na lang</item>
+        <item quantity="other">%d linggo na lang</item>
+    </plurals>
+    <plurals name="plato_wins">
+        <item quantity="zero">%d MGA PANALO</item>
+        <item quantity="one">%d PANALO</item>
+        <item quantity="other">%d PANALO</item>
+    </plurals>
+    <plurals name="plato_wins_newline">
+        <item quantity="zero">"%d
+WINS"</item>
+        <item quantity="one">"%d
+WIN"</item>
+        <item quantity="other">"%d
+WINS"</item>
+    </plurals>
+    <plurals name="plato_years_ago">
+        <item quantity="zero">%d taon na lang</item>
+        <item quantity="one">%d taon na lang</item>
+        <item quantity="other">%d taon na lang</item>
+    </plurals>
+    <plurals name="profile_card_statInfo_wins">
+        <item quantity="zero">%1$s MGA PANALO</item>
+        <item quantity="one">%1$s PANALO</item>
+        <item quantity="other">%1$s MGA PANALO</item>
+    </plurals>
+    <plurals name="quest_X_coins_plurals">
+        <item quantity="one">%d barya</item>
+        <item quantity="other">%d mga barya</item>
+    </plurals>
+</resources>

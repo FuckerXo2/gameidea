@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.recyclerview.widget.RecyclerView android:id="@id/friends_recycler_view" android:background="?appThemeColorScreenBackgroundSecondary" android:layout_height="match_parent" style="@style/RecyclerViewStyle"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

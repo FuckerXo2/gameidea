@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="daily_quest_win_X_games_plurals">
+        <item quantity="zero">فز %d مرة</item>
+        <item quantity="one">فز %d مرة</item>
+        <item quantity="two">فز %d مرتين</item>
+        <item quantity="few">فز %d مرات</item>
+        <item quantity="many">فز %d مرة</item>
+        <item quantity="other">فز %d مرة</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="zero">تقديم سريع للفيديو بمقدار %d ثانية</item>
+        <item quantity="one">تقديم سريع للفيديو بمقدار ثانية واحدة (%d)</item>
+        <item quantity="two">تقديم سريع للفيديو بمقدار ثانيتَين (%d)</item>
+        <item quantity="few">تقديم سريع للفيديو بمقدار %d ثوانٍ</item>
+        <item quantity="many">تقديم سريع للفيديو بمقدار %d ثانية</item>
+        <item quantity="other">تقديم سريع للفيديو بمقدار %d ثانية</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="zero">ترجيع الفيديو بمقدار %d ثانية</item>
+        <item quantity="one">ترجيع الفيديو بمقدار ثانية واحدة (%d)</item>
+        <item quantity="two">ترجيع الفيديو بمقدار ثانيتَين (%d)</item>
+        <item quantity="few">ترجيع الفيديو بمقدار %d ثوانٍ</item>
+        <item quantity="many">ترجيع الفيديو بمقدار %d ثانية</item>
+        <item quantity="other">ترجيع الفيديو بمقدار %d ثانية</item>
+    </plurals>
+    <plurals name="lobby_tables_available">
+        <item quantity="zero">%d طاولات متاحة</item>
+        <item quantity="one">%d طاولة متاحة</item>
+        <item quantity="two">%d طاولتان متاحتان</item>
+        <item quantity="few">%d طاولات متاحة</item>
+        <item quantity="many">%d طاولة متاحة</item>
+        <item quantity="other">%d طاولات متاحة</item>
+    </plurals>
+    <plurals name="lobby_tournaments_available">
+        <item quantity="zero">%d بطولات متاحة</item>
+        <item quantity="one">%d بطولة متاحة</item>
+        <item quantity="two">%d بطولتان متاحتان</item>
+        <item quantity="few">%d بطولات متاحة</item>
+        <item quantity="many">%d بطولة متاحة</item>
+        <item quantity="other">%d بطولات متاحة</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="zero">%d إشعار جديد</item>
+        <item quantity="one">إشعار جديد واحد (%d)</item>
+        <item quantity="two">إشعاران جديدان (%d)</item>
+        <item quantity="few">%d إشعارات جديدة</item>
+        <item quantity="many">%d إشعارًا جديدًا</item>
+        <item quantity="other">%d إشعار جديد</item>
+    </plurals>
+    <plurals name="plato_days">
+        <item quantity="zero">%d يوم</item>
+        <item quantity="one">%d يوم</item>
+        <item quantity="two">يومين</item>
+        <item quantity="few">%d أيام</item>
+        <item quantity="many">%d أيام</item>
+        <item quantity="other">%d أيام</item>
+    </plurals>
+    <plurals name="plato_days_ago">
+        <item quantity="zero">%d يوم مضى</item>
+        <item quantity="one">%d يوم مضى</item>
+        <item quantity="two">%d يومين ماضيين</item>
+        <item quantity="few">%d أيام مضت</item>
+        <item quantity="many">%d أيام مضت</item>
+        <item quantity="other">%d أيام مضت</item>
+    </plurals>
+    <plurals name="plato_error_throttle_minutes_text">
+        <item quantity="zero">يرجى المحاولة مرة أخرى خلال %d دقائق.</item>
+        <item quantity="one">يرجى المحاولة مرة أخرى خلال %d دقيقة.</item>
+        <item quantity="two">يرجى المحاولة مرة أخرى خلال %d دقيقتين.</item>
+        <item quantity="few">يرجى المحاولة مرة أخرى خلال %d دقائق.</item>
+        <item quantity="many">يرجى المحاولة مرة أخرى خلال %d دقيقة.</item>
+        <item quantity="other">يرجى المحاولة مرة أخرى خلال %d دقيقة.</item>
+    </plurals>
+    <plurals name="plato_error_throttle_text">
+        <item quantity="zero">يرجى المحاولة مرة أخرى في %d ثوانٍ.</item>
+        <item quantity="one">يرجى المحاولة مرة أخرى في %d ثانية.</item>
+        <item quantity="two">يرجى المحاولة مرة أخرى في %d ثوانٍ.</item>
+        <item quantity="few">يرجى المحاولة مرة أخرى في %d ثوانٍ.</item>
+        <item quantity="many">يرجى المحاولة مرة أخرى في %d ثوانٍ.</item>
+        <item quantity="other">يرجى المحاولة مرة أخرى في %d ثوانٍ.</item>
+    </plurals>
+    <plurals name="plato_game_plurals">
+        <item quantity="zero">لا ألعاب</item>
+        <item quantity="one">لعبة</item>
+        <item quantity="two">لعبتان</item>
+        <item quantity="few">ألعاب</item>
+        <item quantity="many">ألعاب</item>
+        <item quantity="other">ألعاب</item>
+    </plurals>
+    <plurals name="plato_group_members">
+        <item quantity="zero">%d عضو</item>
+        <item quantity="one">%d عضو</item>
+        <item quantity="two">%d عضو</item>
+        <item quantity="few">%d أعضاء</item>
+        <item quantity="many">%d عضو</item>
+        <item quantity="other">%d عضو</item>
+    </plurals>
+    <plurals name="plato_home_more_games_text">
+        <item quantity="zero">%d لعبة نشطة أخرى</item>
+        <item quantity="one">%d لعبة نشطة أخرى</item>
+        <item quantity="two">%d ألعاب نشطة أخرى</item>
+        <item quantity="few">%d ألعاب نشطة أخرى</item>
+        <item quantity="many">%d ألعاب نشطة أخرى</item>
+        <item quantity="other">%d ألعاب نشطة أخرى</item>
+    </plurals>
+    <plurals name="plato_hours_capitalized">
+        <item quantity="zero">%d ساعات</item>
+        <item quantity="one">1 ساعة</item>
+        <item quantity="two">%d ساعة</item>
+        <item quantity="few">%d ساعات</item>
+        <item quantity="many">%d ساعات</item>
+        <item quantity="other">%d ساعات</item>
+    </plurals>
+    <plurals name="plato_months_ago">
+        <item quantity="zero">%d شهر مضى</item>
+        <item quantity="one">%d شهر مضى</item>
+        <item quantity="two">%d شهرين ماضيين</item>
+        <item quantity="few">%d شهور مضت</item>
+        <item quantity="many">%d شهور مضت</item>
+        <item quantity="other">%d شهور مضت</item>
+    </plurals>
+    <plurals name="plato_weeks_ago">
+        <item quantity="zero">%d أسبوع مضى</item>
+        <item quantity="one">%d أسبوع مضى</item>
+        <item quantity="two">%d أسبوعين ماضيين</item>
+        <item quantity="few">%d أسابيع مضت</item>
+        <item quantity="many">%d أسابيع مضت</item>
+        <item quantity="other">%d أسابيع مضت</item>
+    </plurals>
+    <plurals name="plato_wins">
+        <item quantity="zero">\" %d فوز\"</item>
+        <item quantity="one">%d فوز</item>
+        <item quantity="two">%d فوز</item>
+        <item quantity="few">%d فوز</item>
+        <item quantity="many">%d فوز</item>
+        <item quantity="other">%d فوز</item>
+    </plurals>
+    <plurals name="plato_wins_newline">
+        <item quantity="zero">"%d
+فوز"</item>
+        <item quantity="one">"%d
+فوز"</item>
+        <item quantity="two">"%d
+فوز"</item>
+        <item quantity="few">"%d
+فوز"</item>
+        <item quantity="many">"%d
+فوز"</item>
+        <item quantity="other">"%d
+فوز"</item>
+    </plurals>
+    <plurals name="plato_years_ago">
+        <item quantity="zero">%d سنة ماضية</item>
+        <item quantity="one">%d سنة ماضية</item>
+        <item quantity="two">%d سنتين ماضيتين</item>
+        <item quantity="few">%d سنوات مضت</item>
+        <item quantity="many">%d سنوات مضت</item>
+        <item quantity="other">%d سنوات مضت</item>
+    </plurals>
+    <plurals name="profile_card_statInfo_wins">
+        <item quantity="zero">%1$s انتصار</item>
+        <item quantity="one">%1$s انتصار</item>
+        <item quantity="two">%1$s انتصارات</item>
+        <item quantity="few">%1$s انتصارات</item>
+        <item quantity="many">%1$s انتصار</item>
+        <item quantity="other">%1$s انتصار</item>
+    </plurals>
+    <plurals name="quest_X_coins_plurals">
+        <item quantity="zero">%d عملة</item>
+        <item quantity="one">%d عملة</item>
+        <item quantity="two">%d عملتان</item>
+        <item quantity="few">%d عملات</item>
+        <item quantity="many">%d عملة</item>
+        <item quantity="other">%d عملة</item>
+    </plurals>
+</resources>

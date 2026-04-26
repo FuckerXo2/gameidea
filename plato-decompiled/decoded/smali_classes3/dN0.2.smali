@@ -1,0 +1,40 @@
+.class public final synthetic LdN0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lnc0;
+
+
+# instance fields
+.field public final synthetic n:Lcom/playchat/ui/activity/MainActivity;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/playchat/ui/activity/MainActivity;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, LdN0;->n:Lcom/playchat/ui/activity/MainActivity;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Ljava/lang/Object;
+    .locals 1
+
+    iget-object v0, p0, LdN0;->n:Lcom/playchat/ui/activity/MainActivity;
+
+    invoke-static {v0}, Lcom/playchat/ui/activity/MainActivity;->P1(Lcom/playchat/ui/activity/MainActivity;)Z
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    return-object v0
+.end method

@@ -1,0 +1,12 @@
+package defpackage;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+/* JADX INFO: loaded from: classes3.dex */
+@Retention(RetentionPolicy.RUNTIME)
+public @interface pt1 {
+    boolean allowUnsafeNonAsciiValues() default false;
+
+    String[] value();
+}

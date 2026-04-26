@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?appThemeColorScreenBackgroundSecondary" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/action_bar_container" android:background="?appThemeColorScreenBackgroundPrimary" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageButton android:id="@id/plato_button_back" android:contentDescription="@string/plato_back_cd" style="@style/BackButtonStyle" />
+        <TextView android:textSize="@dimen/text_size_default" android:textColor="?appThemeColorTextTitle" android:ellipsize="end" android:gravity="center" android:id="@id/plato_settings_title" android:layout_width="0.0dp" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <Space style="@style/ActionBarButtonStyle" />
+    </LinearLayout>
+    <com.playchat.ui.customview.NetworkBar android:id="@id/network_bar" android:layout_width="match_parent" android:layout_height="@dimen/network_bar_height" android:layout_below="@id/action_bar_container" />
+    <androidx.core.widget.NestedScrollView android:scrollbarThumbVertical="@drawable/plato_scroll_style" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@id/network_bar">
+        <LinearLayout android:orientation="vertical" android:id="@id/plato_container_settings" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    </androidx.core.widget.NestedScrollView>
+    <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/action_bar_container" />
+</RelativeLayout>

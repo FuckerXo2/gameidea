@@ -1,0 +1,1602 @@
+[
+    {
+      "templateName": "Templates",
+      "templateId": 0,
+      "introduction": "Unfold Epic Chapter Stories.",
+      "description": "Unfold Epic Chapter Stories.",
+      "isDefault": true,
+      "emoji": "📚",
+      "versionId": "1.21.0",
+      "pages": [
+        {
+          "components": [
+            {
+              "type": "templateCell",
+              "outputKey": "templateSelection",
+              "required": false,
+              "emoji": "📚",
+              "title": "Templates",
+              "desc": "Unfold Epic Chapter Stories."
+            },
+            {
+              "type": "characterSelection",
+              "outputKey": "characters",
+              "maxCount": 8,
+              "minCount": 1,
+              "allowPlayerCharacter": true,
+              "required": true,
+              "title": "Select Characters",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": null
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Roleplay Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png"
+            },
+            {
+              "type": "group",
+              "outputKey": "greetingGroup",
+              "required": true,
+              "title": "Opening Dialogue*",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "characterDropdown",
+                  "outputKey": "greetingChar",
+                  "title": "Opening Character",
+                  "required": true
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "greetingMessage",
+                  "required": true,
+                  "allowCharacterMention": true,
+                  "editable": true,
+                  "placeholder": "Type the opening dialogue for this character.",
+                  "maxLength": 300,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "richTextArea",
+              "outputKey": "sekaiDescription",
+              "required": true,
+              "title": "Roleplay Description *",
+              "allowCharacterMention": true,
+              "editable": true,
+              "placeholder": "Describe the main plot, including user interactions with other characters.",
+              "maxLength": 500,
+              "maxLines": 10,
+              "minLines": 3,
+              "promptId": "what_if-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "what_if-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "toggle",
+              "outputKey": "showSettingToOthers",
+              "title": "Show Settings to Others",
+              "defaultValue": true,
+              "required": false
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionTitle": "Next",
+            "actionName": "createSekai",
+            "method": "POST",
+            "apiPath": "sekai/createNewSekai",
+            "loadingMessage": "Generating background image...",
+            "successMessageTitle": "Background generated.",
+            "successMessageContent": "Preview before posting this Roleplay.",
+            "errorMessageTitle": "Error",
+            "errorMessageContent": "An error occurred. Please try again.",
+            "pushNew": false
+          }
+        },
+        {
+          "components": [
+            {
+              "type": "characterSelection",
+              "outputKey": "characters",
+              "maxCount": 8,
+              "minCount": 1,
+              "allowPlayerCharacter": true,
+              "required": true,
+              "title": "Select Characters",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": null
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Roleplay Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png",
+              "action": {
+                "name": "preview",
+                "title": "Preview"
+              }
+            },
+            {
+              "type": "backgroundImage",
+              "outputKey": "backgroundImage",
+              "required": false,
+              "title": "Background Image"
+            },
+            {
+              "type": "group",
+              "outputKey": "greetingGroup",
+              "required": true,
+              "title": "Opening Dialogue",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "characterDropdown",
+                  "outputKey": "greetingChar",
+                  "title": "Opening Character",
+                  "required": true
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "greetingMessage",
+                  "required": true,
+                  "allowCharacterMention": true,
+                  "editable": true,
+                  "placeholder": "Type the opening dialogue for this character.",
+                  "maxLength": 300,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "richTextArea",
+              "outputKey": "sekaiDescription",
+              "required": true,
+              "title": "Roleplay Description *",
+              "allowCharacterMention": true,
+              "editable": true,
+              "placeholder": "Describe the main plot, including user interactions with other characters.",
+              "maxLength": 500,
+              "maxLines": 10,
+              "minLines": 3,
+              "promptId": "what_if-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "what_if-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Sound Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png",
+              "marginTop": 12
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "bgm",
+              "required": false,
+              "title": "BGM",
+              "defaultValue": "Select music",
+              "action": {
+                "title": "",
+                "name": "chooseBgm"
+              }
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "narratorVoice",
+              "required": false,
+              "title": "Narrator's Voice",
+              "description": "Auto-apply",
+              "defaultValue": "Select voice",
+              "action": {
+                "title": "",
+                "name": "chooseNarratorVoice"
+              }
+            },
+            {
+              "type": "toggle",
+              "outputKey": "showSettingToOthers",
+              "title": "Show Settings to Others",
+              "defaultValue": true,
+              "required": false
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionTitle": "Next",
+            "actionName": "updateSekai",
+            "method": "PUT",
+            "apiPath": "sekai/updateSekaiByOutputKey?nextPage=true",
+            "loadingMessage": "",
+            "successMessageTitle": null,
+            "successMessageContent": null,
+            "errorMessageTitle": "Error",
+            "errorMessageContent": "An error occurred. Please try again.",
+            "pushNew": true
+          }
+        },
+        {
+          "components": [
+            {
+              "type": "textArea",
+              "outputKey": "sekaiTitle",
+              "title": "Roleplay Title*",
+              "required": true,
+              "placeholder": "Name your Roleplay.",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "editable": true,
+              "maxLength": 50,
+              "maxLines": 1,
+              "minLines": 1,
+              "promptId": "title-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "title-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "textArea",
+              "outputKey": "sekaiIntro",
+              "title": "Roleplay Intro*",
+              "required": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "editable": true,
+              "placeholder": "Write a short intro for this Roleplay.",
+              "maxLength": 500,
+              "minLines": 3,
+              "maxLines": 8,
+              "promptId": "introduction-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "introduction-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "tagSelector",
+              "outputKey": "tags",
+              "title": "Roleplay Tags",
+              "required": false,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "maxCount": 10
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionName": "finalSubmit",
+            "actionTitle": "Post",
+            "method": "PUT",
+            "apiPath": "sekai/updateSekaiByOutputKey",
+            "loadingMessage": "Posting Roleplay...",
+            "successMessageTitle": null,
+            "successMessageContent": null,
+            "errorMessageTitle": null,
+            "errorMessageContent": null,
+            "pushNew": false
+          }
+        }
+      ]
+    },
+    {
+      "templateName": "Goal Challenge",
+      "templateId": 1,
+      "introduction": "Goal Challenge",
+      "description": "Conquer Goal-Driven Adventures",
+      "isDefault": false,
+      "emoji": "🏆",
+      "versionId": "1.21.0",
+      "pages": [
+        {
+          "components": [
+            {
+              "type": "templateCell",
+              "outputKey": "templateSelection",
+              "required": false,
+              "emoji": "🏆",
+              "title": "Goal Challenge",
+              "desc": "Conquer Goal-Driven Adventures"
+            },
+            {
+              "type": "characterSelection",
+              "outputKey": "characters",
+              "maxCount": 8,
+              "minCount": 1,
+              "allowPlayerCharacter": true,
+              "required": true,
+              "title": "Select Characters",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": null
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Roleplay Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png"
+            },
+            {
+              "type": "group",
+              "outputKey": "greetingGroup",
+              "required": true,
+              "title": "Opening Dialogue*",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "characterDropdown",
+                  "outputKey": "greetingChar",
+                  "title": "Opening Character",
+                  "required": true
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "greetingMessage",
+                  "required": true,
+                  "allowCharacterMention": true,
+                  "editable": true,
+                  "placeholder": "Type the opening dialogue for this character.",
+                  "maxLength": 300,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "richTextArea",
+              "outputKey": "sekaiDescription",
+              "required": true,
+              "title": "Roleplay Description *",
+              "allowCharacterMention": true,
+              "editable": true,
+              "placeholder": "Describe the main plot, including user interactions with other characters.",
+              "maxLength": 500,
+              "maxLines": 10,
+              "minLines": 3,
+              "promptId": "what_if-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "what_if-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "group",
+              "outputKey": "objective",
+              "required": true,
+              "title": "Objective*",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "toggle",
+                  "outputKey": "showObjectiveToPlayer",
+                  "title": "Show Objective to Player",
+                  "defaultValue": true,
+                  "required": false
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "objectiveDescription",
+                  "title": null,
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Objective description",
+                  "maxLength": 2000,
+                  "maxLines": 8,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "toggle",
+              "outputKey": "showSettingToOthers",
+              "title": "Show Settings to Others",
+              "defaultValue": true,
+              "required": false
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionTitle": "Next",
+            "actionName": "createSekai",
+            "method": "POST",
+            "apiPath": "sekai/createNewSekai",
+            "loadingMessage": "Generating background image...",
+            "successMessageTitle": "Background generated.",
+            "successMessageContent": "Preview before posting this Roleplay.",
+            "errorMessageTitle": "Error",
+            "errorMessageContent": "An error occurred. Please try again.",
+            "pushNew": false
+          }
+        },
+        {
+          "components": [
+            {
+              "type": "characterSelection",
+              "outputKey": "characters",
+              "maxCount": 8,
+              "minCount": 1,
+              "allowPlayerCharacter": true,
+              "required": true,
+              "title": "Select Characters",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": null
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Roleplay Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png",
+              "action": {
+                "name": "preview",
+                "title": "Preview"
+              }
+            },
+            {
+              "type": "backgroundImage",
+              "outputKey": "backgroundImage",
+              "required": false,
+              "title": "Background Image"
+            },
+            {
+              "type": "group",
+              "outputKey": "greetingGroup",
+              "required": true,
+              "title": "Opening Dialogue",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "characterDropdown",
+                  "outputKey": "greetingChar",
+                  "title": "Opening Character",
+                  "required": true
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "greetingMessage",
+                  "required": true,
+                  "allowCharacterMention": true,
+                  "editable": true,
+                  "placeholder": "Type the opening dialogue for this character.",
+                  "maxLength": 300,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "richTextArea",
+              "outputKey": "sekaiDescription",
+              "required": true,
+              "title": "Roleplay Description *",
+              "allowCharacterMention": true,
+              "editable": true,
+              "placeholder": "Describe the main plot, including user interactions with other characters.",
+              "maxLength": 500,
+              "maxLines": 10,
+              "minLines": 3,
+              "promptId": "what_if-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "what_if-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "group",
+              "outputKey": "objective",
+              "required": true,
+              "title": "Objective*",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "toggle",
+                  "outputKey": "showObjectiveToPlayer",
+                  "title": "Show Objective to Player",
+                  "defaultValue": true,
+                  "required": false
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "objectiveDescription",
+                  "title": null,
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Objective description",
+                  "maxLength": 2000,
+                  "maxLines": 8,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Sound Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png",
+              "marginTop": 12
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "bgm",
+              "required": false,
+              "title": "BGM",
+              "defaultValue": "Select music",
+              "action": {
+                "title": "",
+                "name": "chooseBgm"
+              }
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "narratorVoice",
+              "required": false,
+              "title": "Narrator's Voice",
+              "description": "Auto-apply",
+              "defaultValue": "Select voice",
+              "action": {
+                "title": "",
+                "name": "chooseNarratorVoice"
+              }
+            },
+            {
+              "type": "toggle",
+              "outputKey": "showSettingToOthers",
+              "title": "Show Settings to Others",
+              "defaultValue": true,
+              "required": false
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionTitle": "Next",
+            "actionName": "updateSekai",
+            "method": "PUT",
+            "apiPath": "sekai/updateSekaiByOutputKey?nextPage=true",
+            "loadingMessage": "",
+            "successMessageTitle": null,
+            "successMessageContent": null,
+            "errorMessageTitle": "Error",
+            "errorMessageContent": "An error occurred. Please try again.",
+            "pushNew": true
+          }
+        },
+        {
+          "components": [
+            {
+              "type": "textArea",
+              "outputKey": "sekaiTitle",
+              "title": "Roleplay Title*",
+              "required": true,
+              "placeholder": "Name your Roleplay.",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "editable": true,
+              "maxLength": 50,
+              "maxLines": 1,
+              "minLines": 1,
+              "promptId": "title-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "title-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "textArea",
+              "outputKey": "sekaiIntro",
+              "title": "Roleplay Intro*",
+              "required": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "editable": true,
+              "placeholder": "Write a short intro for this Roleplay.",
+              "maxLength": 500,
+              "minLines": 3,
+              "maxLines": 8,
+              "promptId": "introduction-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "introduction-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "tagSelector",
+              "outputKey": "tags",
+              "title": "Roleplay Tags",
+              "required": false,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "maxCount": 10
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionName": "finalSubmit",
+            "actionTitle": "Post",
+            "method": "PUT",
+            "apiPath": "sekai/updateSekaiByOutputKey",
+            "loadingMessage": "Posting Roleplay...",
+            "successMessageTitle": null,
+            "successMessageContent": null,
+            "errorMessageTitle": null,
+            "errorMessageContent": null,
+            "pushNew": false
+          }
+        }
+      ]
+    },
+    {
+      "templateName": "Rebirth",
+      "templateId": 2,
+      "introduction": "Reimgaine yourself in another life.",
+      "description": "Rebirth is a template that allows you to imagine yourself in another life. You can choose to be a different character, or a different gender. You can also choose to be a different race or nationality. You can even choose to be a different species! The possibilities are endless!",
+      "isDefault": false,
+      "emoji": "🦋",
+      "versionId": "1.21.0",
+      "pages": [
+        {
+          "components": [
+            {
+              "type": "templateCell",
+              "outputKey": "templateSelection",
+              "required": false,
+              "emoji": "🦋",
+              "title": "Rebirth",
+              "desc": "Rebirth into a New Life"
+            },
+            {
+              "type": "characterSelection",
+              "outputKey": "characters",
+              "maxCount": 8,
+              "minCount": 1,
+              "allowPlayerCharacter": true,
+              "required": true,
+              "title": "Select Characters",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": null
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Roleplay Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png"
+            },
+            {
+              "type": "group",
+              "outputKey": "greetingGroup",
+              "required": true,
+              "title": "Opening Dialogue*",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "characterDropdown",
+                  "outputKey": "greetingChar",
+                  "title": "Opening Character",
+                  "required": true
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "greetingMessage",
+                  "required": true,
+                  "allowCharacterMention": true,
+                  "editable": true,
+                  "placeholder": "Type the opening dialogue for this character.",
+                  "maxLength": 300,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "outputKey": "rebirthGroup",
+              "required": true,
+              "showRoundBorder": false,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "spacing": 16,
+              "subComponents": [
+                {
+                  "type": "textArea",
+                  "outputKey": "rebirthWorld",
+                  "required": true,
+                  "title": "World of Rebirth*",
+                  "allowCharacterMention": false,
+                  "editable": true,
+                  "placeholder": "Describe the world you're reborn into",
+                  "maxLength": 300,
+                  "maxLines": 5,
+                  "minLines": 2,
+                  "promptId": "rebirth_settings-ai-writer:1.19.0-0",
+                  "aiWriter": {
+                    "promptId": "rebirth_settings-ai-writer:1.19.0-0",
+                    "enable": true
+                  }
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "rebirthStory",
+                  "required": true,
+                  "title": "Rebirth Story*",
+                  "allowCharacterMention": false,
+                  "editable": true,
+                  "placeholder": "Describe how you were reborn and your new life",
+                  "promptId": "rebirth_settings-ai-writer:1.19.0-0",
+                  "maxLength": 500,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "toggle",
+              "outputKey": "showSettingToOthers",
+              "title": "Show Settings to Others",
+              "defaultValue": true,
+              "required": false
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionTitle": "Next",
+            "actionName": "createSekai",
+            "method": "POST",
+            "apiPath": "sekai/createNewSekai",
+            "loadingMessage": "Generating background image...",
+            "successMessageTitle": "Background generated.",
+            "successMessageContent": "Preview before posting this Roleplay.",
+            "errorMessageTitle": "Error",
+            "errorMessageContent": "An error occurred. Please try again.",
+            "pushNew": false
+          }
+        },
+        {
+          "components": [
+            {
+              "type": "characterSelection",
+              "outputKey": "characters",
+              "maxCount": 8,
+              "minCount": 1,
+              "allowPlayerCharacter": true,
+              "required": true,
+              "title": "Select Characters",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": null
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Roleplay Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png",
+              "action": {
+                "name": "preview",
+                "title": "Preview"
+              }
+            },
+            {
+              "type": "backgroundImage",
+              "outputKey": "backgroundImage",
+              "required": false,
+              "title": "Background Image"
+            },
+            {
+              "type": "group",
+              "outputKey": "greetingGroup",
+              "required": true,
+              "title": "Opening Dialogue",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "characterDropdown",
+                  "outputKey": "greetingChar",
+                  "title": "Opening Character",
+                  "required": true
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "greetingMessage",
+                  "required": true,
+                  "allowCharacterMention": true,
+                  "editable": true,
+                  "placeholder": "Type the opening dialogue for this character.",
+                  "maxLength": 300,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "outputKey": "rebirthGroup",
+              "required": true,
+              "showRoundBorder": false,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "spacing": 16,
+              "subComponents": [
+                {
+                  "type": "textArea",
+                  "outputKey": "rebirthWorld",
+                  "required": true,
+                  "title": "World of Rebirth*",
+                  "allowCharacterMention": false,
+                  "editable": true,
+                  "placeholder": "Describe the world you're reborn into",
+                  "maxLength": 300,
+                  "maxLines": 5,
+                  "minLines": 2,
+                  "promptId": "rebirth_settings-ai-writer:1.19.0-0",
+                  "aiWriter": {
+                    "promptId": "rebirth_settings-ai-writer:1.19.0-0",
+                    "enable": true
+                  }
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "rebirthStory",
+                  "required": true,
+                  "title": "Rebirth Story*",
+                  "allowCharacterMention": false,
+                  "editable": true,
+                  "placeholder": "Describe how you were reborn and your new life",
+                  "promptId": "rebirth_settings-ai-writer:1.19.0-0",
+                  "maxLength": 500,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Sound Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png",
+              "marginTop": 12
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "bgm",
+              "required": false,
+              "title": "BGM",
+              "defaultValue": "Select music",
+              "action": {
+                "title": "",
+                "name": "chooseBgm"
+              }
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "narratorVoice",
+              "required": false,
+              "title": "Narrator's Voice",
+              "description": "Auto-apply",
+              "defaultValue": "Select voice",
+              "action": {
+                "title": "",
+                "name": "chooseNarratorVoice"
+              }
+            },
+            {
+              "type": "toggle",
+              "outputKey": "showSettingToOthers",
+              "title": "Show Settings to Others",
+              "defaultValue": true,
+              "required": false
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionTitle": "Next",
+            "actionName": "updateSekai",
+            "method": "PUT",
+            "apiPath": "sekai/updateSekaiByOutputKey?nextPage=true",
+            "loadingMessage": "",
+            "successMessageTitle": null,
+            "successMessageContent": null,
+            "errorMessageTitle": "Error",
+            "errorMessageContent": "An error occurred. Please try again.",
+            "pushNew": true
+          }
+        },
+        {
+          "components": [
+            {
+              "type": "textArea",
+              "outputKey": "sekaiTitle",
+              "title": "Roleplay Title*",
+              "required": true,
+              "placeholder": "Name your Roleplay.",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "editable": true,
+              "maxLength": 50,
+              "maxLines": 1,
+              "minLines": 1,
+              "promptId": "title-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "title-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "textArea",
+              "outputKey": "sekaiIntro",
+              "title": "Roleplay Intro*",
+              "required": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "editable": true,
+              "placeholder": "Write a short intro for this Roleplay.",
+              "maxLength": 500,
+              "minLines": 3,
+              "maxLines": 8,
+              "promptId": "introduction-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "introduction-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "tagSelector",
+              "outputKey": "tags",
+              "title": "Roleplay Tags",
+              "required": false,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "maxCount": 10
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionName": "finalSubmit",
+            "actionTitle": "Post",
+            "method": "PUT",
+            "apiPath": "sekai/updateSekaiByOutputKey",
+            "loadingMessage": "Posting Roleplay...",
+            "successMessageTitle": null,
+            "successMessageContent": null,
+            "errorMessageTitle": null,
+            "errorMessageContent": null,
+            "pushNew": false
+          }
+        }
+      ]
+    },
+    {
+      "templateName": "Give Character Stats",
+      "templateId": 3,
+      "introduction": "Give Character Stats",
+      "description": "Give Your Character Stats and see it goes up and down",
+      "isDefault": false,
+      "emoji": "💪",
+      "versionId": "1.21.0",
+      "pages": [
+        {
+          "components": [
+            {
+              "type": "templateCell",
+              "outputKey": "templateSelection",
+              "required": false,
+              "emoji": "💪",
+              "title": "Give Character Stats",
+              "desc": "Give Your Character Stats and see it goes up and down"
+            },
+            {
+              "type": "characterSelection",
+              "outputKey": "characters",
+              "maxCount": 1,
+              "minCount": 1,
+              "allowPlayerCharacter": true,
+              "required": true,
+              "title": "Select Characters",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": null
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Roleplay Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png"
+            },
+            {
+              "type": "group",
+              "outputKey": "statsGroup",
+              "required": true,
+              "showRoundBorder": false,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "spacing": 16,
+              "subComponents": [
+                {
+                  "type": "textArea",
+                  "outputKey": "statsName",
+                  "title": "Stats Name",
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Give your stats a simple name, like 'Romantic Level' etc.",
+                  "maxLength": 200,
+                  "maxLines": 1,
+                  "minLines": 1,
+                  "promptId": "stats_helper-ai-writer:1.18.0-0",
+                  "aiWriter": {
+                    "promptId": "stats_helper-ai-writer:1.18.0-0",
+                    "enable": true
+                  }
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "statsDefinition",
+                  "title": "Stats Defination",
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Give your stats a simple definition, like 'Romantic Level is the level of romanticism of the character towards the player' etc.",
+                  "maxLength": 300,
+                  "maxLines": 2,
+                  "minLines": 1,
+                  "promptId": "stats_helper-ai-writer:1.18.0-0"
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "initialValue",
+                  "title": "Initial Value",
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Give your stats a initial value,  between -100 and 100",
+                  "maxLength": 200,
+                  "maxLines": 1,
+                  "minLines": 1,
+                  "promptId": "stats_helper-ai-writer:1.18.0-0"
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "statsChangeRules",
+                  "title": "Stats Change Rules",
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Give your stats a change rules, like 'every time you talk to her, if she likes you, your stats will go up, if she doesn't like you, your stats will go down' etc.",
+                  "maxLength": 1000,
+                  "maxLines": 5,
+                  "minLines": 3,
+                  "promptId": "stats_helper-ai-writer:1.18.0-0"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "outputKey": "greetingGroup",
+              "required": true,
+              "title": "Opening Dialogue*",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "characterDropdown",
+                  "outputKey": "greetingChar",
+                  "title": "Opening Character",
+                  "required": true
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "greetingMessage",
+                  "required": true,
+                  "allowCharacterMention": true,
+                  "editable": true,
+                  "placeholder": "Type the opening dialogue for this character.",
+                  "maxLength": 300,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "textArea",
+              "outputKey": "characterDescription",
+              "title": "Character Description",
+              "required": false,
+              "editable": true,
+              "placeholder": "(Optional) You can use this to add in more details about the character or their statistics, like for example, 'If the romanctic level reaches 100, the character will fall in love with the player and propose to them'.",
+              "maxLength": 300,
+              "maxLines": 10,
+              "minLines": 3
+            },
+            {
+              "type": "toggle",
+              "outputKey": "showSettingToOthers",
+              "title": "Show Settings to Others",
+              "defaultValue": true,
+              "required": false
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionTitle": "Next",
+            "actionName": "createSekai",
+            "method": "POST",
+            "apiPath": "sekai/createNewSekai",
+            "loadingMessage": "Generating background image...",
+            "successMessageTitle": "Background generated.",
+            "successMessageContent": "Preview before posting this Roleplay.",
+            "errorMessageTitle": "Error",
+            "errorMessageContent": "An error occurred. Please try again.",
+            "pushNew": false
+          }
+        },
+        {
+          "components": [
+            {
+              "type": "characterSelection",
+              "outputKey": "characters",
+              "maxCount": 1,
+              "minCount": 1,
+              "allowPlayerCharacter": true,
+              "required": true,
+              "title": "Select Characters",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": null
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Roleplay Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png",
+              "action": {
+                "name": "preview",
+                "title": "Preview"
+              }
+            },
+            {
+              "type": "backgroundImage",
+              "outputKey": "backgroundImage",
+              "required": false,
+              "title": "Background Image"
+            },
+            {
+              "type": "group",
+              "outputKey": "greetingGroup",
+              "required": true,
+              "title": "Opening Dialogue",
+              "showRoundBorder": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "subComponents": [
+                {
+                  "type": "characterDropdown",
+                  "outputKey": "greetingChar",
+                  "title": "Opening Character",
+                  "required": true
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "greetingMessage",
+                  "required": true,
+                  "allowCharacterMention": true,
+                  "editable": true,
+                  "placeholder": "Type the opening dialogue for this character.",
+                  "maxLength": 300,
+                  "maxLines": 10,
+                  "minLines": 3
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "outputKey": "statsGroup",
+              "required": true,
+              "showRoundBorder": false,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "spacing": 16,
+              "subComponents": [
+                {
+                  "type": "textArea",
+                  "outputKey": "statsName",
+                  "title": "Stats Name",
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Give your stats a simple name, like 'Romantic Level' etc.",
+                  "maxLength": 200,
+                  "maxLines": 1,
+                  "minLines": 1,
+                  "promptId": "stats_helper-ai-writer:1.18.0-0",
+                  "aiWriter": {
+                    "promptId": "stats_helper-ai-writer:1.18.0-0",
+                    "enable": true
+                  }
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "statsDefinition",
+                  "title": "Stats Defination",
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Give your stats a simple definition, like 'Romantic Level is the level of romanticism of the character towards the player' etc.",
+                  "maxLength": 300,
+                  "maxLines": 2,
+                  "minLines": 1,
+                  "promptId": "stats_helper-ai-writer:1.18.0-0"
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "initialValue",
+                  "title": "Initial Value",
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Give your stats a initial value,  between -100 and 100",
+                  "maxLength": 200,
+                  "maxLines": 1,
+                  "minLines": 1,
+                  "promptId": "stats_helper-ai-writer:1.18.0-0"
+                },
+                {
+                  "type": "textArea",
+                  "outputKey": "statsChangeRules",
+                  "title": "Stats Change Rules",
+                  "required": true,
+                  "editable": true,
+                  "placeholder": "Give your stats a change rules, like 'every time you talk to her, if she likes you, your stats will go up, if she doesn't like you, your stats will go down' etc.",
+                  "maxLength": 1000,
+                  "maxLines": 5,
+                  "minLines": 3,
+                  "promptId": "stats_helper-ai-writer:1.18.0-0"
+                }
+              ]
+            },
+            {
+              "type": "textArea",
+              "outputKey": "characterDescription",
+              "title": "Character Description",
+              "required": false,
+              "editable": true,
+              "placeholder": "(Optional) You can use this to add in more details about the character or their statistics, like for example, 'If the romanctic level reaches 100, the character will fall in love with the player and propose to them'.",
+              "maxLength": 300,
+              "maxLines": 10,
+              "minLines": 3
+            },
+            {
+              "type": "title",
+              "outputKey": "",
+              "required": false,
+              "title": "Sound Settings",
+              "icon": "https://sekai-public-access.s3.us-east-1.amazonaws.com/icon/universe/icon_sekai_star.png",
+              "marginTop": 12
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "bgm",
+              "required": false,
+              "title": "BGM",
+              "defaultValue": "Select music",
+              "action": {
+                "title": "",
+                "name": "chooseBgm"
+              }
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "narratorVoice",
+              "required": false,
+              "title": "Narrator's Voice",
+              "description": "Auto-apply",
+              "defaultValue": "Select voice",
+              "action": {
+                "title": "",
+                "name": "chooseNarratorVoice"
+              }
+            },
+            {
+              "type": "toggle",
+              "outputKey": "showSettingToOthers",
+              "title": "Show Settings to Others",
+              "defaultValue": true,
+              "required": false
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionTitle": "Next",
+            "actionName": "updateSekai",
+            "method": "PUT",
+            "apiPath": "sekai/updateSekaiByOutputKey?nextPage=true",
+            "loadingMessage": "",
+            "successMessageTitle": null,
+            "successMessageContent": null,
+            "errorMessageTitle": "Error",
+            "errorMessageContent": "An error occurred. Please try again.",
+            "pushNew": true
+          }
+        },
+        {
+          "components": [
+            {
+              "type": "textArea",
+              "outputKey": "sekaiTitle",
+              "title": "Roleplay Title*",
+              "required": true,
+              "placeholder": "Name your Roleplay.",
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "editable": true,
+              "maxLength": 50,
+              "maxLines": 1,
+              "minLines": 1,
+              "promptId": "title-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "title-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "textArea",
+              "outputKey": "sekaiIntro",
+              "title": "Roleplay Intro*",
+              "required": true,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "editable": true,
+              "placeholder": "Write a short intro for this Roleplay.",
+              "maxLength": 500,
+              "minLines": 3,
+              "maxLines": 8,
+              "promptId": "introduction-ai-writer:1.18.0-0",
+              "aiWriter": {
+                "promptId": "introduction-ai-writer:1.18.0-0",
+                "enable": true
+              }
+            },
+            {
+              "type": "tagSelector",
+              "outputKey": "tags",
+              "title": "Roleplay Tags",
+              "required": false,
+              "marginTop": 0,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "maxCount": 10
+            },
+            {
+              "type": "actionCell",
+              "outputKey": "audienceSetting",
+              "required": false,
+              "title": "Audience Setting",
+              "defaultValue": "Public",
+              "action": {
+                "title": "",
+                "name": "selectAudience"
+              }
+            }
+          ],
+          "nextAction": {
+            "actionName": "finalSubmit",
+            "actionTitle": "Post",
+            "method": "PUT",
+            "apiPath": "sekai/updateSekaiByOutputKey",
+            "loadingMessage": "Posting Roleplay...",
+            "successMessageTitle": null,
+            "successMessageContent": null,
+            "errorMessageTitle": null,
+            "errorMessageContent": null,
+            "pushNew": false
+          }
+        }
+      ]
+    }
+]

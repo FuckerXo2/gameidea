@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="lobby_leaderboards_control_panel_evaluation_min_label_chars">9</integer>
+    <integer name="quest_rewards_per_line">2</integer>
+</resources>

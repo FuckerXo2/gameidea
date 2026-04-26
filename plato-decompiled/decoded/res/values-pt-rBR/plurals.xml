@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="daily_quest_win_X_games_plurals">
+        <item quantity="one">Vença %d jogo</item>
+        <item quantity="many">Vença %d jogos</item>
+        <item quantity="other">Vença %d jogos</item>
+    </plurals>
+    <plurals name="lobby_tables_available">
+        <item quantity="one">%d MESA DISPONÍVEL</item>
+        <item quantity="many">%d MESAS DISPONÍVEIS</item>
+        <item quantity="other">%d MESAS DISPONÍVEIS</item>
+    </plurals>
+    <plurals name="lobby_tournaments_available">
+        <item quantity="one">%d TORNEIO DISPONÍVEL</item>
+        <item quantity="many">%d TORNEIOS DISPONÍVEIS</item>
+        <item quantity="other">%d TORNEIOS DISPONÍVEIS</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nova notificação</item>
+        <item quantity="other">%d novas notificações</item>
+    </plurals>
+    <plurals name="plato_days">
+        <item quantity="zero">%d dias</item>
+        <item quantity="one">%d dia</item>
+        <item quantity="other">%d dias</item>
+    </plurals>
+    <plurals name="plato_days_ago">
+        <item quantity="zero">%d dias atrás</item>
+        <item quantity="one">%d dia atrás</item>
+        <item quantity="other">%d dias atrás</item>
+    </plurals>
+    <plurals name="plato_error_throttle_minutes_text">
+        <item quantity="one">Por favor, tente novamente em %d minuto.</item>
+        <item quantity="many">Por favor, tente novamente em %d minutos.</item>
+        <item quantity="other">Por favor, tente novamente em %d minutos.</item>
+    </plurals>
+    <plurals name="plato_error_throttle_text">
+        <item quantity="zero">Favor tentar novamente em %d segundos.</item>
+        <item quantity="one">Favor tentar novamente em %d segundo.</item>
+        <item quantity="other">Favor tentar novamente em %d segundos.</item>
+    </plurals>
+    <plurals name="plato_game_plurals">
+        <item quantity="one">jogo</item>
+        <item quantity="many">jogos</item>
+        <item quantity="other">jogos</item>
+    </plurals>
+    <plurals name="plato_group_members">
+        <item quantity="zero">%d membros</item>
+        <item quantity="one">%d membro</item>
+        <item quantity="other">%d membros</item>
+    </plurals>
+    <plurals name="plato_home_more_games_text">
+        <item quantity="one">MAIS %d JOGO ATIVO</item>
+        <item quantity="other">MAIS %d JOGOS ATIVOS</item>
+    </plurals>
+    <plurals name="plato_hours_capitalized">
+        <item quantity="zero">%d Horas</item>
+        <item quantity="one">1 Hora</item>
+        <item quantity="other">%d Horas</item>
+    </plurals>
+    <plurals name="plato_months_ago">
+        <item quantity="zero">%d meses atrás</item>
+        <item quantity="one">%d mês atrás</item>
+        <item quantity="other">%d meses atrás</item>
+    </plurals>
+    <plurals name="plato_weeks_ago">
+        <item quantity="zero">%d semanas atrás</item>
+        <item quantity="one">%d semana atrás</item>
+        <item quantity="other">%d semanas atrás</item>
+    </plurals>
+    <plurals name="plato_wins">
+        <item quantity="one">%d VITÓRIA</item>
+        <item quantity="other">%d VITÓRIAS</item>
+    </plurals>
+    <plurals name="plato_wins_newline">
+        <item quantity="zero">"%d
+VITÓRIAS"</item>
+        <item quantity="one">"%d
+VITÓRIA"</item>
+        <item quantity="other">"%d
+VITÓRIAS"</item>
+    </plurals>
+    <plurals name="plato_years_ago">
+        <item quantity="zero">%d anos atrás</item>
+        <item quantity="one">%d ano atrás</item>
+        <item quantity="other">%d anos atrás</item>
+    </plurals>
+    <plurals name="profile_card_statInfo_wins">
+        <item quantity="zero">%1$s VITÓRIAS</item>
+        <item quantity="one">%1$s VITÓRIA</item>
+        <item quantity="other">%1$s VITÓRIAS</item>
+    </plurals>
+    <plurals name="quest_X_coins_plurals">
+        <item quantity="one">%d moeda</item>
+        <item quantity="many">%d moedas</item>
+        <item quantity="other">%d moedas</item>
+    </plurals>
+</resources>

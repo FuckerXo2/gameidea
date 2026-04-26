@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/container" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.playchat.ui.fragment.home.PlayGameShortcutView android:id="@id/play_game_view_1" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:layout_marginHorizontal="@dimen/element_padding_small" app:cardCornerRadius="@dimen/element_radius_default" app:cardElevation="0.0dp" />
+    <com.playchat.ui.fragment.home.PlayGameShortcutView android:id="@id/play_game_view_2" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:layout_marginHorizontal="@dimen/element_padding_small" app:cardCornerRadius="@dimen/element_radius_default" app:cardElevation="0.0dp" />
+    <com.playchat.ui.fragment.home.PlayGameShortcutView android:id="@id/play_game_view_3" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:layout_marginHorizontal="@dimen/element_padding_small" app:cardCornerRadius="@dimen/element_radius_default" app:cardElevation="0.0dp" />
+    <com.playchat.ui.fragment.home.PlayGameShortcutView android:id="@id/play_game_view_4" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:layout_marginHorizontal="@dimen/element_padding_small" app:cardCornerRadius="@dimen/element_radius_default" app:cardElevation="0.0dp" />
+    <com.playchat.ui.fragment.home.MoreGamesShortcutView android:id="@id/more_games" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" android:layout_marginHorizontal="@dimen/element_padding_small" android:paddingHorizontal="@dimen/game_shortcuts_item_more_horizontal_padding" android:paddingVertical="@dimen/game_shortcuts_item_more_vertical_padding" />
+    <View android:id="@id/empty_view" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.0" />
+</LinearLayout>

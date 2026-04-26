@@ -1,0 +1,17 @@
+package defpackage;
+
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+/* JADX INFO: loaded from: classes3.dex */
+public abstract class gu3 {
+    public static final Class<?> tryLoadClass(@NotNull ClassLoader classLoader, @NotNull String fqName) {
+        Intrinsics.checkNotNullParameter(classLoader, "<this>");
+        Intrinsics.checkNotNullParameter(fqName, "fqName");
+        try {
+            return Class.forName(fqName, false, classLoader);
+        } catch (ClassNotFoundException unused) {
+            return null;
+        }
+    }
+}

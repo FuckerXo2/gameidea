@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:id="@id/cl_container" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <FrameLayout android:id="@id/action_bar_background" android:background="@drawable/background_round_top_dialog_secondary" android:layout_width="match_parent" android:layout_height="@dimen/action_bar_height" android:backgroundTint="?appThemeColorScreenBackgroundPrimary">
+            <ImageButton android:id="@id/sort_button" android:src="@drawable/ic_sort" android:tint="?appThemeColorTextTitle" android:importantForAccessibility="no" style="@style/ActionBarButtonStyle" />
+            <TextView android:textSize="@dimen/text_size_default" android:textColor="?appThemeColorTextTitle" android:layout_gravity="center" android:id="@id/select_game_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/plato_select_game" android:textAllCaps="true" />
+            <ImageButton android:layout_gravity="end|center" android:id="@id/close_button" android:contentDescription="@string/plato_cancel" android:layout_marginEnd="@dimen/element_padding_tiny" style="@style/ButtonClose" />
+        </FrameLayout>
+        <View android:id="@id/divider" android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" />
+        <androidx.recyclerview.widget.RecyclerView android:orientation="horizontal" android:id="@id/game_chooser_categories_recycler_view" android:background="?appThemeColorScreenBackgroundSecondary" android:padding="@dimen/element_padding_default" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="@dimen/game_categories_height" app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/rv_games" android:background="?appThemeColorScreenBackgroundSecondary" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:minHeight="@dimen/game_chooser_dialog_height" />
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

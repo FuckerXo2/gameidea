@@ -1,0 +1,30 @@
+.class public LUj2$a;
+.super Landroidx/recyclerview/widget/RecyclerView$F;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = LUj2;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "a"
+.end annotation
+
+
+# instance fields
+.field public final u:Landroid/widget/TextView;
+
+
+# direct methods
+.method public constructor <init>(Landroid/widget/TextView;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Landroidx/recyclerview/widget/RecyclerView$F;-><init>(Landroid/view/View;)V
+
+    iput-object p1, p0, LUj2$a;->u:Landroid/widget/TextView;
+
+    return-void
+.end method

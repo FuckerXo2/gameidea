@@ -1,0 +1,19 @@
+package androidx.datastore.core.okio;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.exifinterface.media.ExifInterface;
+import defpackage.kd0;
+import kotlin.Metadata;
+import kotlin.Unit;
+import okio.BufferedSink;
+import okio.BufferedSource;
+
+/* JADX INFO: loaded from: classes.dex */
+@Metadata(d1 = {"\u0000 \n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0000\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0006\bf\u0018\u0000*\u0004\b\u0000\u0010\u00012\u00020\u0002J\u0018\u0010\u0005\u001a\u00028\u00002\u0006\u0010\u0004\u001a\u00020\u0003H¦@¢\u0006\u0004\b\u0005\u0010\u0006J \u0010\u000b\u001a\u00020\n2\u0006\u0010\u0007\u001a\u00028\u00002\u0006\u0010\t\u001a\u00020\bH¦@¢\u0006\u0004\b\u000b\u0010\fR\u0014\u0010\u000f\u001a\u00028\u00008&X¦\u0004¢\u0006\u0006\u001a\u0004\b\r\u0010\u000eø\u0001\u0000\u0082\u0002\u0006\n\u0004\b!0\u0001¨\u0006\u0010À\u0006\u0001"}, d2 = {"Landroidx/datastore/core/okio/OkioSerializer;", ExifInterface.GPS_DIRECTION_TRUE, "", "Lokio/BufferedSource;", "source", "readFrom", "(Lokio/BufferedSource;Lkd0;)Ljava/lang/Object;", "t", "Lokio/BufferedSink;", "sink", "", "writeTo", "(Ljava/lang/Object;Lokio/BufferedSink;Lkd0;)Ljava/lang/Object;", "getDefaultValue", "()Ljava/lang/Object;", "defaultValue", "datastore-core-okio"}, k = 1, mv = {1, 8, 0}, xi = ConstraintLayout.LayoutParams.Table.LAYOUT_CONSTRAINT_VERTICAL_CHAINSTYLE)
+public interface OkioSerializer<T> {
+    T getDefaultValue();
+
+    Object readFrom(BufferedSource bufferedSource, kd0<? super T> kd0Var);
+
+    Object writeTo(T t, BufferedSink bufferedSink, kd0<? super Unit> kd0Var);
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/lobby_leaderboard_chips_won_icon" android:layout_width="@dimen/item_currency_icon_size_small" android:layout_height="@dimen/item_currency_icon_size_small" android:src="@drawable/ic_lobby_chips" app:layout_constraintBottom_toBottomOf="@id/lobby_leaderboard_chips_won_value" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/lobby_leaderboard_chips_won_value" />
+    <TextView android:textSize="@dimen/lobby_text_size_small" android:textColor="@color/lobby_text_color_light_yellow" android:id="@id/lobby_leaderboard_chips_won_value" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/element_padding_small" app:layout_constraintStart_toEndOf="@id/lobby_leaderboard_chips_won_icon" style="@style/LobbyShadowedText" />
+</merge>

@@ -1,0 +1,1655 @@
+{ "Filters" : [
+{
+    "Name": "BUNCH_VERSE_HATS_01_Military",
+    "Source": "efceb516-8409-43b7-bebd-4c1da012ba6e",
+    "SourceSkinID": "52ae7004-bc9c-41f9-297c-916d347f0afb",
+    "SourceSkinIDInt": 880741115,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_042_HalfBuzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_042_HalfBuzzcut",
+            "ToSkinID": "32deaea9-d7c6-4b42-3309-3c525cb97525",
+            "ToSkinIDInt": 1555658021,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_02_Military 02",
+    "Source": "dff6a754-257a-4bd3-9ed5-d8839fa60c42",
+    "SourceSkinID": "4fb7e807-7ece-43ca-297c-916d38a8b366",
+    "SourceSkinIDInt": 950580070,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_03_Wide",
+    "Source": "d2069cd1-8a8f-461c-974d-61d20736e72f",
+    "SourceSkinID": "27be06c2-3b26-4eb9-297c-916df54db860",
+    "SourceSkinIDInt": -179455904,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_042_HalfBuzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_042_HalfBuzzcut",
+            "ToSkinID": "32deaea9-d7c6-4b42-3309-3c525cb97525",
+            "ToSkinIDInt": 1555658021,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_04_Bandages",
+    "Source": "0aaccb68-b8ae-4d68-992f-de9cc3cab64d",
+    "SourceSkinID": "1f8562bc-2c1e-4eca-297c-916dee787d11",
+    "SourceSkinIDInt": -294093551,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_05_Fashion cap",
+    "Source": "e31ec4a2-79d4-4b65-b069-c394c2aebc6a",
+    "SourceSkinID": "b9418d95-2239-478a-297c-916da2964b08",
+    "SourceSkinIDInt": -1567208696,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_06_Chicken cap",
+    "Source": "8e15b1c3-27a7-4f0b-b53a-1c25bd0943e3",
+    "SourceSkinID": "1a385624-9f1b-4d8d-297c-916d0fbd2d2a",
+    "SourceSkinIDInt": 264056106,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_07_Dog cap",
+    "Source": "88853bcd-5b49-4724-a455-9be8377fb3a2",
+    "SourceSkinID": "9d41d808-c785-45e8-297c-916d598fd438",
+    "SourceSkinIDInt": 1502598200,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_08_Miner",
+    "Source": "034de04e-7579-481a-bddf-1bde86cc205a",
+    "SourceSkinID": "0a2ab9f9-02e0-476c-297c-916d2e2cd96d",
+    "SourceSkinIDInt": 774691181,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_09_Hat tall",
+    "Source": "8a292cc1-a9ec-438d-99eb-036f5ca738c8",
+    "SourceSkinID": "9fbac50d-0ee6-4aaf-297c-916df1928b09",
+    "SourceSkinIDInt": -242054391,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_11_Hockey",
+    "Source": "731c81a9-e6a6-421a-9540-c9175289320e",
+    "SourceSkinID": "124fd058-33f8-477b-297c-916d926125dc",
+    "SourceSkinIDInt": -1839127076,
+    "ReplaceMatches": [
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 06 - Midlong\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "f4f0ad78-f6ae-4969-ae80-57f2f6256736",
+            "FromSkinID": "9d7a22a4-7406-4eab-3309-3c528c306dcb",
+            "FromSkinIDInt": -1942983221,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 10 - MessyMidLong\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "b8523b6b-0b9a-4de4-8cc5-6629a18438bd",
+            "FromSkinID": "0b2052e8-b1b3-4e28-3309-3c52f7f3adaf",
+            "FromSkinIDInt": -135025233,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 15 - Stylish\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "13df4618-8fff-4819-ba2e-c3484542ac61",
+            "FromSkinID": "6480ac9c-5202-4f39-3309-3c5241031241",
+            "FromSkinIDInt": 1090720321,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 09 - Strands\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "ca49e8d7-fc1f-48f6-b0cb-c394453ceb22",
+            "FromSkinID": "b14bfec1-65b3-478f-3309-3c521daa1a16",
+            "FromSkinIDInt": 497687062,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 12 - Squarecut\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "0c429e74-60a1-4bae-9524-c668eb3e4e9f",
+            "FromSkinID": "453e1697-3a61-4694-3309-3c526563180f",
+            "FromSkinIDInt": 1700993039,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 23 - Bunches\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "00cc5d68-f2da-4cc0-83e7-1d1390a865b6",
+            "FromSkinID": "ec426103-e43e-44f3-3309-3c52405e2928",
+            "FromSkinIDInt": 1079912744,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[AnyFromCategory] Glasses → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 13,
+            "CategoryIDTypeString": "Glasses",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_12_Kitsune",
+    "Source": "18bf770d-f905-48d2-b074-55a49163ec97",
+    "SourceSkinID": "c45843ea-f96e-41bb-297c-916da12d33df",
+    "SourceSkinIDInt": -1590873121,
+    "ReplaceMatches": [
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 06 - Midlong\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "f4f0ad78-f6ae-4969-ae80-57f2f6256736",
+            "FromSkinID": "9d7a22a4-7406-4eab-3309-3c528c306dcb",
+            "FromSkinIDInt": -1942983221,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 10 - MessyMidLong\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "b8523b6b-0b9a-4de4-8cc5-6629a18438bd",
+            "FromSkinID": "0b2052e8-b1b3-4e28-3309-3c52f7f3adaf",
+            "FromSkinIDInt": -135025233,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 15 - Stylish\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "13df4618-8fff-4819-ba2e-c3484542ac61",
+            "FromSkinID": "6480ac9c-5202-4f39-3309-3c5241031241",
+            "FromSkinIDInt": 1090720321,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 09 - Strands\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "ca49e8d7-fc1f-48f6-b0cb-c394453ceb22",
+            "FromSkinID": "b14bfec1-65b3-478f-3309-3c521daa1a16",
+            "FromSkinIDInt": 497687062,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 12 - Squarecut\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "0c429e74-60a1-4bae-9524-c668eb3e4e9f",
+            "FromSkinID": "453e1697-3a61-4694-3309-3c526563180f",
+            "FromSkinIDInt": 1700993039,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 23 - Bunches\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "00cc5d68-f2da-4cc0-83e7-1d1390a865b6",
+            "FromSkinID": "ec426103-e43e-44f3-3309-3c52405e2928",
+            "FromSkinIDInt": 1079912744,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[AnyFromCategory] Glasses → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 13,
+            "CategoryIDTypeString": "Glasses",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_13_Police",
+    "Source": "8d8dc80f-3ae3-4e8d-ac5c-ca4b7e05b993",
+    "SourceSkinID": "4d96d2d6-9bf7-448d-297c-916dad9bc20d",
+    "SourceSkinIDInt": -1382301171,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_14_Pilot",
+    "Source": "9bf4ce79-1ac9-4947-b76b-b6e747ff23bc",
+    "SourceSkinID": "c0cf0003-40cc-4c6c-297c-916d75a6583d",
+    "SourceSkinIDInt": 1973835837,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_15_Frog",
+    "Source": "721c896a-bc1e-4ceb-b4b7-f480c750a6fd",
+    "SourceSkinID": "73c00d21-c698-40a0-297c-916d0b63e05c",
+    "SourceSkinIDInt": 191094876,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_17_Back cap",
+    "Source": "da3faa99-84c0-4afd-95ca-b4d031e9a02a",
+    "SourceSkinID": "7c530cff-cf48-4b81-297c-916db19f1465",
+    "SourceSkinIDInt": -1314974619,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_18_Beisbol cap",
+    "Source": "4d1b3b2b-8de6-4028-a3e6-f1b0a3581935",
+    "SourceSkinID": "207672de-e7a4-4143-297c-916d580d75df",
+    "SourceSkinIDInt": 1477277151,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_19_Beret",
+    "Source": "68ec8da8-be7c-46e0-82fd-7cc430cab617",
+    "SourceSkinID": "d0a9ecca-fc6b-47e5-297c-916dcafc4312",
+    "SourceSkinIDInt": -889437422,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_21_Space helmet",
+    "Source": "4f602bd0-3297-4f52-9186-12612e7acc7e",
+    "SourceSkinID": "c3d16a23-a74c-4b5c-297c-916dbab94045",
+    "SourceSkinIDInt": -1162264507,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_22_Bandana",
+    "Source": "6afe5ce8-3b46-4fb6-b61d-b7ee3ce88894",
+    "SourceSkinID": "16d395dc-0743-4c72-297c-916da639a9a3",
+    "SourceSkinIDInt": -1506170461,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_042_HalfBuzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_042_HalfBuzzcut",
+            "ToSkinID": "32deaea9-d7c6-4b42-3309-3c525cb97525",
+            "ToSkinIDInt": 1555658021,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_23_Snow cap",
+    "Source": "546575be-6129-43fe-9c66-2f8edc5ddd9f",
+    "SourceSkinID": "b993565a-8650-4a91-297c-916d35025200",
+    "SourceSkinIDInt": 889344512,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_24_Snow cap 02",
+    "Source": "17ca2616-5b6f-4cf1-a29f-15fb72cab9de",
+    "SourceSkinID": "a25a1824-f1c0-48ae-297c-916dcea5be8b",
+    "SourceSkinIDInt": -827998581,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_25_Fedora",
+    "Source": "99967b93-6783-4819-8673-b438b7b38fb7",
+    "SourceSkinID": "b0741edc-ad71-4099-297c-916dc82a9e3b",
+    "SourceSkinIDInt": -936731077,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_26_Witch",
+    "Source": "c7b124e5-f692-486c-a0a7-99b4fb0f8fac",
+    "SourceSkinID": "4f76e1ff-2b1a-40e3-297c-916d97d8ec71",
+    "SourceSkinIDInt": -1747391375,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_045_BuzzcutPonytail",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_27_Wolf",
+    "Source": "cbbddf67-6f88-42df-8c6c-f15445a8dcc0",
+    "SourceSkinID": "153510a9-4c97-49f9-297c-916d3d869d65",
+    "SourceSkinIDInt": 1032232293,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_HATS_28_Military 03",
+    "Source": "81b9303b-6a56-4a6c-b073-c216bf71c402",
+    "SourceSkinID": "6914ab1f-de25-47ed-297c-916d449a87e2",
+    "SourceSkinIDInt": 1150978018,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Tops 15 - Leather_jacket",
+    "Source": "6f266b04-b481-43a4-b713-e9bf6badcf3e",
+    "SourceSkinID": "d7235494-f2e6-42b7-33ce-3ce62ee3280e",
+    "SourceSkinIDInt": 786638862,
+    "ReplaceMatches": [
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Pants 19 - Skirt 03\" → \"Pants_049_SkinSkirt\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "107c433b-f3e0-4aff-a905-442cd8d5bc4c",
+            "FromSkinID": "4026d4b2-4094-4659-0e23-fbf82f5e83e4",
+            "FromSkinIDInt": 794723300,
+            "FromCategoryIDTypeString": "ClothingBottom",
+            "To": "Pants_049_SkinSkirt",
+            "ToSkinID": "ec826a8b-a82c-402e-0e23-fbf859954cdf",
+            "ToSkinIDInt": 1502956767,
+            "ToCategoryIDTypeString": "ClothingBottom"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Tops 17 - Blazer",
+    "Source": "bf157d19-d181-4e04-a859-24f687e212d9",
+    "SourceSkinID": "16e613ef-cb87-4c98-33ce-3ce60ccc8496",
+    "SourceSkinIDInt": 214729878,
+    "ReplaceMatches": [
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Pants 10 - Skirt\" → \"Pants_049_SkinSkirt\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "3f961ad7-6cfb-477a-8d3b-66d0650403a2",
+            "FromSkinID": "3874a968-86b6-44a9-0e23-fbf81d2c8092",
+            "FromSkinIDInt": 489455762,
+            "FromCategoryIDTypeString": "ClothingBottom",
+            "To": "Pants_049_SkinSkirt",
+            "ToSkinID": "ec826a8b-a82c-402e-0e23-fbf859954cdf",
+            "ToSkinIDInt": 1502956767,
+            "ToCategoryIDTypeString": "ClothingBottom"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Pants 11 - Skirt 02\" → \"Pants_049_SkinSkirt\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "c5bc01a6-a576-4120-8a2b-7cdbd2d879f9",
+            "FromSkinID": "faee2098-b52e-4fe9-0e23-fbf86d2f8204",
+            "FromSkinIDInt": 1831830020,
+            "FromCategoryIDTypeString": "ClothingBottom",
+            "To": "Pants_049_SkinSkirt",
+            "ToSkinID": "ec826a8b-a82c-402e-0e23-fbf859954cdf",
+            "ToSkinIDInt": 1502956767,
+            "ToCategoryIDTypeString": "ClothingBottom"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Pants 19 - Skirt 03\" → \"Pants_049_SkinSkirt\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "107c433b-f3e0-4aff-a905-442cd8d5bc4c",
+            "FromSkinID": "4026d4b2-4094-4659-0e23-fbf82f5e83e4",
+            "FromSkinIDInt": 794723300,
+            "FromCategoryIDTypeString": "ClothingBottom",
+            "To": "Pants_049_SkinSkirt",
+            "ToSkinID": "ec826a8b-a82c-402e-0e23-fbf859954cdf",
+            "ToSkinIDInt": 1502956767,
+            "ToCategoryIDTypeString": "ClothingBottom"
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Hear 17 - Long",
+    "Source": "5f9d0d88-e98c-4f40-bf55-0f213cd1be2c",
+    "SourceSkinID": "92e14df8-beb9-410b-3309-3c52ca675179",
+    "SourceSkinIDInt": -899198599,
+    "ReplaceMatches": [
+        {
+            "Name": "[ExcludeFromFilters] Unspecified → ✘ (remove)",
+            "FilterType": 2,
+            "FilterTypeString": "ExcludeFromFilters",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Hear 25 - Mid Long 02",
+    "Source": "65a72f08-b0cc-46d9-9837-aefdb3a4c2c9",
+    "SourceSkinID": "6d430783-362a-41c1-3309-3c527d7d7933",
+    "SourceSkinIDInt": 2105375027,
+    "ReplaceMatches": [
+        {
+            "Name": "[ExcludeFromFilters] Unspecified → ✘ (remove)",
+            "FilterType": 2,
+            "FilterTypeString": "ExcludeFromFilters",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Hear 27 - Very Short",
+    "Source": "29b4066e-e535-4439-8049-93d1e0b3f2d3",
+    "SourceSkinID": "9ec060e9-fe9f-4f51-3309-3c5259a78d48",
+    "SourceSkinIDInt": 1504152904,
+    "ReplaceMatches": [
+        {
+            "Name": "[ExcludeFromFilters] Unspecified → ✘ (remove)",
+            "FilterType": 2,
+            "FilterTypeString": "ExcludeFromFilters",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Hear 28 - Two Braids",
+    "Source": "9c12a5ae-01ce-485a-b76e-c1549f4d5219",
+    "SourceSkinID": "702ca74b-84f7-4c4b-3309-3c52947042ab",
+    "SourceSkinIDInt": -1804582229,
+    "ReplaceMatches": [
+        {
+            "Name": "[ExcludeFromFilters] Unspecified → ✘ (remove)",
+            "FilterType": 2,
+            "FilterTypeString": "ExcludeFromFilters",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Hear 32 - LongHair",
+    "Source": "4edd9b22-4aca-4568-9c77-9382e789619e",
+    "SourceSkinID": "e56d690a-0570-464f-3309-3c524cbbba95",
+    "SourceSkinIDInt": 1287371413,
+    "ReplaceMatches": [
+        {
+            "Name": "[ExcludeFromFilters] Unspecified → ✘ (remove)",
+            "FilterType": 2,
+            "FilterTypeString": "ExcludeFromFilters",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Hear 34 - Dread Long",
+    "Source": "230f7a26-20d2-4218-bb45-5e6ee158d93b",
+    "SourceSkinID": "17f3eeb4-247a-49d4-3309-3c521ec000d7",
+    "SourceSkinIDInt": 515899607,
+    "ReplaceMatches": [
+        {
+            "Name": "[ExcludeFromFilters] Unspecified → ✘ (remove)",
+            "FilterType": 2,
+            "FilterTypeString": "ExcludeFromFilters",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Hear 39 -  Long Straight",
+    "Source": "f4749e85-fc61-42e1-8e77-6f3e54d6ec97",
+    "SourceSkinID": "d271c664-aeaf-4d27-3309-3c520eac7244",
+    "SourceSkinIDInt": 246182468,
+    "ReplaceMatches": [
+        {
+            "Name": "[ExcludeFromFilters] Unspecified → ✘ (remove)",
+            "FilterType": 2,
+            "FilterTypeString": "ExcludeFromFilters",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "BUNCH_VERSE_Hear 40 -  Wavy Loose",
+    "Source": "9af323f4-5cf8-4969-ab6d-ee3778b97a09",
+    "SourceSkinID": "2b2df1cc-ee56-47b1-3309-3c5208958806",
+    "SourceSkinIDInt": 144017414,
+    "ReplaceMatches": [
+        {
+            "Name": "[ExcludeFromFilters] Unspecified → ✘ (remove)",
+            "FilterType": 2,
+            "FilterTypeString": "ExcludeFromFilters",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_057_Ghost",
+    "Source": "1d3fef15-1450-4a63-b588-2493ab8b7b99",
+    "SourceSkinID": "968cea43-2ea7-4071-297c-916da6a7087e",
+    "SourceSkinIDInt": -1499002754,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_062_RoundCat",
+    "Source": "d19f1268-cb77-4307-b5e7-f05cb96538e8",
+    "SourceSkinID": "ffa5f84b-b89b-4e32-297c-916dccb8231a",
+    "SourceSkinIDInt": -860347622,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_052_Pumpkin",
+    "Source": "a0c08796-e582-4bf7-8978-862397f2fbc7",
+    "SourceSkinID": "89bf331f-50df-4a4b-297c-916d5d9639cf",
+    "SourceSkinIDInt": 1570126287,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_056_Cat",
+    "Source": "ab9175d3-ec9a-4236-9960-bfe1fe1f3cf5",
+    "SourceSkinID": "d4eff1f7-87b0-4152-297c-916dae21cba1",
+    "SourceSkinIDInt": -1373516895,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_061_Pumpkin_02",
+    "Source": "38c68b33-76d9-4ae4-9e9a-adba7a11e640",
+    "SourceSkinID": "fc45f3cb-85cf-4f31-297c-916dde26630a",
+    "SourceSkinIDInt": -567909622,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_063_JacksonMask",
+    "Source": "30571537-feda-4d9e-964e-ff7752560b3d",
+    "SourceSkinID": "720e0c10-8d0d-438f-297c-916d3b693b29",
+    "SourceSkinIDInt": 996752169,
+    "ReplaceMatches": [
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 06 - Midlong\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "f4f0ad78-f6ae-4969-ae80-57f2f6256736",
+            "FromSkinID": "9d7a22a4-7406-4eab-3309-3c528c306dcb",
+            "FromSkinIDInt": -1942983221,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 10 - MessyMidLong\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "b8523b6b-0b9a-4de4-8cc5-6629a18438bd",
+            "FromSkinID": "0b2052e8-b1b3-4e28-3309-3c52f7f3adaf",
+            "FromSkinIDInt": -135025233,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 15 - Stylish\" → \"Hair_044_Buzzcut\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "13df4618-8fff-4819-ba2e-c3484542ac61",
+            "FromSkinID": "6480ac9c-5202-4f39-3309-3c5241031241",
+            "FromSkinIDInt": 1090720321,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 09 - Strands\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "ca49e8d7-fc1f-48f6-b0cb-c394453ceb22",
+            "FromSkinID": "b14bfec1-65b3-478f-3309-3c521daa1a16",
+            "FromSkinIDInt": 497687062,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 12 - Squarecut\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "0c429e74-60a1-4bae-9524-c668eb3e4e9f",
+            "FromSkinID": "453e1697-3a61-4694-3309-3c526563180f",
+            "FromSkinIDInt": 1700993039,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[Specific] \"BUNCH_VERSE_Hear 23 - Bunches\" → \"Hair_045_BuzzcutPonytail\"",
+            "FilterType": 0,
+            "FilterTypeString": "Specific",
+            "CategoryIDType": 0,
+            "CategoryIDTypeString": "Unspecified",
+            "From": "00cc5d68-f2da-4cc0-83e7-1d1390a865b6",
+            "FromSkinID": "ec426103-e43e-44f3-3309-3c52405e2928",
+            "FromSkinIDInt": 1079912744,
+            "FromCategoryIDTypeString": "Hair",
+            "To": "Hair_045_BuzzcutPonytail",
+            "ToSkinID": "b2e47fb0-7d8a-49f6-3309-3c5201e2a957",
+            "ToSkinIDInt": 31631703,
+            "ToCategoryIDTypeString": "Hair"
+        },
+        {
+            "Name": "[AnyFromCategory] Glasses → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 13,
+            "CategoryIDTypeString": "Glasses",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_055_Skull",
+    "Source": "37529825-2f67-4d51-8e89-711e228d5360",
+    "SourceSkinID": "18279693-fefc-4096-297c-916d4e406759",
+    "SourceSkinIDInt": 1312843609,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Glasses → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 13,
+            "CategoryIDTypeString": "Glasses",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_064_SnowmanHead",
+    "Source": "9c3cca08-0936-4be3-8c56-e98ab6bacbfa",
+    "SourceSkinID": "9844cac5-a682-41b5-297c-916d77af42a2",
+    "SourceSkinIDInt": 2007974562,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Glasses → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 13,
+            "CategoryIDTypeString": "Glasses",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_065_ElfCapEar",
+    "Source": "1600c6b1-cd2a-4549-bd57-88a6df98e5eb",
+    "SourceSkinID": "0be68d20-4362-492c-297c-916d2a6fab51",
+    "SourceSkinIDInt": 711961425,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Ears → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 5,
+            "CategoryIDTypeString": "Ears",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_068_PolarBear",
+    "Source": "c5026506-faab-4bb8-981e-40e0c46f6088",
+    "SourceSkinID": "ef141c64-c335-4d3e-297c-916d9bdab4ee",
+    "SourceSkinIDInt": -1680165650,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_072_ReindeerRoundedMask",
+    "Source": "6ff950af-a43e-410f-bec6-67dcbaa76471",
+    "SourceSkinID": "6ed93f2c-76b8-40e5-297c-916dff77482d",
+    "SourceSkinIDInt": -8959955,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_081_PenguinRoundedMask",
+    "Source": "42ddd41f-1a0c-4ee5-8f79-0c3297effde9",
+    "SourceSkinID": "de7b5f2e-f47b-414a-297c-916d4b85d6c5",
+    "SourceSkinIDInt": 1267062469,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_032_Dinosaur",
+    "Source": "390586c9-7d12-4855-a111-bb536eeead80",
+    "SourceSkinID": "4169bb68-4d78-4b12-297c-916da2ae9de2",
+    "SourceSkinIDInt": -1565614622,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Hat_051_Shark",
+    "Source": "c091f9ea-abe8-4106-9cef-013d95df2c12",
+    "SourceSkinID": "74f584da-2ac2-4ec0-297c-916d477f4b74",
+    "SourceSkinIDInt": 1199524724,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        },
+        {
+            "Name": "[AnyFromCategory] Earrings → ✘ (remove)",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 15,
+            "CategoryIDTypeString": "Earrings",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "",
+            "ToSkinID": "",
+            "ToSkinIDInt": 1,
+            "ToCategoryIDTypeString": ""
+        }
+    ]
+},
+{
+    "Name": "Cuddle Heart Beanie",
+    "Source": "ca1aef4a-d43a-4cb9-9c23-bde73dc03c3a",
+    "SourceSkinID": "988ca6c6-bf88-4952-a5d4-75166a86682d",
+    "SourceSkinIDInt": 1787193389,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+},
+{
+    "Name": "Duo Lingo Owl Hat",
+    "Source": "8d66ac6d-6617-4cee-81bd-7c6076930414",
+    "SourceSkinID": "0923ccfc-4290-46a7-a3b9-988778f20427",
+    "SourceSkinIDInt": 2029126695,
+    "ReplaceMatches": [
+        {
+            "Name": "[AnyFromCategory] Hair → Hair_044_Buzzcut",
+            "FilterType": 1,
+            "FilterTypeString": "AnyFromCategory",
+            "CategoryIDType": 10,
+            "CategoryIDTypeString": "Hair",
+            "From": "",
+            "FromSkinID": "",
+            "FromSkinIDInt": 1,
+            "FromCategoryIDTypeString": "",
+            "To": "Hair_044_Buzzcut",
+            "ToSkinID": "33b88f30-257b-409f-3309-3c5297c10dc4",
+            "ToSkinIDInt": -1748955708,
+            "ToCategoryIDTypeString": "Hair"
+        }
+    ]
+}]
+}

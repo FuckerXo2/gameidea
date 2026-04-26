@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingTop="@dimen/element_padding_small" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/element_padding_large" android:paddingEnd="@dimen/element_padding_default"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/text_size_small" android:textColor="?appThemeColorTextDefault" android:id="@id/rooms_server_language_title_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/preferred_language_title" />
+    <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/text_size_small" android:textColor="?appThemeColorTextTitle" android:id="@id/rooms_server_language_value_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="@dimen/element_padding_small" android:layout_below="@id/rooms_server_language_title_text_view" app:drawableEndCompat="@drawable/ic_pencil" />
+</RelativeLayout>

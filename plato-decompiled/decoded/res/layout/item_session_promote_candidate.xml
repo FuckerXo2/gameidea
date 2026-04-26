@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/plato_list_selector" android:paddingTop="@dimen/element_padding_default" android:paddingBottom="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.playchat.ui.customview.FramedProfilePictureView android:id="@id/candidate_picture_view" android:layout_width="@dimen/avatar_size_default" android:layout_height="@dimen/avatar_size_default" android:layout_marginStart="@dimen/element_padding_large" />
+    <TextView android:textSize="@dimen/text_size_large" android:textColor="?appThemeColorTextTitle" android:id="@id/candidate_name_text_view" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/element_padding_default" />
+    <ImageView android:id="@id/candidate_crown_image_view" android:layout_width="@dimen/psession_control_option_crown_icon_size" android:layout_height="@dimen/psession_control_option_crown_icon_size" android:src="@drawable/ic_crown" android:layout_marginEnd="@dimen/element_padding_large" />
+    <View android:id="@id/item_right_divider" android:background="?appThemeColorDividerLine" android:layout_width="@dimen/divider_height" android:layout_height="match_parent" />
+</LinearLayout>

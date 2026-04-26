@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple android:color="@color/plato_white"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/element_radius_default" />
+            <stroke android:width="2.0dp" android:color="@color/plato_gray_E4" android:dashWidth="10.0dp" android:dashGap="4.0dp" />
+        </shape>
+    </item>
+</ripple>

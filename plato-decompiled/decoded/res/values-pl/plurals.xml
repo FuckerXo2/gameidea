@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="daily_quest_win_X_games_plurals">
+        <item quantity="one">Wygraj %d grę</item>
+        <item quantity="few">Wygraj %d gry</item>
+        <item quantity="many">Wygraj %d gier</item>
+        <item quantity="other">Wygraj %d gry</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Przewiń do przodu o %d sekundę</item>
+        <item quantity="few">Przewiń do przodu o %d sekundy</item>
+        <item quantity="many">Przewiń do przodu o %d sekund</item>
+        <item quantity="other">Przewiń do przodu o %d sekundy</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Przewiń do tyłu o %d sekundę</item>
+        <item quantity="few">Przewiń do tyłu o %d sekundy</item>
+        <item quantity="many">Przewiń do tyłu o %d sekund</item>
+        <item quantity="other">Przewiń do tyłu o %d sekundy</item>
+    </plurals>
+    <plurals name="lobby_tables_available">
+        <item quantity="one">%d Stół Dostępny</item>
+        <item quantity="few">%d Stoły Dostępne</item>
+        <item quantity="many">%d Stołów Dostępnych</item>
+        <item quantity="other">%d Stołów Dostępnych</item>
+    </plurals>
+    <plurals name="lobby_tournaments_available">
+        <item quantity="one">%d Turniej Dostępny</item>
+        <item quantity="few">%d Turnieje Dostępne</item>
+        <item quantity="many">%d Turniejów Dostępnych</item>
+        <item quantity="other">%d Turniejów Dostępnych</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d nowe powiadomienie</item>
+        <item quantity="few">%d nowe powiadomienia</item>
+        <item quantity="many">%d nowych powiadomień</item>
+        <item quantity="other">%d nowego powiadomienia</item>
+    </plurals>
+    <plurals name="plato_days">
+        <item quantity="zero">%d dni</item>
+        <item quantity="one">%d dzień</item>
+        <item quantity="few">%d dni</item>
+        <item quantity="many">%d dni</item>
+        <item quantity="other">%d dni</item>
+    </plurals>
+    <plurals name="plato_days_ago">
+        <item quantity="zero">%d dni temu</item>
+        <item quantity="one">%d dzień temu</item>
+        <item quantity="few">%d dni temu</item>
+        <item quantity="many">%d dni temu</item>
+        <item quantity="other">%d dni temu</item>
+    </plurals>
+    <plurals name="plato_error_throttle_minutes_text">
+        <item quantity="one">Proszę spróbować ponownie za %d minutę.</item>
+        <item quantity="few">Proszę spróbować ponownie za %d minuty.</item>
+        <item quantity="many">Proszę spróbować ponownie za %d minut.</item>
+        <item quantity="other">Proszę spróbować ponownie za %d minuty.</item>
+    </plurals>
+    <plurals name="plato_error_throttle_text">
+        <item quantity="zero">Spróbuj ponownie za %d sekund.</item>
+        <item quantity="one">Spróbuj ponownie za %d sekundę.</item>
+        <item quantity="few">Spróbuj ponownie za %d sekund.</item>
+        <item quantity="many">Spróbuj ponownie za %d sekund.</item>
+        <item quantity="other">Spróbuj ponownie za %d sekund.</item>
+    </plurals>
+    <plurals name="plato_game_plurals">
+        <item quantity="one">gra</item>
+        <item quantity="few">gry</item>
+        <item quantity="many">gier</item>
+        <item quantity="other">gier</item>
+    </plurals>
+    <plurals name="plato_group_members">
+        <item quantity="zero">%d członków</item>
+        <item quantity="one">%d członek</item>
+        <item quantity="few">%d członków</item>
+        <item quantity="many">%d członków</item>
+        <item quantity="other">%d członków</item>
+    </plurals>
+    <plurals name="plato_home_more_games_text">
+        <item quantity="zero">%d WIĘCEJ AKTYWNYCH GIER</item>
+        <item quantity="one">%d WIĘCEJ AKTYWNYCH GIER</item>
+        <item quantity="few">%d WIĘCEJ AKTYWNYCH GIER</item>
+        <item quantity="many">%d WIĘCEJ AKTYWNYCH GIER</item>
+        <item quantity="other">%d WIĘCEJ AKTYWNYCH GIER</item>
+    </plurals>
+    <plurals name="plato_hours_capitalized">
+        <item quantity="zero">%d godz.</item>
+        <item quantity="one">1 godz.</item>
+        <item quantity="few">%d godz.</item>
+        <item quantity="many">%d godz.</item>
+        <item quantity="other">%d godz.</item>
+    </plurals>
+    <plurals name="plato_months_ago">
+        <item quantity="zero">%d miesięcy temu</item>
+        <item quantity="one">%d miesiąc temu</item>
+        <item quantity="few">%d miesięcy temu</item>
+        <item quantity="many">%d miesięcy temu</item>
+        <item quantity="other">%d miesięcy temu</item>
+    </plurals>
+    <plurals name="plato_weeks_ago">
+        <item quantity="zero">%d tygodni temu</item>
+        <item quantity="one">%d tydzień temu</item>
+        <item quantity="few">%d tygodni temu</item>
+        <item quantity="many">%d tygodni temu</item>
+        <item quantity="other">%d tygodni temu</item>
+    </plurals>
+    <plurals name="plato_wins">
+        <item quantity="zero">LICZBA WYGRANYCH: %d</item>
+        <item quantity="one">LICZBA WYGRANYCH: %d</item>
+        <item quantity="few">LICZBA WYGRANYCH: %d</item>
+        <item quantity="many">LICZBA WYGRANYCH: %d</item>
+        <item quantity="other">LICZBA WYGRANYCH: %d</item>
+    </plurals>
+    <plurals name="plato_wins_newline">
+        <item quantity="zero">"%d
+WYGRANYCH"</item>
+        <item quantity="one">"%d
+WYGRANA"</item>
+        <item quantity="few">"%d
+WYGRANE"</item>
+        <item quantity="many">"%d
+WYGRANYCH"</item>
+        <item quantity="other">"%d
+WYGRANE"</item>
+    </plurals>
+    <plurals name="plato_years_ago">
+        <item quantity="zero">%d lat(a) temu</item>
+        <item quantity="one">%d rok temu</item>
+        <item quantity="few">%d lat(a) temu</item>
+        <item quantity="many">%d lat(a) temu</item>
+        <item quantity="other">%d lat(a) temu</item>
+    </plurals>
+    <plurals name="profile_card_statInfo_wins">
+        <item quantity="zero">%1$s WYGRANYCH</item>
+        <item quantity="one">%1$s WYGRANA</item>
+        <item quantity="few">%1$s WYGRANYCH</item>
+        <item quantity="many">%1$s WYGRANYCH</item>
+        <item quantity="other">%1$s WYGRANYCH</item>
+    </plurals>
+    <plurals name="quest_X_coins_plurals">
+        <item quantity="one">%d moneta</item>
+        <item quantity="few">%d monety</item>
+        <item quantity="many">%d monet</item>
+        <item quantity="other">%d monety</item>
+    </plurals>
+</resources>

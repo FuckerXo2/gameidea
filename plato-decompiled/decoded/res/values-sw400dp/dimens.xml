@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="lobby_animated_chip_icon_half_size">26.0dp</dimen>
+    <dimen name="lobby_animated_chip_icon_half_size_small">21.0dp</dimen>
+    <dimen name="lobby_animated_chip_icon_size">52.0dp</dimen>
+    <dimen name="lobby_animated_chip_icon_size_small">42.0dp</dimen>
+    <dimen name="lobby_chip_balance_text_size">20.0dp</dimen>
+    <dimen name="lobby_currency_purchase_buy_button_width">100.0dp</dimen>
+    <dimen name="lobby_currency_purchase_item_width">320.0dp</dimen>
+    <dimen name="lobby_dialog_fixed_height">300.0dp</dimen>
+    <dimen name="lobby_dialog_fixed_width">630.0dp</dimen>
+    <dimen name="lobby_dialog_fixed_width_small">340.0dp</dimen>
+    <dimen name="lobby_leaderboard_podium_size">158.0dp</dimen>
+    <dimen name="lobby_play_style_view_size">72.0dp</dimen>
+    <dimen name="lobby_side_navigation_panel_width">228.0dp</dimen>
+    <dimen name="lobby_stats_progress_view_size">48.0dp</dimen>
+    <dimen name="lobby_text_size_default">16.0dp</dimen>
+    <dimen name="lobby_text_size_extra_large">24.0dp</dimen>
+    <dimen name="lobby_text_size_large">18.0dp</dimen>
+    <dimen name="lobby_text_size_small">14.0dp</dimen>
+    <dimen name="lobby_text_size_tiny">12.0dp</dimen>
+</resources>

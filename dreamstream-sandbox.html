@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>DreamStream Phaser Studio</title>
+<!-- Load Professional Phaser 3 Physics Engine -->
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
+<style>
+  body { margin:0; padding:0; overflow:hidden; background: #0a0a10; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; height: 100vh; font-family: sans-serif; color: white;}
+  #header { padding: 15px; text-align: center; z-index: 100; width: 100%; box-sizing: border-box; background: #111; box-shadow: 0 4px 15px rgba(0,0,0,0.5);}
+  #header h1 { margin: 0 0 10px 0; font-size: 24px; color: #00e5ff;}
+  .input-bar { display: flex; gap: 10px; width: 100%; max-width: 600px; margin: 0 auto;}
+  input { flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #333; outline: none; font-size: 16px; background: #1a1a2e; color: #fff; }
+  button { padding: 12px 20px; border-radius: 10px; border: none; background: #00e5ff; color: #000; font-weight: bold; cursor: pointer; transition: 0.2s;}
+  
+  /* The container for the Phaser Canvas */
+  #phaser-game { flex: 1; width: 100%; display: flex; justify-content: center; align-items: center; background: #050505;}
+  #status-text { position: absolute; top: 60%; width: 100%; text-align: center; color: #00e5ff; font-size: 20px; pointer-events: none; font-weight: bold;}
+</style>
+</head>
+<body>
+
+<div id="header">
+    <h1 id="gameTitle">Phaser 3 AI Studio</h1>
+    <div class="input-bar">
+        <input type="text" id="promptInput" placeholder="A physics puzzle with bouncy emojis..." />
+        <button id="generateBtn" onclick="generateGame()">Dream</button>
+    </div>
+</div>
+
+<div id="phaser-game"></div>
+<div id="status-text">Ready for Prompt</div>
+
+<script>
+// Procedural WebAudio Sound Engine for AI Games
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+window.playSound = function(type) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const osc = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    osc.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    
+    if(type === 'jump') {
+        osc.type = 'sine'; osc.frequency.setValueAtTime(150, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
+        gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+    } else if (type === 'coin') {
+        osc.type = 'sine'; osc.frequency.setValueAtTime(800, audioCtx.currentTime); osc.frequency.setValueAtTime(1200, audioCtx.currentTime + 0.05);
+        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+    } else if (type === 'explosion') {
+        osc.type = 'sawtooth'; osc.frequency.setValueAtTime(100, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(10, audioCtx.currentTime + 0.2);
+        gainNode.gain.setValueAtTime(0.5, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+    } else if (type === 'shoot') {
+        osc.type = 'square'; osc.frequency.setValueAtTime(400, audioCtx.currentTime); osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.1);
+        gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+        osc.start(); osc.stop(audioCtx.currentTime + 0.1);
+    }
+};
+
+async function generateGame() {
+    const prompt = document.getElementById('promptInput').value;
+    const btn = document.getElementById('generateBtn');
+    const title = document.getElementById('gameTitle');
+    const status = document.getElementById('status-text');
+
+    if (!prompt) return;
+
+    btn.disabled = true;
+    btn.innerText = "Compiling...";
+    status.innerText = "Igniting Phaser Physics Engine...";
+    
+    // Destroy previous game completely to clear the DOM and memory
+    if(window.game) {
+        window.game.destroy(true);
+        window.game = null;
+        document.getElementById('phaser-game').innerHTML = ''; // clear ghost canvas
+    }
+
+    try {
+        const response = await fetch('http://localhost:3005/api/dreamstream-generate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+        
+        if(data.success && data.code) {
+            title.innerText = data.title;
+            status.innerText = "";
+            
+            console.log("RAW PHASER CODE FROM AI:");
+            console.log(data.code);
+            
+            // Defend against Markdown hallucinations
+            let cleanCode = data.code;
+            if (cleanCode.indexOf('```') !== -1) {
+                cleanCode = cleanCode.replace(/^```[a-zA-Z]*\n?|\n?```$/g, '');
+            }
+            
+            // Safely execute the raw script globally, with error catching
+            const script = document.createElement('script');
+            script.innerHTML = "try {\n  " + cleanCode + "\n} catch(e) {\n  console.error('AI Phaser Logic Crash:', e);\n  document.getElementById('status-text').innerText = 'AI Code Math Error: ' + e.message;\n}";
+            document.body.appendChild(script);
+
+        } else {
+            status.innerText = "Failed to Compile Code.";
+        }
+
+    } catch(err) {
+        console.error(err);
+        status.innerText = "Backend Connection Failed!";
+    }
+
+    btn.disabled = false;
+    btn.innerText = "Dream Again";
+}
+</script>
+</body>
+</html>

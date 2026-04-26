@@ -1,0 +1,9 @@
+package cn.thinkingdata.analytics;
+
+/* JADX INFO: loaded from: classes.dex */
+public final class R$string {
+    public static int app_name = 2131820607;
+
+    private R$string() {
+    }
+}

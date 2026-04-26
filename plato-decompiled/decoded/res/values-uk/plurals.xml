@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="daily_quest_win_X_games_plurals">
+        <item quantity="one">Виграйте %d гру</item>
+        <item quantity="few">Виграйте %d гри</item>
+        <item quantity="many">Виграйте %d ігор</item>
+        <item quantity="other">Виграйте %d гри</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Перемотати вперед на %d секунду</item>
+        <item quantity="few">Перемотати вперед на %d секунди</item>
+        <item quantity="many">Перемотати вперед на %d секунд</item>
+        <item quantity="other">Перемотати вперед на %d секунди</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Перемотати назад на %d секунду</item>
+        <item quantity="few">Перемотати назад на %d секунди</item>
+        <item quantity="many">Перемотати назад на %d секунд</item>
+        <item quantity="other">Перемотати назад на %d секунди</item>
+    </plurals>
+    <plurals name="lobby_tables_available">
+        <item quantity="one">%d СТІЛ ДОСТУПНИЙ</item>
+        <item quantity="few">%d СТОЛИ ДОСТУПНІ</item>
+        <item quantity="many">%d СТОЛІВ ДОСТУПНО</item>
+        <item quantity="other">%d СТОЛІВ ДОСТУПНО</item>
+    </plurals>
+    <plurals name="lobby_tournaments_available">
+        <item quantity="one">%d ТУРНІР ДОСТУПНИЙ</item>
+        <item quantity="few">%d ТУРНІРИ ДОСТУПНІ</item>
+        <item quantity="many">%d ТУРНІРІВ ДОСТУПНО</item>
+        <item quantity="other">%d ТУРНІРІВ ДОСТУПНО</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d нове сповіщення</item>
+        <item quantity="few">%d нові сповіщення</item>
+        <item quantity="many">%d нових сповіщень</item>
+        <item quantity="other">%d нового сповіщення</item>
+    </plurals>
+    <plurals name="plato_days">
+        <item quantity="zero">%d днів</item>
+        <item quantity="one">%d день</item>
+        <item quantity="few">%d дні</item>
+        <item quantity="many">%d днів</item>
+        <item quantity="other">%d дні</item>
+    </plurals>
+    <plurals name="plato_days_ago">
+        <item quantity="zero">%d днів тому</item>
+        <item quantity="one">%d день тому</item>
+        <item quantity="few">%d дні тому</item>
+        <item quantity="many">%d днів тому</item>
+        <item quantity="other">%d дні(в) тому</item>
+    </plurals>
+    <plurals name="plato_error_throttle_minutes_text">
+        <item quantity="one">Будь ласка, спробуйте ще раз через %d хвилину.</item>
+        <item quantity="few">Будь ласка, спробуйте ще раз через %d хвилини.</item>
+        <item quantity="many">Будь ласка, спробуйте ще раз через %d хвилин.</item>
+        <item quantity="other">Будь ласка, спробуйте ще раз через %d хвилини.</item>
+    </plurals>
+    <plurals name="plato_error_throttle_text">
+        <item quantity="zero">Будь ласка, спробуйте ще раз за %d секунд.</item>
+        <item quantity="one">Будь ласка, спробуйте ще раз за %d секунду.</item>
+        <item quantity="few">Будь ласка, спробуйте ще раз за %d секунд.</item>
+        <item quantity="many">Будь ласка, спробуйте ще раз за %d секунд.</item>
+        <item quantity="other">Будь ласка, спробуйте ще раз за %d секунд.</item>
+    </plurals>
+    <plurals name="plato_game_plurals">
+        <item quantity="one">гра</item>
+        <item quantity="few">ігри</item>
+        <item quantity="many">ігор</item>
+        <item quantity="other">ігри</item>
+    </plurals>
+    <plurals name="plato_group_members">
+        <item quantity="zero">%d учасників</item>
+        <item quantity="one">%d учасник</item>
+        <item quantity="few">%d учасники</item>
+        <item quantity="many">%d учасників</item>
+        <item quantity="other">%d учасників</item>
+    </plurals>
+    <plurals name="plato_home_more_games_text">
+        <item quantity="one">%d ГРА В ПРОЦЕСІ</item>
+        <item quantity="few">%d ГРИ В ПРОЦЕСІ</item>
+        <item quantity="many">%d ІГОР У ПРОЦЕСІ</item>
+        <item quantity="other">%d ІГОР У ПРОЦЕСІ</item>
+    </plurals>
+    <plurals name="plato_hours_capitalized">
+        <item quantity="zero">%d год</item>
+        <item quantity="one">1 год</item>
+        <item quantity="few">%d год</item>
+        <item quantity="many">%d год</item>
+        <item quantity="other">%d год</item>
+    </plurals>
+    <plurals name="plato_months_ago">
+        <item quantity="zero">%d місяців тому</item>
+        <item quantity="one">%d місяць тому</item>
+        <item quantity="few">%d місяці тому</item>
+        <item quantity="many">%d місяців тому</item>
+        <item quantity="other">%d місяці(в) тому</item>
+    </plurals>
+    <plurals name="plato_weeks_ago">
+        <item quantity="zero">%d тижнів тому</item>
+        <item quantity="one">%d тиждень тому</item>
+        <item quantity="few">%d тижні тому</item>
+        <item quantity="many">%d тижнів тому</item>
+        <item quantity="other">%d тижні(в) тому</item>
+    </plurals>
+    <plurals name="plato_wins">
+        <item quantity="one">%d ПЕРЕМОГА</item>
+        <item quantity="few">%d ПЕРЕМОГИ</item>
+        <item quantity="many">%d ПЕРЕМОГ</item>
+        <item quantity="other">%d ПЕРЕМОГ</item>
+    </plurals>
+    <plurals name="plato_wins_newline">
+        <item quantity="zero">"%d
+ВИГРАШІ"</item>
+        <item quantity="one">"%d
+ВИГРАШ"</item>
+        <item quantity="few">"%d
+ВИГРАШІ"</item>
+        <item quantity="many">"%d
+ВИГРАШІВ"</item>
+        <item quantity="other">"%d
+ВИГРАШІВ"</item>
+    </plurals>
+    <plurals name="plato_years_ago">
+        <item quantity="zero">%d років тому</item>
+        <item quantity="one">%d рік тому</item>
+        <item quantity="few">%d роки тому</item>
+        <item quantity="many">%d років тому</item>
+        <item quantity="other">%d років тому</item>
+    </plurals>
+    <plurals name="profile_card_statInfo_wins">
+        <item quantity="zero">%1$s ПЕРЕМАГАЄ</item>
+        <item quantity="one">%1$s ПЕРЕМАГАЮТЬ</item>
+        <item quantity="few">%1$s ПЕРЕМАГАЄ</item>
+        <item quantity="many">%1$s ПЕРЕМАГАЄ</item>
+        <item quantity="other">%1$s ПЕРЕМАГАЄ</item>
+    </plurals>
+    <plurals name="quest_X_coins_plurals">
+        <item quantity="one">%d монета</item>
+        <item quantity="few">%d монети</item>
+        <item quantity="many">%d монет</item>
+        <item quantity="other">%d монети</item>
+    </plurals>
+</resources>

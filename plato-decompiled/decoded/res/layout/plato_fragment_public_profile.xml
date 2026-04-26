@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/public_profile_header" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/public_profile_recycler" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <ImageView android:id="@id/public_profile_back" android:contentDescription="@string/plato_back_cd" style="@style/BackButtonStyle" />
+        <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/fragment_title" android:layout_width="0.0dp" android:text="@string/public_profile_title" android:layout_weight="1.0" style="@style/ActionBarTitle" />
+        <ImageButton android:id="@id/public_profile_hamburger" android:visibility="invisible" android:contentDescription="@string/plato_button_hamburger" app:tint="?appThemeColorTextTitle" style="@style/HamburgerButtonStyle" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/public_profile_recycler" android:background="?appThemeColorScreenBackgroundSecondary" android:visibility="gone" android:layout_height="0.0dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/public_profile_header" style="@style/RecyclerViewStyle" />
+    <include android:id="@id/network_bar_container" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/public_profile_header" layout="@layout/partial_network_bar_with_top_shadow" />
+    <ProgressBar android:id="@id/plato_public_profile_level_progress" android:layout_width="@dimen/circular_progress_bar_size" android:layout_height="@dimen/circular_progress_bar_size" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="@id/public_profile_recycler" />
+</androidx.constraintlayout.widget.ConstraintLayout>

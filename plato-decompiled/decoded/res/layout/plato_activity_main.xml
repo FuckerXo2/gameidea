@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/fragment_container" android:background="?appThemeColorScreenBackgroundPrimary" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_above="@id/plato_navigation_bar_include" />
+    <Button android:id="@id/developer_button" android:visibility="gone" android:layout_width="@dimen/dev_tools_button_width" android:layout_height="@dimen/dev_tools_button_height" android:layout_marginRight="@dimen/element_padding_default" android:layout_marginBottom="140.0dp" android:text="Dev" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:alpha="0.5" />
+    <com.playchat.ui.customview.levelnotification.LevelNotificationsLayout android:id="@id/in_app_notifications_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:animateLayoutChanges="true" />
+    <com.playchat.ui.customview.SlideNotificationView android:id="@id/slide_notification_view" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginTop="100.0dp" android:layout_above="@id/bottom_navigation_bar_shadow" android:layout_alignParentEnd="true" />
+    <View android:id="@id/bottom_navigation_bar_shadow" android:background="@drawable/plato_shadow_background_reversed" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_above="@id/plato_navigation_bar_include" />
+    <include android:id="@id/plato_navigation_bar_include" layout="@layout/partial_bottom_nav_bar" />
+</RelativeLayout>

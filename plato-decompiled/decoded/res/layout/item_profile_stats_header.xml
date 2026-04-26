@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:textSize="@dimen/text_size_tiny" android:textColor="?appThemeColorTextDefault" android:id="@id/stats_header_title" android:paddingTop="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/profile_my_stats_title" android:textAllCaps="true" android:paddingHorizontal="@dimen/element_padding_large"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

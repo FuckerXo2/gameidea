@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/element_padding_default" android:layout_marginStart="@dimen/element_padding_default" android:layout_marginEnd="@dimen/element_padding_default"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.facebook.drawee.view.SimpleDraweeView android:id="@id/item_sticker_preview" android:layout_width="0.0dp" android:layout_height="0.0dp" android:foreground="@drawable/plato_list_selector_round_corners" app:actualImageScaleType="fitCenter" app:layout_constraintDimensionRatio="1" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:placeholderImageScaleType="fitCenter" />
+    <ImageView android:id="@id/item_sticker_new_red_dot" android:visibility="gone" android:layout_width="14.0dp" android:layout_height="14.0dp" android:layout_marginTop="@dimen/element_padding_small" android:src="@drawable/plato_shape_circle_red" android:layout_marginEnd="@dimen/element_padding_small" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

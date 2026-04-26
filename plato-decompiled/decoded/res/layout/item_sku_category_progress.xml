@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/action_spacing" android:background="?appThemeColorScreenBackgroundPrimary" android:layout_width="match_parent" android:layout_height="@dimen/element_padding_default" android:layout_marginTop="@dimen/element_padding_large" />
+    <com.playchat.ui.customview.iap.CategoryProgressView android:id="@id/category_progress_view" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/element_padding_default" android:layout_marginStart="@dimen/element_padding_large" android:layout_marginEnd="@dimen/element_padding_large" />
+</LinearLayout>

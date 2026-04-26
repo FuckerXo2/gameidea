@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/root" android:background="@color/plato_screen_background_primary_dark" android:layout_width="match_parent" android:layout_height="80.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/element_padding_large">
+        <TextView android:textAppearance="@style/TextAppearance.Compat.Notification.Title" android:textColor="@color/plato_white" android:id="@id/notification_title" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textAppearance="@style/TextAppearance.Compat.Notification.Title" android:textColor="@color/plato_dark_gray_blue" android:ellipsize="end" android:id="@id/notification_description" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:fontFamily="sans-serif" />
+    </LinearLayout>
+    <ImageView android:id="@id/notification_large_icon" android:layout_width="36.0dp" android:layout_height="36.0dp" android:layout_marginStart="@dimen/element_padding_default" android:layout_marginEnd="@dimen/element_padding_large" />
+</LinearLayout>

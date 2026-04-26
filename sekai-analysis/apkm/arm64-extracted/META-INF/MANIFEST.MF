@@ -1,0 +1,71 @@
+Manifest-Version: 1.0
+
+Name: AndroidManifest.xml
+SHA1-Digest: bDPFekIvha4rzdnEhI/FHn0mwM4=
+
+Name: lib/arm64-v8a/libAgoraRtmWrapper.so
+SHA1-Digest: Yd6DVPyQblSB2HOgMxgSqEPjaMM=
+
+Name: lib/arm64-v8a/libagora-rtm-sdk.so
+SHA1-Digest: BNPs1ed4oGK+p7HA3AxY6twVjC0=
+
+Name: lib/arm64-v8a/libaosl.so
+SHA1-Digest: ra/mEVSIwf8S3bPcOP8QNYspXvc=
+
+Name: lib/arm64-v8a/libapp.so
+SHA1-Digest: KKs8aEzMvTzIwRgZ1Kszw7O2DCw=
+
+Name: lib/arm64-v8a/libavcodec.so
+SHA1-Digest: F2eUSBWQxanbfNJyBHBfQBWUnTQ=
+
+Name: lib/arm64-v8a/libavdevice.so
+SHA1-Digest: NRWtrsIFO7MvuojT3pOaGxmVcew=
+
+Name: lib/arm64-v8a/libavfilter.so
+SHA1-Digest: BdmKfxSDWpciWsfpb0vtwWo6Lp0=
+
+Name: lib/arm64-v8a/libavformat.so
+SHA1-Digest: /jro2obxXaa+nljgnn1w6oyvOvs=
+
+Name: lib/arm64-v8a/libavutil.so
+SHA1-Digest: +xQ11KJuu15a5B+dr+ApGPcYv3A=
+
+Name: lib/arm64-v8a/libc++_shared.so
+SHA1-Digest: yME0TF0Ma8kJeekeq91BmOvYhYk=
+
+Name: lib/arm64-v8a/libdartjni.so
+SHA1-Digest: X3J4k4773+OYx7C6CoM75Ix35Ro=
+
+Name: lib/arm64-v8a/libdatastore_shared_counter.so
+SHA1-Digest: CV4WlQQMDBlkJLNYR0xKgZjKOsk=
+
+Name: lib/arm64-v8a/libffmpegkit.so
+SHA1-Digest: vI2rEEFg6tJVfp69eTj7/Utp5wk=
+
+Name: lib/arm64-v8a/libffmpegkit_abidetect.so
+SHA1-Digest: FpCIC4vv7K3BWSxvH+ZGftsZdA4=
+
+Name: lib/arm64-v8a/libflutter.so
+SHA1-Digest: HX4spt1tCMb2A811UgBbgLmttNY=
+
+Name: lib/arm64-v8a/libiris_method_channel.so
+SHA1-Digest: 3P5+2BQHRcriKMeZ170Pfm+vF1s=
+
+Name: lib/arm64-v8a/libsentry-android.so
+SHA1-Digest: vKQoHcDIIsGA4DI4jRmqo9bCVaY=
+
+Name: lib/arm64-v8a/libsentry.so
+SHA1-Digest: CyYpA23ojWOnByizZjZ8eDtpI6M=
+
+Name: lib/arm64-v8a/libsqlite3.so
+SHA1-Digest: TiafYtLRbnG31zDD7TVasaKwT0o=
+
+Name: lib/arm64-v8a/libswresample.so
+SHA1-Digest: C7gSnnBM3OP/2ZOF6iWutjv+D6Y=
+
+Name: lib/arm64-v8a/libswscale.so
+SHA1-Digest: Nms8wtuNXkcRnXoclpl1YJ110Dk=
+
+Name: stamp-cert-sha256
+SHA1-Digest: 5vTkm69vqAbusD/fho7oWwc7j+I=
+

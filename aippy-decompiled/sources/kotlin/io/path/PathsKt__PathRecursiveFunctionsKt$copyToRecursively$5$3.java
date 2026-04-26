@@ -1,0 +1,41 @@
+package kotlin.io.path;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import defpackage.bw0;
+import defpackage.uh1;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Path;
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.FunctionReferenceImpl;
+import kotlin.jvm.internal.Intrinsics;
+
+/* JADX INFO: loaded from: classes3.dex */
+@Metadata(k = 3, mv = {2, 1, 0}, xi = ConstraintLayout.LayoutParams.Table.LAYOUT_CONSTRAINT_VERTICAL_CHAINSTYLE)
+public /* synthetic */ class PathsKt__PathRecursiveFunctionsKt$copyToRecursively$5$3 extends FunctionReferenceImpl implements Function2<Path, Exception, FileVisitResult> {
+    final /* synthetic */ Path $normalizedTarget;
+    final /* synthetic */ uh1 $onError;
+    final /* synthetic */ Path $target;
+    final /* synthetic */ Path $this_copyToRecursively;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public PathsKt__PathRecursiveFunctionsKt$copyToRecursively$5$3(uh1 uh1Var, Path path, Path path2, Path path3) {
+        super(2, Intrinsics.a.class, "error", "copyToRecursively$error$PathsKt__PathRecursiveFunctionsKt(Lkotlin/jvm/functions/Function3;Ljava/nio/file/Path;Ljava/nio/file/Path;Ljava/nio/file/Path;Ljava/nio/file/Path;Ljava/lang/Exception;)Ljava/nio/file/FileVisitResult;", 0);
+        this.$onError = uh1Var;
+        this.$this_copyToRecursively = path;
+        this.$target = path2;
+        this.$normalizedTarget = path3;
+    }
+
+    @Override // kotlin.jvm.functions.Function2
+    public /* bridge */ /* synthetic */ FileVisitResult invoke(Path path, Exception exc) {
+        return invoke2(bw0.a(path), exc);
+    }
+
+    /* JADX INFO: renamed from: invoke, reason: avoid collision after fix types in other method */
+    public final FileVisitResult invoke2(Path p0, Exception p1) {
+        Intrinsics.checkNotNullParameter(p0, "p0");
+        Intrinsics.checkNotNullParameter(p1, "p1");
+        return PathsKt__PathRecursiveFunctionsKt.copyToRecursively$error$PathsKt__PathRecursiveFunctionsKt(this.$onError, this.$this_copyToRecursively, this.$target, this.$normalizedTarget, p0, p1);
+    }
+}

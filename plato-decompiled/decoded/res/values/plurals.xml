@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="daily_quest_win_X_games_plurals">
+        <item quantity="one">Win %d Game</item>
+        <item quantity="other">Win %d Games</item>
+    </plurals>
+    <plurals name="exo_controls_fastforward_by_amount_description">
+        <item quantity="one">Fast forward %d second</item>
+        <item quantity="other">Fast forward %d seconds</item>
+    </plurals>
+    <plurals name="exo_controls_rewind_by_amount_description">
+        <item quantity="one">Rewind %d second</item>
+        <item quantity="other">Rewind %d seconds</item>
+    </plurals>
+    <plurals name="lobby_tables_available">
+        <item quantity="one">%d Table Available</item>
+        <item quantity="other">%d Tables Available</item>
+    </plurals>
+    <plurals name="lobby_tournaments_available">
+        <item quantity="one">%d Tournament Available</item>
+        <item quantity="other">%d Tournaments Available</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d new notification</item>
+        <item quantity="other">%d new notifications</item>
+    </plurals>
+    <plurals name="plato_days">
+        <item quantity="one">%d day</item>
+        <item quantity="other">%d days</item>
+    </plurals>
+    <plurals name="plato_days_ago">
+        <item quantity="one">%d day ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
+    <plurals name="plato_error_throttle_minutes_text">
+        <item quantity="zero">Please try again in %d minutes.</item>
+        <item quantity="one">Please try again in %d minute.</item>
+        <item quantity="other">Please try again in %d minutes.</item>
+    </plurals>
+    <plurals name="plato_error_throttle_text">
+        <item quantity="one">Please try again in %d second.</item>
+        <item quantity="other">Please try again in %d seconds.</item>
+    </plurals>
+    <plurals name="plato_game_plurals">
+        <item quantity="one">Game</item>
+        <item quantity="other">Games</item>
+    </plurals>
+    <plurals name="plato_group_members">
+        <item quantity="one">%d Member</item>
+        <item quantity="other">%d Members</item>
+    </plurals>
+    <plurals name="plato_home_more_games_text">
+        <item quantity="one">%d MORE ACTIVE GAME</item>
+        <item quantity="other">%d MORE ACTIVE GAMES</item>
+    </plurals>
+    <plurals name="plato_hours_capitalized">
+        <item quantity="one">1 Hour</item>
+        <item quantity="other">%d Hours</item>
+    </plurals>
+    <plurals name="plato_months_ago">
+        <item quantity="one">%d month ago</item>
+        <item quantity="other">%d months ago</item>
+    </plurals>
+    <plurals name="plato_weeks_ago">
+        <item quantity="one">%d week ago</item>
+        <item quantity="other">%d weeks ago</item>
+    </plurals>
+    <plurals name="plato_wins">
+        <item quantity="one">%d WIN</item>
+        <item quantity="other">%d WINS</item>
+    </plurals>
+    <plurals name="plato_wins_newline">
+        <item quantity="one">"%d
+WIN"</item>
+        <item quantity="other">"%d
+WINS"</item>
+    </plurals>
+    <plurals name="plato_years_ago">
+        <item quantity="one">%d year ago</item>
+        <item quantity="other">%d years ago</item>
+    </plurals>
+    <plurals name="profile_card_statInfo_wins">
+        <item quantity="one">%1$s WIN</item>
+        <item quantity="other">%1$s WINS</item>
+    </plurals>
+    <plurals name="quest_X_coins_plurals">
+        <item quantity="one">%d Coin</item>
+        <item quantity="other">%d Coins</item>
+    </plurals>
+</resources>

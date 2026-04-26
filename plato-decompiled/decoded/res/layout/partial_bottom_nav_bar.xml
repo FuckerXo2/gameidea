@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="?appThemeColorScreenBackgroundPrimary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/plato_tab_home" style="@style/PlatoMainBarContainerIcon">
+        <androidx.appcompat.widget.AppCompatImageView android:id="@id/plato_image_home" android:padding="@dimen/element_padding_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@null" android:contentDescription="@string/home_fragment_button_home" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        <ImageView android:id="@id/plato_container_unread_home" android:visibility="gone" android:layout_marginTop="@dimen/home_navigation_button_unread_dot_margin" android:layout_marginEnd="@dimen/home_navigation_button_unread_dot_margin" app:layout_constraintEnd_toEndOf="@id/plato_image_home" app:layout_constraintTop_toTopOf="@id/plato_image_home" style="@style/NotificationDot" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/plato_tab_people" style="@style/PlatoMainBarContainerIcon">
+        <ImageView android:id="@id/plato_container_unread_friends" android:visibility="gone" android:layout_marginTop="@dimen/home_navigation_button_unread_dot_margin" android:layout_marginEnd="@dimen/home_navigation_button_unread_dot_margin" app:layout_constraintEnd_toEndOf="@id/plato_image_people" app:layout_constraintTop_toTopOf="@id/plato_image_people" style="@style/NotificationDot" />
+        <androidx.appcompat.widget.AppCompatImageView android:id="@id/plato_image_people" android:padding="@dimen/element_padding_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@null" android:contentDescription="@string/home_fragment_button_friends" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout android:id="@id/plato_tab_games" style="@style/PlatoMainBarContainerIcon">
+        <androidx.appcompat.widget.AppCompatImageView android:layout_gravity="center" android:id="@id/plato_image_games" android:padding="@dimen/element_padding_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@null" android:contentDescription="@string/home_fragment_button_games" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/plato_tab_rooms" style="@style/PlatoMainBarContainerIcon">
+        <androidx.appcompat.widget.AppCompatImageView android:layout_gravity="center" android:id="@id/plato_image_rooms" android:padding="@dimen/element_padding_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@null" android:contentDescription="@string/home_fragment_button_rooms" />
+    </FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/plato_tab_shop" style="@style/PlatoMainBarContainerIcon">
+        <ImageView android:layout_gravity="center" android:id="@id/plato_image_shop" android:padding="@dimen/element_padding_default" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@null" android:contentDescription="@string/shop_fragment_title" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        <ImageView android:id="@id/shop_new_items_indicator" android:visibility="gone" android:layout_marginTop="@dimen/home_navigation_button_unread_dot_margin" android:layout_marginEnd="@dimen/home_navigation_button_unread_dot_margin" app:layout_constraintEnd_toEndOf="@id/plato_image_shop" app:layout_constraintTop_toTopOf="@id/plato_image_shop" style="@style/NotificationDot" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

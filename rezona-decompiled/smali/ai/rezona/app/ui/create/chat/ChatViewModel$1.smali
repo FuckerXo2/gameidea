@@ -1,0 +1,271 @@
+.class final Lai/rezona/app/ui/create/chat/ChatViewModel$1;
+.super Lkotlin/coroutines/jvm/internal/SuspendLambda;
+.source "ChatViewModel.kt"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lai/rezona/app/ui/create/chat/ChatViewModel;-><init>(Landroidx/lifecycle/SavedStateHandle;Lai/rezona/app/data/repository/GameRepository;Lai/rezona/app/ui/create/CreateSession;Lai/rezona/app/data/repository/UploadRepository;Landroid/content/Context;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x18
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lkotlin/coroutines/jvm/internal/SuspendLambda;",
+        "Lkotlin/jvm/functions/Function2<",
+        "Lkotlinx/coroutines/CoroutineScope;",
+        "Lkotlin/coroutines/Continuation<",
+        "-",
+        "Lkotlin/Unit;",
+        ">;",
+        "Ljava/lang/Object;",
+        ">;"
+    }
+.end annotation
+
+.annotation runtime Lkotlin/Metadata;
+    d1 = {
+        "\u0000\n\n\u0000\n\u0002\u0010\u0002\n\u0002\u0018\u0002\u0010\u0000\u001a\u00020\u0001*\u00020\u0002H\n"
+    }
+    d2 = {
+        "<anonymous>",
+        "",
+        "Lkotlinx/coroutines/CoroutineScope;"
+    }
+    k = 0x3
+    mv = {
+        0x2,
+        0x2,
+        0x0
+    }
+    xi = 0x30
+.end annotation
+
+.annotation runtime Lkotlin/coroutines/jvm/internal/DebugMetadata;
+    c = "ai.rezona.app.ui.create.chat.ChatViewModel$1"
+    f = "ChatViewModel.kt"
+    i = {}
+    l = {
+        0x80
+    }
+    m = "invokeSuspend"
+    n = {}
+    s = {}
+    v = 0x1
+.end annotation
+
+
+# instance fields
+.field label:I
+
+.field final synthetic this$0:Lai/rezona/app/ui/create/chat/ChatViewModel;
+
+
+# direct methods
+.method constructor <init>(Lai/rezona/app/ui/create/chat/ChatViewModel;Lkotlin/coroutines/Continuation;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lai/rezona/app/ui/create/chat/ChatViewModel;",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Lai/rezona/app/ui/create/chat/ChatViewModel$1;",
+            ">;)V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->this$0:Lai/rezona/app/ui/create/chat/ChatViewModel;
+
+    const/4 p1, 0x2
+
+    invoke-direct {p0, p1, p2}, Lkotlin/coroutines/jvm/internal/SuspendLambda;-><init>(ILkotlin/coroutines/Continuation;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final create(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/Object;",
+            "Lkotlin/coroutines/Continuation<",
+            "*>;)",
+            "Lkotlin/coroutines/Continuation<",
+            "Lkotlin/Unit;",
+            ">;"
+        }
+    .end annotation
+
+    new-instance p1, Lai/rezona/app/ui/create/chat/ChatViewModel$1;
+
+    iget-object v0, p0, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->this$0:Lai/rezona/app/ui/create/chat/ChatViewModel;
+
+    invoke-direct {p1, v0, p2}, Lai/rezona/app/ui/create/chat/ChatViewModel$1;-><init>(Lai/rezona/app/ui/create/chat/ChatViewModel;Lkotlin/coroutines/Continuation;)V
+
+    check-cast p1, Lkotlin/coroutines/Continuation;
+
+    return-object p1
+.end method
+
+.method public bridge synthetic invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 0
+
+    check-cast p1, Lkotlinx/coroutines/CoroutineScope;
+
+    check-cast p2, Lkotlin/coroutines/Continuation;
+
+    invoke-virtual {p0, p1, p2}, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->invoke(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final invoke(Lkotlinx/coroutines/CoroutineScope;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lkotlinx/coroutines/CoroutineScope;",
+            "Lkotlin/coroutines/Continuation<",
+            "-",
+            "Lkotlin/Unit;",
+            ">;)",
+            "Ljava/lang/Object;"
+        }
+    .end annotation
+
+    invoke-virtual {p0, p1, p2}, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->create(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    move-result-object p1
+
+    check-cast p1, Lai/rezona/app/ui/create/chat/ChatViewModel$1;
+
+    sget-object p2, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    invoke-virtual {p1, p2}, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final invokeSuspend(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 6
+
+    invoke-static {}, Lkotlin/coroutines/intrinsics/IntrinsicsKt;->getCOROUTINE_SUSPENDED()Ljava/lang/Object;
+
+    move-result-object v0
+
+    .line 127
+    iget v1, p0, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->label:I
+
+    const/4 v2, 0x1
+
+    if-eqz v1, :cond_1
+
+    if-ne v1, v2, :cond_0
+
+    invoke-static {p1}, Lkotlin/ResultKt;->throwOnFailure(Ljava/lang/Object;)V
+
+    check-cast p1, Lkotlin/Result;
+
+    invoke-virtual {p1}, Lkotlin/Result;->unbox-impl()Ljava/lang/Object;
+
+    move-result-object p1
+
+    goto :goto_0
+
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    const-string v0, "call to \'resume\' before \'invoke\' with coroutine"
+
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw p1
+
+    :cond_1
+    invoke-static {p1}, Lkotlin/ResultKt;->throwOnFailure(Ljava/lang/Object;)V
+
+    .line 128
+    iget-object p1, p0, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->this$0:Lai/rezona/app/ui/create/chat/ChatViewModel;
+
+    invoke-static {p1}, Lai/rezona/app/ui/create/chat/ChatViewModel;->access$getGameRepository$p(Lai/rezona/app/ui/create/chat/ChatViewModel;)Lai/rezona/app/data/repository/GameRepository;
+
+    move-result-object p1
+
+    iget-object v1, p0, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->this$0:Lai/rezona/app/ui/create/chat/ChatViewModel;
+
+    invoke-static {v1}, Lai/rezona/app/ui/create/chat/ChatViewModel;->access$getRemixGameId$p(Lai/rezona/app/ui/create/chat/ChatViewModel;)J
+
+    move-result-wide v3
+
+    iget-object v1, p0, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->this$0:Lai/rezona/app/ui/create/chat/ChatViewModel;
+
+    invoke-static {v1}, Lai/rezona/app/ui/create/chat/ChatViewModel;->access$getRemixGameVersion$p(Lai/rezona/app/ui/create/chat/ChatViewModel;)I
+
+    move-result v1
+
+    move-object v5, p0
+
+    check-cast v5, Lkotlin/coroutines/Continuation;
+
+    iput v2, p0, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->label:I
+
+    invoke-virtual {p1, v3, v4, v1, v5}, Lai/rezona/app/data/repository/GameRepository;->previewGame-0E7RQCE(JILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    move-result-object p1
+
+    if-ne p1, v0, :cond_2
+
+    return-object v0
+
+    .line 129
+    :cond_2
+    :goto_0
+    iget-object v0, p0, Lai/rezona/app/ui/create/chat/ChatViewModel$1;->this$0:Lai/rezona/app/ui/create/chat/ChatViewModel;
+
+    invoke-static {p1}, Lkotlin/Result;->isSuccess-impl(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_3
+
+    check-cast p1, Ljava/lang/String;
+
+    .line 130
+    invoke-static {v0}, Lai/rezona/app/ui/create/chat/ChatViewModel;->access$getCreateSession$p(Lai/rezona/app/ui/create/chat/ChatViewModel;)Lai/rezona/app/ui/create/CreateSession;
+
+    move-result-object v1
+
+    .line 131
+    invoke-static {v0}, Lai/rezona/app/ui/create/chat/ChatViewModel;->access$getRemixGameId$p(Lai/rezona/app/ui/create/chat/ChatViewModel;)J
+
+    move-result-wide v2
+
+    .line 132
+    invoke-static {v0}, Lai/rezona/app/ui/create/chat/ChatViewModel;->access$getRemixGameVersion$p(Lai/rezona/app/ui/create/chat/ChatViewModel;)I
+
+    move-result v0
+
+    .line 130
+    invoke-virtual {v1, v2, v3, v0, p1}, Lai/rezona/app/ui/create/CreateSession;->prepareRemixPreview(JILjava/lang/String;)V
+
+    .line 136
+    :cond_3
+    sget-object p1, Lkotlin/Unit;->INSTANCE:Lkotlin/Unit;
+
+    return-object p1
+.end method

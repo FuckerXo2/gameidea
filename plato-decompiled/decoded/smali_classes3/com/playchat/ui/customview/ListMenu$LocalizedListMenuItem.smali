@@ -1,0 +1,52 @@
+.class public final Lcom/playchat/ui/customview/ListMenu$LocalizedListMenuItem;
+.super Lcom/playchat/ui/customview/ListMenu$AbstractListMenuItem;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/playchat/ui/customview/ListMenu;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "LocalizedListMenuItem"
+.end annotation
+
+
+# instance fields
+.field public final b:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;Lnc0;)V
+    .locals 1
+
+    const-string v0, "title"
+
+    invoke-static {p1, v0}, LJz0;->f(Ljava/lang/Object;Ljava/lang/String;)V
+
+    const-string v0, "onMenuClick"
+
+    invoke-static {p2, v0}, LJz0;->f(Ljava/lang/Object;Ljava/lang/String;)V
+
+    invoke-direct {p0, p2}, Lcom/playchat/ui/customview/ListMenu$AbstractListMenuItem;-><init>(Lnc0;)V
+
+    iput-object p1, p0, Lcom/playchat/ui/customview/ListMenu$LocalizedListMenuItem;->b:Ljava/lang/String;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a(Landroid/content/Context;)Ljava/lang/String;
+    .locals 1
+
+    const-string v0, "context"
+
+    invoke-static {p1, v0}, LJz0;->f(Ljava/lang/Object;Ljava/lang/String;)V
+
+    iget-object p1, p0, Lcom/playchat/ui/customview/ListMenu$LocalizedListMenuItem;->b:Ljava/lang/String;
+
+    return-object p1
+.end method

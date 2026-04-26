@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dot_first" android:visibility="invisible" android:layout_width="8.0dp" android:layout_height="8.0dp" android:src="@drawable/plato_shape_circle_gray" android:alpha="0.2" />
+    <ImageView android:id="@id/dot_second" android:visibility="invisible" android:layout_width="8.0dp" android:layout_height="8.0dp" android:src="@drawable/plato_shape_circle_gray" android:alpha="0.5" />
+    <ImageView android:id="@id/dot_third" android:visibility="invisible" android:layout_width="8.0dp" android:layout_height="8.0dp" android:src="@drawable/plato_shape_circle_gray" android:alpha="1.0" />
+</LinearLayout>

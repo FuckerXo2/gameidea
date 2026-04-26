@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="?appThemeColorScreenBackgroundPrimary" android:clipChildren="false" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/element_padding_default" layout="@layout/partial_profile_container_landscape" />
+    <com.playchat.ui.customview.CollectionSmallView android:id="@id/collection_small_view" android:layout_width="match_parent" android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@id/profile_wallet_view" />
+</androidx.constraintlayout.widget.ConstraintLayout>

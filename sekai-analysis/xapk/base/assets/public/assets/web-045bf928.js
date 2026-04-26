@@ -1,0 +1,2 @@
+import{W as d}from"./index-f78069f1.js";(function(){try{var e=typeof window<"u"?window:typeof global<"u"?global:typeof self<"u"?self:{},n=new Error().stack;n&&(e._sentryDebugIds=e._sentryDebugIds||{},e._sentryDebugIds[n]="a341e893-a411-4e1f-b914-3d16a47d717c",e._sentryDebugIdIdentifier="sentry-dbid-a341e893-a411-4e1f-b914-3d16a47d717c")}catch(t){}})();class i extends d{openFile(n){throw this.unimplemented("Not implemented on web.")}}export{i as FileOpenerWeb};
+//# sourceMappingURL=web-045bf928.js.map

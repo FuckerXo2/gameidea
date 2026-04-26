@@ -1,0 +1,52 @@
+package com.google.firebase.remoteconfig.ktx;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+import com.google.firebase.remoteconfig.ConfigUpdate;
+import com.google.firebase.remoteconfig.ConfigUpdateListener;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigException;
+import com.google.firebase.remoteconfig.ktx.RemoteConfigKt$configUpdates$1$registration$1;
+import defpackage.sm3;
+import defpackage.uy;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import kotlinx.coroutines.d;
+import org.jetbrains.annotations.NotNull;
+
+/* JADX INFO: loaded from: classes2.dex */
+@Metadata(d1 = {"\u0000\u001f\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000*\u0001\u0000\b\n\u0018\u00002\u00020\u0001J\u0010\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u0016J\u0010\u0010\u0006\u001a\u00020\u00032\u0006\u0010\u0007\u001a\u00020\bH\u0016¨\u0006\t"}, d2 = {"com/google/firebase/remoteconfig/ktx/RemoteConfigKt$configUpdates$1$registration$1", "Lcom/google/firebase/remoteconfig/ConfigUpdateListener;", "onError", "", "error", "Lcom/google/firebase/remoteconfig/FirebaseRemoteConfigException;", "onUpdate", "configUpdate", "Lcom/google/firebase/remoteconfig/ConfigUpdate;", "com.google.firebase-firebase-config"}, k = 1, mv = {1, 8, 0}, xi = ConstraintLayout.LayoutParams.Table.LAYOUT_CONSTRAINT_VERTICAL_CHAINSTYLE)
+public final class RemoteConfigKt$configUpdates$1$registration$1 implements ConfigUpdateListener {
+    final /* synthetic */ sm3 $$this$callbackFlow;
+    final /* synthetic */ FirebaseRemoteConfig $this_configUpdates;
+
+    public RemoteConfigKt$configUpdates$1$registration$1(FirebaseRemoteConfig firebaseRemoteConfig, sm3 sm3Var) {
+        this.$this_configUpdates = firebaseRemoteConfig;
+        this.$$this$callbackFlow = sm3Var;
+    }
+
+    /* JADX INFO: Access modifiers changed from: private */
+    public static final void onUpdate$lambda$0(sm3 $this$callbackFlow, ConfigUpdate configUpdate) {
+        Intrinsics.checkNotNullParameter($this$callbackFlow, "$$this$callbackFlow");
+        Intrinsics.checkNotNullParameter(configUpdate, "$configUpdate");
+        uy.trySendBlocking($this$callbackFlow, configUpdate);
+    }
+
+    @Override // com.google.firebase.remoteconfig.ConfigUpdateListener
+    public void onError(@NotNull FirebaseRemoteConfigException error) {
+        Intrinsics.checkNotNullParameter(error, "error");
+        d.cancel(this.$$this$callbackFlow, "Error listening for config updates.", error);
+    }
+
+    @Override // com.google.firebase.remoteconfig.ConfigUpdateListener
+    public void onUpdate(@NotNull final ConfigUpdate configUpdate) {
+        Intrinsics.checkNotNullParameter(configUpdate, "configUpdate");
+        FirebaseRemoteConfig firebaseRemoteConfig = this.$this_configUpdates;
+        final sm3 sm3Var = this.$$this$callbackFlow;
+        firebaseRemoteConfig.schedule(new Runnable() { // from class: fw3
+            @Override // java.lang.Runnable
+            public final void run() {
+                RemoteConfigKt$configUpdates$1$registration$1.onUpdate$lambda$0(sm3Var, configUpdate);
+            }
+        });
+    }
+}

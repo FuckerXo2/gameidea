@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/plato_white" android:id="@id/title_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/element_padding_large" android:layout_marginBottom="@dimen/element_padding_large" android:text="@string/limited_time_offer" android:textAllCaps="true" android:layout_marginStart="@dimen/element_padding_default" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <TextView android:textSize="@dimen/text_size_small" android:textColor="@color/plato_white" android:gravity="center" android:id="@id/countdown_timer_text_view" android:background="@drawable/img_starter_ribbon_small" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="@id/title_text_view" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="@id/title_text_view" />
+</androidx.constraintlayout.widget.ConstraintLayout>

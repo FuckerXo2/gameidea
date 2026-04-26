@@ -78,3 +78,9 @@ GameTok_decompiled/assets/dexopt/
 
 # GitHub token (security)
 github-token.txt
+
+# Large APK/XAPK files (over 100MB)
+*.xapk
+*.apkm
+*.apk
+.wrangler/state/

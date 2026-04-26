@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/text_size_large" android:textColor="?appThemeColorTextTitle" android:gravity="start|center" android:id="@id/blocked_user" android:paddingTop="@dimen/element_padding_default" android:paddingBottom="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAlignment="viewStart" android:paddingStart="@dimen/element_padding_large" android:paddingEnd="@dimen/element_padding_large" />
+    <androidx.appcompat.widget.AppCompatCheckBox android:theme="@style/AppTheme.Checkbox" android:layout_gravity="end|center" android:id="@id/blocked_user_check_box" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="10.0dp" />
+</FrameLayout>

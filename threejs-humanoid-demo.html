@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Humanoid Characters Demo</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 100;
+        }
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 100;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="info">
+        <strong>Three.js Humanoid Demo</strong><br>
+        Click buttons below to see animations<br>
+        Drag to rotate camera
+    </div>
+    <div id="controls">
+        <button onclick="animateKick()">Kick</button>
+        <button onclick="animateRun()">Run</button>
+        <button onclick="animateJump()">Jump</button>
+        <button onclick="animateWave()">Wave</button>
+        <button onclick="resetPose()">Reset</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.150.0/build/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, player, clock;
+        let animationState = 'idle';
+        let animationTime = 0;
+
+        function init() {
+            // Scene setup
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x87CEEB);
+            
+            // Camera
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 2, 5);
+            camera.lookAt(0, 1, 0);
+            
+            // Renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+            document.body.appendChild(renderer.domElement);
+            
+            // Lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+            
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(5, 10, 5);
+            directionalLight.castShadow = true;
+            directionalLight.shadow.camera.left = -10;
+            directionalLight.shadow.camera.right = 10;
+            directionalLight.shadow.camera.top = 10;
+            directionalLight.shadow.camera.bottom = -10;
+            scene.add(directionalLight);
+            
+            // Ground
+            const groundGeometry = new THREE.PlaneGeometry(20, 20);
+            const groundMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x4CAF50,
+                roughness: 0.8
+            });
+            const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+            ground.rotation.x = -Math.PI / 2;
+            ground.receiveShadow = true;
+            scene.add(ground);
+            
+            // Create player (Football Kick 3D style)
+            player = createHumanoid(0x1a3cb2, 0x5c1a1b); // main is already white default
+            scene.add(player);
+            
+            // Create additional players for reference
+            const player2 = createHumanoid(0xFFDD00, 0x0033CC);
+            player2.position.set(-3, 0, 0);
+            scene.add(player2);
+            
+            const player3 = createHumanoid(0xFF3300, 0x222222, 0xffffff, 0xdddddd);
+            player3.position.set(3, 0, 0);
+            scene.add(player3);
+            
+            // Clock for animations
+            clock = new THREE.Clock();
+            
+            // Mouse controls
+            let isDragging = false;
+            let previousMousePosition = { x: 0, y: 0 };
+            
+            renderer.domElement.addEventListener('mousedown', (e) => {
+                isDragging = true;
+            });
+            
+            renderer.domElement.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const deltaX = e.clientX - previousMousePosition.x;
+                    const deltaY = e.clientY - previousMousePosition.y;
+                    
+                    camera.position.x += deltaX * 0.01;
+                    camera.position.y -= deltaY * 0.01;
+                    camera.lookAt(0, 1, 0);
+                }
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
+            
+            renderer.domElement.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', onWindowResize);
+            
+            animate();
+        }
+        
+        function createHumanoid(shirtColor, pantsColor, skinCol = 0xFFFFFF, shoeCol = 0xFF6B00) {
+            const humanoid = new THREE.Group();
+            
+            // Materials strictly configured to mirror the flat shading style
+            const skinMaterial = new THREE.MeshStandardMaterial({ color: skinCol, roughness: 1.0, side: THREE.DoubleSide });
+            const shirtMaterial = new THREE.MeshStandardMaterial({ color: shirtColor, roughness: 1.0, side: THREE.DoubleSide });
+            const pantsMaterial = new THREE.MeshStandardMaterial({ color: pantsColor, roughness: 1.0, side: THREE.DoubleSide });
+            const shoeMaterial = new THREE.MeshStandardMaterial({ color: shoeCol, roughness: 1.0 });
+            const kneeMaterial = new THREE.MeshStandardMaterial({ color: 0xFFDAB9, roughness: 1.0, side: THREE.DoubleSide }); 
+            const sockMaterial = new THREE.MeshStandardMaterial({ color: 0xFFFFFF, roughness: 1.0, side: THREE.DoubleSide });
+            
+            // 1. HEAD (Massive pristine sphere)
+            const headGeometry = new THREE.SphereGeometry(0.40, 32, 32);
+            const head = new THREE.Mesh(headGeometry, skinMaterial);
+            head.position.y = 1.55;
+            head.castShadow = true;
+            head.name = 'head';
+            humanoid.add(head);
+            
+            // 2. MATH SCULPTED TORSO & SHORTS (Lathe matched exactly to reference shape)
+            const bodyGroup = new THREE.Group();
+            bodyGroup.name = 'torso'; // Pivot point at waist
+            bodyGroup.position.y = 0.95;
+            
+            // Torso: Wide flat waist, rounded shoulders (Football Kick 3D distinct torso boundary)
+            const torsoProfile = [];
+            torsoProfile.push(new THREE.Vector2(0, 0)); // Waist center
+            const chestCurve = new THREE.QuadraticBezierCurve(
+                new THREE.Vector2(0.24, 0),    // Waist width (wide and flush with shorts)
+                new THREE.Vector2(0.24, 0.4),  // Straight up to chest (Voodoo style body)
+                new THREE.Vector2(0.12, 0.5)   // Curve inwards perfectly tracing the shoulder slope to neck
+            );
+            torsoProfile.push(...chestCurve.getPoints(20));
+            torsoProfile.push(new THREE.Vector2(0, 0.5)); // Seal
+            
+            const torsoGeometry = new THREE.LatheGeometry(torsoProfile, 32);
+            torsoGeometry.scale(1, 1, 0.85); // Slightly flatten for a chest shape
+            const torso = new THREE.Mesh(torsoGeometry, shirtMaterial);
+            torso.castShadow = true;
+            bodyGroup.add(torso);
+            
+            // Shorts: Blocky flair matching the flat-bottomed pants in reference
+            const shortsProfile = [];
+            shortsProfile.push(new THREE.Vector2(0, -0.22)); 
+            const shortsCurve = new THREE.QuadraticBezierCurve(
+                new THREE.Vector2(0.26, -0.22), // Rigid leg hole edge
+                new THREE.Vector2(0.25, -0.1),  // Straight blocky side
+                new THREE.Vector2(0.24, 0)      // Flush directly into exact waist boundary
+            );
+            shortsProfile.push(...shortsCurve.getPoints(10));
+            shortsProfile.push(new THREE.Vector2(0, 0));
+            
+            const shortsGeometry = new THREE.LatheGeometry(shortsProfile, 32);
+            shortsGeometry.scale(1, 1, 0.85); 
+            const shorts = new THREE.Mesh(shortsGeometry, pantsMaterial);
+            shorts.castShadow = true;
+            bodyGroup.add(shorts);
+            humanoid.add(bodyGroup);
+            
+            // 3. ARMS (Sharp geometry matching reference: short sleeves + thin straight arms)
+            // No more curved 'macaroni' tubes; using crisp distinct shapes that look hyper-casual
+            const sleeveGeometry = new THREE.CylinderGeometry(0.09, 0.09, 0.15, 16);
+            const shoulderSphere = new THREE.SphereGeometry(0.09, 16, 16); 
+            const armGeometry = new THREE.CylinderGeometry(0.045, 0.04, 0.4, 16);
+            const handGeometry = new THREE.SphereGeometry(0.06, 16, 16);
+            
+            // Left Arm
+            const leftArmGroup = new THREE.Group();
+            leftArmGroup.position.set(-0.25, 1.35, 0); // Position exactly at Lathe shoulder
+            leftArmGroup.name = 'leftArm';
+            leftArmGroup.rotation.z = Math.PI / 10; 
+            
+            const leftShoulder = new THREE.Mesh(shoulderSphere, shirtMaterial);
+            leftShoulder.castShadow = true;
+            leftArmGroup.add(leftShoulder);
+            
+            const leftSleeve = new THREE.Mesh(sleeveGeometry, shirtMaterial);
+            leftSleeve.position.y = -0.075;
+            leftSleeve.castShadow = true;
+            leftArmGroup.add(leftSleeve);
+            
+            const leftArm = new THREE.Mesh(armGeometry, skinMaterial);
+            leftArm.position.y = -0.35; 
+            leftArm.castShadow = true;
+            leftArmGroup.add(leftArm);
+            
+            const leftHand = new THREE.Mesh(handGeometry, skinMaterial);
+            leftHand.position.y = -0.55; 
+            leftHand.castShadow = true;
+            leftArmGroup.add(leftHand);
+            
+            humanoid.add(leftArmGroup);
+            
+            // Right Arm
+            const rightArmGroup = new THREE.Group();
+            rightArmGroup.position.set(0.25, 1.35, 0); 
+            rightArmGroup.name = 'rightArm';
+            rightArmGroup.rotation.z = -Math.PI / 10; 
+            
+            const rightShoulder = new THREE.Mesh(shoulderSphere, shirtMaterial);
+            rightShoulder.castShadow = true;
+            rightArmGroup.add(rightShoulder);
+            
+            const rightSleeve = new THREE.Mesh(sleeveGeometry, shirtMaterial);
+            rightSleeve.position.y = -0.075;
+            rightSleeve.castShadow = true;
+            rightArmGroup.add(rightSleeve);
+            
+            const rightArm = new THREE.Mesh(armGeometry, skinMaterial);
+            rightArm.position.y = -0.35; 
+            rightArm.castShadow = true;
+            rightArmGroup.add(rightArm);
+            
+            const rightHand = new THREE.Mesh(handGeometry, skinMaterial);
+            rightHand.position.y = -0.55; 
+            rightHand.castShadow = true;
+            rightArmGroup.add(rightHand);
+            
+            humanoid.add(rightArmGroup);
+            
+            // 4. LEGS (Fleshy Thigh -> White Sock -> Orange Shoe perfectly mapped)
+            const thighGeometry = new THREE.CylinderGeometry(0.065, 0.055, 0.15, 16);
+            const calfGeometry = new THREE.CylinderGeometry(0.055, 0.05, 0.25, 16); // High sock
+            const shoeBoxGeometry = new THREE.BoxGeometry(0.12, 0.1, 0.22);
+            shoeBoxGeometry.translate(0, 0, 0.05); // shift toe forward
+            
+            // Left Leg Group
+            const leftLegGroup = new THREE.Group();
+            leftLegGroup.position.set(-0.13, 0.73, 0); // Hinge right at shorts bottom 
+            leftLegGroup.name = 'leftLeg';
+            
+            const leftThigh = new THREE.Mesh(thighGeometry, kneeMaterial);
+            leftThigh.position.y = -0.075;
+            leftThigh.castShadow = true;
+            leftLegGroup.add(leftThigh);
+            
+            const leftCalf = new THREE.Mesh(calfGeometry, sockMaterial);
+            leftCalf.position.y = -0.275;
+            leftCalf.castShadow = true;
+            leftLegGroup.add(leftCalf);
+            
+            const leftShoe = new THREE.Mesh(shoeBoxGeometry, shoeMaterial);
+            leftShoe.position.y = -0.45;
+            leftShoe.castShadow = true;
+            leftLegGroup.add(leftShoe);
+            
+            humanoid.add(leftLegGroup);
+            
+            // Right Leg Group
+            const rightLegGroup = new THREE.Group();
+            rightLegGroup.position.set(0.13, 0.73, 0);
+            rightLegGroup.name = 'rightLeg';
+            
+            const rightThigh = new THREE.Mesh(thighGeometry, kneeMaterial);
+            rightThigh.position.y = -0.075;
+            rightThigh.castShadow = true;
+            rightLegGroup.add(rightThigh);
+            
+            const rightCalf = new THREE.Mesh(calfGeometry, sockMaterial);
+            rightCalf.position.y = -0.275;
+            rightCalf.castShadow = true;
+            rightLegGroup.add(rightCalf);
+            
+            const rightShoe = new THREE.Mesh(shoeBoxGeometry, shoeMaterial);
+            rightShoe.position.y = -0.45;
+            rightShoe.castShadow = true;
+            rightLegGroup.add(rightShoe);
+            
+            humanoid.add(rightLegGroup);
+            
+            return humanoid;
+        }
+        
+        function animateKick() {
+            animationState = 'kick';
+            animationTime = 0;
+        }
+        
+        function animateRun() {
+            animationState = 'run';
+            animationTime = 0;
+        }
+        
+        function animateJump() {
+            animationState = 'jump';
+            animationTime = 0;
+        }
+        
+        function animateWave() {
+            animationState = 'wave';
+            animationTime = 0;
+        }
+        
+        function resetPose() {
+            animationState = 'idle';
+            const leftArm = player.getObjectByName('leftArm');
+            const rightArm = player.getObjectByName('rightArm');
+            const leftLeg = player.getObjectByName('leftLeg');
+            const rightLeg = player.getObjectByName('rightLeg');
+            const torso = player.getObjectByName('torso');
+            
+            leftArm.rotation.x = 0;
+            rightArm.rotation.x = 0;
+            leftLeg.rotation.x = 0;
+            rightLeg.rotation.x = 0;
+            torso.rotation.x = 0;
+            player.position.y = 0;
+        }
+        
+        function updateAnimation(deltaTime) {
+            animationTime += deltaTime;
+            
+            const leftArm = player.getObjectByName('leftArm');
+            const rightArm = player.getObjectByName('rightArm');
+            const leftLeg = player.getObjectByName('leftLeg');
+            const rightLeg = player.getObjectByName('rightLeg');
+            const torso = player.getObjectByName('torso');
+            
+            switch(animationState) {
+                case 'kick':
+                    if (animationTime < 0.3) {
+                        // Wind up
+                        rightLeg.rotation.x = -Math.PI / 4 * (animationTime / 0.3);
+                        torso.rotation.x = -0.2 * (animationTime / 0.3);
+                    } else if (animationTime < 0.5) {
+                        // Kick
+                        const kickProgress = (animationTime - 0.3) / 0.2;
+                        rightLeg.rotation.x = -Math.PI / 4 + (Math.PI / 2) * kickProgress;
+                        torso.rotation.x = -0.2 + 0.3 * kickProgress;
+                    } else if (animationTime < 0.8) {
+                        // Return
+                        const returnProgress = (animationTime - 0.5) / 0.3;
+                        rightLeg.rotation.x = Math.PI / 4 * (1 - returnProgress);
+                        torso.rotation.x = 0.1 * (1 - returnProgress);
+                    } else {
+                        resetPose();
+                    }
+                    break;
+                    
+                case 'run':
+                    const runSpeed = 8;
+                    leftLeg.rotation.x = Math.sin(animationTime * runSpeed) * 0.5;
+                    rightLeg.rotation.x = -Math.sin(animationTime * runSpeed) * 0.5;
+                    leftArm.rotation.x = -Math.sin(animationTime * runSpeed) * 0.4;
+                    rightArm.rotation.x = Math.sin(animationTime * runSpeed) * 0.4;
+                    player.position.y = Math.abs(Math.sin(animationTime * runSpeed * 2)) * 0.1;
+                    break;
+                    
+                case 'jump':
+                    if (animationTime < 0.5) {
+                        // Going up
+                        player.position.y = Math.sin((animationTime / 0.5) * Math.PI) * 1.5;
+                        leftArm.rotation.x = -Math.PI / 3;
+                        rightArm.rotation.x = -Math.PI / 3;
+                        leftLeg.rotation.x = Math.PI / 6;
+                        rightLeg.rotation.x = Math.PI / 6;
+                    } else if (animationTime < 1.0) {
+                        // Landing
+                        player.position.y = 0;
+                        const landProgress = (animationTime - 0.5) / 0.5;
+                        leftArm.rotation.x = -Math.PI / 3 * (1 - landProgress);
+                        rightArm.rotation.x = -Math.PI / 3 * (1 - landProgress);
+                        leftLeg.rotation.x = Math.PI / 6 * (1 - landProgress);
+                        rightLeg.rotation.x = Math.PI / 6 * (1 - landProgress);
+                    } else {
+                        resetPose();
+                    }
+                    break;
+                    
+                case 'wave':
+                    rightArm.rotation.x = -Math.PI / 2;
+                    rightArm.rotation.z = Math.sin(animationTime * 10) * 0.3;
+                    if (animationTime > 2) {
+                        resetPose();
+                    }
+                    break;
+            }
+        }
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            const deltaTime = clock.getDelta();
+            updateAnimation(deltaTime);
+            
+            renderer.render(scene, camera);
+        }
+        
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+
+
+
+
+        // Start the demo
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+package defpackage;
+
+import android.net.Uri;
+import android.text.TextUtils;
+import androidx.collection.ArrayMap;
+import java.util.Map;
+
+/* JADX INFO: loaded from: classes2.dex */
+public class cw1 {
+    public final Map a = new ArrayMap();
+
+    public static cw1 create() {
+        return new cw1();
+    }
+
+    private String subBaseUrl(String str) {
+        if (TextUtils.isEmpty(str)) {
+            return str;
+        }
+        Uri uri = Uri.parse(str);
+        return uri.getScheme() + "://" + uri.getAuthority();
+    }
+
+    public void additionalHttpHeader(String str, String str2, String str3) {
+        if (str == null) {
+            return;
+        }
+        String strSubBaseUrl = subBaseUrl(str);
+        Map<String, Map<String, String>> headers = getHeaders();
+        Map<String, String> arrayMap = headers.get(subBaseUrl(strSubBaseUrl));
+        if (arrayMap == null) {
+            arrayMap = new ArrayMap<>();
+        }
+        arrayMap.put(str2, str3);
+        headers.put(strSubBaseUrl, arrayMap);
+    }
+
+    public void additionalHttpHeaders(String str, Map<String, String> map) {
+        if (str == null) {
+            return;
+        }
+        String strSubBaseUrl = subBaseUrl(str);
+        Map<String, Map<String, String>> headers = getHeaders();
+        if (map == null) {
+            map = new ArrayMap<>();
+        }
+        headers.put(strSubBaseUrl, map);
+    }
+
+    public Map<String, String> getHeaders(String str) {
+        String strSubBaseUrl = subBaseUrl(str);
+        if (this.a.get(strSubBaseUrl) != null) {
+            return (Map) this.a.get(strSubBaseUrl);
+        }
+        ArrayMap arrayMap = new ArrayMap();
+        this.a.put(strSubBaseUrl, arrayMap);
+        return arrayMap;
+    }
+
+    public boolean isEmptyHeaders(String str) {
+        Map<String, String> headers = getHeaders(subBaseUrl(str));
+        return headers == null || headers.isEmpty();
+    }
+
+    public void removeHttpHeader(String str, String str2) {
+        if (str == null) {
+            return;
+        }
+        Map<String, String> map = getHeaders().get(subBaseUrl(str));
+        if (map != null) {
+            map.remove(str2);
+        }
+    }
+
+    public String toString() {
+        return "HttpHeaders{mHeaders=" + this.a + '}';
+    }
+
+    public Map<String, Map<String, String>> getHeaders() {
+        return this.a;
+    }
+}
