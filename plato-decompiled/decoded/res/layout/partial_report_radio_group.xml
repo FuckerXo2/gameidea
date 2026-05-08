@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RadioGroup android:orientation="vertical" android:id="@id/plato_radio_group_report" android:layout_width="match_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <androidx.appcompat.widget.AppCompatRadioButton android:id="@id/plato_report_reason_spam" android:checked="true" android:text="@string/plato_report_reason_spam" style="@style/PlatoRadioButton" />
-    <androidx.appcompat.widget.AppCompatRadioButton android:id="@id/plato_report_reason_cheating" android:text="@string/plato_report_reason_cheating" style="@style/PlatoRadioButton" />
-    <androidx.appcompat.widget.AppCompatRadioButton android:id="@id/plato_report_reason_offensive" android:text="@string/plato_report_reason_offensive" style="@style/PlatoRadioButton" />
-    <androidx.appcompat.widget.AppCompatRadioButton android:id="@id/plato_report_reason_offensive_name" android:text="@string/plato_report_reason_offensive_name" style="@style/PlatoRadioButton" />
-    <androidx.appcompat.widget.AppCompatRadioButton android:id="@id/plato_report_reason_threat_of_violence" android:text="@string/plato_report_reason_serious_threat" style="@style/PlatoRadioButton" />
-</RadioGroup>

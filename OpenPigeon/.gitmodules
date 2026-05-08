@@ -1,3 +1,0 @@
-[submodule "app/src/main/cpp/box2d"]
-	path = app/src/main/cpp/box2d
-	url = https://github.com/OpenBubbles/box2d

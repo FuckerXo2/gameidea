@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@color/plato_screen_background_primary_dark" android:layout_width="match_parent" android:layout_height="90.0dp"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/element_padding_large" android:layout_marginBottom="@dimen/element_padding_tiny" android:layout_marginStart="@dimen/element_padding_large">
-        <ImageView android:id="@id/app_icon" android:layout_width="18.0dp" android:layout_height="18.0dp" app:tint="@color/plato_blue_dark" />
-        <TextView android:textAppearance="@style/TextAppearance.Compat.Notification.Info" android:textColor="@color/plato_blue_dark" android:id="@id/app_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/element_padding_default" />
-    </LinearLayout>
-    <include android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/element_padding_large" layout="@layout/notification_layout_dark_pie" />
-</LinearLayout>

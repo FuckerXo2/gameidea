@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ProgressBar android:id="@id/lobby_loading_data_progress_view" android:layout_width="@dimen/lobby_progress_bar_size" android:layout_height="@dimen/lobby_progress_bar_size" android:layout_margin="@dimen/element_padding_default" android:indeterminateTint="@color/lobby_circular_progress_bar_red" />
-    <com.playchat.ui.customview.GradientTextView android:textSize="@dimen/text_size_tiny" android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/lobby_loading_data_info_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:textAllCaps="true" app:gradientEndColor="@color/lobby_chip_balance_gradient_end" app:gradientOrientation="top_bottom" app:gradientStartColor="@color/lobby_chip_balance_gradient_start" />
-</LinearLayout>

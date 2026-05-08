@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/text_size_tiny" android:textColor="@color/plato_dark_gray_blue" android:id="@id/plato_group_my_games_title" android:paddingTop="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content" android:textAllCaps="true" android:paddingHorizontal="@dimen/element_padding_large"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

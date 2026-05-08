@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/item_conversation_message_padding" android:layout_width="match_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include layout="@layout/item_message_system" />
-    <androidx.constraintlayout.widget.ConstraintLayout android:paddingTop="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/message_invitation_decline" android:contentDescription="@string/plato_decline_friend_request_CD" android:layout_marginEnd="@dimen/element_padding_extra_large" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toStartOf="@id/message_invitation_accept" app:layout_constraintHorizontal_chainStyle="packed" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" style="@style/RequestButton.Decline" />
-        <ImageView android:id="@id/message_invitation_accept" android:contentDescription="@string/plato_accept_friend_request_CD" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toEndOf="@id/message_invitation_decline" app:layout_constraintTop_toTopOf="parent" style="@style/RequestButton.Accept" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</LinearLayout>

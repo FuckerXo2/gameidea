@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?appThemeColorGrayBackground" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="@dimen/element_padding_large" android:paddingVertical="@dimen/element_padding_default"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:layout_width="24.0dp" android:layout_height="24.0dp" android:src="@drawable/ic_pin" app:tint="?appThemeColorBlue" />
-    <TextView android:textSize="@dimen/text_size_tiny" android:textColor="?appThemeColorTextTitle" android:ellipsize="end" android:id="@id/pinned_message_text" android:layout_width="0.0dp" android:layout_height="wrap_content" android:maxLines="5" android:layout_weight="1.0" android:lineSpacingMultiplier="0.9" android:paddingStart="@dimen/element_padding_large" />
-    <ImageView android:id="@id/pinned_message_close" android:background="@drawable/plato_list_selector" android:layout_width="24.0dp" android:layout_height="24.0dp" android:src="@drawable/ic_close" app:tint="?appThemeColorTextTitle" style="@style/TransparentButtonStyle" />
-</LinearLayout>

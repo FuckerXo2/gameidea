@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape android:tint="?appThemeColorDividerLine"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="?appThemeColorDividerLine" />
-    <size android:height="@dimen/divider_height" android:width="0.5dp" />
-</shape>

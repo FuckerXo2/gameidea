@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.airbnb.lottie.LottieAnimationView android:id="@id/poker_currency_icon" android:layout_width="@dimen/lobby_chip_balance_plus_icon_size" android:layout_height="@dimen/lobby_chip_balance_plus_icon_size" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
-    <com.playchat.ui.customview.GradientTextView android:textSize="@dimen/lobby_text_size_default" android:textColor="@android:color/white" android:id="@id/poker_currency_amount" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/element_padding_small" app:gradientEnable="false" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@id/poker_currency_icon" app:layout_constraintTop_toTopOf="parent" />
-    <ImageView android:id="@id/poker_add_currency" android:layout_width="@dimen/lobby_chip_balance_plus_icon_size" android:layout_height="@dimen/lobby_chip_balance_plus_icon_size" android:src="@drawable/lobby_plus_button_selector" android:layout_marginStart="@dimen/element_padding_default" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@id/poker_currency_amount" app:layout_constraintTop_toTopOf="parent" />
-</merge>

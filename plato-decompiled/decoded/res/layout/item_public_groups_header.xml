@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingBottom="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include android:id="@id/rooms_server_language_layout" layout="@layout/partial_rooms_server_language" />
-    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/element_padding_default" android:layout_toEndOf="@id/rooms_server_language_layout">
-        <androidx.appcompat.widget.AppCompatTextView android:textSize="@dimen/text_size_tiny" android:textColor="?appThemeColorBlue" android:layout_gravity="end|center" android:id="@id/plato_public_groups_community_link" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/plato_public_groups_community_link_text" android:drawablePadding="@dimen/element_padding_tiny" app:drawableEndCompat="@drawable/ic_arrow_up_right" app:drawableTint="?appThemeColorBlue" />
-    </FrameLayout>
-</RelativeLayout>

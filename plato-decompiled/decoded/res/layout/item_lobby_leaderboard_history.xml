@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/background_lobby_sit_go_play_area" android:padding="@dimen/element_padding_default" android:layout_width="match_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:id="@id/history_item_value_placeholder" android:visibility="invisible" app:layout_constraintTop_toTopOf="parent" style="@style/LobbyLeaderboardsHistoryItemValue" />
-    <TextView android:id="@id/history_item_value" app:layout_constraintBottom_toBottomOf="@id/history_item_value_placeholder" app:layout_constraintTop_toTopOf="@id/history_item_value_placeholder" style="@style/LobbyLeaderboardsHistoryItemValue" />
-    <TextView android:id="@id/history_item_description" app:layout_constraintTop_toBottomOf="@id/history_item_value_placeholder" style="@style/LobbyLeaderboardsHistoryItemDescription" />
-    <TextView android:id="@id/history_item_longest_description_placeholder" android:visibility="invisible" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@id/history_item_value_placeholder" style="@style/LobbyLeaderboardsHistoryItemDescription" />
-</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.playchat.ui.customview.EmptyStateView android:layout_gravity="center" android:id="@id/empty_state_web_fallback" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/empty_state_max_width" android:paddingHorizontal="@dimen/empty_state_padding_horizontal" app:image="@drawable/ic_fail_plato" app:subtitle="@string/empty_state_web_container_description" app:title="@string/empty_state_web_container_title"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

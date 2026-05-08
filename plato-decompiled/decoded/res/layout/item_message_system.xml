@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingBottom="@dimen/item_conversation_message_padding" android:layout_width="match_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/item_message_base" />
-    <TextView android:textSize="@dimen/text_size_tiny" android:textColor="?appThemeColorTextDefault" android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/message_system" android:paddingTop="@dimen/element_padding_large" android:paddingBottom="@dimen/element_padding_tiny" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</LinearLayout>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/plato_list_selector" android:clipChildren="false" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.playchat.ui.customview.FramedProfilePictureView android:id="@id/group_actives_framed_picture_image_view" android:layout_width="@dimen/avatar_size_default" android:layout_height="@dimen/avatar_size_default" android:layout_margin="@dimen/element_padding_tiny" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layoutDirection="ltr">
-        <com.playchat.ui.customview.iap.UserEffectTextView android:textSize="@dimen/text_size_large" android:textColor="?appThemeColorTextTitle" android:ellipsize="end" android:id="@id/name_text_view" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" android:layout_marginStart="@dimen/element_padding_large" />
-        <com.playchat.ui.customview.iap.UserEffectsLayout android:id="@id/user_effects_layout" android:layout_width="wrap_content" android:layout_height="18.0dp" android:layout_weight="0.0" />
-    </LinearLayout>
-</LinearLayout>

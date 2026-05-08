@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.playchat.ui.customview.EmptyStateView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="@dimen/element_padding_default" app:image="@drawable/img_empty_stats" app:title="@string/profile_my_stats_empty_title"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

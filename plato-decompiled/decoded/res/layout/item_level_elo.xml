@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:ellipsize="end" android:id="@id/profile_level_elo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" style="@style/PlatoPill" />
-    <TextView android:textSize="@dimen/text_size_default" android:textColor="?appThemeColorTextTitle" android:id="@id/profile_level_ranking" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/element_padding_small" android:layout_marginEnd="@dimen/element_padding_small" />
-    <TextView android:textSize="@dimen/text_size_small" android:textColor="?appThemeColorTextDefault" android:ellipsize="end" android:id="@id/profile_level_poolType" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
-</LinearLayout>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout android:background="?appThemeColorScreenBackgroundPrimary" android:clipChildren="false" style="@style/DialogProfileCardLandscape"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <include android:id="@id/profile_card_main_layout" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" layout="@layout/partial_profilecard_profile_landscape" />
-    <ImageView android:id="@id/close_view" android:contentDescription="@string/plato_back_cd" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" style="@style/FloatingCloseButton" />
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/plato_profile_card_options_recycler" android:layout_marginTop="@dimen/element_padding_default" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" style="@style/DialogProfileCardOptionsRecyclerLandscape" />
-</androidx.constraintlayout.widget.ConstraintLayout>

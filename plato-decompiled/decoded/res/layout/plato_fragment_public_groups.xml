@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="?appThemeColorScreenBackgroundSecondary" android:layout_width="match_parent" android:layout_height="match_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/plato_header" layout="@layout/partial_header" />
-    <com.playchat.ui.customview.NetworkBar android:id="@id/network_bar" android:layout_width="match_parent" android:layout_height="@dimen/network_bar_height" android:layout_below="@id/plato_header" />
-    <androidx.recyclerview.widget.RecyclerView android:id="@id/plato_public_groups_list" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@id/network_bar" />
-    <View android:background="?appThemeColorDividerLine" android:layout_width="match_parent" android:layout_height="@dimen/divider_height" android:layout_below="@id/plato_header" />
-    <ProgressBar android:id="@id/public_groups_progress_bar" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-</RelativeLayout>

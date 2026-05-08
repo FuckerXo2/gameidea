@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/plato_list_selector_white" android:clipChildren="false" android:layout_width="match_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.playchat.ui.customview.FramedProfilePictureView android:id="@id/icon_image_view" android:layout_width="@dimen/conversations_picture_size" android:layout_height="@dimen/conversations_picture_size" android:layout_marginLeft="@dimen/conversations_picture_margin_horizontal" android:layout_marginTop="@dimen/conversations_message_margin_vertical" android:layout_marginRight="@dimen/conversations_picture_margin_horizontal" android:layout_marginBottom="@dimen/conversations_message_margin_vertical" />
-    <TextView android:textSize="@dimen/text_size_small" android:textColor="?appThemeColorTextTitle" android:id="@id/description_text_view" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    <ImageView android:id="@id/close_image_view" android:src="@drawable/plato_button_x" android:contentDescription="@android:string/cancel" style="@style/ButtonClose" />
-</LinearLayout>
