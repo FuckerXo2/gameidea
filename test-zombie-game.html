@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Undead Siege</title>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: #0a0a0a; 
+      overflow: hidden; 
+      touch-action: none;
+      font-family: 'Arial Black', sans-serif;
+    }
+    #game-container { 
+      width: 100vw; 
+      height: 100vh; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container"></div>
+  <script>
+    const config = {
+      type: Phaser.AUTO,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      parent: 'game-container',
+      backgroundColor: '#1a0f0f',
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { y: 0 },
+          debug: false
+        }
+      },
+      scene: {
+        preload: preload,
+        create: create,
+        update: update
+      }
+    };
+
+    const game = new Phaser.Game(config);
+    
+    let player, zombies, bullets, particles, cursors;
+    let joystick, fireButton, reloadButton;
+    let score = 0, wave = 1, kills = 0;
+    let ammo = 30, maxAmmo = 30, reloading = false;
+    let scoreText, ammoText, waveText, healthText;
+    let health = 100;
+    let fireRate = 150, lastFired = 0;
+    let cameraShake = 0;
+    let bloodSplatters = [];
+    let muzzleFlash;
+    let gameOver = false;
+    let restartButton;
+
+    window.gametokEditable = {
+      images: [],
+      music: [],
+      colors: [
+        { id: 'bg_color', value: '#1a0f0f' },
+        { id: 'blood_color', value: '#8b0000' },
+        { id: 'ui_color', value: '#ff4444' }
+      ],
+      text: [
+        { id: 'game_title', value: 'UNDEAD SIEGE' }
+      ],
+      tune: [
+        { id: 'fire_rate', value: 150 },
+        { id: 'zombie_speed', value: 60 },
+        { id: 'player_speed', value: 200 }
+      ],
+      videos: [],
+      sfx: []
+    };
+
+    function preload() {
+      // Create procedural sprites with proper detail
+      const graphics = this.add.graphics();
+      
+      // Player sprite - tactical survivor
+      graphics.clear();
+      graphics.fillStyle(0x2a4a2a, 1);
+      graphics.fillRect(0, 0, 32, 48);
+      graphics.fillStyle(0xd4a574, 1);
+      graphics.fillCircle(16, 12, 8);
+      graphics.fillStyle(0x1a1a1a, 1);
+      graphics.fillRect(8, 20, 16, 20);
+      graphics.fillStyle(0x8b4513, 1);
+      graphics.fillRect(20, 24, 8, 16);
+      graphics.generateTexture('player', 32, 48);
+      
+      // Zombie sprite - decayed undead
+      graphics.clear();
+      graphics.fillStyle(0x4a5a4a, 1);
+      graphics.fillRect(0, 0, 28, 44);
+      graphics.fillStyle(0x7a8a7a, 1);
+      graphics.fillCircle(14, 10, 7);
+      graphics.fillStyle(0xff0000, 1);
+      graphics.fillCircle(10, 8, 2);
+      graphics.fillCircle(18, 8, 2);
+      graphics.fillStyle(0x3a4a3a, 1);
+      graphics.fillRect(6, 18, 16, 18);
+      graphics.generateTexture('zombie', 28, 44);
+      
+      // Bullet sprite
+      graphics.clear();
+      graphics.fillStyle(0xffff00, 1);
+      graphics.fillCircle(3, 3, 3);
+      graphics.fillStyle(0xff8800, 1);
+      graphics.fillCircle(3, 3, 2);
+      graphics.generateTexture('bullet', 6, 6);
+      
+      // Blood particle
+      graphics.clear();
+      graphics.fillStyle(0x8b0000, 1);
+      graphics.fillCircle(2, 2, 2);
+      graphics.generateTexture('blood', 4, 4);
+      
+      // Muzzle flash
+      graphics.clear();
+      graphics.fillStyle(0xffff00, 1);
+      graphics.fillCircle(8, 8, 8);
+      graphics.fillStyle(0xff8800, 1);
+      graphics.fillCircle(8, 8, 5);
+      graphics.generateTexture('flash', 16, 16);
+      
+      graphics.destroy();
+    }
+
+    function create() {
+      const width = this.cameras.main.width;
+      const height = this.cameras.main.height;
+
+      // Create groups
+      zombies = this.physics.add.group();
+      bullets = this.physics.add.group();
+      particles = this.add.group();
+
+      // Create player
+      player = this.physics.add.sprite(width / 2, height / 2, 'player');
+      player.setCollideWorldBounds(true);
+      player.setDepth(10);
+
+      // UI Text
+      scoreText = this.add.text(20, 20, 'KILLS: 0', {
+        fontSize: '24px',
+        fontFamily: 'Arial Black',
+        fill: '#ff4444',
+        stroke: '#000',
+        strokeThickness: 4
+      }).setDepth(100);
+
+      waveText = this.add.text(width / 2, 20, 'WAVE 1', {
+        fontSize: '28px',
+        fontFamily: 'Arial Black',
+        fill: '#ff4444',
+        stroke: '#000',
+        strokeThickness: 4
+      }).setOrigin(0.5, 0).setDepth(100);
+
+      ammoText = this.add.text(width - 20, 20, 'AMMO: 30/30', {
+        fontSize: '24px',
+        fontFamily: 'Arial Black',
+        fill: '#ffff00',
+        stroke: '#000',
+        strokeThickness: 4
+      }).setOrigin(1, 0).setDepth(100);
+
+      healthText = this.add.text(20, height - 60, 'HEALTH: 100', {
+        fontSize: '24px',
+        fontFamily: 'Arial Black',
+        fill: '#00ff00',
+        stroke: '#000',
+        strokeThickness: 4
+      }).setDepth(100);
+
+      // Touch controls - Joystick
+      const joystickBase = this.add.circle(100, height - 100, 50, 0x333333, 0.5).setDepth(100);
+      joystick = this.add.circle(100, height - 100, 30, 0x666666, 0.8).setDepth(101);
+      joystick.baseX = 100;
+      joystick.baseY = height - 100;
+      joystick.active = false;
+
+      // Fire button
+      fireButton = this.add.circle(width - 100, height - 100, 50, 0xff0000, 0.7).setDepth(100).setInteractive();
+      this.add.text(width - 100, height - 100, 'FIRE', {
+        fontSize: '18px',
+        fontFamily: 'Arial Black',
+        fill: '#fff'
+      }).setOrigin(0.5).setDepth(101);
+
+      // Reload button
+      reloadButton = this.add.circle(width - 100, height - 200, 40, 0xffaa00, 0.7).setDepth(100).setInteractive();
+      this.add.text(width - 100, height - 200, 'RELOAD', {
+        fontSize: '14px',
+        fontFamily: 'Arial Black',
+        fill: '#fff'
+      }).setOrigin(0.5).setDepth(101);
+
+      // Muzzle flash
+      muzzleFlash = this.add.sprite(0, 0, 'flash').setVisible(false).setDepth(15);
+
+      // Input handlers
+      this.input.on('pointerdown', handlePointerDown, this);
+      this.input.on('pointermove', handlePointerMove, this);
+      this.input.on('pointerup', handlePointerUp, this);
+
+      fireButton.on('pointerdown', () => {
+        fireButton.pressed = true;
+      });
+      fireButton.on('pointerup', () => {
+        fireButton.pressed = false;
+      });
+
+      reloadButton.on('pointerdown', () => {
+        reload();
+      });
+
+      // Collisions
+      this.physics.add.overlap(bullets, zombies, hitZombie, null, this);
+      this.physics.add.overlap(player, zombies, hitPlayer, null, this);
+
+      // Spawn first wave
+      spawnWave.call(this);
+    }
+
+    function handlePointerDown(pointer) {
+      const dist = Phaser.Math.Distance.Between(pointer.x, pointer.y, joystick.baseX, joystick.baseY);
+      if (dist < 80) {
+        joystick.active = true;
+      }
+    }
+
+    function handlePointerMove(pointer) {
+      if (joystick.active && pointer.isDown) {
+        const angle = Phaser.Math.Angle.Between(joystick.baseX, joystick.baseY, pointer.x, pointer.y);
+        const distance = Math.min(Phaser.Math.Distance.Between(joystick.baseX, joystick.baseY, pointer.x, pointer.y), 50);
+        joystick.x = joystick.baseX + Math.cos(angle) * distance;
+        joystick.y = joystick.baseY + Math.sin(angle) * distance;
+      }
+    }
+
+    function handlePointerUp() {
+      joystick.active = false;
+      joystick.x = joystick.baseX;
+      joystick.y = joystick.baseY;
+    }
+
+    function update(time) {
+      if (gameOver) return;
+
+      // Player movement from joystick
+      if (joystick.active) {
+        const angle = Phaser.Math.Angle.Between(joystick.baseX, joystick.baseY, joystick.x, joystick.y);
+        const distance = Phaser.Math.Distance.Between(joystick.baseX, joystick.baseY, joystick.x, joystick.y);
+        const speed = (distance / 50) * 200;
+        player.setVelocity(Math.cos(angle) * speed, Math.sin(angle) * speed);
+      } else {
+        player.setVelocity(0, 0);
+      }
+
+      // Auto-fire when button pressed
+      if (fireButton.pressed && time > lastFired && ammo > 0 && !reloading) {
+        fire.call(this);
+        lastFired = time + fireRate;
+      }
+
+      // Zombie AI - chase player
+      zombies.children.entries.forEach(zombie => {
+        if (!zombie.active) return;
+        const angle = Phaser.Math.Angle.Between(zombie.x, zombie.y, player.x, player.y);
+        const speed = 60 + (wave * 5);
+        zombie.setVelocity(Math.cos(angle) * speed, Math.sin(angle) * speed);
+        zombie.rotation = angle + Math.PI / 2;
+      });
+
+      // Camera shake
+      if (cameraShake > 0) {
+        this.cameras.main.shake(50, cameraShake / 1000);
+        cameraShake *= 0.9;
+      }
+
+      // Update particles
+      particles.children.entries.forEach(p => {
+        p.alpha -= 0.02;
+        if (p.alpha <= 0) p.destroy();
+      });
+
+      // Check wave completion
+      if (zombies.countActive() === 0 && !gameOver) {
+        wave++;
+        waveText.setText('WAVE ' + wave);
+        this.time.delayedCall(2000, () => spawnWave.call(this));
+      }
+
+      // Update UI
+      ammoText.setText(`AMMO: ${ammo}/${maxAmmo}`);
+      healthText.setText(`HEALTH: ${health}`);
+      healthText.setColor(health > 50 ? '#00ff00' : health > 25 ? '#ffaa00' : '#ff0000');
+    }
+
+    function fire() {
+      if (reloading || ammo <= 0) return;
+      
+      ammo--;
+      cameraShake = 0.01;
+
+      // Find nearest zombie
+      let nearestZombie = null;
+      let minDist = Infinity;
+      zombies.children.entries.forEach(z => {
+        const dist = Phaser.Math.Distance.Between(player.x, player.y, z.x, z.y);
+        if (dist < minDist) {
+          minDist = dist;
+          nearestZombie = z;
+        }
+      });
+
+      if (nearestZombie) {
+        const angle = Phaser.Math.Angle.Between(player.x, player.y, nearestZombie.x, nearestZombie.y);
+        const bullet = bullets.create(player.x, player.y, 'bullet');
+        bullet.setVelocity(Math.cos(angle) * 600, Math.sin(angle) * 600);
+        bullet.rotation = angle;
+        bullet.setDepth(5);
+
+        // Muzzle flash
+        muzzleFlash.setPosition(player.x + Math.cos(angle) * 20, player.y + Math.sin(angle) * 20);
+        muzzleFlash.setVisible(true);
+        muzzleFlash.setAlpha(1);
+        this.tweens.add({
+          targets: muzzleFlash,
+          alpha: 0,
+          duration: 100,
+          onComplete: () => muzzleFlash.setVisible(false)
+        });
+
+        // Auto-destroy bullet after 1 second
+        this.time.delayedCall(1000, () => {
+          if (bullet.active) bullet.destroy();
+        });
+      }
+
+      if (ammo === 0) {
+        this.time.delayedCall(500, reload);
+      }
+    }
+
+    function reload() {
+      if (reloading) return;
+      reloading = true;
+      ammoText.setText('RELOADING...');
+      game.scene.scenes[0].time.delayedCall(1500, () => {
+        ammo = maxAmmo;
+        reloading = false;
+      });
+    }
+
+    function hitZombie(bullet, zombie) {
+      bullet.destroy();
+      
+      // Blood splatter
+      for (let i = 0; i < 8; i++) {
+        const p = game.scene.scenes[0].add.sprite(zombie.x, zombie.y, 'blood');
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 50 + Math.random() * 100;
+        p.setVelocity(Math.cos(angle) * speed, Math.sin(angle) * speed);
+        p.setScale(0.5 + Math.random() * 0.5);
+        particles.add(p);
+      }
+
+      zombie.destroy();
+      kills++;
+      score += 10 * wave;
+      scoreText.setText('KILLS: ' + kills);
+      cameraShake = 0.015;
+    }
+
+    function hitPlayer(player, zombie) {
+      if (zombie.lastHit && Date.now() - zombie.lastHit < 1000) return;
+      zombie.lastHit = Date.now();
+      
+      health -= 10;
+      cameraShake = 0.03;
+      
+      // Flash screen red
+      game.scene.scenes[0].cameras.main.flash(200, 255, 0, 0, false, (camera, progress) => {
+        if (progress === 1 && health <= 0) {
+          endGame();
+        }
+      });
+    }
+
+    function spawnWave() {
+      const count = 5 + (wave * 3);
+      const width = game.scene.scenes[0].cameras.main.width;
+      const height = game.scene.scenes[0].cameras.main.height;
+      
+      for (let i = 0; i < count; i++) {
+        game.scene.scenes[0].time.delayedCall(i * 300, () => {
+          const side = Math.floor(Math.random() * 4);
+          let x, y;
+          
+          switch(side) {
+            case 0: x = Math.random() * width; y = -50; break;
+            case 1: x = width + 50; y = Math.random() * height; break;
+            case 2: x = Math.random() * width; y = height + 50; break;
+            case 3: x = -50; y = Math.random() * height; break;
+          }
+          
+          const zombie = zombies.create(x, y, 'zombie');
+          zombie.setDepth(8);
+        });
+      }
+    }
+
+    function endGame() {
+      gameOver = true;
+      player.setTint(0x666666);
+      
+      const width = game.scene.scenes[0].cameras.main.width;
+      const height = game.scene.scenes[0].cameras.main.height;
+      
+      const bg = game.scene.scenes[0].add.rectangle(width/2, height/2, width, height, 0x000000, 0.8).setDepth(200);
+      
+      game.scene.scenes[0].add.text(width/2, height/2 - 100, 'GAME OVER', {
+        fontSize: '64px',
+        fontFamily: 'Arial Black',
+        fill: '#ff0000',
+        stroke: '#000',
+        strokeThickness: 8
+      }).setOrigin(0.5).setDepth(201);
+      
+      game.scene.scenes[0].add.text(width/2, height/2, `KILLS: ${kills}`, {
+        fontSize: '36px',
+        fontFamily: 'Arial Black',
+        fill: '#fff',
+        stroke: '#000',
+        strokeThickness: 6
+      }).setOrigin(0.5).setDepth(201);
+      
+      game.scene.scenes[0].add.text(width/2, height/2 + 50, `WAVE: ${wave}`, {
+        fontSize: '36px',
+        fontFamily: 'Arial Black',
+        fill: '#fff',
+        stroke: '#000',
+        strokeThickness: 6
+      }).setOrigin(0.5).setDepth(201);
+      
+      restartButton = game.scene.scenes[0].add.text(width/2, height/2 + 150, 'TAP TO RESTART', {
+        fontSize: '32px',
+        fontFamily: 'Arial Black',
+        fill: '#ffff00',
+        stroke: '#000',
+        strokeThickness: 6
+      }).setOrigin(0.5).setDepth(201).setInteractive();
+      
+      restartButton.on('pointerdown', () => {
+        location.reload();
+      });
+    }
+  </script>
+</body>
+</html>

@@ -6,8 +6,7 @@ import { API_URL } from '../services/api';
 export default function Multiplayer() {
   const [inQueue, setInQueue] = useState(false);
   const [matchFound, setMatchFound] = useState<any>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [socket, setSocket] = useState<Socket | null>(null);
+  const [, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {
     // Just mock socket connection for speed if backend is offline

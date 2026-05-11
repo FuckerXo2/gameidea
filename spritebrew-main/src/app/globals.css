@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+/* ── Theme tokens ── */
+:root {
+  --bg-primary: #121010;
+  --bg-secondary: #1a1714;
+  --bg-surface: #1e1b18;
+  --bg-elevated: #252220;
+  --bg-hover: #2a2725;
+
+  --border-default: rgba(200, 160, 100, 0.12);
+  --border-subtle: rgba(200, 160, 100, 0.06);
+  --border-strong: rgba(200, 160, 100, 0.2);
+
+  --text-primary: #e8e0d6;
+  --text-secondary: #9a918a;
+  --text-muted: #5c5550;
+
+  --accent-amber: #d4871c;
+  --accent-amber-glow: rgba(212, 135, 28, 0.15);
+  --accent-amber-strong: #e8991f;
+  --accent-teal: #3db8a0;
+  --accent-teal-muted: rgba(61, 184, 160, 0.15);
+
+  --sidebar-width: 240px;
+}
+
+/* ── Tailwind v4 theme inline ── */
+@theme inline {
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-hover: var(--bg-hover);
+
+  --color-border-default: var(--border-default);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-amber-glow: var(--accent-amber-glow);
+  --color-accent-amber-strong: var(--accent-amber-strong);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-teal-muted: var(--accent-teal-muted);
+
+  --font-display: 'Press Start 2P', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* ── Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+/* Pixel-perfect rendering for all images.
+   Order matters: legacy Firefox fallback first, then `crisp-edges`,
+   then `pixelated` LAST so it wins in modern Chrome/Edge/Safari. */
+img,
+canvas {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* Explicit utility class for elements that absolutely must never smooth.
+   Applied defensively on Auto-Prep preview images and pixel-art thumbnails. */
+@layer utilities {
+  .pixel-art-render {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+  }
+}
+
+/* ── Pixel grid background ── */
+.pixel-grid {
+  background-image:
+    linear-gradient(rgba(200, 160, 100, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 160, 100, 0.03) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* ── Scrollbar styling ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ── Selection ── */
+::selection {
+  background: var(--accent-amber-glow);
+  color: var(--accent-amber-strong);
+}
+
+/* ── Utilities ── */
+.glow-amber {
+  box-shadow: 0 0 12px var(--accent-amber-glow), inset 0 0 12px var(--accent-amber-glow);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 8px var(--accent-amber-glow);
+}
+
+@keyframes pixelBrew {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Brewing loader: bubble rises and fades out */
+@keyframes brewBubble {
+  0% { transform: translateY(0); opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-50px); opacity: 0; }
+}
+
+/* Brewing loader: steam/sparkle particle drifts upward */
+@keyframes brewSteam {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  20% { opacity: 0.4; }
+  100% { transform: translateY(-40px) scale(0.3); opacity: 0; }
+}
+
+/* Landing page hero: 16-frame wizard walk cycle on a 4×4 sprite sheet.
+   The sheet is 256×256 (4 cols × 4 rows of 64×64 frames), displayed at 4x
+   scale (1024×1024 background-size). Each keyframe step jumps to the next
+   frame position — left-to-right, top-to-bottom. */
+.hero-sprite {
+  background: url('/hero-wizard-walk.png') no-repeat 0 0;
+  background-size: 1024px 1024px;
+  animation: heroSprite 2s steps(1, end) infinite;
+}
+
+@keyframes heroSprite {
+  0%      { background-position: 0 0; }
+  6.25%   { background-position: -256px 0; }
+  12.5%   { background-position: -512px 0; }
+  18.75%  { background-position: -768px 0; }
+  25%     { background-position: 0 -256px; }
+  31.25%  { background-position: -256px -256px; }
+  37.5%   { background-position: -512px -256px; }
+  43.75%  { background-position: -768px -256px; }
+  50%     { background-position: 0 -512px; }
+  56.25%  { background-position: -256px -512px; }
+  62.5%   { background-position: -512px -512px; }
+  68.75%  { background-position: -768px -512px; }
+  75%     { background-position: 0 -768px; }
+  81.25%  { background-position: -256px -768px; }
+  87.5%   { background-position: -512px -768px; }
+  93.75%  { background-position: -768px -768px; }
+}
+
+@keyframes whatsNewFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes whatsNewSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reward modal — coin bounce with overshoot. Drops in from above, lands large
+   (1.15x overshoot), settles to 1.0. Pixel-art rendering preserved via the
+   .pixel-art-render class on the SVG itself. */
+@keyframes rewardCoinBounce {
+  0%   { transform: translateY(-40px) scale(0.6); opacity: 0; }
+  55%  { transform: translateY(8px)   scale(1.15); opacity: 1; }
+  75%  { transform: translateY(-4px)  scale(0.95); }
+  100% { transform: translateY(0)     scale(1); }
+}
+
+@keyframes rewardBackdropFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes rewardCardPopIn {
+  0%   { opacity: 0; transform: scale(0.85); }
+  60%  { opacity: 1; transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes rewardAmountGlow {
+  0%, 100% { text-shadow: 0 0 4px var(--accent-amber-glow); }
+  50%      { text-shadow: 0 0 16px var(--accent-amber-strong); }
+}

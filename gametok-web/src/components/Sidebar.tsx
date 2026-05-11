@@ -1,6 +1,6 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { Home, PlusSquare, Palette, User, Grid, Play, Globe, Hash, MessageCircle, Disc as Discord, ChevronLeft, Plus, BookOpen, BarChart2, MessageSquare, Bell, Lightbulb, Star, Users } from 'lucide-react';
-import { AstrocadeLogo } from './AstrocadeLogo';
+
 import './Sidebar.css';
 
 export default function Sidebar() {
