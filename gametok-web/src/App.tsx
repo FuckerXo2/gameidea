@@ -989,6 +989,13 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
     PROMPT_IDEAS.slice(3, 6),
     ['A vampire-survivors horde game with spell combos', 'A physics builder where ramps and launchers solve puzzles', 'A first-person neon drifting game with boost pads'],
   ], []);
+  const forgeDurationHint = useMemo(() => {
+    const text = (prompt || selectedIdea).toLowerCase();
+    const looksAssetHeavy = text.length > 350
+      || /\b(many|multiple|several|dozen|traffic|character|enemy|enemies|vehicle|cars?|sprites?|lanes?|boss|weapon|level)\b/.test(text);
+    if (!looksAssetHeavy) return null;
+    return 'Detailed games with lots of characters, vehicles, or art usually take 15–25 minutes — most of that is AI art generation.';
+  }, [prompt, selectedIdea]);
   const drafts = useMemo(() => [
     { id: 'draft-1', title: 'Neon Rhythm Rush', status: 'Playable draft', game: fallbackGame },
     { id: 'draft-2', title: 'Haunted Quiz Room', status: 'Needs polish', game: fallbackGame },
@@ -1327,6 +1334,7 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
             <button onClick={() => setPhase('idle')}>Edit Wish</button>
             <button className="primary" onClick={() => setPhase('generating')}><Zap size={16} /> Build Game</button>
           </div>
+          {forgeDurationHint && <p className="forge-duration-hint">{forgeDurationHint}</p>}
           {generateError && <p className="create-error">{generateError}</p>}
         </div>
       )}
@@ -1345,6 +1353,11 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
               <span key={step.label} className={index <= activeForgeStep ? 'done' : ''}>{step.label}</span>
             ))}
           </div>
+          {(forgeDurationHint || forgePhase === 'assets' || progress >= 42) && (
+            <p className="forge-duration-hint">
+              {forgeDurationHint || 'Generating custom art takes a while — hang tight while the artist agent paints your game.'}
+            </p>
+          )}
         </div>
       )}
 
