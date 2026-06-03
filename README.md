@@ -49,7 +49,7 @@ npx expo start
 └── openpigeon-cors-worker/  # Cloudflare CORS proxy
 ```
 
-See [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) for detailed documentation.
+For AI agents and maker pipeline work, see [CLAUDE.md](./CLAUDE.md). Maker roadmap lives in `gametok-backend/GAMETOK_MAKER_ROADMAP.md`.
 
 ---
 

@@ -54,3 +54,7 @@ cd .. && git add gametok-backend && git commit -m "Bump gametok-backend (lane li
 - Backend deploy: Railway (`gametok-backend` repo)  
 - Keys: `DEEPSEEK_API_KEY`, NVIDIA/NIM for art, `GAMETOK_DEEPSEEK_PRIMARY=true` on Railway  
 - Factory minimal mode: `GAMETOK_FACTORY_MINIMAL` (golden runs)
+
+## Docs policy
+
+Do not add session summaries, `*_COMPLETE.md`, or analysis dumps at repo root. Use this file + `gametok-backend/GAMETOK_MAKER_ROADMAP.md` only. Submodule READMEs (`gametok-web/README.md`, etc.) stay for human setup.
