@@ -30,6 +30,9 @@ Thumbs.db
 *.wasm.gz
 *.bundle.gz
 
+# Kenney asset pack (~649MB) — hosted on R2, indexed via gametok-backend catalog; never commit
+Kenney Game Assets All-in-1*/
+
 # Unity
 [Ll]ibrary/
 [Tt]emp/
