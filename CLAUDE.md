@@ -19,14 +19,22 @@ Entry: `gametok-backend/src/ai-engine/routes.js` → `executeDreamJob`.
 Current production shape (after `c5c499a` on `gametok-backend` `main`):
 
 1. **Phase 1** — quality intent JSON from user prompt  
-2. **Phase 1.5** — dynamic foundation contract (`GAMETOK_DYNAMIC_FOUNDATION`, default on)  
-3. **Artist** — FLUX assets from `asset-contract.json` / foundation `assetSlots`  
-4. **Phase gate** — `maker-asset-phase-gate.js` (materialize pack, block Phase 2 if required art missing)  
-5. **Scaffold** — `buildKernelScaffold()` → `canvas-kernel` template + AI-generated `main.ts` stub  
-6. **Phase 2** — builder agent implements `src/main.ts`  
-7. **Sandbox** — compile + probe acceptance  
+2. **Phase 1.5** — dynamic foundation contract (`GAMETOK_DYNAMIC_FOUNDATION`, default on); `assetSlots` are always empty  
+3. **Scaffold** — `buildKernelScaffold()` → `canvas-kernel` (2D) / `threejs-kernel` (3D) template + AI-generated `main.ts` stub  
+4. **Phase 2** — builder agent implements `src/main.ts`  
+5. **Sandbox** — compile + probe acceptance  
+
+Audio (Freesound BGM + SFX via `asset-pipeline.js`) still runs for every job. There is **no image-gen phase**.
 
 Golden highway test (local): `cd gametok-backend && npm run golden:highway`
+
+## Removed — the 2D image-gen / DREAM asset system (do not revive)
+
+Torn out in `2dfa6dc` (bumped here in `128a6d579`). **2D games are CDN sprites + code-drawn only; 3D uses Kenney models.** The FLUX/Stability Artist, `DREAM_IMAGES`/`getAssetImage` runtime, and asset-pack materialization confused both the in-pipeline builder and external agents into wiring a dead art path (the infinite `TS2339 DREAM_IMAGES` repair loop).
+
+Deleted files (do **not** re-import): `sprite-generator.js`, `maker-artist-heal.js`, `maker-phaser2d.js`, `asset-resolver.js`, `asset-model-router.js`, `maker-tileset-processor.js`, `maker-asset-materializer.js`, `maker-asset-phase-gate.js`, `maker-asset-quality.js`.
+
+Do **not** reintroduce: an Artist/FLUX phase, `getAssetImage`/`DREAM_IMAGES`/`DREAM_ASSET_PACK`, foundation `assetSlots`, or Kenney-2D sprite packs. `maker-kenney3d.js` (3D models) and the `asset-pipeline.js` **audio** functions are the only asset infra that survives.
 
 ## Reverted — do not re-add without explicit product approval
 
