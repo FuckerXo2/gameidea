@@ -1,4 +1,4 @@
-import { type ChangeEvent, type Dispatch, type SetStateAction, useEffect, useMemo, useRef, useState } from 'react';
+import { type ChangeEvent, type Dispatch, type SetStateAction, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createAvatar } from '@dicebear/core';
 import {
   create as adventurerCreate,
@@ -18,13 +18,14 @@ import {
   Compass,
   Gamepad2,
   Grid3X3,
+  Globe,
+  Hash,
   Heart,
   Home,
   Image as ImageIcon,
   Menu,
   MessageCircle,
-  MoreHorizontal,
-  Paperclip,
+  Mic,
   Pause,
   Play,
   Volume2,
@@ -42,7 +43,7 @@ import {
   X,
   Zap,
 } from 'lucide-react';
-import { ai } from './services/api';
+import { ai, auth, users, getToken, setToken } from './services/api';
 import './App.css';
 
 const FREESOUND_API_KEY = 'mgD2q6sEgb7r8seRdGqRVBgszcAgMqPAzGpHPAkk';
@@ -64,12 +65,28 @@ type FreesoundTrack = {
   duration: string;
 };
 
-function buildBgmInstruction(url: string) {
-  return `Use this audio as the main looping background music: ${url}`;
+// Short, editable default — the user can rewrite it in the attachment's
+// "how should this be used?" field. The url is sent separately, so it is not
+// embedded here.
+function buildBgmInstruction(_url?: string) {
+  return 'Background music';
 }
 
-function buildHeroInstruction(url: string) {
-  return `Use this image as the main hero object or focal visual in the experience: ${url}`;
+function buildHeroInstruction(_url?: string) {
+  return 'The main character / focal sprite';
+}
+
+function attachmentUsagePlaceholder(type: string) {
+  switch (type) {
+    case 'video':
+      return 'How should this be used? e.g. the background, a cutscene';
+    case 'bgm':
+      return 'e.g. main menu music, gameplay loop';
+    case 'sfx':
+      return 'e.g. jump sound, coin pickup';
+    default:
+      return 'How should this be used? e.g. the player, an enemy, a coin';
+  }
 }
 
 async function fetchFreesoundTracks(type: 'bgm' | 'sfx', query = ''): Promise<FreesoundTrack[]> {
@@ -98,10 +115,69 @@ const API_URL = 'https://gametok-backend-production.up.railway.app/api';
 const API_ORIGIN = API_URL.replace(/\/api$/, '');
 const GAMES_HOST = 'https://games.gametok.co';
 
+// Google Sign-In (web). This is the SAME Google Cloud project the mobile app uses
+// (its "web client id"). For GIS to work the web origin must be listed under
+// "Authorized JavaScript origins" for this OAuth client in Google Cloud Console.
+// Override per-environment with VITE_GOOGLE_CLIENT_ID.
+const GOOGLE_WEB_CLIENT_ID =
+  (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID ||
+  '690098564284-9j4fj28fiqimjg8c20mn2vtjg6b70qr7.apps.googleusercontent.com';
+
+type AuthUser = {
+  id: string;
+  username: string | null;
+  email?: string | null;
+  displayName?: string | null;
+  avatar?: string | null;
+  bio?: string | null;
+  verified?: boolean;
+};
+
+declare global {
+  interface Window {
+    google?: any;
+  }
+}
+
+let googleScriptPromise: Promise<void> | null = null;
+function loadGoogleScript(): Promise<void> {
+  if (window.google?.accounts?.id) return Promise.resolve();
+  if (googleScriptPromise) return googleScriptPromise;
+  googleScriptPromise = new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error('Failed to load Google Sign-In'));
+    document.head.appendChild(script);
+  });
+  return googleScriptPromise;
+}
+
+// Decode a Google ID token (JWT) payload — base64url, no verification (mirrors the
+// mobile flow, where the backend trusts the client-supplied profile fields).
+function decodeJwt(token: string): any {
+  try {
+    const payload = token.split('.')[1];
+    const json = decodeURIComponent(
+      atob(payload.replace(/-/g, '+').replace(/_/g, '/'))
+        .split('')
+        .map((c) => `%${`00${c.charCodeAt(0).toString(16)}`.slice(-2)}`)
+        .join(''),
+    );
+    return JSON.parse(json);
+  } catch {
+    return null;
+  }
+}
+
 type Tab = 'home' | 'explore' | 'create' | 'connect' | 'profile';
 type ExploreTab = 'For You' | 'Games' | 'Horror' | 'Quiz' | 'Roleplay';
 type CreatePhase = 'idle' | 'refining' | 'generating' | 'preview' | 'publish';
 type Modal = 'comments' | 'leaderboard' | 'share' | 'auth' | 'search' | 'notifications';
+type MarketingPage = 'games' | 'pricing' | 'blog' | 'changelog' | 'earn' | 'faq' | 'privacy' | 'terms';
+type AuthMode = 'signup' | 'login';
 
 type Game = {
   id: string;
@@ -130,6 +206,75 @@ type Creator = {
   avatar?: string;
   verified?: boolean;
 };
+
+const BLOG_POSTS = [
+  {
+    slug: 'building-playable-social-games',
+    category: 'Product',
+    date: 'June 2026',
+    title: 'Building playable social games for the feed era',
+    excerpt: 'GameTok is becoming a place where every post can be played, remixed, shared, and turned into a new world.',
+    body: [
+      'GameTok starts from a simple idea: the feed should not only show games, it should let people play them immediately.',
+      'The web experience gives creators a bigger canvas to describe ideas, attach references, and turn those ideas into playable social moments.',
+      'Our direction is mobile-native energy with desktop creation power: fast discovery, expressive avatars, and playable games that travel like posts.',
+    ],
+  },
+  {
+    slug: 'creator-first-game-generation',
+    category: 'Studio',
+    date: 'June 2026',
+    title: 'Creator-first game generation',
+    excerpt: 'The Create experience is being shaped around prompts, references, drafts, previews, and a fast path back into the feed.',
+    body: [
+      'Game creation needs to feel less like opening a game engine and more like posting an idea with superpowers.',
+      'That means the desktop Create surface should be cinematic and focused, while mobile Create keeps the app-like Dream Forge flow.',
+      'The result is a hybrid system: powerful on desktop, familiar on mobile, and connected to the same playable feed.',
+    ],
+  },
+  {
+    slug: 'why-playable-social-matters',
+    category: 'Vision',
+    date: 'June 2026',
+    title: 'Why playable social matters',
+    excerpt: 'Screenshots and trailers are not enough. The next social gaming surface should let the audience touch the idea instantly.',
+    body: [
+      'A playable post collapses the distance between watching and trying.',
+      'For creators, that means faster feedback. For players, it means discovery feels alive. For GameTok, it means the feed is the product.',
+    ],
+  },
+];
+
+const PRICING_PLANS = [
+  { name: 'Starter', price: '$0', audience: 'For players and first-time builders.', features: ['Play community games', 'Create starter drafts', 'Public sharing', 'GameTok avatar profile'] },
+  { name: 'Creator', price: '$19', audience: 'For creators building often.', features: ['More monthly generations', 'Private drafts', 'Priority preview builds', 'Export-ready project history'] },
+  { name: 'Studio', price: '$79', audience: 'For teams and serious game channels.', features: ['Team workspace', 'Higher generation limits', 'Early model access', 'Priority support'] },
+];
+
+const FAQ_GROUPS = [
+  {
+    title: 'General',
+    items: [
+      ['What is GameTok?', 'GameTok is a playable social feed where creators can generate, share, and discover games.'],
+      ['Do I need to code?', 'No. The goal is to describe the game and let the system build a playable draft.'],
+      ['Is the web app replacing mobile?', 'No. Desktop is for bigger creation and browsing, while mobile keeps the feed-first app feel.'],
+    ],
+  },
+  {
+    title: 'Creation',
+    items: [
+      ['Can I use images or audio?', 'The create flow already supports reference assets and audio attachments as part of the Dream Forge direction.'],
+      ['Can I keep drafts?', 'Drafts are represented in the interface now; persistence should be wired to backend storage later.'],
+      ['Who owns created games?', 'This needs a final policy pass before public launch. The current legal pages are placeholders.'],
+    ],
+  },
+];
+
+const CHANGELOG_ITEMS = [
+  { date: 'June 2026', title: 'Cinematic web home', text: 'GameTok web now has a video-first public home with a prompt composer and proof strip.' },
+  { date: 'June 2026', title: 'Hybrid Create direction', text: 'Desktop Create is moving toward a cinematic prompt workspace while mobile keeps the app-style Dream Forge.' },
+  { date: 'June 2026', title: 'Google Sign-In web shell', text: 'Google Identity Services are wired on the frontend and ready for end-to-end OAuth verification.' },
+];
 
 const FALLBACK_GAMES: Game[] = [
   {
@@ -223,6 +368,14 @@ const FALLBACK_CREATORS: Creator[] = [
 
 const EXPLORE_TABS: ExploreTab[] = ['For You', 'Games', 'Horror', 'Quiz', 'Roleplay'];
 
+const HOME_VIDEOS = [
+  '/home-videos/hero-1.mp4',
+  '/home-videos/hero-2.mp4',
+  '/home-videos/hero-3.mp4',
+  '/home-videos/hero-4.mp4',
+  '/home-videos/hero-5.mp4',
+];
+
 const GENRE_CHIPS = [
   'Platformer',
   'Puzzle',
@@ -248,7 +401,6 @@ const PROMPT_IDEAS = [
 ];
 
 const STORAGE_KEYS = {
-  onboarding: 'gametok-web-onboarding-complete',
   activeGame: 'gametok-web-active-game',
   likedGames: 'gametok-web-liked-games',
   savedGames: 'gametok-web-saved-games',
@@ -518,14 +670,50 @@ function useGameTokData() {
 function App() {
   const { games, creators, loading, offline } = useGameTokData();
   const [activeTab, setActiveTab] = useState<Tab>('home');
+  const [marketingPage, setMarketingPage] = useState<MarketingPage | null>(null);
   const [gameIndex, setGameIndex] = useState(0);
   const [hudHidden, setHudHidden] = useState(false);
   const [gameDeckMode, setGameDeckMode] = useState(true);
   const [modal, setModal] = useState<Modal | null>(null);
-  const [showOnboarding, setShowOnboarding] = useState(() => localStorage.getItem(STORAGE_KEYS.onboarding) !== 'true');
+  const [authMode, setAuthMode] = useState<AuthMode>('signup');
   const [likedGames, setLikedGames] = useState(() => readStoredSet(STORAGE_KEYS.likedGames));
   const [savedGames, setSavedGames] = useState(() => readStoredSet(STORAGE_KEYS.savedGames));
   const [followedCreators, setFollowedCreators] = useState(() => readStoredSet(STORAGE_KEYS.followedCreators));
+  const [authUser, setAuthUser] = useState<AuthUser | null>(null);
+
+  // Restore session from the shared backend token (same token the mobile app uses).
+  useEffect(() => {
+    if (!getToken()) return;
+    let mounted = true;
+    auth
+      .me()
+      .then((data: any) => {
+        if (mounted && data?.user) setAuthUser(data.user);
+      })
+      .catch(() => {
+        // Invalid/expired token — clear it so the user can sign in again.
+        setToken(null);
+      });
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const handleAuthed = useCallback((user: AuthUser) => {
+    setAuthUser(user);
+    setModal(null);
+    setMarketingPage(null);
+    if (activeTab !== 'create') {
+      setActiveTab('profile');
+      setGameDeckMode(false);
+      setHudHidden(false);
+    }
+  }, [activeTab]);
+
+  const handleLogout = useCallback(() => {
+    void auth.logout();
+    setAuthUser(null);
+  }, []);
 
   const activeGame = games[gameIndex % games.length] || FALLBACK_GAMES[0];
 
@@ -535,7 +723,28 @@ function App() {
     setGameDeckMode(true);
     setHudHidden(false);
     setActiveTab('home');
+    setMarketingPage(null);
     setModal(null);
+  };
+
+  const goTab = (tab: Tab) => {
+    setMarketingPage(null);
+    setActiveTab(tab);
+    setGameDeckMode(tab === 'home');
+    if (tab !== 'home') setHudHidden(false);
+  };
+
+  const goMarketingPage = (page: MarketingPage) => {
+    setMarketingPage(page);
+    setActiveTab('home');
+    setGameDeckMode(false);
+    setHudHidden(false);
+    setModal(null);
+  };
+
+  const openAuth = (mode: AuthMode = 'signup') => {
+    setAuthMode(mode);
+    setModal('auth');
   };
 
   const nextGame = () => setGameIndex((value) => (value + 1) % games.length);
@@ -579,14 +788,9 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [games.length, modal]);
 
-  const completeOnboarding = () => {
-    localStorage.setItem(STORAGE_KEYS.onboarding, 'true');
-    setShowOnboarding(false);
-  };
-
   return (
-    <div className="gametok-shell">
-      <div className="phone-stage">
+    <div className={`gametok-shell ${activeTab === 'home' && !marketingPage ? 'home-mode' : ''} ${marketingPage ? 'marketing-mode' : ''} ${activeTab === 'create' && !marketingPage ? 'create-mode' : ''}`}>
+      {!marketingPage && <div className="phone-stage">
         <main className="app-screen">
           {activeTab === 'home' && (
             <HomeFeed
@@ -613,11 +817,11 @@ function App() {
             />
           )}
           {activeTab === 'explore' && (
-            <ExploreScreen games={games} creators={creators} onOpenGame={openGame} onCreate={() => setActiveTab('create')} />
+            <ExploreScreen games={games} creators={creators} onOpenGame={openGame} onCreate={() => goTab('create')} />
           )}
           {activeTab === 'create' && <CreateScreen onOpenGame={openGame} fallbackGame={activeGame} />}
           {activeTab === 'connect' && <ConnectScreen creators={creators} games={games} onOpenGame={openGame} />}
-          {activeTab === 'profile' && <ProfileScreen games={games} onOpenGame={openGame} onAuth={() => setModal('auth')} />}
+          {activeTab === 'profile' && <ProfileScreen games={games} onOpenGame={openGame} onAuth={() => openAuth('login')} user={authUser} onLogout={handleLogout} />}
         </main>
 
         <BottomNav
@@ -625,9 +829,7 @@ function App() {
           gameDeckMode={gameDeckMode && activeTab === 'home'}
           hudHidden={hudHidden}
           onTab={(tab) => {
-            setActiveTab(tab);
-            setGameDeckMode(tab === 'home');
-            if (tab !== 'home') setHudHidden(false);
+            goTab(tab);
           }}
           onRestart={() => setGameIndex((value) => value)}
           onNext={nextGame}
@@ -638,22 +840,77 @@ function App() {
             setHudHidden(false);
           }}
         />
-      </div>
+      </div>}
 
-      <DesktopRail activeGame={activeGame} games={games} onOpenGame={openGame} onTab={setActiveTab} />
+      {marketingPage && (
+        <StaticMarketingPage
+          page={marketingPage}
+          games={games}
+          onPage={goMarketingPage}
+          onHome={() => {
+            setMarketingPage(null);
+            setActiveTab('home');
+            setGameDeckMode(false);
+          }}
+          onCreate={() => goTab('create')}
+          onExplore={() => goTab('explore')}
+          onAuth={openAuth}
+          onOpenGame={openGame}
+        />
+      )}
+
+      {activeTab === 'home' && !marketingPage && !authUser && (
+        <DesktopHomeHero
+          onCreate={() => goTab('create')}
+          onExplore={() => goTab('explore')}
+          onAuth={openAuth}
+          onPage={goMarketingPage}
+        />
+      )}
+
+      {activeTab === 'home' && !marketingPage && authUser && (
+        <DesktopPlayHome
+          user={authUser}
+          game={activeGame}
+          games={games}
+          index={gameIndex}
+          liked={likedGames.has(activeGame.id)}
+          saved={savedGames.has(activeGame.id)}
+          following={followedCreators.has(activeGame.creatorUsername || activeGame.creatorDisplayName || 'anonymous')}
+          onTab={goTab}
+          onNext={nextGame}
+          onPrevious={previousGame}
+          onOpenModal={setModal}
+          onToggleLike={() => toggleStored(STORAGE_KEYS.likedGames, setLikedGames, activeGame.id)}
+          onToggleSave={() => toggleStored(STORAGE_KEYS.savedGames, setSavedGames, activeGame.id)}
+          onToggleFollow={() => toggleStored(STORAGE_KEYS.followedCreators, setFollowedCreators, activeGame.creatorUsername || activeGame.creatorDisplayName || 'anonymous')}
+        />
+      )}
+
+      {activeTab === 'create' && !marketingPage && (
+        <DesktopCreateWorkspace
+          games={games}
+          activeTab={activeTab}
+          onTab={goTab}
+          user={authUser}
+          onBuild={() => openAuth('signup')}
+        />
+      )}
+
+      {activeTab !== 'home' && activeTab !== 'create' && !marketingPage && (
+        <DesktopRail activeTab={activeTab} user={authUser} onTab={goTab} />
+      )}
 
       {modal && (
-        <Sheet title={modalTitle(modal)} onClose={() => setModal(null)}>
+        <Sheet title={modalTitle(modal)} onClose={() => setModal(null)} variant={modal === 'auth' ? 'auth' : undefined}>
           {modal === 'comments' && <CommentsSheet game={activeGame} creators={creators} />}
           {modal === 'leaderboard' && <LeaderboardSheet game={activeGame} creators={creators} />}
           {modal === 'share' && <ShareSheet game={activeGame} />}
-          {modal === 'auth' && <AuthSheet />}
-          {modal === 'search' && <SearchSheet games={games} creators={creators} onOpenGame={openGame} onCreate={() => { setModal(null); setActiveTab('create'); }} />}
+          {modal === 'auth' && <AuthSheet initialMode={authMode} onAuthed={handleAuthed} onClose={() => setModal(null)} />}
+          {modal === 'search' && <SearchSheet games={games} creators={creators} onOpenGame={openGame} onCreate={() => { setModal(null); goTab('create'); }} />}
           {modal === 'notifications' && <NotificationsSheet games={games} creators={creators} onOpenGame={openGame} />}
         </Sheet>
       )}
-
-      {showOnboarding && <OnboardingOverlay onComplete={completeOnboarding} onLogin={() => { setShowOnboarding(false); setModal('auth'); }} />}
     </div>
   );
 }
@@ -969,7 +1226,7 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
   const [forgePhase, setForgePhase] = useState('queued');
   const [forgeMessage, setForgeMessage] = useState('Starting forge...');
   const [showTools, setShowTools] = useState(false);
-  const [labsMode, setLabsMode] = useState(false);
+  const [labsMode] = useState(false);
   const [attachedAssets, setAttachedAssets] = useState<DreamAttachment[]>([]);
   const [showAudioModal, setShowAudioModal] = useState(false);
   const [audioTab, setAudioTab] = useState<'bgm' | 'sfx'>('bgm');
@@ -983,12 +1240,8 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
   const [generateError, setGenerateError] = useState<string | null>(null);
   const imageInputRef = useRef<HTMLInputElement | null>(null);
   const audioFileInputRef = useRef<HTMLInputElement | null>(null);
+  const videoInputRef = useRef<HTMLInputElement | null>(null);
   const audioPreviewRef = useRef<HTMLAudioElement | null>(null);
-  const ideaRows = useMemo(() => [
-    PROMPT_IDEAS.slice(0, 3),
-    PROMPT_IDEAS.slice(3, 6),
-    ['A vampire-survivors horde game with spell combos', 'A physics builder where ramps and launchers solve puzzles', 'A first-person neon drifting game with boost pads'],
-  ], []);
   const forgeDurationHint = useMemo(() => {
     const text = (prompt || selectedIdea).toLowerCase();
     const looksAssetHeavy = text.length > 350
@@ -1001,6 +1254,19 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
     { id: 'draft-2', title: 'Haunted Quiz Room', status: 'Needs polish', game: fallbackGame },
     { id: 'draft-3', title: 'Basket Dunk Lab', status: 'Prototype', game: fallbackGame },
   ], [fallbackGame]);
+  const genreRows = useMemo(() => [
+    GENRE_CHIPS.filter((_, index) => index % 3 === 0),
+    GENRE_CHIPS.filter((_, index) => index % 3 === 1),
+    GENRE_CHIPS.filter((_, index) => index % 3 === 2),
+  ], []);
+  const mediaTools = [
+    { label: 'Images', icon: <ImageIcon size={26} />, tone: 'purple', action: () => imageInputRef.current?.click() },
+    { label: 'Videos', icon: <Play size={26} />, tone: 'pink', action: () => videoInputRef.current?.click() },
+    { label: 'Sounds', icon: <Volume2 size={26} />, tone: 'cyan', action: () => openAudioPicker('sfx') },
+    { label: 'BGM', icon: <Volume2 size={26} />, tone: 'violet', action: () => openAudioPicker('bgm') },
+    { label: 'Memes', icon: <Sparkles size={26} />, tone: 'rose', action: () => imageInputRef.current?.click() },
+    { label: 'Feature', icon: <Zap size={26} />, tone: 'orange', action: () => setShowTools(true) },
+  ];
 
   useEffect(() => {
     if (phase !== 'generating') return undefined;
@@ -1082,6 +1348,13 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
     setPhase('refining');
   };
 
+  const surprise = () => {
+    const idea = PROMPT_IDEAS[Math.floor(Math.random() * PROMPT_IDEAS.length)];
+    setSelectedIdea(idea);
+    setPrompt(idea);
+    setGenerateError(null);
+  };
+
   const addAttachment = (attachment: Omit<DreamAttachment, 'id'>) => {
     setAttachedAssets((assets) => [
       ...assets.filter((item) => item.url !== attachment.url),
@@ -1091,6 +1364,10 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
 
   const removeAttachment = (id: string) => {
     setAttachedAssets((assets) => assets.filter((item) => item.id !== id));
+  };
+
+  const updateAttachmentInstruction = (id: string, instruction: string) => {
+    setAttachedAssets((assets) => assets.map((item) => (item.id === id ? { ...item, instruction } : item)));
   };
 
   const loadAudioTracks = async (type: 'bgm' | 'sfx' = audioTab, query = audioQuery) => {
@@ -1138,8 +1415,8 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
       label: selectedAudioTrack.label,
       duration: selectedAudioTrack.duration,
       instruction: audioTab === 'bgm'
-        ? buildBgmInstruction(selectedAudioTrack.url)
-        : `Use this audio as a triggered sound effect or moment cue: ${selectedAudioTrack.url}`,
+        ? buildBgmInstruction()
+        : 'A triggered sound effect',
     });
     if (audioPreviewRef.current) {
       audioPreviewRef.current.pause();
@@ -1168,6 +1445,29 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
     reader.readAsDataURL(file);
   };
 
+  const handleVideoUpload = (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    event.target.value = '';
+    if (!file) return;
+    if (file.size > 12 * 1024 * 1024) {
+      setGenerateError('That video is a bit large — keep clips under ~12MB so they load fast in the game.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const url = String(reader.result || '');
+      if (!url) return;
+      addAttachment({
+        type: 'video',
+        role: 'background',
+        url,
+        label: file.name || 'Background video',
+        instruction: 'The looping background',
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleAudioUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     event.target.value = '';
@@ -1182,8 +1482,8 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
         url,
         label: file.name || (audioTab === 'bgm' ? 'BGM loop' : 'Sound effect'),
         instruction: audioTab === 'bgm'
-          ? buildBgmInstruction(url)
-          : `Use this audio as a triggered sound effect or moment cue: ${url}`,
+          ? buildBgmInstruction()
+          : 'A triggered sound effect',
       });
       setShowAudioModal(false);
     };
@@ -1193,112 +1493,131 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
   return (
     <section className="create-screen">
       <div className="create-bg" />
-      <header className="screen-header create-header">
-        <button className="icon-button"><ChevronLeft size={20} /></button>
-        <div>
-          <p>Studio</p>
-          <h2>Dream Forge</h2>
-        </div>
-        <button className="icon-button" onClick={() => setShowTools((value) => !value)}><MoreHorizontal size={20} /></button>
+      <header className="create-mobile-header">
+        {studioTab === 'create' ? (
+          <>
+            <button className="create-avatar-button" onClick={() => setShowTools((value) => !value)}>
+              <img src={avatarUrl('guest-player', null, 104)} alt="" />
+            </button>
+            <strong>gametok</strong>
+            <span />
+          </>
+        ) : (
+          <>
+            <button className="header-menu-button" onClick={() => setStudioTab('create')}><ChevronLeft size={22} /></button>
+            <strong>Your Drafts</strong>
+            <span />
+          </>
+        )}
       </header>
 
-      <div className="studio-tabs">
-        <button className={studioTab === 'create' ? 'active' : ''} onClick={() => setStudioTab('create')}>
-          <Home size={16} /> Create
-        </button>
-        <button className={studioTab === 'drafts' ? 'active' : ''} onClick={() => setStudioTab('drafts')}>
-          <Gamepad2 size={16} /> Drafts
-        </button>
-        <label>
-          <input type="checkbox" checked={labsMode} onChange={(event) => setLabsMode(event.target.checked)} />
-          Labs
-        </label>
-      </div>
-
       {studioTab === 'create' && phase === 'idle' && (
-        <div className="create-idle">
-          <div className="forge-title-block">
-            <div className="forge-orb">
-              <img src="/app-assets/icon.png" alt="" />
+        <div className="create-idle create-scroll">
+          <input ref={imageInputRef} type="file" accept="image/*" hidden onChange={handleImageUpload} />
+          <input ref={audioFileInputRef} type="file" accept="audio/*" hidden onChange={handleAudioUpload} />
+          <input ref={videoInputRef} type="file" accept="video/*" hidden onChange={handleVideoUpload} />
+
+          <div className="create-hero-mobile">
+            <h1><Sparkles size={24} /> <span>Dream Forge</span></h1>
+            <p>Your imagination. Unlocked.</p>
+          </div>
+
+          <div className="mobile-input-card">
+            <div className="input-glow-border" />
+            <div className="input-card-header">
+              <span><Zap size={12} /> GAME BRIEF</span>
             </div>
-            <div>
-              <span className="forge-kicker">AI Game Studio</span>
-              <h1><span>Dream</span> Forge</h1>
-              <p>Wish for a game, refine the spec with the builder, attach reference assets, then preview and publish.</p>
+
+            {attachedAssets.length > 0 && (
+              <div className="attached-visual-row">
+                {attachedAssets.map((asset, index) => (
+                  <div
+                    key={asset.id}
+                    style={{ display: 'flex', flexDirection: 'column', gap: 6, minWidth: 190, background: 'rgba(255,255,255,0.05)', borderRadius: 12, padding: 8 }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      {asset.type === 'image'
+                        ? <img src={asset.url} alt="" style={{ width: 34, height: 34, borderRadius: 8, objectFit: 'cover' }} />
+                        : asset.type === 'video' ? <Play size={18} /> : <Volume2 size={18} />}
+                      <strong style={{ fontSize: 12 }}>#{index + 1}</strong>
+                      <button
+                        type="button"
+                        onClick={() => removeAttachment(asset.id)}
+                        aria-label="Remove"
+                        style={{ marginLeft: 'auto', background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 2 }}
+                      >
+                        <X size={12} />
+                      </button>
+                    </div>
+                    <input
+                      type="text"
+                      value={asset.instruction}
+                      onChange={(event) => updateAttachmentInstruction(asset.id, event.target.value)}
+                      placeholder={attachmentUsagePlaceholder(asset.type)}
+                      style={{ fontSize: 12, padding: '6px 8px', borderRadius: 8, border: '1px solid rgba(255,255,255,0.15)', background: 'rgba(0,0,0,0.3)', color: 'inherit', width: '100%' }}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <textarea
+              value={prompt}
+              onChange={(event) => setPrompt(event.target.value)}
+              placeholder="Make a first person drifting game with night neon roads..."
+              rows={4}
+            />
+            {!prompt.trim() && <p>Write a brief or tap Surprise me to seed one.</p>}
+            <div className="input-bottom-row">
+              <button className="surprise-button" type="button" onClick={surprise}><Sparkles size={16} /> Surprise me</button>
+              <button className={`forge-button ${!prompt.trim() ? 'idle' : ''}`} type="button" onClick={start}>
+                Forge It <ChevronRight size={18} />
+              </button>
             </div>
           </div>
 
-          <div className="genre-cloud">
-            {GENRE_CHIPS.map((chip, index) => (
-              <button key={chip} className={index === 0 ? 'active' : ''} onClick={() => setSelectedIdea(PROMPT_IDEAS[index % PROMPT_IDEAS.length])}>
-                {chip}
+          <div className="media-tool-row">
+            {mediaTools.map((tool) => (
+              <button key={tool.label} className={`media-tool ${tool.tone}`} type="button" onClick={tool.action}>
+                <span>{tool.icon}</span>
+                {tool.label}
               </button>
             ))}
           </div>
 
-          <div className="idea-rail-wrap">
-            {ideaRows.map((row, rowIndex) => (
-              <div className="idea-marquee" key={rowIndex}>
-                {[...row, ...row].map((idea, index) => (
-                  <button key={`${idea}-${index}`} onClick={() => {
+          <div className="starter-rail-header">
+            <p>Fast templates for mechanics-heavy prompts.</p>
+          </div>
+          <div className="mobile-idea-lanes">
+            {genreRows.map((row, rowIndex) => (
+              <div className="mobile-idea-row" key={`genre-row-${rowIndex}`}>
+                {[...row, ...row].map((chip, index) => (
+                  <button key={`${chip}-${index}`} type="button" onClick={() => {
+                    const idea = PROMPT_IDEAS[(GENRE_CHIPS.indexOf(chip) + index) % PROMPT_IDEAS.length];
                     setSelectedIdea(idea);
                     setPrompt(idea);
                   }}>
-                    <Sparkles size={13} />
-                    {idea}
+                    <Sparkles size={15} />
+                    {chip}
                   </button>
                 ))}
               </div>
             ))}
           </div>
 
-          <div className="asset-quick-row">
-            <button type="button" onClick={() => imageInputRef.current?.click()}><ImageIcon size={16} /> Image</button>
-            <button type="button" onClick={() => openAudioPicker('bgm')}><Volume2 size={16} /> Sound</button>
-            <button type="button" onClick={() => imageInputRef.current?.click()}><Paperclip size={16} /> Reference</button>
-          </div>
-          <input ref={imageInputRef} type="file" accept="image/*" hidden onChange={handleImageUpload} />
-          <input ref={audioFileInputRef} type="file" accept="audio/*" hidden onChange={handleAudioUpload} />
-
-          {attachedAssets.length > 0 && (
-            <div className="attached-assets">
-              {attachedAssets.map((asset) => (
-                <span key={asset.id}>
-                  {asset.label}
-                  <button type="button" onClick={() => removeAttachment(asset.id)}><X size={12} /></button>
-                </span>
-              ))}
+          {generateError && (
+            <div className="create-error-box">
+              <span>{generateError}</span>
+              <button onClick={() => setGenerateError(null)}><X size={16} /></button>
             </div>
           )}
-
-          <div className="dream-assistant-card">
-            <Sparkles size={18} />
-            <span>
-              <strong>Tell me the game you want to make.</strong>
-              <small>I’ll turn it into mechanics, controls, levels, art direction, and a playable draft.</small>
-            </span>
-          </div>
-
-          <div className="prompt-composer">
-            <textarea
-              value={prompt}
-              onChange={(event) => setPrompt(event.target.value)}
-              placeholder="Tap to wish..."
-              rows={5}
-            />
-            <div className="composer-tools">
-              <button><Paperclip size={18} /> Attach</button>
-              <button onClick={() => setShowTools(true)}><ImageIcon size={18} /> Assets</button>
-              <button className="send-button" onClick={start}><Send size={18} /></button>
-            </div>
-          </div>
         </div>
       )}
 
       {studioTab === 'drafts' && (
         <div className="drafts-panel">
           <div className="drafts-header">
-            <h1>Your drafts</h1>
+            <h1>{drafts.length} drafts</h1>
             <button onClick={() => setStudioTab('create')}><Plus size={16} /> New game</button>
           </div>
           <div className="draft-grid">
@@ -1313,6 +1632,17 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
               </button>
             ))}
           </div>
+        </div>
+      )}
+
+      {(phase === 'idle' || studioTab === 'drafts') && (
+        <div className="create-bottom-tabs">
+          <button className={studioTab === 'create' ? 'active' : ''} onClick={() => setStudioTab('create')}>
+            <Home size={20} /> <span>Create</span>
+          </button>
+          <button className={studioTab === 'drafts' ? 'active' : ''} onClick={() => setStudioTab('drafts')}>
+            <Gamepad2 size={20} /> <span>Drafts{drafts.length ? ` (${drafts.length})` : ''}</span>
+          </button>
         </div>
       )}
 
@@ -1550,23 +1880,25 @@ function ConnectScreen({ creators, games, onOpenGame }: { creators: Creator[]; g
   );
 }
 
-function ProfileScreen({ games, onOpenGame, onAuth }: { games: Game[]; onOpenGame: (game: Game) => void; onAuth: () => void }) {
+function ProfileScreen({ games, onOpenGame, onAuth, user, onLogout }: { games: Game[]; onOpenGame: (game: Game) => void; onAuth: () => void; user: AuthUser | null; onLogout: () => void }) {
   const [tab, setTab] = useState<'created' | 'played' | 'liked'>('created');
+  const handle = user?.username || 'guest';
+  const displayName = user?.displayName || user?.username || 'Guest Player';
   const activeGames = tab === 'created' ? games.slice(0, 9) : tab === 'played' ? [...games].reverse().slice(0, 9) : games.slice(2, 11);
   return (
     <section className="page-scroll profile-screen">
       <header className="profile-top">
         <button className="icon-button"><UserPlus size={19} /></button>
-        <strong>@guest</strong>
+        <strong>@{handle}</strong>
         <button className="icon-button"><Menu size={20} /></button>
       </header>
 
       <div className="profile-identity">
         <div className="profile-avatar">
-          <img src={avatarUrl('guest-player', null, 256)} alt="" />
+          <img src={avatarUrl(user?.username || 'guest-player', user?.avatar, 256)} alt="" />
         </div>
-        <h1>Guest Player</h1>
-        <p>@guest</p>
+        <h1>{displayName}</h1>
+        <p>@{handle}</p>
         <div className="badge-row">
           <span>Creator</span>
           <span>Game Builder</span>
@@ -1582,7 +1914,11 @@ function ProfileScreen({ games, onOpenGame, onAuth }: { games: Game[]; onOpenGam
       </div>
 
       <div className="profile-actions">
-        <button onClick={onAuth}>Edit profile</button>
+        {user ? (
+          <button onClick={onLogout}>Log out</button>
+        ) : (
+          <button onClick={onAuth}>Sign in</button>
+        )}
         <button><ArrowUp size={15} /> Share profile</button>
       </div>
 
@@ -1663,50 +1999,568 @@ function BottomNav({
 }
 
 function DesktopRail({
-  activeGame,
-  games,
-  onOpenGame,
+  activeTab,
+  user,
   onTab,
 }: {
-  activeGame: Game;
-  games: Game[];
-  onOpenGame: (game: Game) => void;
+  activeTab: Tab;
+  user: AuthUser | null;
   onTab: (tab: Tab) => void;
 }) {
+  return <DesktopAppSidebar activeTab={activeTab} user={user} onTab={onTab} />;
+}
+
+function DesktopHomeHero({
+  onCreate,
+  onExplore,
+  onAuth,
+  onPage,
+}: {
+  onCreate: () => void;
+  onExplore: () => void;
+  onAuth: (mode?: AuthMode) => void;
+  onPage: (page: MarketingPage) => void;
+}) {
+  const [videoIndex, setVideoIndex] = useState(0);
+  const [brief, setBrief] = useState('');
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setVideoIndex((index) => (index + 1) % HOME_VIDEOS.length);
+    }, 8500);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  // All hero clips are mounted and preloaded up front; we only play the active one
+  // and crossfade via CSS opacity, so switching is instant with no re-fetch/pop-in.
+  useEffect(() => {
+    videoRefs.current.forEach((vid, i) => {
+      if (!vid) return;
+      if (i === videoIndex) vid.play().catch(() => {});
+      else vid.pause();
+    });
+  }, [videoIndex]);
+
   return (
-    <aside className="desktop-rail">
-      <div className="brand-lockup">
-        <img src="/app-assets/icon.png" alt="" />
-        <span>
+    <section className="desktop-home-hero">
+      {HOME_VIDEOS.map((src, i) => (
+        <video
+          key={src}
+          ref={(el) => { videoRefs.current[i] = el; }}
+          className={`desktop-hero-video ${i === videoIndex ? 'is-active' : ''}`}
+          src={src}
+          preload="auto"
+          muted
+          loop
+          playsInline
+          autoPlay={i === 0}
+        />
+      ))}
+      <div className="desktop-hero-shade" />
+
+      <header className="desktop-home-topbar">
+        <div className="desktop-wordmark">
+          <img src="/app-assets/icon.png" alt="" />
           <strong>GameTok</strong>
-          <small>Playable social feed</small>
-        </span>
+        </div>
+        <nav>
+          <button onClick={() => onPage('games')}>Games</button>
+          <button onClick={() => onPage('blog')}>Blog</button>
+          <button onClick={onExplore}>Home</button>
+          <button onClick={onCreate}>Create</button>
+        </nav>
+        <div className="desktop-auth-actions">
+          <button onClick={() => onAuth('login')}>Log in</button>
+          <button onClick={() => onAuth('signup')}>Sign up</button>
+        </div>
+      </header>
+
+      <div className="desktop-hero-copy">
+        <span className="desktop-live-pill"><span /> New game model is live <ChevronRight size={14} /></span>
+        <h1>Make any game you can imagine.</h1>
+        <p>GameTok lets you build entire games and worlds by chatting with AI.</p>
+
+        <div className="desktop-hero-composer">
+          <span className="desktop-model-badge"><span /> New game model</span>
+          <textarea
+            value={brief}
+            onChange={(event) => setBrief(event.target.value)}
+            placeholder="A platformer where a ninja can double jump through glass skyscrapers..."
+          />
+          <div className="desktop-composer-row">
+            <button aria-label="Upload image"><ImageIcon size={18} /></button>
+            <button aria-label="Voice prompt"><Mic size={18} /></button>
+            <span>{brief.length}/500</span>
+            <button className="primary" onClick={onCreate}>
+              Create game
+            </button>
+          </div>
+        </div>
+
+        <div className="desktop-proof-bar">
+          <span>Featured in <strong>PC GAMER</strong></span>
+          <span>Presented at <strong>AFRO EXPO 2026</strong></span>
+          <span><Users size={14} /> <strong>30,000+</strong> AI game builders</span>
+        </div>
       </div>
-      <div className="rail-actions">
-        <button onClick={() => onTab('home')}><Play size={18} fill="currentColor" /> Play</button>
-        <button onClick={() => onTab('create')}><Wand2 size={18} /> Create</button>
-        <button onClick={() => onTab('explore')}><Compass size={18} /> Explore</button>
-        <button onClick={() => onTab('profile')}><User size={18} /> Profile</button>
-      </div>
-      <div className="desktop-help">
-        <span><kbd>↑</kbd><kbd>↓</kbd> switch games</span>
-        <span><kbd>H</kbd> hide HUD</span>
-      </div>
-      <div className="rail-now">
-        <p>Now playing</p>
-        <h3>{activeGame.name}</h3>
-        <span>{formatCount(activeGame.plays)} plays</span>
-      </div>
-      <div className="mini-list">
-        {games.slice(0, 5).map((game) => (
-          <button key={game.id} onClick={() => onOpenGame(game)}>
+    </section>
+  );
+}
+
+function DesktopPlayHome({
+  user,
+  game,
+  games,
+  index,
+  liked,
+  saved,
+  following,
+  onTab,
+  onNext,
+  onPrevious,
+  onOpenModal,
+  onToggleLike,
+  onToggleSave,
+  onToggleFollow,
+}: {
+  user: AuthUser;
+  game: Game;
+  games: Game[];
+  index: number;
+  liked: boolean;
+  saved: boolean;
+  following: boolean;
+  onTab: (tab: Tab) => void;
+  onNext: () => void;
+  onPrevious: () => void;
+  onOpenModal: (modal: Modal) => void;
+  onToggleLike: () => void;
+  onToggleSave: () => void;
+  onToggleFollow: () => void;
+}) {
+  const creator = game.creatorDisplayName || game.creatorUsername || 'GameTok player';
+  return (
+    <section className="desktop-app-main desktop-play-home">
+      <DesktopAppSidebar activeTab="home" user={user} onTab={onTab} />
+
+      <main className="desktop-feed-stage">
+        <div className="desktop-feed-topline">
+          <span>{index + 1}/{games.length}</span>
+          <strong>For You</strong>
+          <button onClick={() => onOpenModal('notifications')}><Bell size={18} /></button>
+        </div>
+
+        <article className="desktop-feed-card">
+          <div className="desktop-feed-card-shade" />
+          <div className="desktop-feed-poster">
             <img src={getThumbnailUrl(game)} alt="" />
-            <span>
-              <strong>{game.name}</strong>
-              <small>{game.category || 'Game'}</small>
-            </span>
+            <button className="desktop-feed-play" aria-label={`Play ${game.name}`}>
+              <Play size={48} fill="currentColor" />
+            </button>
+            <span className="desktop-feed-plays"><Play size={12} fill="currentColor" /> {formatCount(game.plays)}</span>
+          </div>
+        </article>
+
+        <div className="desktop-feed-creator">
+          <img src={avatarUrl(game.creatorUsername || creator, game.creatorAvatar || null, 70)} alt="" />
+          <span>
+            <strong>{creator}</strong>
+            <small>Browse their games</small>
+          </span>
+          <button onClick={onToggleFollow}>{following ? 'Following' : 'Follow'}</button>
+        </div>
+
+        <div className="desktop-feed-controls">
+          <button onClick={onPrevious} aria-label="Previous game"><ChevronUp size={34} /></button>
+          <button onClick={onNext} aria-label="Next game"><ChevronDown size={34} /></button>
+        </div>
+
+        <aside className="desktop-feed-actions">
+          <button onClick={() => onOpenModal('leaderboard')}><Trophy size={25} /><span>Scores</span></button>
+          <button onClick={() => onOpenModal('share')}><Send size={25} /><span>Share</span></button>
+          <button onClick={() => onOpenModal('comments')}><MessageCircle size={25} /><span>{formatCount(game.commentsCount || 0)}</span></button>
+          <button onClick={onToggleLike} className={liked ? 'active' : ''}><Heart size={25} fill={liked ? 'currentColor' : 'none'} /><span>{formatCount(game.likes || 0)}</span></button>
+          <button onClick={onToggleSave} className={saved ? 'active' : ''}><Bookmark size={25} fill={saved ? 'currentColor' : 'none'} /><span>Favorite</span></button>
+          <button className="desktop-feed-avatar-action" onClick={() => onTab('profile')}>
+            <img src={avatarUrl(game.creatorUsername || creator, game.creatorAvatar || null, 64)} alt="" />
+            <Plus size={18} />
+          </button>
+        </aside>
+      </main>
+    </section>
+  );
+}
+
+function MarketingTopbar({
+  onHome,
+  onPage,
+  onCreate,
+  onAuth,
+}: {
+  onHome: () => void;
+  onPage: (page: MarketingPage) => void;
+  onCreate: () => void;
+  onAuth: (mode?: AuthMode) => void;
+}) {
+  return (
+    <header className="marketing-topbar">
+      <button className="desktop-wordmark" onClick={onHome}>
+        <img src="/app-assets/icon.png" alt="" />
+        <strong>GameTok</strong>
+      </button>
+      <nav>
+        <button onClick={() => onPage('games')}>Games</button>
+        <button onClick={() => onPage('blog')}>Blog</button>
+        <button onClick={() => onPage('earn')}>Earn</button>
+        <button onClick={onCreate}>Create</button>
+      </nav>
+      <div className="desktop-auth-actions">
+        <button onClick={() => onAuth('login')}>Log in</button>
+        <button onClick={() => onAuth('signup')}>Sign up</button>
+      </div>
+    </header>
+  );
+}
+
+function MarketingFooter({ onPage, onCreate }: { onPage: (page: MarketingPage) => void; onCreate: () => void }) {
+  return (
+    <footer className="marketing-footer">
+      <div>
+        <img src="/app-assets/icon.png" alt="" />
+        <strong>GameTok</strong>
+        <span>Playable social gaming.</span>
+      </div>
+      <nav>
+        <button onClick={() => onPage('blog')}>Blog</button>
+        <button onClick={() => onPage('changelog')}>Changelog</button>
+        <button onClick={() => onPage('earn')}>Earn</button>
+        <button onClick={() => onPage('faq')}>FAQ</button>
+        <button onClick={() => onPage('privacy')}>Privacy Policy</button>
+        <button onClick={() => onPage('terms')}>Terms of Service</button>
+      </nav>
+      <button onClick={onCreate}>Make a game now</button>
+    </footer>
+  );
+}
+
+function StaticMarketingPage({
+  page,
+  games,
+  onPage,
+  onHome,
+  onCreate,
+  onExplore,
+  onAuth,
+  onOpenGame,
+}: {
+  page: MarketingPage;
+  games: Game[];
+  onPage: (page: MarketingPage) => void;
+  onHome: () => void;
+  onCreate: () => void;
+  onExplore: () => void;
+  onAuth: (mode?: AuthMode) => void;
+  onOpenGame: (game: Game) => void;
+}) {
+  const [activePost, setActivePost] = useState<string | null>(null);
+  const selectedPost = BLOG_POSTS.find((post) => post.slug === activePost);
+  const pageTitle: Record<MarketingPage, string> = {
+    games: 'Explore games made on GameTok',
+    pricing: 'Simple pricing',
+    blog: selectedPost?.title || 'Blog',
+    changelog: 'Changelog',
+    earn: 'Make a game. Share it. Grow.',
+    faq: 'Frequently Asked Questions',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
+  };
+
+  useEffect(() => {
+    setActivePost(null);
+  }, [page]);
+
+  return (
+    <main className="marketing-page">
+      <MarketingTopbar onHome={onHome} onPage={onPage} onCreate={onCreate} onAuth={onAuth} />
+      <section className="marketing-hero-band">
+        <span><Sparkles size={14} /> GameTok web</span>
+        <h1>{pageTitle[page]}</h1>
+        <p>{marketingSubtitle(page, Boolean(selectedPost))}</p>
+        <div>
+          <button onClick={onCreate}><Wand2 size={16} /> Create a game</button>
+          <button onClick={onExplore}><Compass size={16} /> Explore app</button>
+        </div>
+      </section>
+
+      {page === 'games' && (
+        <section className="marketing-grid-section">
+          <div className="marketing-section-head">
+            <h2>Playable community worlds</h2>
+            <p>Borrowing the directory shape from competitors, but keeping the GameTok feed energy.</p>
+          </div>
+          <div className="marketing-game-grid">
+            {games.slice(0, 18).map((game) => (
+              <button key={game.id} onClick={() => onOpenGame(game)}>
+                <img src={getThumbnailUrl(game)} alt="" />
+                <span>
+                  <strong>{game.name}</strong>
+                  <small>@{game.creatorDisplayName || game.creatorUsername || 'creator'} · {formatCount(game.plays)} plays</small>
+                </span>
+                <Play size={18} fill="currentColor" />
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {page === 'pricing' && (
+        <section className="marketing-pricing">
+          {PRICING_PLANS.map((plan, index) => (
+            <article key={plan.name} className={index === 1 ? 'featured' : ''}>
+              <span>{index === 1 ? 'Most useful' : 'GameTok'}</span>
+              <h2>{plan.name}</h2>
+              <p>{plan.audience}</p>
+              <strong>{plan.price}<small>/mo</small></strong>
+              <ul>{plan.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+              <button onClick={onCreate}>Start building</button>
+            </article>
+          ))}
+        </section>
+      )}
+
+      {page === 'blog' && (
+        selectedPost ? (
+          <article className="blog-detail">
+            <button onClick={() => setActivePost(null)}><ChevronLeft size={16} /> Back to blog</button>
+            <span>{selectedPost.category} · {selectedPost.date}</span>
+            <h2>{selectedPost.title}</h2>
+            {selectedPost.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </article>
+        ) : (
+          <section className="blog-list">
+            {BLOG_POSTS.map((post) => (
+              <button key={post.slug} onClick={() => setActivePost(post.slug)}>
+                <span>{post.category} · {post.date}</span>
+                <h2>{post.title}</h2>
+                <p>{post.excerpt}</p>
+                <small>Read post <ChevronRight size={14} /></small>
+              </button>
+            ))}
+          </section>
+        )
+      )}
+
+      {page === 'changelog' && (
+        <section className="timeline-list">
+          {CHANGELOG_ITEMS.map((item) => (
+            <article key={item.title}>
+              <span>{item.date}</span>
+              <h2>{item.title}</h2>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </section>
+      )}
+
+      {page === 'earn' && (
+        <section className="earn-layout">
+          <article>
+            <h2>Creator growth loop</h2>
+            <p>GameTok should eventually reward the creators whose playable posts bring attention back to the platform. This v1 page explains the direction without wiring payments yet.</p>
+            <div className="earn-steps">
+              {['Create a playable game', 'Share gameplay clips', 'Bring players into GameTok'].map((step, index) => (
+                <span key={step}><strong>{index + 1}</strong>{step}</span>
+              ))}
+            </div>
+          </article>
+          <aside>
+            <span>Placeholder model</span>
+            <strong>30,000+</strong>
+            <p>AI game builders shaping the playable social feed.</p>
+          </aside>
+        </section>
+      )}
+
+      {page === 'faq' && (
+        <section className="faq-list">
+          {FAQ_GROUPS.map((group) => (
+            <article key={group.title}>
+              <h2>{group.title}</h2>
+              {group.items.map(([question, answer]) => (
+                <details key={question}>
+                  <summary>{question}</summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
+            </article>
+          ))}
+        </section>
+      )}
+
+      {(page === 'privacy' || page === 'terms') && (
+        <article className="legal-copy">
+          <h2>{page === 'privacy' ? 'Privacy placeholder' : 'Terms placeholder'}</h2>
+          <p>This page is a static v1 placeholder and needs final legal review before public launch.</p>
+          <p>GameTok should clearly explain account data, generated game content, uploads, analytics, ownership, moderation, and creator rights before production release.</p>
+        </article>
+      )}
+
+      <MarketingFooter onPage={onPage} onCreate={onCreate} />
+    </main>
+  );
+}
+
+function marketingSubtitle(page: MarketingPage, isPost: boolean) {
+  if (isPost) return 'A GameTok field note for the playable social web.';
+  if (page === 'games') return 'Discover playable games, creators, and worlds built for a social feed.';
+  if (page === 'pricing') return 'Static v1 pricing cards for product storytelling. Payments come later.';
+  if (page === 'blog') return 'Updates on AI game creation, playable feeds, and creator tools.';
+  if (page === 'changelog') return 'Everything changing as GameTok web grows from app replica to full product.';
+  if (page === 'earn') return 'A creator-growth page for sharing playable games and bringing players back.';
+  if (page === 'faq') return 'Answers for builders, players, and anyone trying to understand GameTok web.';
+  return 'Static v1 legal content for navigation completeness. Final review still required.';
+}
+
+function DesktopCreateWorkspace({
+  games,
+  activeTab,
+  onTab,
+  user,
+  onBuild,
+}: {
+  games: Game[];
+  activeTab: Tab;
+  onTab: (tab: Tab) => void;
+  user: AuthUser | null;
+  onBuild: () => void;
+}) {
+  const [brief, setBrief] = useState('');
+  const promptCards = [
+    {
+      label: 'Cozy',
+      image: getThumbnailUrl(games[0] || FALLBACK_GAMES[0]),
+      prompt: 'Make a cozy fruit ninja game where you slice fruit, dodge bombs, and chase combo streaks',
+    },
+    {
+      label: 'FPS',
+      image: getThumbnailUrl(games[1] || FALLBACK_GAMES[1]),
+      prompt: 'Make a multiplayer FPS arena where players fight waves, upgrade weapons, and hold the zone',
+    },
+    {
+      label: 'Mobile',
+      image: getThumbnailUrl(games[2] || FALLBACK_GAMES[2]),
+      prompt: 'Make a 2D endless runner where you jump through a jungle and dodge traps',
+    },
+    {
+      label: 'Platformer',
+      image: getThumbnailUrl(games[3] || FALLBACK_GAMES[3]),
+      prompt: 'Make a swamp platformer where ninjas defeat enemies and collect power-ups',
+    },
+    {
+      label: 'RPG',
+      image: getThumbnailUrl(games[4] || FALLBACK_GAMES[4]),
+      prompt: 'Make a fantasy RPG where every quest changes the village and unlocks new powers',
+    },
+  ];
+  return (
+    <section className="desktop-app-main desktop-create-workspace">
+      <DesktopAppSidebar activeTab={activeTab} user={user} onTab={onTab} />
+
+      <div className="desktop-create-canvas">
+        <div className="desktop-create-backdrop" />
+        <div className="desktop-create-shade" />
+        <div className="desktop-create-content">
+          <span className="desktop-live-pill"><span /> New game model is live <ChevronRight size={14} /></span>
+          <h1>What game should we make now?</h1>
+
+          <div className="desktop-create-card-row">
+            {promptCards.map((card) => (
+              <button key={card.label} onClick={() => setBrief(card.prompt)}>
+                <img src={card.image} alt="" />
+                <span>{card.label}</span>
+                <strong>{card.prompt}</strong>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="desktop-create-composer">
+          <textarea
+            value={brief}
+            onChange={(event) => setBrief(event.target.value)}
+            placeholder="A space shooter with me and the guys"
+          />
+          <div className="desktop-create-composer-row">
+            <button aria-label="Add image"><ImageIcon size={18} /></button>
+            <button aria-label="Attach reference"><Plus size={18} /></button>
+            <button className="smart"><Sparkles size={18} /> Smart</button>
+            <span>{brief.length}/500</span>
+            <button className="plan"><Sparkles size={18} /> Plan</button>
+            <button aria-label="Voice prompt"><Mic size={18} /></button>
+            <button className="primary" onClick={onBuild}>Create game</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function DesktopAppSidebar({
+  activeTab,
+  user,
+  onTab,
+}: {
+  activeTab: Tab;
+  user: AuthUser | null;
+  onTab: (tab: Tab) => void;
+}) {
+  const navItems: Array<{ tab: Tab; label: string; icon: React.ReactNode }> = [
+    { tab: 'explore', label: 'Home', icon: <Home size={22} /> },
+    { tab: 'create', label: 'Create', icon: <Plus size={22} /> },
+    { tab: 'connect', label: 'Connect', icon: <Users size={22} /> },
+    { tab: 'profile', label: 'Profile', icon: <User size={22} /> },
+  ];
+  const username = user?.displayName || user?.username || 'Player';
+  return (
+    <aside className="desktop-app-sidebar">
+      <button className="desktop-sidebar-logo" onClick={() => onTab('home')}>
+        <img src="/app-assets/icon.png" alt="" />
+        <strong>GameTok</strong>
+      </button>
+
+      <button className="desktop-sidebar-play" onClick={() => onTab('home')}>
+        <Play fill="currentColor" size={20} />
+        Play
+      </button>
+
+      <nav className="desktop-sidebar-nav">
+        {navItems.map((item) => (
+          <button
+            key={item.tab}
+            className={activeTab === item.tab ? 'active' : ''}
+            onClick={() => onTab(item.tab)}
+          >
+            {item.icon}
+            <span>{item.label}</span>
           </button>
         ))}
+      </nav>
+
+      <div className="desktop-sidebar-footer">
+        <div className="desktop-sidebar-socials">
+          <MessageCircle size={20} />
+          <Hash size={20} />
+          <Globe size={20} />
+          <Grid3X3 size={20} />
+        </div>
+        <button className="desktop-sidebar-user" onClick={() => onTab('profile')}>
+          <img src={avatarUrl(user?.username || 'gametok-player', user?.avatar || null, 80)} alt="" />
+          <span>
+            <strong>{username}</strong>
+            <small>{user ? 'Game builder' : 'Sign in'}</small>
+          </span>
+        </button>
       </div>
     </aside>
   );
@@ -1818,64 +2672,30 @@ function NotificationsSheet({ games, creators, onOpenGame }: { games: Game[]; cr
   );
 }
 
-function OnboardingOverlay({ onComplete, onLogin }: { onComplete: () => void; onLogin: () => void }) {
-  const [step, setStep] = useState(0);
-  const steps = [
-    {
-      title: 'Swipe. Play. Compete.',
-      body: 'GameTok is a playable feed: every card is a game, every game can become a challenge, and every creator can ship fast.',
-    },
-    {
-      title: 'Discover instant games.',
-      body: 'Use the feed, search, Explore tabs, comments, leaderboards, and creator profiles like the native app.',
-    },
-    {
-      title: 'Build with Dream Forge.',
-      body: 'Describe a game, refine the spec, preview it, and publish it into the feed.',
-    },
-  ];
-  const current = steps[step];
-
+function Sheet({
+  title,
+  children,
+  onClose,
+  variant,
+}: {
+  title: string;
+  children: React.ReactNode;
+  onClose: () => void;
+  variant?: 'auth';
+}) {
   return (
-    <div className="onboarding-backdrop">
-      <section className="onboarding-card">
-        <div className="onboarding-art">
-          <img src="/app-assets/icon.png" alt="" />
-          <span><Sparkles size={16} /> GameTok</span>
-        </div>
-        <div className="onboarding-progress">
-          {steps.map((item, index) => <span key={item.title} className={index <= step ? 'active' : ''} />)}
-        </div>
-        <h1>{current.title}</h1>
-        <p>{current.body}</p>
-        <div className="onboarding-actions">
-          <button onClick={onLogin}>Log in</button>
-          <button
-            className="primary"
-            onClick={() => {
-              if (step < steps.length - 1) setStep(step + 1);
-              else onComplete();
-            }}
-          >
-            {step < steps.length - 1 ? 'Next' : 'Start playing'}
-          </button>
-        </div>
-        <button className="onboarding-skip" onClick={onComplete}>Skip</button>
-      </section>
-    </div>
-  );
-}
-
-function Sheet({ title, children, onClose }: { title: string; children: React.ReactNode; onClose: () => void }) {
-  return (
-    <div className="sheet-backdrop">
+    <div className={`sheet-backdrop ${variant === 'auth' ? 'auth-backdrop' : ''}`}>
       <button className="sheet-clickout" onClick={onClose} aria-label="Close" />
-      <section className="bottom-sheet">
-        <div className="sheet-grabber" />
-        <header>
-          <h2>{title}</h2>
-          <button className="icon-button" onClick={onClose}><X size={20} /></button>
-        </header>
+      <section className={`bottom-sheet ${variant === 'auth' ? 'auth-sheet-shell' : ''}`}>
+        {variant !== 'auth' && (
+          <>
+            <div className="sheet-grabber" />
+            <header>
+              <h2>{title}</h2>
+              <button className="icon-button" onClick={onClose}><X size={20} /></button>
+            </header>
+          </>
+        )}
         {children}
       </section>
     </div>
@@ -1986,27 +2806,262 @@ function ShareSheet({ game }: { game: Game }) {
   );
 }
 
-function AuthSheet() {
-  const [mode, setMode] = useState<'signup' | 'login'>('signup');
+// Renders Google's official Sign-In button. The callback receives an ID token
+// (`credential`, a JWT) — the same kind of token the mobile app gets from the
+// native Google SDK — which we forward to /api/auth/oauth.
+function GoogleSignInButton({ onCredential }: { onCredential: (credential: string) => void }) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    loadGoogleScript()
+      .then(() => {
+        if (cancelled || !ref.current || !window.google?.accounts?.id) return;
+        try {
+          window.google.accounts.id.initialize({
+            client_id: GOOGLE_WEB_CLIENT_ID,
+            callback: (response: any) => {
+              if (response?.credential) onCredential(response.credential);
+            },
+          });
+          ref.current.innerHTML = '';
+          window.google.accounts.id.renderButton(ref.current, {
+            theme: 'filled_black',
+            size: 'large',
+            shape: 'pill',
+            text: 'continue_with',
+            logo_alignment: 'center',
+            width: 420,
+          });
+        } catch {
+          if (!cancelled) setFailed(true);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setFailed(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [onCredential]);
+
+  if (failed) {
+    return <small className="auth-hint">Google Sign-In is unavailable right now. Try email instead.</small>;
+  }
+  return <div className="google-btn-host" ref={ref} />;
+}
+
+function AuthSheet({
+  initialMode,
+  onAuthed,
+  onClose,
+}: {
+  initialMode: AuthMode;
+  onAuthed: (user: AuthUser) => void;
+  onClose: () => void;
+}) {
+  const [step, setStep] = useState<'auth' | 'username'>('auth');
+  const [mode, setMode] = useState<AuthMode>(initialMode);
   const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [pendingUser, setPendingUser] = useState<AuthUser | null>(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [emailExpanded, setEmailExpanded] = useState(false);
+  const socialAvatars = ['max_arcade', 'nova_builder', 'pixelmaya'];
+
+  useEffect(() => {
+    setMode(initialMode);
+    setEmailExpanded(false);
+    setError('');
+  }, [initialMode]);
+
+  // New OAuth users come back with no username — route them to pick one,
+  // mirroring the mobile onboarding flow.
+  const finish = (user: AuthUser) => {
+    if (!user.username) {
+      setPendingUser(user);
+      setUsername('');
+      setStep('username');
+    } else {
+      onAuthed(user);
+    }
+  };
+
+  const handleEmailAuth = async () => {
+    if (!username.trim() || !password) {
+      setError('Username and password are required.');
+      return;
+    }
+    setError('');
+    setLoading(true);
+    try {
+      const data =
+        mode === 'signup'
+          ? await auth.signup(username.trim(), password)
+          : await auth.login(username.trim(), password);
+      if (!data?.token || !data?.user) {
+        throw new Error('Sign-in did not return a valid session. Please try again.');
+      }
+      finish(data.user);
+    } catch (e: any) {
+      setError(e?.message || 'Authentication failed.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleCredential = useCallback(
+    async (credential: string) => {
+      setError('');
+      setLoading(true);
+      try {
+        const profile = decodeJwt(credential) || {};
+        const data = await auth.oauth('google', {
+          idToken: credential,
+          user: {
+            id: profile.sub,
+            email: profile.email,
+            name: profile.name,
+            photo: profile.picture,
+          },
+        });
+        if (!data?.token || !data?.user) {
+          throw new Error('Google sign-in did not return a valid session. Please try again.');
+        }
+        if (!data?.user?.username) {
+          setPendingUser(data.user);
+          setUsername('');
+          setStep('username');
+        } else {
+          onAuthed(data.user);
+        }
+      } catch (e: any) {
+        setError(e?.message || 'Google sign-in failed.');
+      } finally {
+        setLoading(false);
+      }
+    },
+    [onAuthed],
+  );
+
+  const handleChooseUsername = async () => {
+    if (!pendingUser || !username.trim()) {
+      setError('Pick a username to continue.');
+      return;
+    }
+    setError('');
+    setLoading(true);
+    try {
+      const res: any = await users.update(pendingUser.id, { username: username.trim() });
+      onAuthed(res?.user || { ...pendingUser, username: username.trim() });
+    } catch (e: any) {
+      setError(e?.message || 'Could not save username.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (step === 'username') {
+    return (
+      <div className="auth-panel">
+        <button className="auth-close" onClick={onClose} aria-label="Close"><X size={28} /></button>
+        <div className="auth-brand-mark">
+          <img src="/app-assets/icon.png" alt="" />
+        </div>
+        <h3>Pick your GameTok name</h3>
+        <p className="auth-copy">This is the profile players will see on your games, scores, comments, and creator page.</p>
+        <label className="auth-input-row">
+          <User size={17} />
+          <input
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            placeholder="username"
+            autoFocus
+          />
+        </label>
+        {error && <small className="auth-error">{error}</small>}
+        <button className="auth-primary" disabled={loading} onClick={handleChooseUsername}>
+          {loading ? 'Saving...' : 'Continue'}
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div className="auth-panel">
-      <Gamepad2 size={44} />
-      <h3>{mode === 'signup' ? 'Create your GameTok profile.' : 'Welcome back.'}</h3>
-      <label>
-        <User size={17} />
-        <input value={username} onChange={(event) => setUsername(event.target.value)} placeholder="Username" />
-      </label>
-      <label>
-        <Zap size={17} />
-        <input placeholder="Password" type="password" />
-      </label>
-      <button>{mode === 'signup' ? 'Create account' : 'Log in'}</button>
-      <button>Continue with Google</button>
-      <button onClick={() => setMode(mode === 'signup' ? 'login' : 'signup')}>
-        {mode === 'signup' ? 'I already have an account' : 'Create a new account'}
+      <button className="auth-close" onClick={onClose} aria-label="Close"><X size={28} /></button>
+      <div className="auth-brand-mark">
+        <img src="/app-assets/icon.png" alt="" />
+      </div>
+      <h3>{mode === 'signup' ? 'Sign up to make your first game' : 'Log in to keep building'}</h3>
+      <div className="auth-social-proof">
+        <span>
+          {socialAvatars.map((name) => (
+            <img key={name} src={avatarUrl(name, null, 64)} alt="" />
+          ))}
+        </span>
+        <p>{mode === 'signup' ? 'Join 30,000+ game builders today' : 'Jump back into your games and saves'}</p>
+      </div>
+
+      <div className="auth-idea-card">
+        <span>{mode === 'signup' ? 'Start with:' : 'Last session:'}</span>
+        <strong>{mode === 'signup' ? '"A boss-rush arena that remixes every round"' : 'Your playable feed is waiting'}</strong>
+      </div>
+
+      <GoogleSignInButton onCredential={handleGoogleCredential} />
+
+      <div className="auth-divider"><span>or</span></div>
+
+      {!emailExpanded ? (
+        <button className="auth-email-toggle" onClick={() => setEmailExpanded(true)}>
+          Continue with email
+        </button>
+      ) : (
+        <div className="auth-email-fields">
+          <label className="auth-input-row">
+            <User size={17} />
+            <input
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              placeholder="Username"
+              autoComplete="username"
+            />
+          </label>
+          <label className="auth-input-row">
+            <Zap size={17} />
+            <input
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder="Password"
+              type="password"
+              autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
+              onKeyDown={(event) => event.key === 'Enter' && handleEmailAuth()}
+            />
+          </label>
+          <button className="auth-primary" disabled={loading} onClick={handleEmailAuth}>
+            {loading ? 'Please wait...' : mode === 'signup' ? 'Create account' : 'Log in'}
+          </button>
+        </div>
+      )}
+
+      {error && <small className="auth-error">{error}</small>}
+
+      <div className="auth-legal">
+        By continuing, you agree to our <button>Terms</button> and <button>Privacy Policy</button>
+      </div>
+
+      <button
+        className="auth-toggle"
+        onClick={() => {
+          setMode(mode === 'signup' ? 'login' : 'signup');
+          setEmailExpanded(false);
+          setError('');
+        }}
+      >
+        {mode === 'signup' ? 'Already have an account? Log in' : 'Need an account? Sign up'}
       </button>
-      <small>Replica auth UI is ready; the backend auth calls can be connected directly to this sheet.</small>
     </div>
   );
 }

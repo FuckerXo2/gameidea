@@ -1,0 +1,35 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "gentok-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8099", "--directory", "gametok-backend/public"],
+      "port": 8099
+    },
+    {
+      "name": "bball-test",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8931", "--directory", "/private/tmp/claude-501/-Users-abiolalimitless-gameidea/afebeb83-4b5b-43b4-ae25-644693167ff7/scratchpad/bball"],
+      "port": 8931
+    },
+    {
+      "name": "multitex-test",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8932", "--directory", "/private/tmp/claude-501/-Users-abiolalimitless-gameidea/afebeb83-4b5b-43b4-ae25-644693167ff7/scratchpad/multitex"],
+      "port": 8932
+    },
+    {
+      "name": "gametok-landing",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "gametok-landing", "--", "--port", "5183"],
+      "port": 5183
+    },
+    {
+      "name": "gametok-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "gametok-web", "--", "--port", "5176"],
+      "port": 5176
+    }
+  ]
+}
