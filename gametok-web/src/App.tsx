@@ -10,13 +10,13 @@ import type { Options as CoreOptions } from '@dicebear/core';
 import {
   ArrowUp,
   Bell,
-  Bookmark,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
   ChevronUp,
   Compass,
   Gamepad2,
+  GitBranch,
   Grid3X3,
   Globe,
   Hash,
@@ -31,6 +31,7 @@ import {
   Volume2,
   Plus,
   RefreshCw,
+  RotateCcw,
   Search,
   Send,
   Share2,
@@ -43,7 +44,7 @@ import {
   X,
   Zap,
 } from 'lucide-react';
-import { ai, auth, users, getToken, setToken } from './services/api';
+import { ai, auth, users, comments as commentsApi, getToken, setToken } from './services/api';
 import './App.css';
 
 const FREESOUND_API_KEY = 'mgD2q6sEgb7r8seRdGqRVBgszcAgMqPAzGpHPAkk';
@@ -680,6 +681,48 @@ function App() {
   const [savedGames, setSavedGames] = useState(() => readStoredSet(STORAGE_KEYS.savedGames));
   const [followedCreators, setFollowedCreators] = useState(() => readStoredSet(STORAGE_KEYS.followedCreators));
   const [authUser, setAuthUser] = useState<AuthUser | null>(null);
+  const [restartKey, setRestartKey] = useState(0);
+  const [commentsStore, setCommentsStore] = useState<Record<string, Array<{ id: string; username: string; text: string; likes: number; createdAt: string }>>>(() => {
+    try {
+      const raw = localStorage.getItem('gametok_web_comments');
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
+
+  const getCommentCount = useCallback(
+    (gameId: string) => {
+      const localList = commentsStore[gameId] || [];
+      const targetGame = games.find((g) => g.id === gameId) || FALLBACK_GAMES.find((g) => g.id === gameId);
+      return (targetGame?.commentsCount || 0) + localList.length;
+    },
+    [commentsStore, games]
+  );
+
+  const addComment = useCallback((gameId: string, text: string, username: string = 'guest') => {
+    setCommentsStore((prev) => {
+      const existing = prev[gameId] || [];
+      const nextItem = {
+        id: `comm_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
+        username: username || 'guest',
+        text,
+        likes: 0,
+        createdAt: new Date().toISOString(),
+      };
+      const nextStore = { ...prev, [gameId]: [nextItem, ...existing] };
+      try {
+        localStorage.setItem('gametok_web_comments', JSON.stringify(nextStore));
+      } catch {}
+      return nextStore;
+    });
+  }, []);
+
+  const handleRemix = useCallback((_game: Game) => {
+    setActiveTab('create');
+    setMarketingPage(null);
+    setModal(null);
+  }, []);
 
   // Restore session from the shared backend token (same token the mobile app uses).
   useEffect(() => {
@@ -804,6 +847,8 @@ function App() {
               liked={likedGames.has(activeGame.id)}
               saved={savedGames.has(activeGame.id)}
               following={followedCreators.has(activeGame.creatorUsername || activeGame.creatorDisplayName || 'anonymous')}
+              commentsCount={getCommentCount(activeGame.id)}
+              restartKey={restartKey}
               onNext={nextGame}
               onPrevious={previousGame}
               onOpenModal={setModal}
@@ -814,6 +859,7 @@ function App() {
                 setGameDeckMode(false);
                 setActiveTab('explore');
               }}
+              onRemix={handleRemix}
             />
           )}
           {activeTab === 'explore' && (
@@ -831,7 +877,7 @@ function App() {
           onTab={(tab) => {
             goTab(tab);
           }}
-          onRestart={() => setGameIndex((value) => value)}
+          onRestart={() => setRestartKey((k) => k + 1)}
           onNext={nextGame}
           onPrevious={previousGame}
           onToggleHud={() => setHudHidden((value) => !value)}
@@ -877,6 +923,7 @@ function App() {
           liked={likedGames.has(activeGame.id)}
           saved={savedGames.has(activeGame.id)}
           following={followedCreators.has(activeGame.creatorUsername || activeGame.creatorDisplayName || 'anonymous')}
+          commentsCount={getCommentCount(activeGame.id)}
           onTab={goTab}
           onNext={nextGame}
           onPrevious={previousGame}
@@ -884,6 +931,7 @@ function App() {
           onToggleLike={() => toggleStored(STORAGE_KEYS.likedGames, setLikedGames, activeGame.id)}
           onToggleSave={() => toggleStored(STORAGE_KEYS.savedGames, setSavedGames, activeGame.id)}
           onToggleFollow={() => toggleStored(STORAGE_KEYS.followedCreators, setFollowedCreators, activeGame.creatorUsername || activeGame.creatorDisplayName || 'anonymous')}
+          onRemix={handleRemix}
         />
       )}
 
@@ -903,7 +951,15 @@ function App() {
 
       {modal && (
         <Sheet title={modalTitle(modal)} onClose={() => setModal(null)} variant={modal === 'auth' ? 'auth' : undefined}>
-          {modal === 'comments' && <CommentsSheet game={activeGame} creators={creators} />}
+          {modal === 'comments' && (
+            <CommentsSheet
+              game={activeGame}
+              creators={creators}
+              commentsStore={commentsStore}
+              onAddComment={addComment}
+              user={authUser}
+            />
+          )}
           {modal === 'leaderboard' && <LeaderboardSheet game={activeGame} creators={creators} />}
           {modal === 'share' && <ShareSheet game={activeGame} />}
           {modal === 'auth' && <AuthSheet initialMode={authMode} onAuthed={handleAuthed} onClose={() => setModal(null)} />}
@@ -933,15 +989,18 @@ function HomeFeed({
   hudHidden,
   gameDeckMode,
   liked,
-  saved,
+  saved: _saved,
   following,
+  commentsCount,
+  restartKey,
   onNext,
   onPrevious,
   onOpenModal,
   onToggleLike,
-  onToggleSave,
+  onToggleSave: _onToggleSave,
   onToggleFollow,
   onOpenExplore,
+  onRemix,
 }: {
   game: Game;
   index: number;
@@ -953,6 +1012,8 @@ function HomeFeed({
   liked: boolean;
   saved: boolean;
   following: boolean;
+  commentsCount: number;
+  restartKey: number;
   onNext: () => void;
   onPrevious: () => void;
   onOpenModal: (modal: Modal) => void;
@@ -960,36 +1021,98 @@ function HomeFeed({
   onToggleSave: () => void;
   onToggleFollow: () => void;
   onOpenExplore: () => void;
+  onRemix: (game: Game) => void;
 }) {
-  const touchStart = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const [dragOffsetY, setDragOffsetY] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [showPreviewArt, setShowPreviewArt] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
+  const wheelLockRef = useRef(false);
 
   useEffect(() => {
     setGameStarted(false);
     setShowPreviewArt(true);
     const timer = window.setTimeout(() => setShowPreviewArt(true), 1800);
     return () => window.clearTimeout(timer);
-  }, [game.id]);
+  }, [game.id, restartKey]);
 
   const handleWheel = (event: React.WheelEvent) => {
-    if (Math.abs(event.deltaY) < 40) return;
-    event.deltaY > 0 ? onNext() : onPrevious();
+    if (wheelLockRef.current || Math.abs(event.deltaY) < 30) return;
+    wheelLockRef.current = true;
+    if (event.deltaY > 0) {
+      triggerSlideNext();
+    } else {
+      triggerSlidePrevious();
+    }
+    window.setTimeout(() => {
+      wheelLockRef.current = false;
+    }, 450);
   };
+
+  const triggerSlideNext = () => {
+    if (index >= games.length - 1) return;
+    setIsTransitioning(true);
+    setDragOffsetY(-window.innerHeight * 0.4);
+    window.setTimeout(() => {
+      onNext();
+      setDragOffsetY(0);
+      setIsTransitioning(false);
+    }, 280);
+  };
+
+  const triggerSlidePrevious = () => {
+    if (index <= 0) return;
+    setIsTransitioning(true);
+    setDragOffsetY(window.innerHeight * 0.4);
+    window.setTimeout(() => {
+      onPrevious();
+      setDragOffsetY(0);
+      setIsTransitioning(false);
+    }, 280);
+  };
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    touchStartY.current = event.touches[0].clientY;
+    setIsTransitioning(false);
+  };
+
+  const handleTouchMove = (event: React.TouchEvent) => {
+    if (touchStartY.current === null) return;
+    const delta = event.touches[0].clientY - touchStartY.current;
+    if ((index === 0 && delta > 0) || (index === games.length - 1 && delta < 0)) {
+      setDragOffsetY(delta * 0.3);
+    } else {
+      setDragOffsetY(delta);
+    }
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartY.current === null) return;
+    const delta = dragOffsetY;
+    touchStartY.current = null;
+    setIsTransitioning(true);
+
+    if (delta < -60 && index < games.length - 1) {
+      triggerSlideNext();
+    } else if (delta > 60 && index > 0) {
+      triggerSlidePrevious();
+    } else {
+      setDragOffsetY(0);
+      window.setTimeout(() => setIsTransitioning(false), 280);
+    }
+  };
+
+  const prevGame = games[index - 1];
+  const nextGameItem = games[index + 1];
 
   return (
     <section
       className="home-feed"
       onWheel={handleWheel}
-      onTouchStart={(event) => {
-        touchStart.current = event.touches[0].clientY;
-      }}
-      onTouchEnd={(event) => {
-        if (touchStart.current === null) return;
-        const delta = touchStart.current - event.changedTouches[0].clientY;
-        if (Math.abs(delta) > 48) delta > 0 ? onNext() : onPrevious();
-        touchStart.current = null;
-      }}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div className="feed-topbar">
         <button className="icon-button" onClick={onOpenExplore} aria-label="Explore">
@@ -1004,70 +1127,128 @@ function HomeFeed({
         </button>
       </div>
 
-      {loading ? (
-        <div className="game-loading">
-          <RefreshCw className="spin" size={34} />
-          <p>Loading games...</p>
-        </div>
-      ) : (
-        <div className="game-frame">
-          {gameStarted && (
-            <iframe
-              key={game.id}
-              className="game-iframe"
-              title={game.name}
-              src={getGameUrl(game)}
-              allow="autoplay; fullscreen; clipboard-write"
-              onLoad={() => window.setTimeout(() => setShowPreviewArt(false), 900)}
-            />
-          )}
-          <div className="thumbnail-backdrop" style={{ backgroundImage: `url(${getThumbnailUrl(game)})` }} />
-          {(!gameStarted || showPreviewArt) && (
+      <div
+        className="feed-vertical-stack"
+        style={{
+          transform: `translateY(${dragOffsetY}px)`,
+          transition: isTransitioning ? 'transform 0.28s cubic-bezier(0.25, 1, 0.5, 1)' : 'none',
+        }}
+      >
+        {/* Previous Game Peek */}
+        {prevGame && (
+          <div className="feed-slide feed-slide-prev">
+            <div className="thumbnail-backdrop" style={{ backgroundImage: `url(${getThumbnailUrl(prevGame)})` }} />
             <div className="game-preview-art">
-              <img src={getThumbnailUrl(game)} alt="" />
-              <strong>{game.name}</strong>
-              <button onClick={() => setGameStarted(true)}><Play size={15} fill="currentColor" /> Play game</button>
+              <img src={getThumbnailUrl(prevGame)} alt="" />
+              <strong>{prevGame.name}</strong>
+            </div>
+          </div>
+        )}
+
+        {/* Current Active Game */}
+        <div className="feed-slide feed-slide-active">
+          {loading ? (
+            <div className="game-loading">
+              <RefreshCw className="spin" size={34} />
+              <p>Loading games...</p>
+            </div>
+          ) : (
+            <div className="game-frame">
+              {gameStarted && (
+                <iframe
+                  key={`${game.id}-${restartKey}`}
+                  className="game-iframe"
+                  title={game.name}
+                  src={getGameUrl(game)}
+                  allow="autoplay; fullscreen; clipboard-write"
+                  onLoad={() => window.setTimeout(() => setShowPreviewArt(false), 900)}
+                />
+              )}
+              <div className="thumbnail-backdrop" style={{ backgroundImage: `url(${getThumbnailUrl(game)})` }} />
+              {(!gameStarted || showPreviewArt) && (
+                <div className="game-preview-art">
+                  <img src={getThumbnailUrl(game)} alt="" />
+                  <strong>{game.name}</strong>
+                  <button onClick={() => setGameStarted(true)}>
+                    <Play size={15} fill="currentColor" /> Play game
+                  </button>
+                </div>
+              )}
+              {offline && <div className="offline-pill">Offline fallback</div>}
             </div>
           )}
-          {offline && <div className="offline-pill">Offline fallback</div>}
+
+          {!hudHidden && (
+            <>
+              {/* Right Action Rail - structured like RN app */}
+              <div className="feed-actions">
+                <ActionButton
+                  active={liked}
+                  icon={<Heart size={26} fill={liked ? 'currentColor' : 'none'} />}
+                  label={formatCount((game.likes || 0) + (liked ? 1 : 0))}
+                  onClick={onToggleLike}
+                />
+                <ActionButton
+                  icon={<MessageCircle size={26} />}
+                  label={formatCount(commentsCount)}
+                  onClick={() => onOpenModal('comments')}
+                />
+                <ActionButton
+                  icon={<Share2 size={26} />}
+                  label={formatCount((game as any).shares || 0)}
+                  onClick={() => onOpenModal('share')}
+                />
+                <ActionButton
+                  icon={<GitBranch size={26} />}
+                  label="Remix"
+                  onClick={() => onRemix(game)}
+                />
+                <ActionButton
+                  icon={<Trophy size={24} />}
+                  label="Scores"
+                  onClick={() => onOpenModal('leaderboard')}
+                />
+              </div>
+
+              {/* Game Caption */}
+              <div className="game-caption">
+                <div className="creator-avatar-wrap">
+                  <img src={avatarUrl(game.creatorDisplayName || game.creatorUsername, game.creatorAvatar, 108)} alt="" />
+                  <button aria-label="Follow">
+                    <Plus size={11} strokeWidth={3} />
+                  </button>
+                </div>
+                <div className="caption-copy">
+                  <div className="creator-line">
+                    <strong>@{game.creatorDisplayName || game.creatorUsername || 'anonymous'}</strong>
+                    {game.creatorVerified && <span className="verified-dot">✓</span>}
+                  </div>
+                  <h1>{game.name}</h1>
+                  <p>{game.description || 'Playable instantly on GameTok.'}</p>
+                  <div className="caption-tags">
+                    <span>{game.category || 'Arcade'}</span>
+                    <span>{formatCount(game.plays)} plays</span>
+                  </div>
+                </div>
+                <button className={`follow-pill ${following ? 'following' : ''}`} onClick={onToggleFollow}>
+                  {following ? 'Following' : 'Follow'}
+                </button>
+              </div>
+            </>
+          )}
         </div>
-      )}
 
-      {!hudHidden && (
-        <>
-          <div className="feed-actions">
-            <ActionButton icon={<Trophy size={22} />} label="Scores" onClick={() => onOpenModal('leaderboard')} />
-            <ActionButton icon={<Share2 size={22} />} label="Share" onClick={() => onOpenModal('share')} />
-            <ActionButton icon={<MessageCircle size={22} />} label={formatCount(game.commentsCount || 0)} onClick={() => onOpenModal('comments')} />
-            <ActionButton active={liked} icon={<Heart size={22} fill={liked ? 'currentColor' : 'none'} />} label={formatCount((game.likes || 0) + (liked ? 1 : 0))} onClick={onToggleLike} />
-            <ActionButton active={saved} icon={<Bookmark size={22} fill={saved ? 'currentColor' : 'none'} />} label={saved ? 'Saved' : 'Save'} onClick={onToggleSave} />
-          </div>
-
-          <div className="game-caption">
-            <div className="creator-avatar-wrap">
-              <img src={avatarUrl(game.creatorDisplayName || game.creatorUsername, game.creatorAvatar, 108)} alt="" />
-              <button aria-label="Follow">
-                <Plus size={11} strokeWidth={3} />
-              </button>
+        {/* Next Game Peek */}
+        {nextGameItem && (
+          <div className="feed-slide feed-slide-next">
+            <div className="thumbnail-backdrop" style={{ backgroundImage: `url(${getThumbnailUrl(nextGameItem)})` }} />
+            <div className="game-preview-art">
+              <img src={getThumbnailUrl(nextGameItem)} alt="" />
+              <strong>{nextGameItem.name}</strong>
             </div>
-            <div className="caption-copy">
-              <div className="creator-line">
-                <strong>@{game.creatorDisplayName || game.creatorUsername || 'anonymous'}</strong>
-                {game.creatorVerified && <span className="verified-dot">✓</span>}
-              </div>
-              <h1>{game.name}</h1>
-              <p>{game.description || 'Playable instantly on GameTok.'}</p>
-              <div className="caption-tags">
-                <span>{game.category || 'Arcade'}</span>
-                <span>{formatCount(game.plays)} plays</span>
-              </div>
-            </div>
-            <button className={`follow-pill ${following ? 'following' : ''}`} onClick={onToggleFollow}>
-              {following ? 'Following' : 'Follow'}
-            </button>
           </div>
-        </>
-      )}
+        )}
+      </div>
 
       <div className="swipe-hint">
         <ChevronUp size={18} />
@@ -1249,11 +1430,46 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
     if (!looksAssetHeavy) return null;
     return 'Detailed games with lots of characters, vehicles, or art usually take 15–25 minutes — most of that is AI art generation.';
   }, [prompt, selectedIdea]);
+
+  const [userDrafts, setUserDrafts] = useState<any[]>([]);
+
+  useEffect(() => {
+    if (studioTab === 'drafts') {
+      ai.drafts().then((res: any) => {
+        if (res?.drafts && Array.isArray(res.drafts)) {
+          setUserDrafts(res.drafts);
+        }
+      }).catch(() => {});
+    }
+  }, [studioTab]);
+
   const drafts = useMemo(() => [
-    { id: 'draft-1', title: 'Neon Rhythm Rush', status: 'Playable draft', game: fallbackGame },
-    { id: 'draft-2', title: 'Haunted Quiz Room', status: 'Needs polish', game: fallbackGame },
-    { id: 'draft-3', title: 'Basket Dunk Lab', status: 'Prototype', game: fallbackGame },
+    { id: 'draft-1', title: 'Neon Rhythm Rush', status: 'Playable draft', orientation: 'portrait', game: fallbackGame },
+    { id: 'draft-2', title: 'Haunted Quiz Room', status: 'Needs polish', orientation: 'landscape', game: fallbackGame },
+    { id: 'draft-3', title: 'Basket Dunk Lab', status: 'Prototype', orientation: 'portrait', game: fallbackGame },
   ], [fallbackGame]);
+
+  const activeDraftsList = useMemo(() => {
+    if (userDrafts && userDrafts.length > 0) {
+      return userDrafts.map((d) => ({
+        id: d.id || d.job_id,
+        title: d.title || d.prompt || 'Untitled Draft',
+        status: d.status || 'Draft',
+        orientation: d.orientation || 'portrait',
+        game: {
+          id: d.id || d.job_id,
+          name: d.title || d.prompt || 'Untitled Draft',
+          thumbnail: d.screenshot || d.thumbnail,
+          html: d.html,
+          embedUrl: d.game_url || d.embedUrl,
+          orientation: d.orientation || 'portrait'
+        }
+      }));
+    }
+    return drafts;
+  }, [userDrafts, drafts]);
+
+
   const genreRows = useMemo(() => [
     GENRE_CHIPS.filter((_, index) => index % 3 === 0),
     GENRE_CHIPS.filter((_, index) => index % 3 === 1),
@@ -1617,23 +1833,35 @@ function CreateScreen({ onOpenGame, fallbackGame }: { onOpenGame: (game: Game) =
       {studioTab === 'drafts' && (
         <div className="drafts-panel">
           <div className="drafts-header">
-            <h1>{drafts.length} drafts</h1>
+            <h1>{activeDraftsList.length} drafts</h1>
             <button onClick={() => setStudioTab('create')}><Plus size={16} /> New game</button>
           </div>
           <div className="draft-grid">
-            {drafts.map((draft) => (
-              <button key={draft.id} onClick={() => onOpenGame(draft.game)}>
-                <img src={getThumbnailUrl(draft.game)} alt="" />
-                <span>
-                  <strong>{draft.title}</strong>
-                  <small>{draft.status}</small>
-                </span>
-                <Play size={16} fill="currentColor" />
+            {activeDraftsList.map((draft) => (
+              <button key={draft.id} className="draft-card" onClick={() => onOpenGame(draft.game)}>
+                <div className="draft-card-thumb-wrap">
+                  <img src={getThumbnailUrl(draft.game)} alt={draft.title} />
+                  <div className="draft-card-play-overlay">
+                    <div className="draft-card-play-icon">
+                      <Play size={20} fill="currentColor" />
+                    </div>
+                  </div>
+                  {draft.orientation && (
+                    <span className="draft-card-badge">
+                      {draft.orientation === 'landscape' ? 'Landscape' : 'Portrait'}
+                    </span>
+                  )}
+                </div>
+                <div className="draft-card-body">
+                  <h3 className="draft-card-title">{draft.title}</h3>
+                  <span className="draft-card-status">{draft.status || 'Draft'}</span>
+                </div>
               </button>
             ))}
           </div>
         </div>
       )}
+
 
       {(phase === 'idle' || studioTab === 'drafts') && (
         <div className="create-bottom-tabs">
@@ -1969,9 +2197,9 @@ function BottomNav({
         <button onClick={onHomeDeckExit}><Home size={23} /><span>Home</span></button>
         <i />
         <div className="deck-controls">
-          <button onClick={onPrevious}><ChevronLeft size={30} /></button>
-          <button className="replay" onClick={onRestart}><RefreshCw size={25} /></button>
-          <button onClick={onNext}><ChevronRight size={30} /></button>
+          <button onClick={onPrevious} aria-label="Previous Game"><ChevronLeft size={30} /></button>
+          <button className="replay" onClick={onRestart} aria-label="Replay Game"><RotateCcw size={24} strokeWidth={2.5} /></button>
+          <button onClick={onNext} aria-label="Next Game"><ChevronRight size={30} /></button>
         </div>
         <button onClick={onToggleHud}>{hudHidden ? <ChevronUp size={23} /> : <ChevronDown size={23} />}</button>
       </nav>
@@ -2114,15 +2342,17 @@ function DesktopPlayHome({
   games,
   index,
   liked,
-  saved,
+  saved: _saved,
   following,
+  commentsCount,
   onTab,
   onNext,
   onPrevious,
   onOpenModal,
   onToggleLike,
-  onToggleSave,
+  onToggleSave: _onToggleSave,
   onToggleFollow,
+  onRemix,
 }: {
   user: AuthUser;
   game: Game;
@@ -2131,6 +2361,7 @@ function DesktopPlayHome({
   liked: boolean;
   saved: boolean;
   following: boolean;
+  commentsCount: number;
   onTab: (tab: Tab) => void;
   onNext: () => void;
   onPrevious: () => void;
@@ -2138,6 +2369,7 @@ function DesktopPlayHome({
   onToggleLike: () => void;
   onToggleSave: () => void;
   onToggleFollow: () => void;
+  onRemix: (game: Game) => void;
 }) {
   const creator = game.creatorDisplayName || game.creatorUsername || 'GameTok player';
   return (
@@ -2177,11 +2409,11 @@ function DesktopPlayHome({
         </div>
 
         <aside className="desktop-feed-actions">
+          <button onClick={onToggleLike} className={liked ? 'active' : ''}><Heart size={25} fill={liked ? 'currentColor' : 'none'} /><span>{formatCount((game.likes || 0) + (liked ? 1 : 0))}</span></button>
+          <button onClick={() => onOpenModal('comments')}><MessageCircle size={25} /><span>{formatCount(commentsCount)}</span></button>
+          <button onClick={() => onOpenModal('share')}><Share2 size={25} /><span>{formatCount((game as any).shares || 0)}</span></button>
+          <button onClick={() => onRemix(game)}><GitBranch size={25} /><span>Remix</span></button>
           <button onClick={() => onOpenModal('leaderboard')}><Trophy size={25} /><span>Scores</span></button>
-          <button onClick={() => onOpenModal('share')}><Send size={25} /><span>Share</span></button>
-          <button onClick={() => onOpenModal('comments')}><MessageCircle size={25} /><span>{formatCount(game.commentsCount || 0)}</span></button>
-          <button onClick={onToggleLike} className={liked ? 'active' : ''}><Heart size={25} fill={liked ? 'currentColor' : 'none'} /><span>{formatCount(game.likes || 0)}</span></button>
-          <button onClick={onToggleSave} className={saved ? 'active' : ''}><Bookmark size={25} fill={saved ? 'currentColor' : 'none'} /><span>Favorite</span></button>
           <button className="desktop-feed-avatar-action" onClick={() => onTab('profile')}>
             <img src={avatarUrl(game.creatorUsername || creator, game.creatorAvatar || null, 64)} alt="" />
             <Plus size={18} />
@@ -2702,44 +2934,86 @@ function Sheet({
   );
 }
 
-function CommentsSheet({ game, creators }: { game: Game; creators: Creator[] }) {
+function CommentsSheet({
+  game,
+  creators,
+  commentsStore,
+  onAddComment,
+  user,
+}: {
+  game: Game;
+  creators: Creator[];
+  commentsStore: Record<string, Array<{ id: string; username: string; text: string; likes: number; createdAt: string }>>;
+  onAddComment: (gameId: string, text: string, username?: string) => void;
+  user: AuthUser | null;
+}) {
   const [draft, setDraft] = useState('');
-  const [localComments, setLocalComments] = useState<Array<{ id: string; username: string; text: string; likes: number }>>([]);
-  const comments = [
+  const [apiComments, setApiComments] = useState<Array<{ id: string; username: string; text: string; likes: number; createdAt?: string }>>([]);
+
+  useEffect(() => {
+    if (!game?.id) return;
+    commentsApi.list(game.id).then((res: any) => {
+      if (res?.comments && Array.isArray(res.comments)) {
+        setApiComments(res.comments);
+      }
+    }).catch(() => {});
+  }, [game?.id]);
+
+  const localComments = commentsStore[game.id] || [];
+  const baseMockComments = creators.slice(0, 5).map((creator, index) => ({
+    id: `mock-${creator.id}-${index}`,
+    username: creator.username,
+    text: index % 2 ? `The polish on ${game.name} is wild.` : 'This needs a speedrun leaderboard immediately.',
+    likes: Math.max(0, 18 - index * 3),
+  }));
+
+  const allComments = [
     ...localComments,
-    ...creators.slice(0, 6).map((creator, index) => ({
-      id: creator.id,
-      username: creator.username,
-      text: index % 2 ? `The polish on ${game.name} is wild.` : 'This needs a speedrun leaderboard immediately.',
-      likes: Math.max(0, 18 - index * 3),
-    })),
+    ...apiComments,
+    ...baseMockComments,
   ];
 
   const postComment = () => {
     if (!draft.trim()) return;
-    setLocalComments((items) => [
-      { id: `local-${Date.now()}`, username: 'guest', text: draft.trim(), likes: 0 },
-      ...items,
-    ]);
+    const authorUsername = user?.username || user?.displayName || 'guest';
+    onAddComment(game.id, draft.trim(), authorUsername);
+    commentsApi.create(game.id, draft.trim()).catch(() => {});
     setDraft('');
   };
 
   return (
     <div className="comments-list">
-      {comments.map((comment) => (
-        <div className="comment-row" key={comment.id}>
-          <img src={avatarUrl(comment.username, null, 96)} alt="" />
-          <span>
-            <strong>@{comment.username}</strong>
-            <p>{comment.text}</p>
-            <small>{comment.likes ? `${comment.likes} likes · ` : ''}Reply</small>
-          </span>
-          <Heart size={16} />
-        </div>
-      ))}
+      <div className="comments-header">
+        <strong>{allComments.length} {allComments.length === 1 ? 'comment' : 'comments'}</strong>
+      </div>
+      <div className="comments-scroll-area">
+        {allComments.map((comment) => (
+          <div className="comment-row" key={comment.id}>
+            <img src={avatarUrl(comment.username, null, 96)} alt="" />
+            <span>
+              <strong>@{comment.username}</strong>
+              <p>{comment.text}</p>
+              <small>{comment.likes ? `${comment.likes} likes · ` : ''}Reply</small>
+            </span>
+            <button className="comment-like-btn" aria-label="Like comment">
+              <Heart size={15} />
+            </button>
+          </div>
+        ))}
+      </div>
       <div className="comment-composer">
-        <input value={draft} onChange={(event) => setDraft(event.target.value)} onKeyDown={(event) => { if (event.key === 'Enter') postComment(); }} placeholder="Add a comment..." />
-        <button onClick={postComment}><Send size={17} /></button>
+        <img src={avatarUrl(user?.username || 'guest', user?.avatar || null, 64)} alt="" className="composer-avatar" />
+        <input
+          value={draft}
+          onChange={(event) => setDraft(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') postComment();
+          }}
+          placeholder="Add a comment..."
+        />
+        <button onClick={postComment} disabled={!draft.trim()}>
+          <Send size={16} />
+        </button>
       </div>
     </div>
   );
