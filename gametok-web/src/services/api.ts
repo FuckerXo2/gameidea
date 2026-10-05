@@ -1,7 +1,7 @@
 // GameTok Web API Service — direct port of mobile api.ts
-// Shares the same Railway backend as the mobile app
+// Shares the same Cloud Run backend as the mobile app
 
-export const API_URL = 'https://gametok-backend-production.up.railway.app/api';
+export const API_URL = 'https://gametok-backend-580726430039.us-central1.run.app/api';
 const GAMES_HOST = 'https://games.gametok.co';
 const API_ORIGIN = API_URL.replace(/\/api$/, '');
 
